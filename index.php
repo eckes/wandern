@@ -22,8 +22,9 @@
         var g_MARKERLIST        = new Array();
         var g_PLANNERJOBS       = new Array();
         var g_CURRENTJOB        = null;
+        var g_DIRECTIONS        = null;
+        var g_CALC_DISTANCES    = false;
         var g_HOME;
-        var g_DIRECTIONS;
         var g_MAPBOUNDS;
         var g_MANAGER;
         var g_MAP;
@@ -35,12 +36,6 @@
         {
             this.m_tag      = a_tag;
             this.m_marker   = a_marker;
-        }
-
-        function PlannerJob(a_tag, a_query)
-        {
-            this.m_tag      = a_tag;
-            this.m_query    = a_query;
         }
 
         function addMark(a_long, a_lat, a_text, a_tag, a_Icon, a_len, a_dur)
@@ -59,22 +54,42 @@
             var l_info = "<i>" + a_text + "</i><br>" + a_len + "km | " + a_dur + "h | <a href=\"javascript:doHide(\'" + a_tag +"\')\">hide</a>";
             GEvent.addListener(mark, "click", function(){mark.openInfoWindowHtml(l_info);});
 
-            var l_query = "from: " + g_HOME + " to: " + pos;
+            if(g_CALC_DISTANCES)
+            {
+                distCalc(pos, a_tag);
+            }
+            else
+            {
+                var dst = a_tag + "_dst";
+                document.getElementById(dst).innerHTML = "<i>disabled</i>";
+            }
+        }
+
+        /* Functions to calculate distances below */
+        function distCalc(a_pos, a_tag)
+        {
+            var l_query = "from: " + g_HOME + " to: " + a_pos;
             var pj = new PlannerJob(a_tag, l_query);
             if(g_PLANNER_STATE == G_PLANNER_IDLE)
             {
                 g_PLANNER_STATE = G_PLANNER_WORKING;
-                GLog.write("Changed state from IDLE to WORKING " +pj.m_tag);
                 g_CURRENTJOB    = pj;
                 pj = null;
+                var dst = g_CURRENTJOB.m_tag + "_dst";
+                document.getElementById(dst).innerHTML = "working...";
                 g_DIRECTIONS.load(g_CURRENTJOB.m_query);
             }
             else
             {
                 g_PLANNERJOBS.push(pj);
-                GLog.write("Pushed job " +pj.m_tag);
                 pj = null;
             }
+        }
+
+        function PlannerJob(a_tag, a_query)
+        {
+            this.m_tag      = a_tag;
+            this.m_query    = a_query;
         }
 
         function dirLoadedCB()
@@ -82,10 +97,8 @@
             /* finish the running job */
             if(g_CURRENTJOB)
             {
-                var job = g_CURRENTJOB;
-                var dst = job.m_tag + "_dst";
+                var dst = g_CURRENTJOB.m_tag + "_dst";
                 document.getElementById(dst).innerHTML = g_DIRECTIONS.getDistance().html;
-                GLog.write("Finished job " +job.m_tag);
             }
             /* start a new one */
             if(0 == g_PLANNERJOBS.length)
@@ -96,10 +109,12 @@
             else
             {
                 g_CURRENTJOB = g_PLANNERJOBS.pop();
-                GLog.write("Starting new job " +g_CURRENTJOB.m_tag);
                 g_DIRECTIONS.load(g_CURRENTJOB.m_query);
+                var dst = g_CURRENTJOB.m_tag + "_dst";
+                document.getElementById(dst).innerHTML = "working...";
             }
         }
+        /* Functions to calculate distances above */
 
         function showHome(a_text)
         {
@@ -137,8 +152,11 @@
             g_WALKED_ICON.iconAnchor        = new google.maps.Point(0,36);
             g_WALKED_ICON.infoWindowAnchor  = new google.maps.Point(5,2);
 
-            g_DIRECTIONS = new google.maps.Directions();
-            GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
+            if(g_CALC_DISTANCES)
+            {
+                g_DIRECTIONS = new google.maps.Directions();
+                GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
+            }
 
             g_HOME       = new google.maps.LatLng(<?=$g_homelat?>, <?=$g_homelon?>);
         }
@@ -247,7 +265,7 @@
             </thead>
 
 <?php
-    $sql = "SELECT * FROM `walks` LIMIT 20, 10 ";
+    $sql = "SELECT * FROM `walks` LIMIT 00, 10 ";
     $sql_host = "localhost";
     $sql_user = "root";
     $sql_pass = "";
@@ -260,7 +278,7 @@
 
     while($row=mysql_fetch_array($res))
     {
-        echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$row[Tag]\" value=\"$row[Tag]\" onchange=\"cbChanged('$row[Tag]')\"> $row[Tag]</td><td>$row[Name]</td><td>$row[Laenge]</td><td>$row[Dauer]</td><td id=\"$row[Tag]_dst\">working...</td></tr>\r\n";
+        echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$row[Tag]\" value=\"$row[Tag]\" onchange=\"cbChanged('$row[Tag]')\"> $row[Tag]</td><td>$row[Name]</td><td>$row[Laenge]</td><td>$row[Dauer]</td><td id=\"$row[Tag]_dst\"></td></tr>\r\n";
     }
     echo "</table>";
 
