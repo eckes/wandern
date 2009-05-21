@@ -9,25 +9,41 @@
         <script type="text/javascript" src="../js/gs_sortable.js"></script>
         <script type="text/javascript">
         google.load("maps", "2");
-        var g_LAT_MIN       = 0;
-        var g_LAT_MAX       = 0;
-        var g_LON_MIN       = 0;
-        var g_LON_MAX       = 0;
-        var g_INITIALIZED   = 0;
-        var g_MARKERLIST    = new Array();
+
+        var G_PLANNER_IDLE      = 0;
+        var G_PLANNER_WORKING   = 1;
+
+        var g_PLANNER_STATE     = G_PLANNER_IDLE;
+        var g_LAT_MIN           = 0;
+        var g_LAT_MAX           = 0;
+        var g_LON_MIN           = 0;
+        var g_LON_MAX           = 0;
+        var g_INITIALIZED       = 0;
+        var g_MARKERLIST        = new Array();
+        var g_PLANNERJOBS       = new Array();
+        var g_CURRENTJOB        = null;
+        var g_HOME;
+        var g_DIRECTIONS;
         var g_MAPBOUNDS;
         var g_MANAGER;
         var g_MAP;
         var g_ICON;
         var g_WALKED_ICON;
 
+        /* Our MarkEntry class */
         function MarkEntry(a_tag, a_marker)
         {
             this.m_tag      = a_tag;
             this.m_marker   = a_marker;
         }
 
-        function addMark(a_long, a_lat, a_text, a_tag, a_Icon)
+        function PlannerJob(a_tag, a_query)
+        {
+            this.m_tag      = a_tag;
+            this.m_query    = a_query;
+        }
+
+        function addMark(a_long, a_lat, a_text, a_tag, a_Icon, a_len, a_dur)
         {
             var pos     = new google.maps.LatLng(a_lat, a_long);
             var options = {title: a_text, bouncy: true, icon:a_Icon};
@@ -40,11 +56,52 @@
 
             g_MAPBOUNDS.extend(pos);
             g_MANAGER.addMarker(mark, 10);
-            var l_more = "<a href=\"javascript:doHide(\'" + a_tag +"\')\">hide</a>";
-            GEvent.addListener(mark, "click", function(){mark.openInfoWindowHtml(a_text + "<br>" + l_more);});
+            var l_info = "<i>" + a_text + "</i><br>" + a_len + "km | " + a_dur + "h | <a href=\"javascript:doHide(\'" + a_tag +"\')\">hide</a>";
+            GEvent.addListener(mark, "click", function(){mark.openInfoWindowHtml(l_info);});
+
+            var l_query = "from: " + g_HOME + " to: " + pos;
+            var pj = new PlannerJob(a_tag, l_query);
+            if(g_PLANNER_STATE == G_PLANNER_IDLE)
+            {
+                g_PLANNER_STATE = G_PLANNER_WORKING;
+                GLog.write("Changed state from IDLE to WORKING " +pj.m_tag);
+                g_CURRENTJOB    = pj;
+                pj = null;
+                g_DIRECTIONS.load(g_CURRENTJOB.m_query);
+            }
+            else
+            {
+                g_PLANNERJOBS.push(pj);
+                GLog.write("Pushed job " +pj.m_tag);
+                pj = null;
+            }
         }
 
-        function showHome(a_long, a_lat, a_text)
+        function dirLoadedCB()
+        {
+            /* finish the running job */
+            if(g_CURRENTJOB)
+            {
+                var job = g_CURRENTJOB;
+                var dst = job.m_tag + "_dst";
+                document.getElementById(dst).innerHTML = g_DIRECTIONS.getDistance().html;
+                GLog.write("Finished job " +job.m_tag);
+            }
+            /* start a new one */
+            if(0 == g_PLANNERJOBS.length)
+            {
+                alert("done");
+                g_PLANNER_STATE = G_PLANNER_IDLE;
+            }
+            else
+            {
+                g_CURRENTJOB = g_PLANNERJOBS.pop();
+                GLog.write("Starting new job " +g_CURRENTJOB.m_tag);
+                g_DIRECTIONS.load(g_CURRENTJOB.m_query);
+            }
+        }
+
+        function showHome(a_text)
         {
             var homeIcon = new google.maps.Icon();
             homeIcon.image              = "images/home.png";
@@ -52,10 +109,9 @@
             homeIcon.iconAnchor         = new google.maps.Point(0,25);
             homeIcon.infoWindowAnchor   = new google.maps.Point(11,0);
 
-            var pos     = new google.maps.LatLng(a_lat, a_long);
             var options = {title: a_text, icon:homeIcon};
-            var mark    = new google.maps.Marker(pos, options);
-            g_MAPBOUNDS.extend(pos);
+            var mark    = new google.maps.Marker(g_HOME, options);
+            g_MAPBOUNDS.extend(g_HOME);
             g_MANAGER.addMarker(mark, 10);
             g_MANAGER.refresh();
             GEvent.addListener(mark, "click", function(){mark.openInfoWindowHtml(a_text);});
@@ -80,6 +136,11 @@
             g_WALKED_ICON.iconSize          = new google.maps.Size(21.5,32);
             g_WALKED_ICON.iconAnchor        = new google.maps.Point(0,36);
             g_WALKED_ICON.infoWindowAnchor  = new google.maps.Point(5,2);
+
+            g_DIRECTIONS = new google.maps.Directions();
+            GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
+
+            g_HOME       = new google.maps.LatLng(<?=$g_homelat?>, <?=$g_homelon?>);
         }
 
         function hideAll()
@@ -157,7 +218,7 @@
         //google.setOnLoadCallback(initialize);
 
 
-        var TSort_Data = new Array ('walks', 's', 's', 'f', 'f');
+        var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's');
         var TSort_Classes = new Array ('table_odd', 'table_even');
         var TSort_Initial = 0;
         tsRegister();
@@ -182,11 +243,11 @@
         </div>
         <table id="walks">
             <thead>
-                <tr><th>Tag</th><th>Name</th><th>Laenge</th><th>Dauer</th></tr>
+                <tr><th>Tag</th><th>Name</th><th>Laenge</th><th>Dauer</th><th>Entfernung</th></tr>
             </thead>
 
 <?php
-    $sql = "SELECT * FROM `walks` LIMIT 0, 50 ";
+    $sql = "SELECT * FROM `walks` LIMIT 20, 10 ";
     $sql_host = "localhost";
     $sql_user = "root";
     $sql_pass = "";
@@ -199,26 +260,27 @@
 
     while($row=mysql_fetch_array($res))
     {
-        echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$row[Tag]\" value=\"$row[Tag]\" onchange=\"cbChanged('$row[Tag]')\"> $row[Tag]</td><td>$row[Name]</td><td>$row[Laenge]</td><td>$row[Dauer]</td></tr>\r\n";
+        echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$row[Tag]\" value=\"$row[Tag]\" onchange=\"cbChanged('$row[Tag]')\"> $row[Tag]</td><td>$row[Name]</td><td>$row[Laenge]</td><td>$row[Dauer]</td><td id=\"$row[Tag]_dst\">working...</td></tr>\r\n";
     }
     echo "</table>";
 
     echo "<script type=\"text/javascript\">\n";
     echo "initialize();\n";
-    echo "showHome($g_homelon, $g_homelat, 'Daheim');\n";
+    echo "showHome('Daheim');\n";
     $res = mysql_query($sql, $db);
     while($row=mysql_fetch_array($res))
     {
         echo "addMark($row[Lat], $row[Lon], '$row[Name]', '$row[Tag]', ";
         if($row[Datum] != "0000-00-00")
         {
-            echo "g_WALKED_ICON";
+            echo "g_WALKED_ICON, ";
         }
         else
         {
-            echo "g_ICON";
+            echo "g_ICON, ";
         }
-        echo");\n";
+        echo "$row[Laenge], $row[Dauer]";
+        echo ");\n";
     }
     echo "g_MAP.setCenter(g_MAPBOUNDS.getCenter(), g_MAP.getBoundsZoomLevel(g_MAPBOUNDS));\n";
     echo "</script>";
