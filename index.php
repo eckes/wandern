@@ -19,6 +19,7 @@
         var g_MANAGER;
         var g_MAP;
         var g_ICON;
+        var g_WALKED_ICON;
 
         function MarkEntry(a_tag, a_marker)
         {
@@ -26,10 +27,10 @@
             this.m_marker   = a_marker;
         }
 
-        function addMark(a_long, a_lat, a_text, a_tag)
+        function addMark(a_long, a_lat, a_text, a_tag, a_Icon)
         {
             var pos     = new google.maps.LatLng(a_lat, a_long);
-            var options = {title: a_text, bouncy: true, icon:g_ICON};
+            var options = {title: a_text, bouncy: true, icon:a_Icon};
             var mark    = new google.maps.Marker(pos, options);
 
             /* hide the mark and add it to our markerlist */
@@ -73,6 +74,46 @@
             g_ICON.iconSize             = new google.maps.Size(21.5,32);
             g_ICON.iconAnchor           = new google.maps.Point(0,36);
             g_ICON.infoWindowAnchor     = new google.maps.Point(5,2);
+
+            g_WALKED_ICON = new google.maps.Icon();
+            g_WALKED_ICON.image             = "images/wanderparkplatz_hell.png"; 
+            g_WALKED_ICON.iconSize          = new google.maps.Size(21.5,32);
+            g_WALKED_ICON.iconAnchor        = new google.maps.Point(0,36);
+            g_WALKED_ICON.infoWindowAnchor  = new google.maps.Point(5,2);
+        }
+
+        function hideAll()
+        {
+            var i = 0;
+            for (i = 0; i < g_MARKERLIST.length; i++)
+            {
+                me = g_MARKERLIST[i];
+                if(null == me)
+                {
+                    continue; /* skip the gap */
+                }
+                doHide(me.m_tag);
+            }
+        }
+
+        function showAll()
+        {
+            var i = 0;
+            for (i = 0; i < g_MARKERLIST.length; i++)
+            {
+                me = g_MARKERLIST[i];
+                if(null == me)
+                {
+                    continue; /* skip the gap */
+                }
+                doShow(me.m_tag);
+            }
+        }
+
+        function doShow(a_name)
+        {
+            document.getElementById(a_name).checked = true;
+            return cbChanged(a_name);
         }
 
         function doHide(a_name)
@@ -105,6 +146,7 @@
             if(false == bChecked)
             {
                 me.m_marker.hide();
+                me.m_marker.closeInfoWindow();
             }
             else
             {
@@ -131,11 +173,17 @@
         </style>
     </head>
     <body>
+        <div>
+            <div id="map" style="width: 800px; height: 600px"></div>
+            <a href="javascript:g_MAP.zoomIn();">zoom in</a> 
+            <a href="javascript:g_MAP.zoomOut();">zoom out</a> 
+            <a href="javascript:hideAll();">hide all</a> 
+            <a href="javascript:showAll();">show all</a> 
+        </div>
         <table id="walks">
             <thead>
                 <tr><th>Tag</th><th>Name</th><th>Laenge</th><th>Dauer</th></tr>
             </thead>
-        <div id="map" style="width: 800px; height: 400px"></div>
 
 <?php
     $sql = "SELECT * FROM `walks` LIMIT 0, 50 ";
@@ -149,12 +197,6 @@
     $res = mysql_query($sql, $db);
     $i = 0;
 
-    /* TODO:
-     * - take the results of the query and create the neccessary points:
-     *      o create a marker for each
-     *      o take these markers into our list
-     *      o hide the markers until their checkbox is selected
-     * */
     while($row=mysql_fetch_array($res))
     {
         echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$row[Tag]\" value=\"$row[Tag]\" onchange=\"cbChanged('$row[Tag]')\"> $row[Tag]</td><td>$row[Name]</td><td>$row[Laenge]</td><td>$row[Dauer]</td></tr>\r\n";
@@ -167,7 +209,16 @@
     $res = mysql_query($sql, $db);
     while($row=mysql_fetch_array($res))
     {
-        echo "addMark($row[Lat], $row[Lon], '$row[Name]', '$row[Tag]');\n";
+        echo "addMark($row[Lat], $row[Lon], '$row[Name]', '$row[Tag]', ";
+        if($row[Datum] != "0000-00-00")
+        {
+            echo "g_WALKED_ICON";
+        }
+        else
+        {
+            echo "g_ICON";
+        }
+        echo");\n";
     }
     echo "g_MAP.setCenter(g_MAPBOUNDS.getCenter(), g_MAP.getBoundsZoomLevel(g_MAPBOUNDS));\n";
     echo "</script>";
