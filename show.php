@@ -236,7 +236,7 @@
         //google.setOnLoadCallback(initialize);
 
 
-        var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's');
+        var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's', 's');
         var TSort_Classes = new Array ('table_odd', 'table_even');
         var TSort_Initial = 0;
         tsRegister();
@@ -261,14 +261,16 @@
         </div>
         <table id="walks">
             <thead>
-                <tr><th>Tag</th><th>Name</th><th>Laenge</th><th>Dauer</th><th>Entfernung</th></tr>
+                <tr><th>Tag</th><th>Name</th><th>Laenge</th><th>Dauer</th><th>Charakterisik</th><th>Entfernung</th></tr>
             </thead>
 
 <?php
     function build_query()
     {
         print_r($_REQUEST);
-        $l_sql = "SELECT * FROM `walks` WHERE";
+        $l_sql = "SELECT * FROM `walks` WHERE "; // the base query
+
+        /* shall we display already walked trails? */
         if(!$_REQUEST[showwalked])
         {
             $l_sql = $l_sql . "(`DATUM` = 0000-00-00)";
@@ -277,34 +279,61 @@
         {
             $l_sql = $l_sql . "(1)";
         }
-        $l_sql = $l_sql . " AND ";
+
+        /* are we forbidden to display trails that are hügelig? */
         if($_REQUEST[kein_huegeliges])
         {
-            $l_sql = $l_sql . "(`Charakter` NOT LIKE '%hügelig%')";
+            $l_sql = $l_sql . " AND (`Charakter` NOT LIKE '%hügelig%')";
         }
-        else
+
+        /* are we forbidden to display trails that are anstrengend? */
+        if($_REQUEST[kein_anstrengendes])
         {
-            $l_sql = $l_sql . "(1)";
+            $l_sql = $l_sql . " AND (`Charakter` NOT LIKE '%anstrengend%')";
         }
+
+        /* are we forbidden to display trails that are steil? */
+        if($_REQUEST[kein_steiles])
+        {
+            $l_sql = $l_sql . " AND (`Charakter` NOT LIKE '%steil%')";
+        }
+
+        /* shall we only deliver trails that are leicht? */
+        if($_REQUEST[nur_leichtes])
+        {
+            $l_sql = $l_sql . " AND (`Charakter` LIKE 'leichtes Gelände')";
+        }
+
+        /* check the minimum distance */
+        if($_REQUEST[dst_min] != "egal")
+        {
+            $l_sql = $l_sql . " AND (`Laenge` >= $_REQUEST[dst_min])";
+        }
+
+        /* check the maximum distance */
+        if($_REQUEST[dst_max] != "egal")
+        {
+            $l_sql = $l_sql . " AND (`Laenge` <= $_REQUEST[dst_max])";
+        }
+
         return $l_sql;
     }
 
-    //$sql = "SELECT * FROM `walks` LIMIT 00, 10 ";
-    $sql = build_query();
-    echo $sql;
-    $sql_host = "localhost";
-    $sql_user = "root";
-    $sql_pass = "";
-    $db = mysql_connect($sql_host, $sql_user, $sql_pass);
+    $sql_host   = "localhost";
+    $sql_user   = "root";
+    $sql_pass   = "";
+    $db         = mysql_connect($sql_host, $sql_user, $sql_pass);
 
     mysql_select_db('wandern', $db)
         or die ("selecting db failed\n");
+
+    $sql        = build_query();
     $res = mysql_query($sql, $db);
     $i = 0;
 
     while($row=mysql_fetch_array($res))
     {
-        echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$row[Tag]\" value=\"$row[Tag]\" onchange=\"cbChanged('$row[Tag]')\"> $row[Tag]</td><td>$row[Name]</td><td>$row[Laenge]</td><td>$row[Dauer]</td><td id=\"$row[Tag]_dst\"></td></tr>\r\n";
+        echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$row[Tag]\" value=\"$row[Tag]\" onchange=\"cbChanged('$row[Tag]')\"> $row[Tag]</td><td>$row[Name]</td><td>$row[Laenge]</td><td>$row[Dauer]</td><td>$row[Charakter]</td><td id=\"$row[Tag]_dst\"></td></tr>\r\n";
     }
     echo "</table>";
 
