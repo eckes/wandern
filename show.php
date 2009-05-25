@@ -19,11 +19,10 @@
         var g_LON_MIN           = 0;
         var g_LON_MAX           = 0;
         var g_INITIALIZED       = 0;
-        var g_MARKERLIST        = new Array();
+        var g_MARKERLIST        = new MarkerList();
         var g_PLANNERJOBS       = new Array();
         var g_CURRENTJOB        = null;
         var g_DIRECTIONS        = null;
-        var g_CALC_DISTANCES    = false;
         var g_HOME;
         var g_MAPBOUNDS;
         var g_MANAGER;
@@ -38,7 +37,61 @@
             this.m_marker   = a_marker;
         }
 
-        function addMark(a_long, a_lat, a_text, a_tag, a_Icon, a_len, a_dur)
+        /**
+         * CTor for a new MarkerList
+         * */
+        function MarkerList()
+        {
+            this.entries = new Array();
+        }
+
+        /**
+         * Adds the given entry as new element to the MarkerList
+         * */
+        MarkerList.prototype.push = function(a_entry)
+        {
+            this.entries.push(a_entry);
+        }
+
+        /**
+         * Returns the entry on the given index 
+         * */
+        MarkerList.prototype.get = function(a_index)
+        {
+            return this.entries[a_index];
+        }
+
+        /**
+         * Returns the number of elements 
+         * */
+        MarkerList.prototype.length = function()
+        {
+            return this.entries.length;
+        }
+
+        /**
+         * Searches for an entry with the given ID and returns it.
+         * */
+        MarkerList.prototype.search = function(a_id)
+        {
+            var i = 0;
+            var me = null;
+            for(i = 0; i < this.entries.length; i++)
+            {
+                me = this.get(i);
+                if(null == me)
+                {
+                    continue; /* skip the gap */
+                }
+                if(a_id == me.m_tag)
+                {
+                    return me;
+                }
+            }
+            return null;
+        }
+
+        function addMark(a_long, a_lat, a_text, a_tag, a_Icon, a_len, a_dur, a_char)
         {
             var pos     = new google.maps.LatLng(a_lat, a_long);
             var options = {title: a_text, bouncy: true, icon:a_Icon};
@@ -50,40 +103,22 @@
             me = null;
 
             g_MAPBOUNDS.extend(pos);
-            g_MANAGER.addMarker(mark, 10);
-            var l_info = "<i>" + a_text + "</i><br>" + a_len + "km | " + a_dur + "h | <a href=\"javascript:doHide(\'" + a_tag +"\')\">hide</a>";
+            g_MANAGER.addMarker(mark, 1);
+            var l_info = "<b>" + a_text + "</b><br>" + a_len + "km | " + a_dur + "h<br>" + a_char + "<br><a href=\"javascript:doHide(\'" + a_tag +"\')\">hide</a>";
             GEvent.addListener(mark, "click", function(){mark.openInfoWindowHtml(l_info);});
 
-            if(g_CALC_DISTANCES)
-            {
-                distCalc(pos, a_tag);
-            }
-            else
-            {
-                var dst = a_tag + "_dst";
-                document.getElementById(dst).innerHTML = "<i>disabled</i>";
-            }
+            var dst = a_tag + "_dst";
+            document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + pos + "','" + a_tag +"')\">calculate</a>";
         }
 
         /* Functions to calculate distances below */
         function distCalc(a_pos, a_tag)
         {
             var l_query = "from: " + g_HOME + " to: " + a_pos;
-            var pj = new PlannerJob(a_tag, l_query);
-            if(g_PLANNER_STATE == G_PLANNER_IDLE)
-            {
-                g_PLANNER_STATE = G_PLANNER_WORKING;
-                g_CURRENTJOB    = pj;
-                pj = null;
-                var dst = g_CURRENTJOB.m_tag + "_dst";
-                document.getElementById(dst).innerHTML = "working...";
-                g_DIRECTIONS.load(g_CURRENTJOB.m_query);
-            }
-            else
-            {
-                g_PLANNERJOBS.push(pj);
-                pj = null;
-            }
+            g_CURRENTJOB = new PlannerJob(a_tag, l_query);
+            var dst = a_tag + "_dst";
+            document.getElementById(dst).innerHTML = "working...";
+            g_DIRECTIONS.load(l_query);
         }
 
         function PlannerJob(a_tag, a_query)
@@ -99,19 +134,6 @@
             {
                 var dst = g_CURRENTJOB.m_tag + "_dst";
                 document.getElementById(dst).innerHTML = g_DIRECTIONS.getDistance().html;
-            }
-            /* start a new one */
-            if(0 == g_PLANNERJOBS.length)
-            {
-                alert("done");
-                g_PLANNER_STATE = G_PLANNER_IDLE;
-            }
-            else
-            {
-                g_CURRENTJOB = g_PLANNERJOBS.pop();
-                g_DIRECTIONS.load(g_CURRENTJOB.m_query);
-                var dst = g_CURRENTJOB.m_tag + "_dst";
-                document.getElementById(dst).innerHTML = "working...";
             }
         }
         /* Functions to calculate distances above */
@@ -152,7 +174,7 @@
             g_WALKED_ICON.iconAnchor        = new google.maps.Point(0,36);
             g_WALKED_ICON.infoWindowAnchor  = new google.maps.Point(5,2);
 
-            if(g_CALC_DISTANCES)
+            if(1)
             {
                 g_DIRECTIONS = new google.maps.Directions();
                 GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
@@ -164,9 +186,9 @@
         function hideAll()
         {
             var i = 0;
-            for (i = 0; i < g_MARKERLIST.length; i++)
+            for (i = 0; i < g_MARKERLIST.length(); i++)
             {
-                me = g_MARKERLIST[i];
+                me = g_MARKERLIST.get(i);
                 if(null == me)
                 {
                     continue; /* skip the gap */
@@ -178,9 +200,9 @@
         function showAll()
         {
             var i = 0;
-            for (i = 0; i < g_MARKERLIST.length; i++)
+            for (i = 0; i < g_MARKERLIST.length(); i++)
             {
-                me = g_MARKERLIST[i];
+                me = g_MARKERLIST.get(i);
                 if(null == me)
                 {
                     continue; /* skip the gap */
@@ -206,19 +228,8 @@
             var bChecked = document.getElementById(a_name).checked;
             var me      = null;
             var i       = 0;
-            for(i = 0; i < g_MARKERLIST.length; i++)
-            {
-                me = g_MARKERLIST[i];
-                if(null == me)
-                {
-                    continue; /* skip the gap */
-                }
-                if(a_name == me.m_tag)
-                {
-                    break;
-                }
-            }
-            if(g_MARKERLIST.length <= i)
+            me = g_MARKERLIST.search(a_name);
+            if(null == me)
             {
                 alert("not found");
             }
@@ -231,6 +242,10 @@
             {
                 me.m_marker.show();
             }
+        }
+
+        function showInfo(a_tag)
+        {
         }
 
         //google.setOnLoadCallback(initialize);
@@ -333,7 +348,16 @@
 
     while($row=mysql_fetch_array($res))
     {
-        echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$row[Tag]\" value=\"$row[Tag]\" onchange=\"cbChanged('$row[Tag]')\"> $row[Tag]</td><td>$row[Name]</td><td>$row[Laenge]</td><td>$row[Dauer]</td><td>$row[Charakter]</td><td id=\"$row[Tag]_dst\"></td></tr>\r\n";
+        /*
+            $l_info = "<b>" + a_text + "</b><br>" + a_len + "km | " + a_dur + "h<br>" + a_char + "<br><a href=\"javascript:doHide(\'" + a_tag +"\')\">hide</a>";
+            mark.openInfoWindowHtml(l_info);
+         */
+        echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$row[Tag]\" value=\"$row[Tag]\" onchange=\"cbChanged('$row[Tag]')\"> $row[Tag]</td>";
+        echo "<td>$row[Name]</td>";
+        echo "<td>$row[Laenge]</td>";
+        echo "<td>$row[Dauer]</td>";
+        echo "<td>$row[Charakter]</td>";
+        echo "<td id=\"$row[Tag]_dst\"></td></tr>\r\n";
     }
     echo "</table>";
 
@@ -352,7 +376,7 @@
         {
             echo "g_ICON, ";
         }
-        echo "$row[Laenge], $row[Dauer]";
+        echo "$row[Laenge], $row[Dauer], '$row[Charakter]'";
         echo ");\n";
     }
     echo "g_MAP.setCenter(g_MAPBOUNDS.getCenter(), g_MAP.getBoundsZoomLevel(g_MAPBOUNDS));\n";
