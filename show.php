@@ -10,31 +10,25 @@
         <script type="text/javascript">
         google.load("maps", "2");
 
-        var G_PLANNER_IDLE      = 0;
-        var G_PLANNER_WORKING   = 1;
-
-        var g_PLANNER_STATE     = G_PLANNER_IDLE;
-        var g_LAT_MIN           = 0;
-        var g_LAT_MAX           = 0;
-        var g_LON_MIN           = 0;
-        var g_LON_MAX           = 0;
         var g_INITIALIZED       = 0;
         var g_MARKERLIST        = new MarkerList();
         var g_PLANNERJOBS       = new Array();
         var g_CURRENTJOB        = null;
         var g_DIRECTIONS        = null;
-        var g_HOME;
-        var g_MAPBOUNDS;
-        var g_MANAGER;
-        var g_MAP;
-        var g_ICON;
-        var g_WALKED_ICON;
+        var g_HOME              = null;
+        var g_MAPBOUNDS         = null;
+        var g_MANAGER           = null;
+        var g_MAP               = null;
+        var g_ICON              = null;
+        var g_WALKED_ICON       = null;
 
         /* Our MarkEntry class */
-        function MarkEntry(a_tag, a_marker)
+        function MarkEntry(a_tag, a_marker, a_description)
         {
             this.m_tag      = a_tag;
             this.m_marker   = a_marker;
+            this.m_desc     = a_description;
+            this.m_tmpImage = null;
         }
 
         /**
@@ -91,27 +85,97 @@
             return null;
         }
 
-        function addMark(a_long, a_lat, a_text, a_tag, a_Icon, a_len, a_dur, a_char)
+        /*--- createInfoString() ------------------------------------------------------ createInfoString() ---*/
+        /**
+         *  @brief   Creates the info string from the given parameters
+         *
+         *  @param   a_text     Text to be shown on the info string (title)
+         *  @param   a_len      Length of the walk in km
+         *  @param   a_dur      Duration of the walk in h
+         *  @param   a_char     Character of the walk
+         *  @param   a_tag      Tag of the walk
+         *
+         *  @return  The created HTML statement
+         */
+        /*--- createInfoString() ------------------------------------------------------ createInfoString() ---*/
+        function createInfoString(a_text, a_len, a_dur, a_char, a_tag)
+        {
+            var l_info = "<b>" + a_text + "</b><br>" + a_len + "km | " + a_dur + "h<br>";
+            if(a_char)
+            {
+                l_info = l_info + a_char + "<br>";
+            }
+            l_info = l_info + "<a href=\"javascript:doHide(\'" + a_tag +"\')\">hide</a>";
+            return l_info;
+        }
+
+        infoWindowClosedCB(a_mark)
+            {
+                alert("jetzt");
+            }
+
+        /*--- showInfo() ---------------------------------------------------------------------- showInfo() ---*/
+        /**
+         *  @brief   Shows the information at the mark identified by the given tag
+         *
+         *  @param   a_tag  Tag identifying the mark to show the information for
+         *
+         *  @return  nothing
+         */
+        /*--- showInfo() ---------------------------------------------------------------------- showInfo() ---*/
+        function showInfo(a_tag)
+        {
+            var me = g_MARKERLIST.search(a_tag);
+            if(null == me)
+            {
+                alert("no entry for tag " + a_tag);
+            }
+            me.m_marker.openInfoWindowHtml(me.m_desc);
+            GEvent.addListener(me.m_marker, "infowindowclose", function(){infoWindowClosedCB(a_mark)});
+            me.m_tmpImage = me.m_marker.getIcon().image;
+            alert(me.m_tmpImage);
+            me.m_marker.setImage("images/wanderparkplatz_selected.png");
+        }
+
+        /*--- addMark() ------------------------------------------------------------------------ addMark() ---*/
+        /**
+         *  @brief   Adds a new mark to the map using the given information
+         *
+         *  @param    a_long  Longitude of the mark position
+         *  @param    a_lat   Latitude of the mark position
+         *  @param    a_text  Text to be displayed for the mark (the name of the tour)
+         *  @param    a_tag   Tag uniquely identifying the walk
+         *  @param    a_icon  Icon to use for the mark
+         *  @param    a_len   Length in km of the walk
+         *  @param    a_dur   Duration of the walk in hours
+         *  @param    a_char  Character of the walk (easy, steep, whatever)
+         *
+         *  @return  nothing
+         */
+        /*--- addMark() ------------------------------------------------------------------------ addMark() ---*/
+        function addMark(a_long, a_lat, a_text, a_tag, a_icon, a_len, a_dur, a_char)
         {
             var pos     = new google.maps.LatLng(a_lat, a_long);
-            var options = {title: a_text, bouncy: true, icon:a_Icon};
-            var mark    = new google.maps.Marker(pos, options);
+            var options = {title: a_text, bouncy: true, icon:a_icon};
+            var l_mark  = new google.maps.Marker(pos, options);
+            var l_info = createInfoString(a_text, a_len, a_dur, a_char, a_tag);
 
-            /* hide the mark and add it to our markerlist */
-            var me = new MarkEntry(a_tag, mark);
+            /* add the mark to our markerlist */
+            var me = new MarkEntry(a_tag, l_mark, l_info);
             g_MARKERLIST.push(me);
             me = null;
 
             g_MAPBOUNDS.extend(pos);
-            g_MANAGER.addMarker(mark, 1);
-            var l_info = "<b>" + a_text + "</b><br>" + a_len + "km | " + a_dur + "h<br>" + a_char + "<br><a href=\"javascript:doHide(\'" + a_tag +"\')\">hide</a>";
-            GEvent.addListener(mark, "click", function(){mark.openInfoWindowHtml(l_info);});
+            g_MANAGER.addMarker(l_mark, 1);
+            GEvent.addListener(l_mark, "click", function(){showInfo(a_tag)});
 
             var dst = a_tag + "_dst";
             document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + pos + "','" + a_tag +"')\">calculate</a>";
         }
 
-        /* Functions to calculate distances below */
+        /**
+         * Calculates the distance from home to the given position identified by the given tag
+         * */
         function distCalc(a_pos, a_tag)
         {
             var l_query = "from: " + g_HOME + " to: " + a_pos;
@@ -154,31 +218,38 @@
             GEvent.addListener(mark, "click", function(){mark.openInfoWindowHtml(a_text);});
         }
 
+        /*--- initialize() ------------------------------------------------------------------ initialize() ---*/
+        /**
+         *  @brief   Init function. Gets executed only once upon page load
+         *
+         *  @return  nothing
+         */
+        /*--- initialize() ------------------------------------------------------------------ initialize() ---*/
         function initialize() {
             if(g_INITIALIZED) return;
             g_INITIALIZED = 1;
 
             g_MAP = new google.maps.Map2(document.getElementById("map"));
-            g_MANAGER = new google.maps.MarkerManager(g_MAP);
-            g_MAPBOUNDS = new google.maps.LatLngBounds();
+            g_MAP.addControl(new google.maps.MapTypeControl());
+            g_MAP.addControl(new google.maps.SmallZoomControl());
+            g_MAP.addMapType(G_PHYSICAL_MAP);
+            g_MANAGER       = new google.maps.MarkerManager(g_MAP);
+            g_MAPBOUNDS     = new google.maps.LatLngBounds();
 
-            g_ICON = new google.maps.Icon();
-            g_ICON.image                = "images/wanderparkplatz.png"; 
-            g_ICON.iconSize             = new google.maps.Size(21.5,32);
-            g_ICON.iconAnchor           = new google.maps.Point(0,36);
-            g_ICON.infoWindowAnchor     = new google.maps.Point(5,2);
+            g_ICON          = new google.maps.Icon();
+            g_ICON.image                    = "images/wanderparkplatz.png"; 
+            g_ICON.iconSize                 = new google.maps.Size(21.5,32);
+            g_ICON.iconAnchor               = new google.maps.Point(0,36);
+            g_ICON.infoWindowAnchor         = new google.maps.Point(5,2);
 
-            g_WALKED_ICON = new google.maps.Icon();
+            g_WALKED_ICON   = new google.maps.Icon();
             g_WALKED_ICON.image             = "images/wanderparkplatz_hell.png"; 
             g_WALKED_ICON.iconSize          = new google.maps.Size(21.5,32);
             g_WALKED_ICON.iconAnchor        = new google.maps.Point(0,36);
             g_WALKED_ICON.infoWindowAnchor  = new google.maps.Point(5,2);
 
-            if(1)
-            {
-                g_DIRECTIONS = new google.maps.Directions();
-                GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
-            }
+            g_DIRECTIONS    = new google.maps.Directions();
+            GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
 
             g_HOME       = new google.maps.LatLng(<?=$g_homelat?>, <?=$g_homelon?>);
         }
@@ -244,10 +315,6 @@
             }
         }
 
-        function showInfo(a_tag)
-        {
-        }
-
         //google.setOnLoadCallback(initialize);
 
 
@@ -266,11 +333,9 @@
                     color:#6cb0bd;}
         </style>
     </head>
-    <body>
+    <body onunload="GUnload()">
         <div>
             <div id="map" style="width: 800px; height: 600px"></div>
-            <a href="javascript:g_MAP.zoomIn();">zoom in</a> 
-            <a href="javascript:g_MAP.zoomOut();">zoom out</a> 
             <a href="javascript:hideAll();">hide all</a> 
             <a href="javascript:showAll();">show all</a> 
         </div>
@@ -282,7 +347,6 @@
 <?php
     function build_query()
     {
-        print_r($_REQUEST);
         $l_sql = "SELECT * FROM `walks` WHERE "; // the base query
 
         /* shall we display already walked trails? */
@@ -353,7 +417,7 @@
             mark.openInfoWindowHtml(l_info);
          */
         echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$row[Tag]\" value=\"$row[Tag]\" onchange=\"cbChanged('$row[Tag]')\"> $row[Tag]</td>";
-        echo "<td>$row[Name]</td>";
+        echo "<td><a href=\"javascript:showInfo('$row[Tag]');\">$row[Name]</a></td>";
         echo "<td>$row[Laenge]</td>";
         echo "<td>$row[Dauer]</td>";
         echo "<td>$row[Charakter]</td>";
