@@ -109,10 +109,11 @@
             return l_info;
         }
 
-        infoWindowClosedCB(a_mark)
-            {
-                alert("jetzt");
-            }
+        function infoWindowClosedCB(a_markEntry)
+        {
+            a_markEntry.m_marker.setImage(a_markEntry.m_tmpImage);
+            a_markEntry.m_tmpImage = null;
+        }
 
         /*--- showInfo() ---------------------------------------------------------------------- showInfo() ---*/
         /**
@@ -131,9 +132,8 @@
                 alert("no entry for tag " + a_tag);
             }
             me.m_marker.openInfoWindowHtml(me.m_desc);
-            GEvent.addListener(me.m_marker, "infowindowclose", function(){infoWindowClosedCB(a_mark)});
+            GEvent.addListener(me.m_marker, "infowindowclose", function(){infoWindowClosedCB(me)});
             me.m_tmpImage = me.m_marker.getIcon().image;
-            alert(me.m_tmpImage);
             me.m_marker.setImage("images/wanderparkplatz_selected.png");
         }
 
@@ -238,15 +238,19 @@
 
             g_ICON          = new google.maps.Icon();
             g_ICON.image                    = "images/wanderparkplatz.png"; 
-            g_ICON.iconSize                 = new google.maps.Size(21.5,32);
+            g_ICON.iconSize                 = new google.maps.Size(21,32);
             g_ICON.iconAnchor               = new google.maps.Point(0,36);
-            g_ICON.infoWindowAnchor         = new google.maps.Point(5,2);
+            g_ICON.infoWindowAnchor         = new google.maps.Point(10.5,2);
+            g_ICON.shadow                   = "images/wanderparkplatz_schatten.png";
+            g_ICON.shadowSize               = new google.maps.Size(79,32);
 
             g_WALKED_ICON   = new google.maps.Icon();
             g_WALKED_ICON.image             = "images/wanderparkplatz_hell.png"; 
             g_WALKED_ICON.iconSize          = new google.maps.Size(21.5,32);
             g_WALKED_ICON.iconAnchor        = new google.maps.Point(0,36);
-            g_WALKED_ICON.infoWindowAnchor  = new google.maps.Point(5,2);
+            g_WALKED_ICON.infoWindowAnchor  = new google.maps.Point(10.5,2);
+            g_WALKED_ICON.shadow            = "images/wanderparkplatz_schatten.png";
+            g_WALKED_ICON.shadowSize        = new google.maps.Size(79,32);
 
             g_DIRECTIONS    = new google.maps.Directions();
             GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
