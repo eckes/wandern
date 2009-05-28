@@ -2,6 +2,7 @@
     global $g_homelat, $g_homelon;
     $g_homelat = 49.414630;
     $g_homelon = 11.031539;
+    define("DBTYPE", "XML");
 ?>
 <html>
     <head>
@@ -349,94 +350,20 @@
             </thead>
 
 <?php
-    function build_query()
+    function writeTableLine($a_val1, $a_val2)
     {
-        $l_sql = "SELECT * FROM `walks` WHERE "; // the base query
-
-        /* shall we display already walked trails? */
-        if(!$_REQUEST[showwalked])
-        {
-            $l_sql = $l_sql . "(`DATUM` = 0000-00-00)";
-        }
-        else
-        {
-            $l_sql = $l_sql . "(1)";
-        }
-
-        /* are we forbidden to display trails that are hügelig? */
-        if($_REQUEST[kein_huegeliges])
-        {
-            $l_sql = $l_sql . " AND (`Charakter` NOT LIKE '%hügelig%')";
-        }
-
-        /* are we forbidden to display trails that are anstrengend? */
-        if($_REQUEST[kein_anstrengendes])
-        {
-            $l_sql = $l_sql . " AND (`Charakter` NOT LIKE '%anstrengend%')";
-        }
-
-        /* are we forbidden to display trails that are steil? */
-        if($_REQUEST[kein_steiles])
-        {
-            $l_sql = $l_sql . " AND (`Charakter` NOT LIKE '%steil%')";
-        }
-
-        /* shall we only deliver trails that are leicht? */
-        if($_REQUEST[nur_leichtes])
-        {
-            $l_sql = $l_sql . " AND (`Charakter` LIKE 'leichtes Gelände')";
-        }
-
-        /* check the minimum distance */
-        if($_REQUEST[dst_min] != "egal")
-        {
-            $l_sql = $l_sql . " AND (`Laenge` >= $_REQUEST[dst_min])";
-        }
-
-        /* check the maximum distance */
-        if($_REQUEST[dst_max] != "egal")
-        {
-            $l_sql = $l_sql . " AND (`Laenge` <= $_REQUEST[dst_max])";
-        }
-
-        return $l_sql;
+        echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$a_val1[Tag]\" value=\"$a_val1[Tag]\" onchange=\"cbChanged('$a_val1[Tag]')\"> $a_val1[Tag]</td>";
+        echo "<td><a href=\"javascript:showInfo('$a_val1[Tag]');\">$a_val1[Name]</a></td>";
+        echo "<td>$a_val1[Laenge]</td>";
+        echo "<td>$a_val1[Dauer]</td>";
+        echo "<td>$a_val1[Charakter]</td>";
+        echo "<td id=\"$a_val1[Tag]_dst\"></td></tr>\r\n";
     }
 
-    $sql_host   = "localhost";
-    $sql_user   = "root";
-    $sql_pass   = "";
-    $db         = mysql_connect($sql_host, $sql_user, $sql_pass);
-
-    mysql_select_db('wandern', $db)
-        or die ("selecting db failed\n");
-
-    $sql        = build_query();
-    $res = mysql_query($sql, $db);
-    $i = 0;
-
-    while($row=mysql_fetch_array($res))
+    function writeScriptLine($a_val1, $a_val2)
     {
-        /*
-            $l_info = "<b>" + a_text + "</b><br>" + a_len + "km | " + a_dur + "h<br>" + a_char + "<br><a href=\"javascript:doHide(\'" + a_tag +"\')\">hide</a>";
-            mark.openInfoWindowHtml(l_info);
-         */
-        echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$row[Tag]\" value=\"$row[Tag]\" onchange=\"cbChanged('$row[Tag]')\"> $row[Tag]</td>";
-        echo "<td><a href=\"javascript:showInfo('$row[Tag]');\">$row[Name]</a></td>";
-        echo "<td>$row[Laenge]</td>";
-        echo "<td>$row[Dauer]</td>";
-        echo "<td>$row[Charakter]</td>";
-        echo "<td id=\"$row[Tag]_dst\"></td></tr>\r\n";
-    }
-    echo "</table>";
-
-    echo "<script type=\"text/javascript\">\n";
-    echo "initialize();\n";
-    echo "showHome('Daheim');\n";
-    $res = mysql_query($sql, $db);
-    while($row=mysql_fetch_array($res))
-    {
-        echo "addMark($row[Lat], $row[Lon], '$row[Name]', '$row[Tag]', ";
-        if($row[Datum] != "0000-00-00")
+        echo "addMark($a_val1[Lat], $a_val1[Lon], '$a_val1[Name]', '$a_val1[Tag]', ";
+        if($a_val1[Datum] != "0000-00-00")
         {
             echo "g_WALKED_ICON, ";
         }
@@ -444,13 +371,40 @@
         {
             echo "g_ICON, ";
         }
-        echo "$row[Laenge], $row[Dauer], '$row[Charakter]'";
+        echo "$a_val1[Laenge], $a_val1[Dauer], '$a_val1[Charakter]'";
         echo ");\n";
     }
+
+    if(DBTYPE=="MYSQL")
+    {
+        include("db_mysql.php");
+    }
+    else if(DBTYPE=="XML")
+    {
+        include("db_xml.php");
+    }
+    else
+    {
+        die("unknown db type defined");
+    }
+
+    /* XXX This block gets the elements to show! XXX */
+    $res = db_init();
+    $elements = db_getElements($res);
+    db_cleanup($res);
+    /* XXX This block gets the elements to show! XXX */
+
+    array_walk($elements, writeTableLine);
+
+    echo "</table>";
+    echo "<script type=\"text/javascript\">\n";
+    echo "initialize();\n";
+    echo "showHome('Daheim');\n";
+
+    array_walk($elements, writeScriptLine);
+
     echo "g_MAP.setCenter(g_MAPBOUNDS.getCenter(), g_MAP.getBoundsZoomLevel(g_MAPBOUNDS));\n";
     echo "</script>";
-
-    mysql_close($db);
 ?>
     </body>
 </html>
