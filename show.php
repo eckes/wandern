@@ -3,6 +3,55 @@
     $g_homelat = 49.414630;
     $g_homelon = 11.031539;
     define("DBTYPE", "XML");
+
+        /* TODO: 
+         * - assign an own id to the checkbox instead of using the tag. the tag is needed to mark the currently selected node in the table!
+         * - extend the google markermanager class so that the markers can be resolved by providing an id
+         * - extend the info window with the distance to drive
+         * */
+
+    function writeTableLine($a_val1, $a_val2)
+    {
+        echo <<<END
+            <tr>
+                <td><input type="checkbox" checked name="tag" id="$a_val1[Tag]" value="$a_val1[Tag]" onchange="cbChanged('$a_val1[Tag]'"> $a_val1[Tag]</td>
+                <td><a href="javascript:showInfo('$a_val1[Tag]');">$a_val1[Name]</a></td>
+                <td>$a_val1[Laenge]</td>
+                <td>$a_val1[Dauer]</td>
+                <td>$a_val1[Charakter]</td>
+                <td id="$a_val1[Tag]_dst"></td>
+            </tr>
+END;
+    }
+
+    function writeScriptLine($a_val1, $a_val2)
+    {
+        echo "addMark($a_val1[Lat], $a_val1[Lon], '$a_val1[Name]', '$a_val1[Tag]', ";
+        if($a_val1[Datum] != "0000-00-00")
+        {
+            echo "g_WALKED_ICON, ";
+        }
+        else
+        {
+            echo "g_ICON, ";
+        }
+        echo "$a_val1[Laenge], $a_val1[Dauer], '$a_val1[Charakter]'";
+        echo ");\n";
+    }
+
+    if(DBTYPE=="MYSQL")
+    {
+        include("db_mysql.php");
+    }
+    else if(DBTYPE=="XML")
+    {
+        include("db_xml.php");
+    }
+    else
+    {
+        die("unknown db type defined");
+    }
+
 ?>
 <html>
     <head>
@@ -226,7 +275,8 @@
          *  @return  nothing
          */
         /*--- initialize() ------------------------------------------------------------------ initialize() ---*/
-        function initialize() {
+        function initialize()
+        {
             if(g_INITIALIZED) return;
             g_INITIALIZED = 1;
 
@@ -350,44 +400,6 @@
             </thead>
 
 <?php
-    function writeTableLine($a_val1, $a_val2)
-    {
-        echo "<tr><td><input type=\"checkbox\" checked name=\"tag\" id=\"$a_val1[Tag]\" value=\"$a_val1[Tag]\" onchange=\"cbChanged('$a_val1[Tag]')\"> $a_val1[Tag]</td>";
-        echo "<td><a href=\"javascript:showInfo('$a_val1[Tag]');\">$a_val1[Name]</a></td>";
-        echo "<td>$a_val1[Laenge]</td>";
-        echo "<td>$a_val1[Dauer]</td>";
-        echo "<td>$a_val1[Charakter]</td>";
-        echo "<td id=\"$a_val1[Tag]_dst\"></td></tr>\r\n";
-    }
-
-    function writeScriptLine($a_val1, $a_val2)
-    {
-        echo "addMark($a_val1[Lat], $a_val1[Lon], '$a_val1[Name]', '$a_val1[Tag]', ";
-        if($a_val1[Datum] != "0000-00-00")
-        {
-            echo "g_WALKED_ICON, ";
-        }
-        else
-        {
-            echo "g_ICON, ";
-        }
-        echo "$a_val1[Laenge], $a_val1[Dauer], '$a_val1[Charakter]'";
-        echo ");\n";
-    }
-
-    if(DBTYPE=="MYSQL")
-    {
-        include("db_mysql.php");
-    }
-    else if(DBTYPE=="XML")
-    {
-        include("db_xml.php");
-    }
-    else
-    {
-        die("unknown db type defined");
-    }
-
     /* XXX This block gets the elements to show! XXX */
     $res = db_init();
     $elements = db_getElements($res);
@@ -396,15 +408,19 @@
 
     array_walk($elements, writeTableLine);
 
-    echo "</table>";
-    echo "<script type=\"text/javascript\">\n";
-    echo "initialize();\n";
-    echo "showHome('Daheim');\n";
+echo <<<END
+    </table>
+    <script type="text/javascript">
+        initialize();
+        showHome('Daheim');
+END;
 
     array_walk($elements, writeScriptLine);
 
-    echo "g_MAP.setCenter(g_MAPBOUNDS.getCenter(), g_MAP.getBoundsZoomLevel(g_MAPBOUNDS));\n";
-    echo "</script>";
+echo <<<END
+        g_MAP.setCenter(g_MAPBOUNDS.getCenter(), g_MAP.getBoundsZoomLevel(g_MAPBOUNDS));
+    </script>
+END;
 ?>
     </body>
 </html>
