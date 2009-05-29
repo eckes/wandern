@@ -54,7 +54,7 @@ function match($a_walk)
 
     if($_REQUEST[nur_leichtes])
     {
-        if(!stristr($char, "leichtes Gelände")) return false;
+        if(!strcmp($char, "leichtes Gelände")) return false;
     }
 
     if($_REQUEST[buch] != "Alle Bücher")

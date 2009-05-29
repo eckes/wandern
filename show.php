@@ -263,7 +263,7 @@ END;
             var options = {title: a_text, icon:homeIcon};
             var mark    = new google.maps.Marker(g_HOME, options);
             g_MAPBOUNDS.extend(g_HOME);
-            g_MANAGER.addMarker(mark, 10);
+            g_MANAGER.addMarker(mark, 1);
             g_MANAGER.refresh();
             GEvent.addListener(mark, "click", function(){mark.openInfoWindowHtml(a_text);});
         }
