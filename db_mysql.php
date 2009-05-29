@@ -49,6 +49,11 @@
             $l_sql = $l_sql . " AND (`Laenge` <= $_REQUEST[dst_max])";
         }
 
+        if($_REQUEST[buch] != "Alle Bücher")
+        {
+            $l_sql = $l_sql . " AND (`Tag` LIKE '$_REQUEST[buch]%')";
+        }
+
         return $l_sql;
     }
 

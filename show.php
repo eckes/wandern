@@ -5,16 +5,14 @@
     define("DBTYPE", "XML");
 
         /* TODO: 
-         * - assign an own id to the checkbox instead of using the tag. the tag is needed to mark the currently selected node in the table!
          * - extend the google markermanager class so that the markers can be resolved by providing an id
-         * - extend the info window with the distance to drive
          * */
 
     function writeTableLine($a_val1, $a_val2)
     {
         echo <<<END
             <tr>
-                <td><input type="checkbox" checked name="tag" id="$a_val1[Tag]" value="$a_val1[Tag]" onchange="cbChanged('$a_val1[Tag]'"> $a_val1[Tag]</td>
+                <td><input type="checkbox" checked name="tag" id="$a_val1[Tag]_cb" value="$a_val1[Tag]" onchange="cbChanged('$a_val1[Tag]'"> $a_val1[Tag]</td>
                 <td><a href="javascript:showInfo('$a_val1[Tag]');">$a_val1[Name]</a></td>
                 <td>$a_val1[Laenge]</td>
                 <td>$a_val1[Dauer]</td>
@@ -148,13 +146,14 @@ END;
          *  @return  The created HTML statement
          */
         /*--- createInfoString() ------------------------------------------------------ createInfoString() ---*/
-        function createInfoString(a_text, a_len, a_dur, a_char, a_tag)
+        function createInfoString(a_text, a_len, a_dur, a_char, a_tag, a_pos)
         {
             var l_info = "<b>" + a_text + "</b><br>" + a_len + "km | " + a_dur + "h<br>";
             if(a_char)
             {
                 l_info = l_info + a_char + "<br>";
             }
+            l_info = l_info + "<span id='" + a_tag +"_infodst'><a href=\"javascript:distCalc('" + a_pos +"' , '" + a_tag + "', '_infodst')\">dist</a></span> | ";
             l_info = l_info + "<a href=\"javascript:doHide(\'" + a_tag +"\')\">hide</a>";
             return l_info;
         }
@@ -208,7 +207,7 @@ END;
             var pos     = new google.maps.LatLng(a_lat, a_long);
             var options = {title: a_text, bouncy: true, icon:a_icon};
             var l_mark  = new google.maps.Marker(pos, options);
-            var l_info = createInfoString(a_text, a_len, a_dur, a_char, a_tag);
+            var l_info = createInfoString(a_text, a_len, a_dur, a_char, a_tag, pos);
 
             /* add the mark to our markerlist */
             var me = new MarkEntry(a_tag, l_mark, l_info);
@@ -220,25 +219,25 @@ END;
             GEvent.addListener(l_mark, "click", function(){showInfo(a_tag)});
 
             var dst = a_tag + "_dst";
-            document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + pos + "','" + a_tag +"')\">calculate</a>";
+            document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + pos + "','" + a_tag +"', '_dst')\">calculate</a>";
+        }
+
+        function PlannerJob(a_tag, a_query, a_descId)
+        {
+            this.m_tag      = a_tag;
+            this.m_query    = a_query;
+            this.m_descId   = a_descId;
         }
 
         /**
          * Calculates the distance from home to the given position identified by the given tag
          * */
-        function distCalc(a_pos, a_tag)
+        function distCalc(a_pos, a_tag, a_suffix)
         {
             var l_query = "from: " + g_HOME + " to: " + a_pos;
-            g_CURRENTJOB = new PlannerJob(a_tag, l_query);
-            var dst = a_tag + "_dst";
-            document.getElementById(dst).innerHTML = "working...";
+            g_CURRENTJOB = new PlannerJob(a_tag, l_query, a_tag + a_suffix);
+            document.getElementById(g_CURRENTJOB.m_descId).innerHTML = "working...";
             g_DIRECTIONS.load(l_query);
-        }
-
-        function PlannerJob(a_tag, a_query)
-        {
-            this.m_tag      = a_tag;
-            this.m_query    = a_query;
         }
 
         function dirLoadedCB()
@@ -246,8 +245,9 @@ END;
             /* finish the running job */
             if(g_CURRENTJOB)
             {
-                var dst = g_CURRENTJOB.m_tag + "_dst";
-                document.getElementById(dst).innerHTML = g_DIRECTIONS.getDistance().html;
+                document.getElementById(g_CURRENTJOB.m_descId).innerHTML = g_DIRECTIONS.getDistance().html;
+                delete g_CURRENTJOB;
+                g_CURRENTJOB = null;
             }
         }
         /* Functions to calculate distances above */
@@ -339,19 +339,19 @@ END;
 
         function doShow(a_name)
         {
-            document.getElementById(a_name).checked = true;
+            document.getElementById(a_name + "_cb").checked = true;
             return cbChanged(a_name);
         }
 
         function doHide(a_name)
         {
-            document.getElementById(a_name).checked = false;
+            document.getElementById(a_name + "_cb").checked = false;
             return cbChanged(a_name);
         }
 
         function cbChanged(a_name)
         {
-            var bChecked = document.getElementById(a_name).checked;
+            var bChecked = document.getElementById(a_name + "_cb").checked;
             var me      = null;
             var i       = 0;
             me = g_MARKERLIST.search(a_name);

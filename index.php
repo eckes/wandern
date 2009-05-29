@@ -38,7 +38,13 @@
             </fieldset>
             <fieldset>
                 <legend>Sonstiges</legend>
-                <input type="checkbox" name="showwalked" value="yes"> Zeige gelaufene
+                <input type="checkbox" name="showwalked" value="yes"> Zeige gelaufene<br>
+                <select name="buch" size="1">
+                    <option>Alle Bücher</option>
+                    <option>MLUW1</option>
+                    <option>MLUW2</option>
+                    <option>FUW1</option>
+                </select>
             </fieldset>
             <button type="submit">submit</button>
         </form>

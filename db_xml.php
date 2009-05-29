@@ -20,6 +20,7 @@ function match($a_walk)
     $len    = getVal($a_walk, XMLTAG_LENGTH);
     $date   = getVal($a_walk, XMLTAG_DATE);
     $char   = getVal($a_walk, XMLTAG_CHAR);
+    $tag    = getVal($a_walk, XMLTAG_TAG);
     /* evaluate the request here and decide if the element matches or not */
     if(!$_REQUEST[showwalked])
     {
@@ -54,6 +55,11 @@ function match($a_walk)
     if($_REQUEST[nur_leichtes])
     {
         if(!stristr($char, "leichtes Gelände")) return false;
+    }
+
+    if($_REQUEST[buch] != "Alle Bücher")
+    {
+        if(!stristr($tag, $_REQUEST[buch])) return false;
     }
     return true;
 }
