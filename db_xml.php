@@ -39,7 +39,7 @@ function match($a_walk)
 
     if($_REQUEST[kein_huegeliges])
     {
-        if(strstr($char, "hügelig")) return false;
+        if(strstr($char, "hÃ¼gelig")) return false;
     }
 
     if($_REQUEST[kein_anstrengendes])
@@ -54,10 +54,10 @@ function match($a_walk)
 
     if($_REQUEST[nur_leichtes])
     {
-        if(!strcmp($char, "leichtes Gelände")) return false;
+        if($char&&($char != "leichtes GelÃ¤nde")) return false;
     }
 
-    if($_REQUEST[buch] != "Alle Bücher")
+    if($_REQUEST[buch] != "Alle BÃ¼cher")
     {
         if(!stristr($tag, $_REQUEST[buch])) return false;
     }

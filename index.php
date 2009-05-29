@@ -1,8 +1,7 @@
-<?php 
-?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-    <head>
-    </head>
+    <head><title>Select your walks</title></head>
+    <META http-equiv="content-type" content="text/html; charset=UTF-8">
     <body>
         <form action="show.php" method="post">
             <fieldset>
@@ -29,18 +28,18 @@
             </fieldset>
             <fieldset>
                 <legend>Charakter</legend>
-                <input type="checkbox" name="nur_leichtes" value="yes"> nur leichtes Gelände<br>
-                <input type="checkbox" name="nur_huegeliges" value="yes"> nur hügeliges Gelände<br>
-                <input type="checkbox" name="kein_leichtes" value="yes"> kein leichtes Gelände<br>
-                <input type="checkbox" name="kein_huegeliges" value="yes"> kein hügeliges Gelände<br>
-                <input type="checkbox" name="kein_anstrengendes" value="yes"> kein anstrengendes Gelände<br>
-                <input type="checkbox" name="kein_steiles" value="yes"> kein steiles Gelände<br>
+                <input type="checkbox" name="nur_leichtes" value="yes"> nur leichtes GelÃ¤nde<br>
+                <input type="checkbox" name="nur_huegeliges" value="yes"> nur hÃ¼geliges GelÃ¤nde<br>
+                <input type="checkbox" name="kein_leichtes" value="yes"> kein leichtes GelÃ¤nde<br>
+                <input type="checkbox" name="kein_huegeliges" value="yes"> kein hÃ¼geliges GelÃ¤nde<br>
+                <input type="checkbox" name="kein_anstrengendes" value="yes"> kein anstrengendes GelÃ¤nde<br>
+                <input type="checkbox" name="kein_steiles" value="yes"> kein steiles GelÃ¤nde<br>
             </fieldset>
             <fieldset>
                 <legend>Sonstiges</legend>
                 <input type="checkbox" name="showwalked" value="yes"> Zeige gelaufene<br>
                 <select name="buch" size="1">
-                    <option>Alle Bücher</option>
+                    <option>Alle BÃ¼cher</option>
                     <option>MLUW1</option>
                     <option>MLUW2</option>
                     <option>FUW1</option>
