@@ -6,7 +6,7 @@
 - http://www.phpmyadmin.net
 -
 - Host: localhost
-- Erstellungszeit: 29. Mai 2009 um 14:21
+- Erstellungszeit: 31. Mai 2009 um 14:30
 - Server Version: 5.1.30
 - PHP-Version: 5.2.8
 -->
@@ -537,6 +537,16 @@
         <Datum>0000-00-00</Datum>
     </walks>
     <walks>
+        <Tag>FUW3_57</Tag>
+        <Name>Von Ursensollen zum Zanter Wallfahrtskirchlein</Name>
+        <Laenge>17.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.756483</Lat>
+        <Lon>49.402493</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
         <Tag>FUW1_45</Tag>
         <Name>Rund um den &quot;Starenfels&quot;</Name>
         <Laenge>8.8</Laenge>
@@ -694,6 +704,126 @@
         <Charakter></Charakter>
         <Lat>11.597597</Lat>
         <Lon>49.456909</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_67</Tag>
+        <Name>Zu landschaftlichen und kulturellen Höhepunkten im Auerbacher Land</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.608064</Lat>
+        <Lon>49.668915</Lon>
+        <Datum>2009-04-25</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_68</Tag>
+        <Name>Zu historischen Stätten um Velden</Name>
+        <Laenge>13.0</Laenge>
+        <Dauer>3.5</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lat>11.511046</Lat>
+        <Lon>49.614059</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_69</Tag>
+        <Name>Zu einstigen Rittersitzen am Südrand der Fränkischen Schweiz</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>mittelschweres Gelände</Charakter>
+        <Lat>11.378133</Lat>
+        <Lon>49.632420</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_70</Tag>
+        <Name>Vom Burgstall auf der &quot;Katz&quot; zur Lillachquelle und zum &quot;Teufelstisch&quot;</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>mittelschweres Gelände</Charakter>
+        <Lat>11.250711</Lat>
+        <Lon>49.640907</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_66</Tag>
+        <Name>Nach Vilseck, einer ehemaligen bambergischen Enklave in der Oberpfalz</Name>
+        <Laenge>23.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.802732</Lat>
+        <Lon>49.615364</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_65</Tag>
+        <Name>Über den Steinberg-Felsensteig zur Breitensteiner Doppelkapelle</Name>
+        <Laenge>10.0</Laenge>
+        <Dauer>3.5</Dauer>
+        <Charakter>teils schwieriges Gelände, daher nur bei trockener Witterung zu empfehlen</Charakter>
+        <Lat>11.633449</Lat>
+        <Lon>49.606922</Lon>
+        <Datum>2009-05-09</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_64</Tag>
+        <Name>Von Hirschbach in den Rinnenbrunner Wald</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.540843</Lat>
+        <Lon>49.556328</Lon>
+        <Datum>2008-11-01</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_63</Tag>
+        <Name>Über die &quot;Zant&quot; zur Osterhöhle und auf den Hartenfels</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lat>11.619236</Lat>
+        <Lon>49.524731</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_60</Tag>
+        <Name>In den Grafenbucher Forst</Name>
+        <Laenge>19.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lat>11.509922</Lat>
+        <Lon>49.425667</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_61</Tag>
+        <Name>Auf dem &quot;Alten Postweg&quot; von Hartmannshof nach Sulzbach</Name>
+        <Laenge>16.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.556106</Lat>
+        <Lon>49.497921</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_62</Tag>
+        <Name>Von Hartmannshof ins Altdorfer Land</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lat>11.556106</Lat>
+        <Lon>49.497921</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_59</Tag>
+        <Name>Auf die Höhen über dem Albachtal</Name>
+        <Laenge>19.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.544261</Lat>
+        <Lon>49.429237</Lon>
         <Datum>0000-00-00</Datum>
     </walks>
     <walks>
@@ -1134,6 +1264,66 @@
         <Charakter></Charakter>
         <Lat>11.540842</Lat>
         <Lon>49.556328</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_58</Tag>
+        <Name>Im südöstlichen Birgland</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.653136</Lat>
+        <Lon>49.425220</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_56</Tag>
+        <Name>Trockentalwanderung zwischen Ursensollen und Hausen</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.756483</Lat>
+        <Lon>49.402493</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_55</Tag>
+        <Name>Von Amberg auf die Höhen beiderseits des Ammerbachs</Name>
+        <Laenge>23.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.861122</Lat>
+        <Lon>49.446453</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_52</Tag>
+        <Name>Durch die &quot;Hundstürkei&quot; ins Lauterachtal</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.835155</Lat>
+        <Lon>49.316814</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_53</Tag>
+        <Name>Durch den Hirschwald in den Vilsgrund</Name>
+        <Laenge>12.0</Laenge>
+        <Dauer>3.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.870844</Lat>
+        <Lon>49.353378</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_51</Tag>
+        <Name>Vom Lauterachtal zum malerischen Felsschloß Heimhof</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.711104</Lat>
+        <Lon>49.362186</Lon>
         <Datum>0000-00-00</Datum>
     </walks>
     <walks>
@@ -1714,6 +1904,516 @@
         <Charakter>leichtes Gelände</Charakter>
         <Lat>11.230087</Lat>
         <Lon>49.881252</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_54</Tag>
+        <Name>Ins Vilstal zum ehemaligen Hammerschloß Theuern</Name>
+        <Laenge>11.0</Laenge>
+        <Dauer>3.0</Dauer>
+        <Charakter>leichtes Gelände, für sehr heiße Tage besonders geeignet</Charakter>
+        <Lat>11.912200</Lat>
+        <Lon>49.366627</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_50</Tag>
+        <Name>Von der Lauterachquelle in den Grafenbucher Forst</Name>
+        <Laenge>19.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.599161</Lat>
+        <Lon>49.368744</Lon>
+        <Datum>2008-09-11</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_47</Tag>
+        <Name>Von Daßwang ins Tal der Bachhaupter und Wissinger Laaber</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.661548</Lat>
+        <Lon>49.144794</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_49</Tag>
+        <Name>Durch die Landschaft um den Habsberg</Name>
+        <Laenge>17.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.631288</Lat>
+        <Lon>49.313454</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_48</Tag>
+        <Name>Parsberger Impressionen</Name>
+        <Laenge>13.0</Laenge>
+        <Dauer>3.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.726734</Lat>
+        <Lon>49.163094</Lon>
+        <Datum>2008-07-20</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_46</Tag>
+        <Name>Von Pollanten auf die waldreichen Abhänge des Sulztals</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+        <Lat>11.461871</Lat>
+        <Lon>49.142906</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_45</Tag>
+        <Name>Vom Auer Berg zum Waizenhofer Espan</Name>
+        <Laenge>19.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.286582</Lat>
+        <Lon>49.073315</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_43</Tag>
+        <Name>Von Freystadt zur ehemaligen Grafenresidenz Sulzbürg</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.347713</Lat>
+        <Lon>49.190563</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_44</Tag>
+        <Name>Zu den Naturreservaten am Kauerlacher Weiher und auf dem Lämmerberg</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände für heiße Tage weniger geeignet</Charakter>
+        <Lat>11.295230</Lat>
+        <Lon>49.147457</Lon>
+        <Datum>2008-01-13</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_42</Tag>
+        <Name>Zu stillen Oberpfälzer Juratälern hinter Neumarkt</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.469581</Lat>
+        <Lon>49.271885</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_36</Tag>
+        <Name>Vom Schwarzachtal zum Hembachgrund</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.145068</Lat>
+        <Lon>49.353424</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_37</Tag>
+        <Name>Großer Rundgang durch den Sebalder Reichswald</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.200202</Lat>
+        <Lon>49.480221</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_38</Tag>
+        <Name>Über den Moritzberg und durch den Reichswald</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.287586</Lat>
+        <Lon>49.460892</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_39</Tag>
+        <Name>Von Altdorf an die Grenze zur Oberpfalz</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.353560</Lat>
+        <Lon>49.389969</Lon>
+        <Datum>2007-11-01</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_40</Tag>
+        <Name>Zu den Ruinen Haimburg und Wolfstein am Rand der Frankenalb</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände für sehr heiße Tage nicht geeignet</Charakter>
+        <Lat>11.439074</Lat>
+        <Lon>49.332745</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_41</Tag>
+        <Name>Über den Dillberg und die &quot;Heinzburg&quot; nach Pölling</Name>
+        <Laenge>16.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes Gelände, möglichst nicht bei großer Hitze</Charakter>
+        <Lat>11.358503</Lat>
+        <Lon>49.307407</Lon>
+        <Datum>2008-04-12</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_35</Tag>
+        <Name>Durch die Waldungen links und rechts der Schwabach</Name>
+        <Laenge>29.0</Laenge>
+        <Dauer>7.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.014628</Lat>
+        <Lon>49.328411</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_34</Tag>
+        <Name>Zum Heidenberg, dem &quot;Hausberg&quot; der Schwabacher</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>11.035525</Lat>
+        <Lon>49.326141</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_33</Tag>
+        <Name>Durch die Landschaft um die Aurach im Südwesten Schwabachs</Name>
+        <Laenge>25.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.974681</Lat>
+        <Lon>49.271282</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_32</Tag>
+        <Name>Auf stillen Wegen durchs &quot;Mungenauer Land&quot;</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände für sehr heiße Tage nicht geeignet</Charakter>
+        <Lat>10.961030</Lat>
+        <Lon>49.242386</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_30</Tag>
+        <Name>Aussichtsreiche Wege im Fränkischen Seenland</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>überwiegend leichtes Gelände, wegen der freien Hochflächen bei starker Hitze nicht zu empfehlen</Charakter>
+        <Lat>10.924815</Lat>
+        <Lon>49.175495</Lon>
+        <Datum>2007-01-01</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_31</Tag>
+        <Name>Zum &quot;Druidenstein&quot; und zur &quot;Massendorfer Schlucht&quot;</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>mittelschweres Gelände</Charakter>
+        <Lat>11.011796</Lat>
+        <Lon>49.188046</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_29</Tag>
+        <Name>Von Wassermungenau nach Mitteleschenbach und zur Burg Wernfels</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.885691</Lat>
+        <Lon>49.217552</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_27</Tag>
+        <Name>Durch den Mönchswald ins Mittelalter</Name>
+        <Laenge>28.0</Laenge>
+        <Dauer>7.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.722995</Lat>
+        <Lon>49.152573</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_28</Tag>
+        <Name>Vom Bahnhof Triesdorf ins Altmühltal</Name>
+        <Laenge>28.0</Laenge>
+        <Dauer>7.0</Dauer>
+        <Charakter>leichtes Gelände für heiße Tage weniger geeignet</Charakter>
+        <Lat>10.652386</Lat>
+        <Lon>49.203213</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_24</Tag>
+        <Name>Von Treuchtlingen zum Albrand und ins Altmühltal</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.911870</Lat>
+        <Lon>48.955437</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_25</Tag>
+        <Name>Vom Brombachsee zum Limes</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.987045</Lat>
+        <Lon>49.106239</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_26</Tag>
+        <Name>Vom Limes durch die &quot;Heide&quot; nach Gräfensteinberg</Name>
+        <Laenge>19.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände, für heiße Tage weniger geeignet</Charakter>
+        <Lat>10.753399</Lat>
+        <Lon>49.115940</Lon>
+        <Datum>2007-01-01</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_23</Tag>
+        <Name>Von Treuchtlingen in Heumödern- und Rohrachtal</Name>
+        <Laenge>16.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.911870</Lat>
+        <Lon>48.955437</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_22</Tag>
+        <Name>Zu Aussichtswarten im westlichen Hahnenkamm</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.691203</Lat>
+        <Lon>49.022743</Lon>
+        <Datum>2007-10-06</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_21</Tag>
+        <Name>Vom Hahnenkammsee zum Ries</Name>
+        <Laenge>23.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+        <Lat>10.732734</Lat>
+        <Lon>48.977928</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_20</Tag>
+        <Name>Von Wassertrüdingen in den Oettinger Forst und zur &quot;Wunibaldquelle&quot;</Name>
+        <Laenge>26.0</Laenge>
+        <Dauer>6.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.597264</Lat>
+        <Lon>49.041328</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_18</Tag>
+        <Name>Dinkelsbühler Waldwanderung</Name>
+        <Laenge>15.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.320172</Lat>
+        <Lon>49.068851</Lon>
+        <Datum>2008-06-21</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_19</Tag>
+        <Name>In die &quot;Heide&quot; zwischen Bechhofen und Hesselberg</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.553197</Lat>
+        <Lon>49.159958</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_17</Tag>
+        <Name>Zu Aussichtspunkten in der Umgebung der alten Hohenlohe-Residenz Schillingsfürst</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lat>10.287464</Lat>
+        <Lon>49.253300</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_15</Tag>
+        <Name>Zum Quellgebiet der Altmühl im Naturpark Frankenhöhe</Name>
+        <Laenge>17.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lat>10.275241</Lat>
+        <Lon>49.454601</Lon>
+        <Datum>2007-01-01</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_16</Tag>
+        <Name>Vom mittelalterlichen Rothenburg zum Luginsland und durchs idyllische Steinbachtal</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.178529</Lat>
+        <Lon>49.380505</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_13</Tag>
+        <Name>Auf den Höhen beiderseits des Onolzbaches</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.571476</Lat>
+        <Lon>49.300735</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_14</Tag>
+        <Name>Vom Oberlauf der Rezat zu den Schlössern von Virnsberg und Obernzenn</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lat>10.423316</Lat>
+        <Lon>49.415607</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_10</Tag>
+        <Name>Von der Münsterstadt Heilsbronn zum Löhe-Dorf Neuendettelsau</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.786611</Lat>
+        <Lon>49.335064</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_11</Tag>
+        <Name>Von Heilsbronn in den Bibertgrund</Name>
+        <Laenge>23.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände, möglichst nicht bei großer Hitze</Charakter>
+        <Lat>10.786611</Lat>
+        <Lon>49.335064</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_12</Tag>
+        <Name>Von Ansbach zum Sonnensee und zurück</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.581959</Lat>
+        <Lon>49.316528</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_09</Tag>
+        <Name>Streifzüge zwischen Zenn und Bibert</Name>
+        <Laenge>26.0</Laenge>
+        <Dauer>6.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.685489</Lat>
+        <Lon>49.468056</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_06</Tag>
+        <Name>Durch die Weiherlandschaft im Westen von Weisendorf</Name>
+        <Laenge>25.0</Laenge>
+        <Dauer>6.5</Dauer>
+        <Charakter>leichtes Gelände, bei starker Hitze weniger geeignet</Charakter>
+        <Lat>10.824815</Lat>
+        <Lon>49.622265</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_07</Tag>
+        <Name>Von Emskirchen in die Heimat des Aischgründer Karpfens</Name>
+        <Laenge>27.0</Laenge>
+        <Dauer>7.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.717114</Lat>
+        <Lon>49.551205</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_08</Tag>
+        <Name>Vom Zenntal über den Dillenberg ins Farrnbachtal</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände, nicht bei starker Hitze</Charakter>
+        <Lat>10.712955</Lat>
+        <Lon>49.481812</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_05</Tag>
+        <Name>Zum Sibyllengrab auf dem Lauberberg</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.825846</Lat>
+        <Lon>49.650276</Lon>
+        <Datum>2009-02-05</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_03</Tag>
+        <Name>Durch Wald und Flur zwischen Herzogenaurach und Weisendorf</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.881092</Lat>
+        <Lon>49.568916</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_04</Tag>
+        <Name>Im Vogelschutzgebiet zwischen Erlangen und Höchstadt</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände, für heiße Sonnentage nicht geeignet (wenig Wald)</Charakter>
+        <Lat>10.876034</Lat>
+        <Lon>49.631550</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_02</Tag>
+        <Name>Durch die Wälder nördlich von Herzogenaurach</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lat>10.881092</Lat>
+        <Lon>49.568916</Lon>
+        <Datum>0000-00-00</Datum>
+    </walks>
+    <walks>
+        <Tag>FUW3_01</Tag>
+        <Name>Von Cadolzburg zum Bibertgrund</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände, für sehr heiße Tage weniger geeignet</Charakter>
+        <Lat>10.851325</Lat>
+        <Lon>49.459843</Lon>
         <Datum>0000-00-00</Datum>
     </walks>
 </wandern>

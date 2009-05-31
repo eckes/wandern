@@ -43,6 +43,7 @@
                     <option>MLUW1</option>
                     <option>MLUW2</option>
                     <option>FUW1</option>
+                    <option>FUW3</option>
                 </select>
             </fieldset>
             <button type="submit">submit</button>
