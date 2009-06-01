@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 01. Juni 2009 um 12:05
+-- Erstellungszeit: 01. Juni 2009 um 13:31
 -- Server Version: 5.1.30
 -- PHP-Version: 5.2.8
 
@@ -25,8 +25,8 @@ CREATE TABLE IF NOT EXISTS `walks` (
   `Laenge` float(3,1) NOT NULL,
   `Dauer` float(3,1) NOT NULL,
   `Charakter` varchar(200) NOT NULL,
-  `Lat` float(10,6) NOT NULL,
   `Lon` float(10,6) NOT NULL,
+  `Lat` float(10,6) NOT NULL,
   `Datum` date NOT NULL,
   `Streckenwanderung` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `walks` (
 -- Daten für Tabelle `walks`
 --
 
-INSERT INTO `walks` (`Tag`, `Name`, `Laenge`, `Dauer`, `Charakter`, `Lat`, `Lon`, `Datum`, `Streckenwanderung`) VALUES
+INSERT INTO `walks` (`Tag`, `Name`, `Laenge`, `Dauer`, `Charakter`, `Lon`, `Lat`, `Datum`, `Streckenwanderung`) VALUES
 ('MLUW2_33', 'Über den Heroldstein zu den Tummlern im Leinleitertal', 12.0, 3.5, 'hügeliges Gelände', 11.154664, 49.869610, '2008-10-19', 0),
 ('MLUW2_34', 'Über den Seigelstein, durchs Eppental und ins Leinleiter-Quellgebiet', 19.0, 5.0, 'hügeliges Gelände', 11.128163, 49.883892, '0000-00-00', 0),
 ('MLUW1_01', 'Geruhsame Waldwanderung durch die romantische Bitterbachschlucht', 11.0, 3.5, 'leichtes Gelände', 11.264956, 49.509521, '2006-09-25', 0),
