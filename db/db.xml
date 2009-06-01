@@ -6,7 +6,7 @@
 - http://www.phpmyadmin.net
 -
 - Host: localhost
-- Erstellungszeit: 31. Mai 2009 um 14:30
+- Erstellungszeit: 01. Juni 2009 um 12:50
 - Server Version: 5.1.30
 - PHP-Version: 5.2.8
 -->
@@ -22,9 +22,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.154664</Lat>
-        <Lon>49.869610</Lon>
+        <Lon>11.154664</Lon>
+        <Lat>49.869610</Lat>
         <Datum>2008-10-19</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_34</Tag>
@@ -32,9 +33,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.128163</Lat>
-        <Lon>49.883892</Lon>
+        <Lon>11.128163</Lon>
+        <Lat>49.883892</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_01</Tag>
@@ -42,9 +44,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.264956</Lat>
-        <Lon>49.509521</Lon>
+        <Lon>11.264956</Lon>
+        <Lat>49.509521</Lat>
         <Datum>2006-09-25</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_02</Tag>
@@ -52,9 +55,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>überwiegend leichtes Gelände, Anstieg zum Glatzenstein</Charakter>
-        <Lat>11.378746</Lat>
-        <Lon>49.530472</Lon>
+        <Lon>11.378746</Lon>
+        <Lat>49.530472</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_03</Tag>
@@ -62,9 +66,10 @@
         <Laenge>11.5</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.432036</Lat>
-        <Lon>49.515312</Lon>
+        <Lon>11.432036</Lon>
+        <Lat>49.515312</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_04</Tag>
@@ -72,9 +77,10 @@
         <Laenge>14.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes bis mittelschweres Gelände</Charakter>
-        <Lat>11.444610</Lat>
-        <Lon>49.536396</Lon>
+        <Lon>11.444610</Lon>
+        <Lat>49.536396</Lat>
         <Datum>2006-09-12</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_05</Tag>
@@ -82,9 +88,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>leichtes, mitunter ansteigendes Gelände</Charakter>
-        <Lat>11.513565</Lat>
-        <Lon>49.505356</Lon>
+        <Lon>11.513565</Lon>
+        <Lat>49.505356</Lat>
         <Datum>2006-03-04</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_06</Tag>
@@ -92,9 +99,10 @@
         <Laenge>10.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
-        <Lat>11.507084</Lat>
-        <Lon>49.527103</Lon>
+        <Lon>11.507084</Lon>
+        <Lat>49.527103</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_07</Tag>
@@ -102,9 +110,10 @@
         <Laenge>13.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>hügeliges, teilweise anstrengendes Gelände</Charakter>
-        <Lat>11.570063</Lat>
-        <Lon>49.508018</Lon>
+        <Lon>11.570063</Lon>
+        <Lat>49.508018</Lat>
         <Datum>2007-06-10</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_08</Tag>
@@ -112,9 +121,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.584477</Lat>
-        <Lon>49.526363</Lon>
+        <Lon>11.584477</Lon>
+        <Lat>49.526363</Lat>
         <Datum>2006-10-29</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_09</Tag>
@@ -122,9 +132,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>hügeliges, zwischendurch anstrengendes Gelände</Charakter>
-        <Lat>11.545258</Lat>
-        <Lon>49.533676</Lon>
+        <Lon>11.545258</Lon>
+        <Lat>49.533676</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_10</Tag>
@@ -132,9 +143,10 @@
         <Laenge>9.0</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter>hügeliges Gelände mit einem steilen Anstieg</Charakter>
-        <Lat>11.540816</Lat>
-        <Lon>49.556343</Lon>
+        <Lon>11.540816</Lon>
+        <Lat>49.556343</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_11</Tag>
@@ -142,9 +154,10 @@
         <Laenge>14.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.480863</Lat>
-        <Lon>49.597881</Lon>
+        <Lon>11.480863</Lon>
+        <Lat>49.597881</Lat>
         <Datum>2008-02-17</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_12</Tag>
@@ -152,9 +165,10 @@
         <Laenge>14.5</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>überwiegend leichtes, zwischendurch anstrengendes Gelände</Charakter>
-        <Lat>11.480863</Lat>
-        <Lon>49.597881</Lon>
+        <Lon>11.480863</Lon>
+        <Lat>49.597881</Lat>
         <Datum>2006-11-25</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_13</Tag>
@@ -162,9 +176,10 @@
         <Laenge>14.5</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>welliges, zwischendurch anstrengendes Gelände</Charakter>
-        <Lat>11.508608</Lat>
-        <Lon>49.611668</Lon>
+        <Lon>11.508608</Lon>
+        <Lat>49.611668</Lat>
         <Datum>2009-03-14</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_14</Tag>
@@ -172,9 +187,10 @@
         <Laenge>11.5</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>hügeliges Gelände mit zwei steileren Anstiegen</Charakter>
-        <Lat>11.589332</Lat>
-        <Lon>49.629463</Lon>
+        <Lon>11.589332</Lon>
+        <Lat>49.629463</Lat>
         <Datum>2007-06-03</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_15</Tag>
@@ -182,9 +198,10 @@
         <Laenge>16.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
-        <Lat>11.589332</Lat>
-        <Lon>49.629463</Lon>
+        <Lon>11.589332</Lon>
+        <Lat>49.629463</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_16</Tag>
@@ -192,9 +209,10 @@
         <Laenge>13.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
-        <Lat>11.634007</Lat>
-        <Lon>49.604507</Lon>
+        <Lon>11.634007</Lon>
+        <Lat>49.604507</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_17</Tag>
@@ -202,9 +220,10 @@
         <Laenge>13.5</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.440566</Lat>
-        <Lon>49.710426</Lon>
+        <Lon>11.440566</Lon>
+        <Lat>49.710426</Lat>
         <Datum>2009-05-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_18</Tag>
@@ -212,9 +231,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.498244</Lat>
-        <Lon>49.774559</Lon>
+        <Lon>11.498244</Lon>
+        <Lat>49.774559</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_19</Tag>
@@ -222,9 +242,10 @@
         <Laenge>9.0</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter>überwiegend leichtes Gelände mit steileren An- und Abstiegen</Charakter>
-        <Lat>11.379733</Lat>
-        <Lon>49.631771</Lon>
+        <Lon>11.379733</Lon>
+        <Lat>49.631771</Lat>
         <Datum>2007-01-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_20</Tag>
@@ -232,9 +253,10 @@
         <Laenge>16.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>überwiegend leichtes, zwischendurch anstrengendes Gelände</Charakter>
-        <Lat>11.360893</Lat>
-        <Lon>49.656239</Lon>
+        <Lon>11.360893</Lon>
+        <Lat>49.656239</Lat>
         <Datum>2007-04-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_21</Tag>
@@ -242,9 +264,10 @@
         <Laenge>15.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges Gelände mit einigen Anstiegen</Charakter>
-        <Lat>11.232018</Lat>
-        <Lon>49.627335</Lon>
+        <Lon>11.232018</Lon>
+        <Lat>49.627335</Lat>
         <Datum>2006-08-31</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_22</Tag>
@@ -252,9 +275,10 @@
         <Laenge>10.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>leichtes Gelände mit einem Anstieg</Charakter>
-        <Lat>11.283860</Lat>
-        <Lon>49.654266</Lon>
+        <Lon>11.283860</Lon>
+        <Lat>49.654266</Lat>
         <Datum>2006-09-17</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_23</Tag>
@@ -262,9 +286,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
-        <Lat>11.321754</Lat>
-        <Lon>49.660378</Lon>
+        <Lon>11.321754</Lon>
+        <Lat>49.660378</Lat>
         <Datum>2006-06-10</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_24</Tag>
@@ -272,9 +297,10 @@
         <Laenge>8.0</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.338234</Lat>
-        <Lon>49.715515</Lon>
+        <Lon>11.338234</Lon>
+        <Lat>49.715515</Lat>
         <Datum>2008-06-30</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_25</Tag>
@@ -282,9 +308,10 @@
         <Laenge>16.5</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
-        <Lat>11.398787</Lat>
-        <Lon>49.731277</Lon>
+        <Lon>11.398787</Lon>
+        <Lat>49.731277</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_26</Tag>
@@ -292,9 +319,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.146381</Lat>
-        <Lon>49.730820</Lon>
+        <Lon>11.146381</Lon>
+        <Lat>49.730820</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_27</Tag>
@@ -302,9 +330,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
-        <Lat>11.172645</Lat>
-        <Lon>49.710358</Lon>
+        <Lon>11.172645</Lon>
+        <Lat>49.710358</Lat>
         <Datum>2007-06-07</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_28</Tag>
@@ -312,9 +341,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>hügeliges, mitunter anstrengendes Gelände</Charakter>
-        <Lat>11.173782</Lat>
-        <Lon>49.755096</Lon>
+        <Lon>11.173782</Lon>
+        <Lat>49.755096</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_29</Tag>
@@ -322,9 +352,10 @@
         <Laenge>10.0</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter>überwiegend leichtes, zwischendurch anstrengendes Gelände</Charakter>
-        <Lat>11.259270</Lat>
-        <Lon>49.703388</Lon>
+        <Lon>11.259270</Lon>
+        <Lat>49.703388</Lat>
         <Datum>2008-09-27</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_30</Tag>
@@ -332,9 +363,10 @@
         <Laenge>10.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>leichtes, mitunter steiles Gelände</Charakter>
-        <Lat>11.263947</Lat>
-        <Lon>49.754875</Lon>
+        <Lon>11.263947</Lon>
+        <Lat>49.754875</Lat>
         <Datum>2008-05-11</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_31</Tag>
@@ -342,9 +374,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.182108</Lat>
-        <Lon>49.786667</Lon>
+        <Lon>11.182108</Lon>
+        <Lat>49.786667</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_32</Tag>
@@ -352,9 +385,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>leichtes bis mittelschweres Gelände</Charakter>
-        <Lat>11.221075</Lat>
-        <Lon>49.806889</Lon>
+        <Lon>11.221075</Lon>
+        <Lat>49.806889</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_33</Tag>
@@ -362,9 +396,10 @@
         <Laenge>13.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges, mitunter anstrengendes Gelände</Charakter>
-        <Lat>11.197815</Lat>
-        <Lon>49.840973</Lon>
+        <Lon>11.197815</Lon>
+        <Lat>49.840973</Lat>
         <Datum>2006-07-29</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_34</Tag>
@@ -372,9 +407,10 @@
         <Laenge>11.5</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.119108</Lat>
-        <Lon>49.846329</Lon>
+        <Lon>11.119108</Lon>
+        <Lat>49.846329</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_35</Tag>
@@ -382,9 +418,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>leichtes Gelände mit zwei Anstiegen</Charakter>
-        <Lat>11.137133</Lat>
-        <Lon>49.875595</Lon>
+        <Lon>11.137133</Lon>
+        <Lat>49.875595</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_36</Tag>
@@ -392,9 +429,10 @@
         <Laenge>14.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>hügeliges, mitunter anstrengendes Gelände</Charakter>
-        <Lat>11.217427</Lat>
-        <Lon>49.808315</Lon>
+        <Lon>11.217427</Lon>
+        <Lat>49.808315</Lat>
         <Datum>2007-07-08</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_37</Tag>
@@ -402,9 +440,10 @@
         <Laenge>10.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>überwiegend leichtes Gelände, am Anfang Anstieg</Charakter>
-        <Lat>11.217427</Lat>
-        <Lon>49.808315</Lon>
+        <Lon>11.217427</Lon>
+        <Lat>49.808315</Lat>
         <Datum>2007-10-14</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_38</Tag>
@@ -412,9 +451,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>hügeliges, mitunter ansteigendes Gelände</Charakter>
-        <Lat>11.261523</Lat>
-        <Lon>49.802929</Lon>
+        <Lon>11.261523</Lon>
+        <Lat>49.802929</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_39</Tag>
@@ -422,9 +462,10 @@
         <Laenge>13.5</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>hügeliges Gelände mit steilen An- und Abstiegen</Charakter>
-        <Lat>11.296241</Lat>
-        <Lon>49.811584</Lon>
+        <Lon>11.296241</Lon>
+        <Lat>49.811584</Lat>
         <Datum>2006-10-22</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_40</Tag>
@@ -432,9 +473,10 @@
         <Laenge>15.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges, mitunter anstrengendes Gelände</Charakter>
-        <Lat>11.296241</Lat>
-        <Lon>49.811584</Lon>
+        <Lon>11.296241</Lon>
+        <Lat>49.811584</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_41</Tag>
@@ -442,9 +484,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>teils hügeliges, teils leichtes Gelände</Charakter>
-        <Lat>11.353812</Lat>
-        <Lon>49.812622</Lon>
+        <Lon>11.353812</Lon>
+        <Lat>49.812622</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_42</Tag>
@@ -452,9 +495,10 @@
         <Laenge>16.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.344950</Lat>
-        <Lon>49.854446</Lon>
+        <Lon>11.344950</Lon>
+        <Lat>49.854446</Lat>
         <Datum>2006-01-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_43</Tag>
@@ -462,9 +506,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>überwiegend leichtes Gelände mit zwei steileren Anstiegen</Charakter>
-        <Lat>11.251523</Lat>
-        <Lon>49.851265</Lon>
+        <Lon>11.251523</Lon>
+        <Lat>49.851265</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_44</Tag>
@@ -472,9 +517,10 @@
         <Laenge>14.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.238756</Lat>
-        <Lon>49.870853</Lon>
+        <Lon>11.238756</Lon>
+        <Lat>49.870853</Lat>
         <Datum>2008-08-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_45</Tag>
@@ -482,9 +528,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges, überwiegend leichtes Gelände</Charakter>
-        <Lat>11.334629</Lat>
-        <Lon>49.883507</Lon>
+        <Lon>11.334629</Lon>
+        <Lat>49.883507</Lat>
         <Datum>2007-03-10</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_46</Tag>
@@ -492,9 +539,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>hügeliges aber überwiegend leichtes Gelände</Charakter>
-        <Lat>11.334329</Lat>
-        <Lon>49.780128</Lon>
+        <Lon>11.334329</Lon>
+        <Lat>49.780128</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_47</Tag>
@@ -502,9 +550,10 @@
         <Laenge>12.5</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>überwiegend leichtes Gelände mit je einem steilen Ab- und Anstieg</Charakter>
-        <Lat>11.340315</Lat>
-        <Lon>49.767448</Lon>
+        <Lon>11.340315</Lon>
+        <Lat>49.767448</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_48</Tag>
@@ -512,9 +561,10 @@
         <Laenge>11.5</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>überwiegend leichtes Gelände mit einem steileren Anstieg</Charakter>
-        <Lat>11.409152</Lat>
-        <Lon>49.768333</Lon>
+        <Lon>11.409152</Lon>
+        <Lat>49.768333</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_49</Tag>
@@ -522,9 +572,10 @@
         <Laenge>14.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges, mitunter anstrengendes Gelände</Charakter>
-        <Lat>11.409152</Lat>
-        <Lon>49.768333</Lon>
+        <Lon>11.409152</Lon>
+        <Lat>49.768333</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW1_50</Tag>
@@ -532,9 +583,10 @@
         <Laenge>15.5</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>hügeliges, mitunter anseigendes Gelände</Charakter>
-        <Lat>11.409152</Lat>
-        <Lon>49.768333</Lon>
+        <Lon>11.409152</Lon>
+        <Lat>49.768333</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_57</Tag>
@@ -542,9 +594,10 @@
         <Laenge>17.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.756483</Lat>
-        <Lon>49.402493</Lon>
+        <Lon>11.756483</Lon>
+        <Lat>49.402493</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_45</Tag>
@@ -552,9 +605,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.567903</Lat>
-        <Lon>49.547256</Lon>
+        <Lon>11.567903</Lon>
+        <Lat>49.547256</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_46</Tag>
@@ -562,9 +616,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.524428</Lat>
-        <Lon>49.595165</Lon>
+        <Lon>11.524428</Lon>
+        <Lat>49.595165</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_47</Tag>
@@ -572,9 +627,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.588400</Lat>
-        <Lon>49.628502</Lon>
+        <Lon>11.588400</Lon>
+        <Lat>49.628502</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_48</Tag>
@@ -582,9 +638,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.401914</Lat>
-        <Lon>49.381538</Lon>
+        <Lon>11.401914</Lon>
+        <Lat>49.381538</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_49</Tag>
@@ -592,9 +649,10 @@
         <Laenge>17.6</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.353903</Lat>
-        <Lon>49.388546</Lon>
+        <Lon>11.353903</Lon>
+        <Lat>49.388546</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_50</Tag>
@@ -602,9 +660,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.364592</Lat>
-        <Lon>49.451115</Lon>
+        <Lon>11.364592</Lon>
+        <Lat>49.451115</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_51</Tag>
@@ -612,9 +671,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.471103</Lat>
-        <Lon>49.493195</Lon>
+        <Lon>11.471103</Lon>
+        <Lat>49.493195</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_52</Tag>
@@ -622,9 +682,10 @@
         <Laenge>6.6</Laenge>
         <Dauer>1.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.502753</Lat>
-        <Lon>49.475853</Lon>
+        <Lon>11.502753</Lon>
+        <Lat>49.475853</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_53</Tag>
@@ -632,9 +693,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.502753</Lat>
-        <Lon>49.475853</Lon>
+        <Lon>11.502753</Lon>
+        <Lat>49.475853</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_54</Tag>
@@ -642,9 +704,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.502753</Lat>
-        <Lon>49.475853</Lon>
+        <Lon>11.502753</Lon>
+        <Lat>49.475853</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_55</Tag>
@@ -652,9 +715,10 @@
         <Laenge>6.6</Laenge>
         <Dauer>1.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.542064</Lat>
-        <Lon>49.459019</Lon>
+        <Lon>11.542064</Lon>
+        <Lat>49.459019</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_56</Tag>
@@ -662,9 +726,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.542064</Lat>
-        <Lon>49.459019</Lon>
+        <Lon>11.542064</Lon>
+        <Lat>49.459019</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_57</Tag>
@@ -672,9 +737,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.564108</Lat>
-        <Lon>49.454285</Lon>
+        <Lon>11.564108</Lon>
+        <Lat>49.454285</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_58</Tag>
@@ -682,9 +748,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.564108</Lat>
-        <Lon>49.454285</Lon>
+        <Lon>11.564108</Lon>
+        <Lat>49.454285</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_59</Tag>
@@ -692,9 +759,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.561839</Lat>
-        <Lon>49.453522</Lon>
+        <Lon>11.561839</Lon>
+        <Lat>49.453522</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_60</Tag>
@@ -702,9 +770,65 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.597597</Lat>
-        <Lon>49.456909</Lon>
+        <Lon>11.597597</Lon>
+        <Lat>49.456909</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_05</Tag>
+        <Name>Von Großhabersdorf zu den &quot;Sieben Richtern&quot; und zum &quot;Heidenhügel&quot;</Name>
+        <Laenge>16.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.787354</Lon>
+        <Lat>49.405830</Lat>
+        <Datum>2009-01-06</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_04</Tag>
+        <Name>Von Burgfarrnbach auf den Dillenberg</Name>
+        <Laenge>28.0</Laenge>
+        <Dauer>7.0</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lon>10.924379</Lon>
+        <Lat>49.485031</Lat>
+        <Datum>2009-01-02</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_03</Tag>
+        <Name>Von der Alten Veste nach Cadolzburg</Name>
+        <Laenge>25.0</Laenge>
+        <Dauer>6.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.966348</Lon>
+        <Lat>49.451721</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_02</Tag>
+        <Name>Vom Farrnbach zum &quot;Rangaublick&quot;</Name>
+        <Laenge>10.0</Laenge>
+        <Dauer>3.0</Dauer>
+        <Charakter>leichtes und mittelschweres Gelände</Charakter>
+        <Lon>10.920739</Lon>
+        <Lat>49.488167</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_01</Tag>
+        <Name>Vom Rhein-Main-Donau-Kanal zur Veitsbronner Wehrkirche</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.944390</Lon>
+        <Lat>49.489964</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_67</Tag>
@@ -712,9 +836,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.608064</Lat>
-        <Lon>49.668915</Lon>
+        <Lon>11.608064</Lon>
+        <Lat>49.668915</Lat>
         <Datum>2009-04-25</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_68</Tag>
@@ -722,9 +847,10 @@
         <Laenge>13.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.511046</Lat>
-        <Lon>49.614059</Lon>
+        <Lon>11.511046</Lon>
+        <Lat>49.614059</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_69</Tag>
@@ -732,9 +858,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>mittelschweres Gelände</Charakter>
-        <Lat>11.378133</Lat>
-        <Lon>49.632420</Lon>
+        <Lon>11.378133</Lon>
+        <Lat>49.632420</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_70</Tag>
@@ -742,9 +869,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>mittelschweres Gelände</Charakter>
-        <Lat>11.250711</Lat>
-        <Lon>49.640907</Lon>
+        <Lon>11.250711</Lon>
+        <Lat>49.640907</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_66</Tag>
@@ -752,9 +880,10 @@
         <Laenge>23.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.802732</Lat>
-        <Lon>49.615364</Lon>
+        <Lon>11.802732</Lon>
+        <Lat>49.615364</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_65</Tag>
@@ -762,9 +891,10 @@
         <Laenge>10.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>teils schwieriges Gelände, daher nur bei trockener Witterung zu empfehlen</Charakter>
-        <Lat>11.633449</Lat>
-        <Lon>49.606922</Lon>
+        <Lon>11.633449</Lon>
+        <Lat>49.606922</Lat>
         <Datum>2009-05-09</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_64</Tag>
@@ -772,9 +902,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.540843</Lat>
-        <Lon>49.556328</Lon>
+        <Lon>11.540843</Lon>
+        <Lat>49.556328</Lat>
         <Datum>2008-11-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_63</Tag>
@@ -782,9 +913,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.619236</Lat>
-        <Lon>49.524731</Lon>
+        <Lon>11.619236</Lon>
+        <Lat>49.524731</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_60</Tag>
@@ -792,9 +924,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.509922</Lat>
-        <Lon>49.425667</Lon>
+        <Lon>11.509922</Lon>
+        <Lat>49.425667</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_61</Tag>
@@ -802,9 +935,10 @@
         <Laenge>16.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.556106</Lat>
-        <Lon>49.497921</Lon>
+        <Lon>11.556106</Lon>
+        <Lat>49.497921</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_62</Tag>
@@ -812,9 +946,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.556106</Lat>
-        <Lon>49.497921</Lon>
+        <Lon>11.556106</Lon>
+        <Lat>49.497921</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_59</Tag>
@@ -822,9 +957,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.544261</Lat>
-        <Lon>49.429237</Lon>
+        <Lon>11.544261</Lon>
+        <Lat>49.429237</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_44</Tag>
@@ -832,9 +968,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.540842</Lat>
-        <Lon>49.556328</Lon>
+        <Lon>11.540842</Lon>
+        <Lat>49.556328</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_01</Tag>
@@ -842,9 +979,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.046770</Lat>
-        <Lon>49.512432</Lon>
+        <Lon>11.046770</Lon>
+        <Lat>49.512432</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_02</Tag>
@@ -852,9 +990,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.111405</Lat>
-        <Lon>49.504059</Lon>
+        <Lon>11.111405</Lon>
+        <Lat>49.504059</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_03</Tag>
@@ -862,9 +1001,10 @@
         <Laenge>6.6</Laenge>
         <Dauer>1.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.134692</Lat>
-        <Lon>49.506210</Lon>
+        <Lon>11.134692</Lon>
+        <Lat>49.506210</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_04</Tag>
@@ -872,9 +1012,10 @@
         <Laenge>16.5</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.134686</Lat>
-        <Lon>49.506207</Lon>
+        <Lon>11.134686</Lon>
+        <Lat>49.506207</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_05</Tag>
@@ -882,9 +1023,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.134686</Lat>
-        <Lon>49.506207</Lon>
+        <Lon>11.134686</Lon>
+        <Lat>49.506207</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_06</Tag>
@@ -892,9 +1034,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.190605</Lat>
-        <Lon>49.594467</Lon>
+        <Lon>11.190605</Lon>
+        <Lat>49.594467</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_07</Tag>
@@ -902,9 +1045,10 @@
         <Laenge>15.4</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.132201</Lat>
-        <Lon>49.557972</Lon>
+        <Lon>11.132201</Lon>
+        <Lat>49.557972</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_08</Tag>
@@ -912,9 +1056,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.200203</Lat>
-        <Lon>49.480221</Lon>
+        <Lon>11.200203</Lon>
+        <Lat>49.480221</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_09</Tag>
@@ -922,9 +1067,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.205114</Lat>
-        <Lon>49.532986</Lon>
+        <Lon>11.205114</Lon>
+        <Lat>49.532986</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_10</Tag>
@@ -932,9 +1078,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.222472</Lat>
-        <Lon>49.533840</Lon>
+        <Lon>11.222472</Lon>
+        <Lat>49.533840</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_11</Tag>
@@ -942,9 +1089,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.258472</Lat>
-        <Lon>49.514015</Lon>
+        <Lon>11.258472</Lon>
+        <Lat>49.514015</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_12</Tag>
@@ -952,9 +1100,10 @@
         <Laenge>15.4</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.231303</Lat>
-        <Lon>49.554291</Lon>
+        <Lon>11.231303</Lon>
+        <Lat>49.554291</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_13</Tag>
@@ -962,9 +1111,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.099428</Lat>
-        <Lon>49.374722</Lon>
+        <Lon>11.099428</Lon>
+        <Lat>49.374722</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_14</Tag>
@@ -972,9 +1122,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.145067</Lat>
-        <Lon>49.353420</Lon>
+        <Lon>11.145067</Lon>
+        <Lat>49.353420</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_15</Tag>
@@ -982,9 +1133,10 @@
         <Laenge>15.4</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.196014</Lat>
-        <Lon>49.418816</Lon>
+        <Lon>11.196014</Lon>
+        <Lat>49.418816</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_16</Tag>
@@ -992,9 +1144,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.214278</Lat>
-        <Lon>49.375057</Lon>
+        <Lon>11.214278</Lon>
+        <Lat>49.375057</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_17</Tag>
@@ -1002,9 +1155,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.245383</Lat>
-        <Lon>49.357964</Lon>
+        <Lon>11.245383</Lon>
+        <Lat>49.357964</Lat>
         <Datum>2009-05-22</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_18</Tag>
@@ -1012,9 +1166,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.268475</Lat>
-        <Lon>49.471554</Lon>
+        <Lon>11.268475</Lon>
+        <Lat>49.471554</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_19</Tag>
@@ -1022,9 +1177,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.356403</Lat>
-        <Lon>49.385777</Lon>
+        <Lon>11.356403</Lon>
+        <Lat>49.385777</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_20</Tag>
@@ -1032,9 +1188,10 @@
         <Laenge>15.4</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.195428</Lat>
-        <Lon>49.419353</Lon>
+        <Lon>11.195428</Lon>
+        <Lat>49.419353</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_21</Tag>
@@ -1042,9 +1199,10 @@
         <Laenge>15.4</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter></Charakter>
-        <Lat>10.851978</Lat>
-        <Lon>49.458084</Lon>
+        <Lon>10.851978</Lon>
+        <Lat>49.458084</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_22</Tag>
@@ -1052,9 +1210,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.015539</Lat>
-        <Lon>49.414665</Lon>
+        <Lon>11.015539</Lon>
+        <Lat>49.414665</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_23</Tag>
@@ -1062,9 +1221,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>10.969706</Lat>
-        <Lon>49.391693</Lon>
+        <Lon>10.969706</Lon>
+        <Lat>49.391693</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_24</Tag>
@@ -1072,9 +1232,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>10.855361</Lat>
-        <Lon>49.509254</Lon>
+        <Lon>10.855361</Lon>
+        <Lat>49.509254</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_25</Tag>
@@ -1082,9 +1243,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>10.801106</Lat>
-        <Lon>49.496147</Lon>
+        <Lon>10.801106</Lon>
+        <Lat>49.496147</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_26</Tag>
@@ -1092,9 +1254,10 @@
         <Laenge>15.4</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter></Charakter>
-        <Lat>10.769106</Lat>
-        <Lon>49.535423</Lon>
+        <Lon>10.769106</Lon>
+        <Lat>49.535423</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_27</Tag>
@@ -1102,9 +1265,10 @@
         <Laenge>6.6</Laenge>
         <Dauer>1.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.070814</Lat>
-        <Lon>49.681808</Lon>
+        <Lon>11.070814</Lon>
+        <Lat>49.681808</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_28</Tag>
@@ -1112,9 +1276,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.375339</Lat>
-        <Lon>49.553738</Lon>
+        <Lon>11.375339</Lon>
+        <Lat>49.553738</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_29</Tag>
@@ -1122,9 +1287,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.375339</Lat>
-        <Lon>49.553738</Lon>
+        <Lon>11.375339</Lon>
+        <Lat>49.553738</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_30</Tag>
@@ -1132,9 +1298,10 @@
         <Laenge>4.4</Laenge>
         <Dauer>1.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.374633</Lat>
-        <Lon>49.558662</Lon>
+        <Lon>11.374633</Lon>
+        <Lat>49.558662</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_31</Tag>
@@ -1142,9 +1309,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.377383</Lat>
-        <Lon>49.587139</Lon>
+        <Lon>11.377383</Lon>
+        <Lat>49.587139</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_32</Tag>
@@ -1152,9 +1320,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.369833</Lat>
-        <Lon>49.586449</Lon>
+        <Lon>11.369833</Lon>
+        <Lat>49.586449</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_33</Tag>
@@ -1162,9 +1331,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.510744</Lat>
-        <Lon>49.613075</Lon>
+        <Lon>11.510744</Lon>
+        <Lat>49.613075</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_34</Tag>
@@ -1172,9 +1342,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.424200</Lat>
-        <Lon>49.586803</Lon>
+        <Lon>11.424200</Lon>
+        <Lat>49.586803</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_35</Tag>
@@ -1182,9 +1353,10 @@
         <Laenge>19.8</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.424200</Lat>
-        <Lon>49.586803</Lon>
+        <Lon>11.424200</Lon>
+        <Lat>49.586803</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_36</Tag>
@@ -1192,9 +1364,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.474764</Lat>
-        <Lon>49.585899</Lon>
+        <Lon>11.474764</Lon>
+        <Lat>49.585899</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_37</Tag>
@@ -1202,9 +1375,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.480597</Lat>
-        <Lon>49.600693</Lon>
+        <Lon>11.480597</Lon>
+        <Lat>49.600693</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_38</Tag>
@@ -1212,9 +1386,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.512603</Lat>
-        <Lon>49.502949</Lon>
+        <Lon>11.512603</Lon>
+        <Lat>49.502949</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_39</Tag>
@@ -1222,9 +1397,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.540364</Lat>
-        <Lon>49.529949</Lon>
+        <Lon>11.540364</Lon>
+        <Lat>49.529949</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_40</Tag>
@@ -1232,9 +1408,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.488747</Lat>
-        <Lon>49.532223</Lon>
+        <Lon>11.488747</Lon>
+        <Lat>49.532223</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_41</Tag>
@@ -1242,9 +1419,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>2.5</Dauer>
         <Charakter></Charakter>
-        <Lat>11.488747</Lat>
-        <Lon>49.532223</Lon>
+        <Lon>11.488747</Lon>
+        <Lat>49.532223</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_42</Tag>
@@ -1252,9 +1430,10 @@
         <Laenge>13.2</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.508183</Lat>
-        <Lon>49.542770</Lon>
+        <Lon>11.508183</Lon>
+        <Lat>49.542770</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW1_43</Tag>
@@ -1262,9 +1441,10 @@
         <Laenge>8.8</Laenge>
         <Dauer>2.0</Dauer>
         <Charakter></Charakter>
-        <Lat>11.540842</Lat>
-        <Lon>49.556328</Lon>
+        <Lon>11.540842</Lon>
+        <Lat>49.556328</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_58</Tag>
@@ -1272,9 +1452,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.653136</Lat>
-        <Lon>49.425220</Lon>
+        <Lon>11.653136</Lon>
+        <Lat>49.425220</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_56</Tag>
@@ -1282,9 +1463,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.756483</Lat>
-        <Lon>49.402493</Lon>
+        <Lon>11.756483</Lon>
+        <Lat>49.402493</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_55</Tag>
@@ -1292,9 +1474,10 @@
         <Laenge>23.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.861122</Lat>
-        <Lon>49.446453</Lon>
+        <Lon>11.861122</Lon>
+        <Lat>49.446453</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_52</Tag>
@@ -1302,9 +1485,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.835155</Lat>
-        <Lon>49.316814</Lon>
+        <Lon>11.835155</Lon>
+        <Lat>49.316814</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_53</Tag>
@@ -1312,9 +1496,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.870844</Lat>
-        <Lon>49.353378</Lon>
+        <Lon>11.870844</Lon>
+        <Lat>49.353378</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_51</Tag>
@@ -1322,9 +1507,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.711104</Lat>
-        <Lon>49.362186</Lon>
+        <Lon>11.711104</Lon>
+        <Lat>49.362186</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_60</Tag>
@@ -1332,9 +1518,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.397285</Lat>
-        <Lon>50.025387</Lon>
+        <Lon>11.397285</Lon>
+        <Lat>50.025387</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_59</Tag>
@@ -1342,9 +1529,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.240044</Lat>
-        <Lon>50.085125</Lon>
+        <Lon>11.240044</Lon>
+        <Lat>50.085125</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_58</Tag>
@@ -1352,9 +1540,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>welliges Gelände</Charakter>
-        <Lat>11.202278</Lat>
-        <Lon>50.019901</Lon>
+        <Lon>11.202278</Lon>
+        <Lat>50.019901</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_57</Tag>
@@ -1362,9 +1551,10 @@
         <Laenge>15.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.300447</Lat>
-        <Lon>50.001064</Lon>
+        <Lon>11.300447</Lon>
+        <Lat>50.001064</Lat>
         <Datum>2008-12-25</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_56</Tag>
@@ -1372,9 +1562,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.158762</Lat>
-        <Lon>49.977364</Lon>
+        <Lon>11.158762</Lon>
+        <Lat>49.977364</Lat>
         <Datum>2007-05-13</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_55</Tag>
@@ -1382,9 +1573,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>bis auf den Anstieg zur Giechburg leichtes Gelände</Charakter>
-        <Lat>11.123207</Lat>
-        <Lon>49.936459</Lon>
+        <Lon>11.123207</Lon>
+        <Lat>49.936459</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_54</Tag>
@@ -1392,9 +1584,10 @@
         <Laenge>15.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>bis auf den steilen Anstieg nach Herzogenreuth leichtes Gelände</Charakter>
-        <Lat>11.080313</Lat>
-        <Lon>49.936321</Lon>
+        <Lon>11.080313</Lon>
+        <Lat>49.936321</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_53</Tag>
@@ -1402,9 +1595,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>überwiegend leichtes Gelände mit zwei steileren Anstiegen</Charakter>
-        <Lat>11.076622</Lat>
-        <Lon>49.831741</Lon>
+        <Lon>11.076622</Lon>
+        <Lat>49.831741</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_52</Tag>
@@ -1412,9 +1606,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.345100</Lat>
-        <Lon>49.846397</Lon>
+        <Lon>11.345100</Lon>
+        <Lat>49.846397</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_01</Tag>
@@ -1422,9 +1617,10 @@
         <Laenge>23.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>leichtes bis mittelschweres Gelände</Charakter>
-        <Lat>11.187429</Lat>
-        <Lon>49.668682</Lon>
+        <Lon>11.187429</Lon>
+        <Lat>49.668682</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_02</Tag>
@@ -1432,9 +1628,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.250622</Lat>
-        <Lon>49.640900</Lon>
+        <Lon>11.250622</Lon>
+        <Lat>49.640900</Lat>
         <Datum>2007-05-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_03</Tag>
@@ -1442,9 +1639,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.250622</Lat>
-        <Lon>49.640900</Lon>
+        <Lon>11.250622</Lon>
+        <Lat>49.640900</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_04</Tag>
@@ -1452,9 +1650,10 @@
         <Laenge>13.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.259613</Lat>
-        <Lon>49.703613</Lon>
+        <Lon>11.259613</Lon>
+        <Lat>49.703613</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_05</Tag>
@@ -1462,9 +1661,10 @@
         <Laenge>16.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.259613</Lat>
-        <Lon>49.703613</Lon>
+        <Lon>11.259613</Lon>
+        <Lat>49.703613</Lat>
         <Datum>2007-04-22</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_06</Tag>
@@ -1472,9 +1672,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>hügeliges Gelände mit einigen Steilanstiegen</Charakter>
-        <Lat>11.259613</Lat>
-        <Lon>49.703613</Lon>
+        <Lon>11.259613</Lon>
+        <Lat>49.703613</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_07</Tag>
@@ -1482,9 +1683,10 @@
         <Laenge>15.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>schwieriges und leichtes Gelände</Charakter>
-        <Lat>11.259613</Lat>
-        <Lon>49.703613</Lon>
+        <Lon>11.259613</Lon>
+        <Lat>49.703613</Lat>
         <Datum>2007-06-17</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_32</Tag>
@@ -1492,9 +1694,10 @@
         <Laenge>15.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>welliges Gelände</Charakter>
-        <Lat>11.190155</Lat>
-        <Lon>49.824017</Lon>
+        <Lon>11.190155</Lon>
+        <Lat>49.824017</Lat>
         <Datum>2007-05-27</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_31</Tag>
@@ -1502,9 +1705,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>leichtes bis mittelschweres Gelände</Charakter>
-        <Lat>11.187344</Lat>
-        <Lon>49.777481</Lon>
+        <Lon>11.187344</Lon>
+        <Lat>49.777481</Lat>
         <Datum>2007-09-09</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_30</Tag>
@@ -1512,9 +1716,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>hügeliges Gelände mit steilen Anstiegen</Charakter>
-        <Lat>11.187344</Lat>
-        <Lon>49.777481</Lon>
+        <Lon>11.187344</Lon>
+        <Lat>49.777481</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_29</Tag>
@@ -1522,9 +1727,10 @@
         <Laenge>17.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>hügeliges, teilweise schwieriges Gelände mit Steigungen</Charakter>
-        <Lat>11.212771</Lat>
-        <Lon>49.746613</Lon>
+        <Lon>11.212771</Lon>
+        <Lat>49.746613</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_28</Tag>
@@ -1532,9 +1738,10 @@
         <Laenge>14.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.145517</Lat>
-        <Lon>49.733643</Lon>
+        <Lon>11.145517</Lon>
+        <Lat>49.733643</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_27</Tag>
@@ -1542,9 +1749,10 @@
         <Laenge>10.0</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.135416</Lat>
-        <Lon>49.712769</Lon>
+        <Lon>11.135416</Lon>
+        <Lat>49.712769</Lat>
         <Datum>2008-04-30</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_26</Tag>
@@ -1552,9 +1760,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.077437</Lat>
-        <Lon>49.731747</Lon>
+        <Lon>11.077437</Lon>
+        <Lat>49.731747</Lat>
         <Datum>2008-04-26</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_25</Tag>
@@ -1562,9 +1771,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>überwiegend leichtes Gelände, am Schluss Anstieg</Charakter>
-        <Lat>11.341517</Lat>
-        <Lon>49.771420</Lon>
+        <Lon>11.341517</Lon>
+        <Lat>49.771420</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_24</Tag>
@@ -1572,9 +1782,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.341517</Lat>
-        <Lon>49.771420</Lon>
+        <Lon>11.341517</Lon>
+        <Lat>49.771420</Lat>
         <Datum>2007-06-24</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_23</Tag>
@@ -1582,9 +1793,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>hügeliges, mitunter ansteigendes Gelände</Charakter>
-        <Lat>11.491613</Lat>
-        <Lon>49.824917</Lon>
+        <Lon>11.491613</Lon>
+        <Lat>49.824917</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_22</Tag>
@@ -1592,9 +1804,10 @@
         <Laenge>16.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>hügeliges, aber nicht übermäßig anstrengendes Gelände</Charakter>
-        <Lat>11.491613</Lat>
-        <Lon>49.824917</Lon>
+        <Lon>11.491613</Lon>
+        <Lat>49.824917</Lat>
         <Datum>2007-01-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_21</Tag>
@@ -1602,9 +1815,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>hügeliges, zwischendurch anstrengendes Gelände</Charakter>
-        <Lat>11.491613</Lat>
-        <Lon>49.824917</Lon>
+        <Lon>11.491613</Lon>
+        <Lat>49.824917</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_20</Tag>
@@ -1612,9 +1826,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.491613</Lat>
-        <Lon>49.824917</Lon>
+        <Lon>11.491613</Lon>
+        <Lat>49.824917</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_19</Tag>
@@ -1622,9 +1837,10 @@
         <Laenge>17.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.491613</Lat>
-        <Lon>49.824917</Lon>
+        <Lon>11.491613</Lon>
+        <Lat>49.824917</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_18</Tag>
@@ -1632,9 +1848,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>welliges Gelände</Charakter>
-        <Lat>11.583538</Lat>
-        <Lon>49.804424</Lon>
+        <Lon>11.583538</Lon>
+        <Lat>49.804424</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_17</Tag>
@@ -1642,9 +1859,10 @@
         <Laenge>17.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.547318</Lat>
-        <Lon>49.756733</Lon>
+        <Lon>11.547318</Lon>
+        <Lat>49.756733</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_16</Tag>
@@ -1652,9 +1870,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.547318</Lat>
-        <Lon>49.756733</Lon>
+        <Lon>11.547318</Lon>
+        <Lat>49.756733</Lat>
         <Datum>2009-04-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_15</Tag>
@@ -1662,9 +1881,10 @@
         <Laenge>23.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.494339</Lat>
-        <Lon>49.698593</Lon>
+        <Lon>11.494339</Lon>
+        <Lat>49.698593</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_14</Tag>
@@ -1672,9 +1892,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.461487</Lat>
-        <Lon>49.728195</Lon>
+        <Lon>11.461487</Lon>
+        <Lat>49.728195</Lat>
         <Datum>2007-04-28</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_13</Tag>
@@ -1682,9 +1903,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.461487</Lat>
-        <Lon>49.728195</Lon>
+        <Lon>11.461487</Lon>
+        <Lat>49.728195</Lat>
         <Datum>2007-09-16</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_12</Tag>
@@ -1692,9 +1914,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes, teilweise welliges Gelände</Charakter>
-        <Lat>11.415396</Lat>
-        <Lon>49.681126</Lon>
+        <Lon>11.415396</Lon>
+        <Lat>49.681126</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_08</Tag>
@@ -1702,9 +1925,10 @@
         <Laenge>17.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes bis mittelschweres Gelände</Charakter>
-        <Lat>11.319501</Lat>
-        <Lon>49.661823</Lon>
+        <Lon>11.319501</Lon>
+        <Lat>49.661823</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_09</Tag>
@@ -1712,9 +1936,10 @@
         <Laenge>15.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges und steiles Gelände</Charakter>
-        <Lat>11.314716</Lat>
-        <Lon>49.688065</Lon>
+        <Lon>11.314716</Lon>
+        <Lat>49.688065</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_10</Tag>
@@ -1722,9 +1947,10 @@
         <Laenge>16.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.415396</Lat>
-        <Lon>49.681126</Lon>
+        <Lon>11.415396</Lon>
+        <Lat>49.681126</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_11</Tag>
@@ -1732,9 +1958,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.415396</Lat>
-        <Lon>49.681126</Lon>
+        <Lon>11.415396</Lon>
+        <Lat>49.681126</Lat>
         <Datum>2009-05-03</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_51</Tag>
@@ -1742,9 +1969,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>hügeliges, mitunter etwas schwierigeres Gelände</Charakter>
-        <Lat>11.345100</Lat>
-        <Lon>49.846397</Lon>
+        <Lon>11.345100</Lon>
+        <Lat>49.846397</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_50</Tag>
@@ -1752,9 +1980,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>leichtes und mittelschweres Gelände</Charakter>
-        <Lat>11.329222</Lat>
-        <Lon>49.782124</Lon>
+        <Lon>11.329222</Lon>
+        <Lat>49.782124</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_49</Tag>
@@ -1762,9 +1991,10 @@
         <Laenge>12.0</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.329222</Lat>
-        <Lon>49.782124</Lon>
+        <Lon>11.329222</Lon>
+        <Lat>49.782124</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_48</Tag>
@@ -1772,9 +2002,10 @@
         <Laenge>13.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.329222</Lat>
-        <Lon>49.782124</Lon>
+        <Lon>11.329222</Lon>
+        <Lat>49.782124</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_47</Tag>
@@ -1782,9 +2013,10 @@
         <Laenge>14.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.329222</Lat>
-        <Lon>49.782124</Lon>
+        <Lon>11.329222</Lon>
+        <Lat>49.782124</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_46</Tag>
@@ -1792,9 +2024,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter>mittelschweres Gelände</Charakter>
-        <Lat>11.329222</Lat>
-        <Lon>49.782124</Lon>
+        <Lon>11.329222</Lon>
+        <Lat>49.782124</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_45</Tag>
@@ -1802,9 +2035,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.282809</Lat>
-        <Lon>49.821526</Lon>
+        <Lon>11.282809</Lon>
+        <Lat>49.821526</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_44</Tag>
@@ -1812,9 +2046,10 @@
         <Laenge>17.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.282809</Lat>
-        <Lon>49.821526</Lon>
+        <Lon>11.282809</Lon>
+        <Lat>49.821526</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_43</Tag>
@@ -1822,9 +2057,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>anstrengendes Gelände mit steilen An- und Abstiegen</Charakter>
-        <Lat>11.258991</Lat>
-        <Lon>49.803013</Lon>
+        <Lon>11.258991</Lon>
+        <Lat>49.803013</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_41</Tag>
@@ -1832,9 +2068,10 @@
         <Laenge>17.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.460006</Lat>
-        <Lon>49.909313</Lon>
+        <Lon>11.460006</Lon>
+        <Lat>49.909313</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_42</Tag>
@@ -1842,9 +2079,10 @@
         <Laenge>13.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>hügeliges, mitunter schwieriges Gelände</Charakter>
-        <Lat>11.258991</Lat>
-        <Lon>49.803013</Lon>
+        <Lon>11.258991</Lon>
+        <Lat>49.803013</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_40</Tag>
@@ -1852,9 +2090,10 @@
         <Laenge>23.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.402242</Lat>
-        <Lon>49.941029</Lon>
+        <Lon>11.402242</Lon>
+        <Lat>49.941029</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_39</Tag>
@@ -1862,9 +2101,10 @@
         <Laenge>13.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>hügeliges Gelände</Charakter>
-        <Lat>11.395097</Lat>
-        <Lon>49.917782</Lon>
+        <Lon>11.395097</Lon>
+        <Lat>49.917782</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_38</Tag>
@@ -1872,9 +2112,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.289825</Lat>
-        <Lon>49.938187</Lon>
+        <Lon>11.289825</Lon>
+        <Lat>49.938187</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_37</Tag>
@@ -1882,9 +2123,10 @@
         <Laenge>14.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.280727</Lat>
-        <Lon>49.941334</Lon>
+        <Lon>11.280727</Lon>
+        <Lat>49.941334</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_36</Tag>
@@ -1892,9 +2134,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>11.249936</Lat>
-        <Lon>49.860050</Lon>
+        <Lon>11.249936</Lon>
+        <Lat>49.860050</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>MLUW2_35</Tag>
@@ -1902,9 +2145,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.230087</Lat>
-        <Lon>49.881252</Lon>
+        <Lon>11.230087</Lon>
+        <Lat>49.881252</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_54</Tag>
@@ -1912,9 +2156,10 @@
         <Laenge>11.0</Laenge>
         <Dauer>3.0</Dauer>
         <Charakter>leichtes Gelände, für sehr heiße Tage besonders geeignet</Charakter>
-        <Lat>11.912200</Lat>
-        <Lon>49.366627</Lon>
+        <Lon>11.912200</Lon>
+        <Lat>49.366627</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_50</Tag>
@@ -1922,9 +2167,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.599161</Lat>
-        <Lon>49.368744</Lon>
+        <Lon>11.599161</Lon>
+        <Lat>49.368744</Lat>
         <Datum>2008-09-11</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_47</Tag>
@@ -1932,9 +2178,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.661548</Lat>
-        <Lon>49.144794</Lon>
+        <Lon>11.661548</Lon>
+        <Lat>49.144794</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_49</Tag>
@@ -1942,9 +2189,10 @@
         <Laenge>17.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.631288</Lat>
-        <Lon>49.313454</Lon>
+        <Lon>11.631288</Lon>
+        <Lat>49.313454</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_48</Tag>
@@ -1952,9 +2200,10 @@
         <Laenge>13.0</Laenge>
         <Dauer>3.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.726734</Lat>
-        <Lon>49.163094</Lon>
+        <Lon>11.726734</Lon>
+        <Lat>49.163094</Lat>
         <Datum>2008-07-20</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_46</Tag>
@@ -1962,9 +2211,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes bis mittelschweres Gelände</Charakter>
-        <Lat>11.461871</Lat>
-        <Lon>49.142906</Lon>
+        <Lon>11.461871</Lon>
+        <Lat>49.142906</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_45</Tag>
@@ -1972,9 +2222,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.286582</Lat>
-        <Lon>49.073315</Lon>
+        <Lon>11.286582</Lon>
+        <Lat>49.073315</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_43</Tag>
@@ -1982,9 +2233,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.347713</Lat>
-        <Lon>49.190563</Lon>
+        <Lon>11.347713</Lon>
+        <Lat>49.190563</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_44</Tag>
@@ -1992,9 +2244,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes Gelände für heiße Tage weniger geeignet</Charakter>
-        <Lat>11.295230</Lat>
-        <Lon>49.147457</Lon>
+        <Lon>11.295230</Lon>
+        <Lat>49.147457</Lat>
         <Datum>2008-01-13</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_42</Tag>
@@ -2002,9 +2255,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.469581</Lat>
-        <Lon>49.271885</Lon>
+        <Lon>11.469581</Lon>
+        <Lat>49.271885</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_36</Tag>
@@ -2012,9 +2266,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.145068</Lat>
-        <Lon>49.353424</Lon>
+        <Lon>11.145068</Lon>
+        <Lat>49.353424</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_37</Tag>
@@ -2022,9 +2277,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.200202</Lat>
-        <Lon>49.480221</Lon>
+        <Lon>11.200202</Lon>
+        <Lat>49.480221</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_38</Tag>
@@ -2032,9 +2288,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.287586</Lat>
-        <Lon>49.460892</Lon>
+        <Lon>11.287586</Lon>
+        <Lat>49.460892</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_39</Tag>
@@ -2042,9 +2299,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.353560</Lat>
-        <Lon>49.389969</Lon>
+        <Lon>11.353560</Lon>
+        <Lat>49.389969</Lat>
         <Datum>2007-11-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_40</Tag>
@@ -2052,9 +2310,10 @@
         <Laenge>24.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>leichtes Gelände für sehr heiße Tage nicht geeignet</Charakter>
-        <Lat>11.439074</Lat>
-        <Lon>49.332745</Lon>
+        <Lon>11.439074</Lon>
+        <Lat>49.332745</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_41</Tag>
@@ -2062,9 +2321,10 @@
         <Laenge>16.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>leichtes Gelände, möglichst nicht bei großer Hitze</Charakter>
-        <Lat>11.358503</Lat>
-        <Lon>49.307407</Lon>
+        <Lon>11.358503</Lon>
+        <Lat>49.307407</Lat>
         <Datum>2008-04-12</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_35</Tag>
@@ -2072,9 +2332,10 @@
         <Laenge>29.0</Laenge>
         <Dauer>7.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.014628</Lat>
-        <Lon>49.328411</Lon>
+        <Lon>11.014628</Lon>
+        <Lat>49.328411</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_34</Tag>
@@ -2082,9 +2343,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>11.035525</Lat>
-        <Lon>49.326141</Lon>
+        <Lon>11.035525</Lon>
+        <Lat>49.326141</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_33</Tag>
@@ -2092,9 +2354,10 @@
         <Laenge>25.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.974681</Lat>
-        <Lon>49.271282</Lon>
+        <Lon>10.974681</Lon>
+        <Lat>49.271282</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_32</Tag>
@@ -2102,9 +2365,10 @@
         <Laenge>24.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>leichtes Gelände für sehr heiße Tage nicht geeignet</Charakter>
-        <Lat>10.961030</Lat>
-        <Lon>49.242386</Lon>
+        <Lon>10.961030</Lon>
+        <Lat>49.242386</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_30</Tag>
@@ -2112,9 +2376,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>überwiegend leichtes Gelände, wegen der freien Hochflächen bei starker Hitze nicht zu empfehlen</Charakter>
-        <Lat>10.924815</Lat>
-        <Lon>49.175495</Lon>
+        <Lon>10.924815</Lon>
+        <Lat>49.175495</Lat>
         <Datum>2007-01-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_31</Tag>
@@ -2122,9 +2387,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>mittelschweres Gelände</Charakter>
-        <Lat>11.011796</Lat>
-        <Lon>49.188046</Lon>
+        <Lon>11.011796</Lon>
+        <Lat>49.188046</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_29</Tag>
@@ -2132,9 +2398,10 @@
         <Laenge>24.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.885691</Lat>
-        <Lon>49.217552</Lon>
+        <Lon>10.885691</Lon>
+        <Lat>49.217552</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_27</Tag>
@@ -2142,9 +2409,10 @@
         <Laenge>28.0</Laenge>
         <Dauer>7.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.722995</Lat>
-        <Lon>49.152573</Lon>
+        <Lon>10.722995</Lon>
+        <Lat>49.152573</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_28</Tag>
@@ -2152,9 +2420,10 @@
         <Laenge>28.0</Laenge>
         <Dauer>7.0</Dauer>
         <Charakter>leichtes Gelände für heiße Tage weniger geeignet</Charakter>
-        <Lat>10.652386</Lat>
-        <Lon>49.203213</Lon>
+        <Lon>10.652386</Lon>
+        <Lat>49.203213</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_24</Tag>
@@ -2162,9 +2431,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.911870</Lat>
-        <Lon>48.955437</Lon>
+        <Lon>10.911870</Lon>
+        <Lat>48.955437</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_25</Tag>
@@ -2172,9 +2442,10 @@
         <Laenge>24.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.987045</Lat>
-        <Lon>49.106239</Lon>
+        <Lon>10.987045</Lon>
+        <Lat>49.106239</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_26</Tag>
@@ -2182,9 +2453,10 @@
         <Laenge>19.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände, für heiße Tage weniger geeignet</Charakter>
-        <Lat>10.753399</Lat>
-        <Lon>49.115940</Lon>
+        <Lon>10.753399</Lon>
+        <Lat>49.115940</Lat>
         <Datum>2007-01-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_23</Tag>
@@ -2192,9 +2464,10 @@
         <Laenge>16.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.911870</Lat>
-        <Lon>48.955437</Lon>
+        <Lon>10.911870</Lon>
+        <Lat>48.955437</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_22</Tag>
@@ -2202,9 +2475,10 @@
         <Laenge>18.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.691203</Lat>
-        <Lon>49.022743</Lon>
+        <Lon>10.691203</Lon>
+        <Lat>49.022743</Lat>
         <Datum>2007-10-06</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_21</Tag>
@@ -2212,9 +2486,10 @@
         <Laenge>23.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>leichtes bis mittelschweres Gelände</Charakter>
-        <Lat>10.732734</Lat>
-        <Lon>48.977928</Lon>
+        <Lon>10.732734</Lon>
+        <Lat>48.977928</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_20</Tag>
@@ -2222,9 +2497,10 @@
         <Laenge>26.0</Laenge>
         <Dauer>6.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.597264</Lat>
-        <Lon>49.041328</Lon>
+        <Lon>10.597264</Lon>
+        <Lat>49.041328</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_18</Tag>
@@ -2232,9 +2508,10 @@
         <Laenge>15.0</Laenge>
         <Dauer>4.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.320172</Lat>
-        <Lon>49.068851</Lon>
+        <Lon>10.320172</Lon>
+        <Lat>49.068851</Lat>
         <Datum>2008-06-21</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_19</Tag>
@@ -2242,9 +2519,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.553197</Lat>
-        <Lon>49.159958</Lon>
+        <Lon>10.553197</Lon>
+        <Lat>49.159958</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_17</Tag>
@@ -2252,9 +2530,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>10.287464</Lat>
-        <Lon>49.253300</Lon>
+        <Lon>10.287464</Lon>
+        <Lat>49.253300</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_15</Tag>
@@ -2262,9 +2541,10 @@
         <Laenge>17.0</Laenge>
         <Dauer>4.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>10.275241</Lat>
-        <Lon>49.454601</Lon>
+        <Lon>10.275241</Lon>
+        <Lat>49.454601</Lat>
         <Datum>2007-01-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_16</Tag>
@@ -2272,9 +2552,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.178529</Lat>
-        <Lon>49.380505</Lon>
+        <Lon>10.178529</Lon>
+        <Lat>49.380505</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_13</Tag>
@@ -2282,9 +2563,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.571476</Lat>
-        <Lon>49.300735</Lon>
+        <Lon>10.571476</Lon>
+        <Lat>49.300735</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_14</Tag>
@@ -2292,9 +2574,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>überwiegend leichtes Gelände</Charakter>
-        <Lat>10.423316</Lat>
-        <Lon>49.415607</Lon>
+        <Lon>10.423316</Lon>
+        <Lat>49.415607</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_10</Tag>
@@ -2302,9 +2585,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.786611</Lat>
-        <Lon>49.335064</Lon>
+        <Lon>10.786611</Lon>
+        <Lat>49.335064</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_11</Tag>
@@ -2312,9 +2596,10 @@
         <Laenge>23.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>leichtes Gelände, möglichst nicht bei großer Hitze</Charakter>
-        <Lat>10.786611</Lat>
-        <Lon>49.335064</Lon>
+        <Lon>10.786611</Lon>
+        <Lat>49.335064</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_12</Tag>
@@ -2322,9 +2607,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.581959</Lat>
-        <Lon>49.316528</Lon>
+        <Lon>10.581959</Lon>
+        <Lat>49.316528</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_09</Tag>
@@ -2332,9 +2618,10 @@
         <Laenge>26.0</Laenge>
         <Dauer>6.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.685489</Lat>
-        <Lon>49.468056</Lon>
+        <Lon>10.685489</Lon>
+        <Lat>49.468056</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_06</Tag>
@@ -2342,9 +2629,10 @@
         <Laenge>25.0</Laenge>
         <Dauer>6.5</Dauer>
         <Charakter>leichtes Gelände, bei starker Hitze weniger geeignet</Charakter>
-        <Lat>10.824815</Lat>
-        <Lon>49.622265</Lon>
+        <Lon>10.824815</Lon>
+        <Lat>49.622265</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_07</Tag>
@@ -2352,9 +2640,10 @@
         <Laenge>27.0</Laenge>
         <Dauer>7.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.717114</Lat>
-        <Lon>49.551205</Lon>
+        <Lon>10.717114</Lon>
+        <Lat>49.551205</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_08</Tag>
@@ -2362,9 +2651,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände, nicht bei starker Hitze</Charakter>
-        <Lat>10.712955</Lat>
-        <Lon>49.481812</Lon>
+        <Lon>10.712955</Lon>
+        <Lat>49.481812</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_05</Tag>
@@ -2372,9 +2662,10 @@
         <Laenge>22.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.825846</Lat>
-        <Lon>49.650276</Lon>
+        <Lon>10.825846</Lon>
+        <Lat>49.650276</Lat>
         <Datum>2009-02-05</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_03</Tag>
@@ -2382,9 +2673,10 @@
         <Laenge>21.0</Laenge>
         <Dauer>5.5</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.881092</Lat>
-        <Lon>49.568916</Lon>
+        <Lon>10.881092</Lon>
+        <Lat>49.568916</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_04</Tag>
@@ -2392,9 +2684,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände, für heiße Sonnentage nicht geeignet (wenig Wald)</Charakter>
-        <Lat>10.876034</Lat>
-        <Lon>49.631550</Lon>
+        <Lon>10.876034</Lon>
+        <Lat>49.631550</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_02</Tag>
@@ -2402,9 +2695,10 @@
         <Laenge>20.0</Laenge>
         <Dauer>5.0</Dauer>
         <Charakter>leichtes Gelände</Charakter>
-        <Lat>10.881092</Lat>
-        <Lon>49.568916</Lon>
+        <Lon>10.881092</Lon>
+        <Lat>49.568916</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
     <walks>
         <Tag>FUW3_01</Tag>
@@ -2412,8 +2706,614 @@
         <Laenge>24.0</Laenge>
         <Dauer>6.0</Dauer>
         <Charakter>leichtes Gelände, für sehr heiße Tage weniger geeignet</Charakter>
-        <Lat>10.851325</Lat>
-        <Lon>49.459843</Lon>
+        <Lon>10.851325</Lon>
+        <Lat>49.459843</Lat>
         <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_06</Tag>
+        <Name>Von Langenzenn zum Farrnbach- und Fembachgrund</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.801858</Lon>
+        <Lat>49.496998</Lat>
+        <Datum>2008-11-05</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_07</Tag>
+        <Name>Vom Ulsenbachgrund zum Eschen- und Erlenbachtal</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.725438</Lon>
+        <Lat>49.483410</Lat>
+        <Datum>2008-08-24</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_08</Tag>
+        <Name>Durch den Schußbachwald und zur Burg Hoheneck auf der Frankenhöhe</Name>
+        <Laenge>32.0</Laenge>
+        <Dauer>8.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.658596</Lon>
+        <Lat>49.492558</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_09</Tag>
+        <Name>In den Seebachgrund und zur Hannberger Wehrkirche</Name>
+        <Laenge>13.0</Laenge>
+        <Dauer>3.5</Dauer>
+        <Charakter>leichtes Gelände, bei großer Hitze nicht zu empfehlen</Charakter>
+        <Lon>10.938405</Lon>
+        <Lat>49.626270</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_10</Tag>
+        <Name>In die Weiherlandschaft um Dechsendorf</Name>
+        <Laenge>16.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.964517</Lon>
+        <Lat>49.618259</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_11</Tag>
+        <Name>Zu den Linder Gruben und auf den Eichelberg</Name>
+        <Laenge>12.0</Laenge>
+        <Dauer>3.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.898632</Lon>
+        <Lat>49.400696</Lat>
+        <Datum>2009-02-24</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_12</Tag>
+        <Name>Von Großweißmannsdorf an stillen Bachtälern entlang nach Roßtal</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.936642</Lon>
+        <Lat>49.381077</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_13</Tag>
+        <Name>Vom Schwallbach- zum Schwabachtal</Name>
+        <Laenge>12.0</Laenge>
+        <Dauer>3.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.884402</Lon>
+        <Lat>49.365486</Lat>
+        <Datum>2008-01-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_14</Tag>
+        <Name>Zur fränkischen Münsterstadt Heilsbronn</Name>
+        <Laenge>10.0</Laenge>
+        <Dauer>2.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.710522</Lon>
+        <Lat>49.310497</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_15</Tag>
+        <Name>Von der &quot;Festungsstadt&quot; Lichtenau zur &quot;Minnesängerstadt&quot; Wolframs-Eschenbach</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.685243</Lon>
+        <Lat>49.276829</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_16</Tag>
+        <Name>Ins südliche Umland von Windsbach</Name>
+        <Laenge>11.0</Laenge>
+        <Dauer>3.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.825733</Lon>
+        <Lat>49.249790</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_17</Tag>
+        <Name>Ins nördliche Umland von Spalt</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lon>10.921707</Lon>
+        <Lat>49.179871</Lat>
+        <Datum>2009-02-14</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_18</Tag>
+        <Name>Von Spalt über das &quot;Schnittlinger Loch&quot; und &quot;Zigeunerloch&quot; zur Burg Wernfels</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>mittelschweres Gelände</Charakter>
+        <Lon>10.927753</Lon>
+        <Lat>49.173988</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_19</Tag>
+        <Name>Von Spalt zum Brombachspeicher</Name>
+        <Laenge>19.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lon>10.927753</Lon>
+        <Lat>49.173988</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_20</Tag>
+        <Name>Vom Hembach zum Finsterbach und in den Brunnauer Forst</Name>
+        <Laenge>23.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.121380</Lon>
+        <Lat>49.297344</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_21</Tag>
+        <Name>Von Lauf durch die Bitterbachschlucht und nach Simonshofen</Name>
+        <Laenge>17.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.277832</Lon>
+        <Lat>49.512550</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_22</Tag>
+        <Name>Durch die Waldungen des Eichelbergs im Westen Schnaittachs</Name>
+        <Laenge>15.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.341814</Lon>
+        <Lat>49.557102</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_23</Tag>
+        <Name>Von Kornburg auf den Glasersberg und ins untere Schwarzachtal</Name>
+        <Laenge>15.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.103057</Lon>
+        <Lat>49.355846</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_24</Tag>
+        <Name>Von Ochenbruck ins obere Hembachtal und durch die Schwarzachklamm</Name>
+        <Laenge>26.0</Laenge>
+        <Dauer>6.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.253330</Lon>
+        <Lat>49.363029</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_25</Tag>
+        <Name>Vom Moritzberg nach Weißenbrunn und Klingenhof</Name>
+        <Laenge>16.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>mittelschweres Gelände</Charakter>
+        <Lon>11.349050</Lon>
+        <Lat>49.459366</Lat>
+        <Datum>2009-02-06</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_26</Tag>
+        <Name>Durch das nördliche Altdorfer Land</Name>
+        <Laenge>25.0</Laenge>
+        <Dauer>6.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.353560</Lon>
+        <Lat>49.389969</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_27</Tag>
+        <Name>Ausgedehnter Streifzug durch die Staats- und Castellwaldungen südlich von Nürnberg</Name>
+        <Laenge>28.0</Laenge>
+        <Dauer>7.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.216770</Lon>
+        <Lat>49.293606</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_28</Tag>
+        <Name>Zur einzigartigen Aussicht auf den Möninger Berg</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände, an sehr heißen Sommertagen nicht zu empfehlen</Charakter>
+        <Lon>11.214444</Lon>
+        <Lat>49.253613</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_29</Tag>
+        <Name>Der Anton-Leidinger-Gedächtnis-Weg</Name>
+        <Laenge>71.0</Laenge>
+        <Dauer>17.0</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lon>11.147179</Lon>
+        <Lat>49.445869</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_30</Tag>
+        <Name>Von Weißenbrunn nach Ottensoos</Name>
+        <Laenge>16.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lon>11.358709</Lon>
+        <Lat>49.428738</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_31</Tag>
+        <Name>Von Hersbruck zum Keilberg und zum Deckersberg</Name>
+        <Laenge>25.0</Laenge>
+        <Dauer>6.5</Dauer>
+        <Charakter>mittelschweres Gelände, für sehr heiße Tage weniger geeignet</Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_32</Tag>
+        <Name>Von Henfenfeld auf den Buchenberg und den Nonnenberg</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>mittelschweres Gelände</Charakter>
+        <Lon>11.386550</Lon>
+        <Lat>49.501411</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_33</Tag>
+        <Name>Von Reichenschwand zum Glatzenstein und Großen Hansgörgl</Name>
+        <Laenge>13.0</Laenge>
+        <Dauer>3.5</Dauer>
+        <Charakter>mittelschweres Gelände</Charakter>
+        <Lon>11.374030</Lon>
+        <Lat>49.514858</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_34</Tag>
+        <Name>Über die Festungsruine Rothenberg in den Osternoher Talkessel</Name>
+        <Laenge>12.0</Laenge>
+        <Dauer>3.5</Dauer>
+        <Charakter>mittelschweres Gelände</Charakter>
+        <Lon>11.341814</Lon>
+        <Lat>49.557102</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_35</Tag>
+        <Name>Vom Pegnitztal zum Langenstein</Name>
+        <Laenge>11.0</Laenge>
+        <Dauer>3.0</Dauer>
+        <Charakter>mittelschweres Gelände</Charakter>
+        <Lon>11.495351</Lon>
+        <Lat>49.564190</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_36</Tag>
+        <Name>Vom Rothenberg zur einstigen Stauferburg Hohenstein</Name>
+        <Laenge>14.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+        <Lon>11.361235</Lon>
+        <Lat>49.558739</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_37</Tag>
+        <Name>Der &quot;Simmelsdorfer Rundweg&quot;</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+        <Lon>11.340945</Lon>
+        <Lat>49.598377</Lat>
+        <Datum>2008-09-09</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_38</Tag>
+        <Name>Ins Bergland westlich von Simmelsdorf und Hüttenbach</Name>
+        <Laenge>13.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.340945</Lon>
+        <Lat>49.598377</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_39</Tag>
+        <Name>Vom Bühler Kirchlein nach St. Helena und Bernhof</Name>
+        <Laenge>14.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+        <Lon>11.340945</Lon>
+        <Lat>49.598377</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_40</Tag>
+        <Name>Zur romantischen Burgruine Wildenfels</Name>
+        <Laenge>11.0</Laenge>
+        <Dauer>3.0</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lon>11.355766</Lon>
+        <Lat>49.630371</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_41</Tag>
+        <Name>Von Spies zum Reuthof</Name>
+        <Laenge>10.0</Laenge>
+        <Dauer>3.0</Dauer>
+        <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+        <Lon>11.402562</Lon>
+        <Lat>49.635445</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_42</Tag>
+        <Name>Vom Lehental durch die westliche Oberpfalz</Name>
+        <Laenge>14.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+        <Lon>11.563063</Lon>
+        <Lat>49.518475</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_43</Tag>
+        <Name>Nach Hunas und Ernhüll -- ins Gebiet unserer Frühgeschichte</Name>
+        <Laenge>16.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_44</Tag>
+        <Name>Zum Brennberg und zur Noris-Sprungschanze</Name>
+        <Laenge>9.0</Laenge>
+        <Dauer>2.5</Dauer>
+        <Charakter>mittelschweres Gelände</Charakter>
+        <Lon>11.586410</Lon>
+        <Lat>49.525578</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_45</Tag>
+        <Name>Von Hartmannshof über Lichtenegg nach Etzelwang</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_46</Tag>
+        <Name>Von Hartmannshof über Lichtenegg nach Fürnried</Name>
+        <Laenge>15.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>2008-11-30</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_47</Tag>
+        <Name>Von der Claramühle zum Bären- und Türkenfels sowie zur Ruine Lichtenegg</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+        <Lon>11.558624</Lon>
+        <Lat>49.454468</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_48</Tag>
+        <Name>Von der Claramühle zum Poppberg</Name>
+        <Laenge>15.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.558624</Lon>
+        <Lat>49.454468</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_49</Tag>
+        <Name>Von Alfeld zum Poppberg</Name>
+        <Laenge>13.0</Laenge>
+        <Dauer>3.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.544261</Lon>
+        <Lat>49.429237</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_50</Tag>
+        <Name>Zu den höchsten Bergen des Königsteiner Landes</Name>
+        <Laenge>21.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter>leichtes, mitunter auch schweres Gelände</Charakter>
+        <Lon>11.614826</Lon>
+        <Lat>49.579910</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_51</Tag>
+        <Name>Von der Maximiliansgrotte zur Hohen Tanne und zum Forsthaus Sackdilling</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lon>11.588400</Lon>
+        <Lat>49.628502</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_52</Tag>
+        <Name>Von Velburg zur Ruine Adelburg</Name>
+        <Laenge>15.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>überwiegend leichtes Gelände</Charakter>
+        <Lon>11.671017</Lon>
+        <Lat>49.230495</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_53</Tag>
+        <Name>Von Parsberg durchs Laabertal nach Hollerstetten</Name>
+        <Laenge>19.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>überwiegend leichtes Gelände, für heiße Tage weniger geeignet</Charakter>
+        <Lon>11.723579</Lon>
+        <Lat>49.164188</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_54</Tag>
+        <Name>Thalmässinger Impressionen</Name>
+        <Laenge>19.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.186789</Lon>
+        <Lat>49.107243</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_55</Tag>
+        <Name>Auf den Spuren der Römer</Name>
+        <Laenge>16.0</Laenge>
+        <Dauer>4.0</Dauer>
+        <Charakter>leichtes Gelände, bei großer Hitze und hoher Schneelage weniger geeignet</Charakter>
+        <Lon>11.048452</Lon>
+        <Lat>49.030693</Lat>
+        <Datum>2008-01-01</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_56</Tag>
+        <Name>Vom Arbachtal über den Rohrberg zur &quot;Deutschordensstadt&quot; Ellingen</Name>
+        <Laenge>23.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.977676</Lon>
+        <Lat>49.106438</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_57</Tag>
+        <Name>Von Weißenburg ins Schambachtal und zur Wülzburg</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.968272</Lon>
+        <Lat>49.028790</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_58</Tag>
+        <Name>Sichtreiche Rundwanderung im Hahnenkamm</Name>
+        <Laenge>17.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>10.718084</Lon>
+        <Lat>49.044430</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_59</Tag>
+        <Name>Zum Hesselberg, der höchsten Erhebung Mittelfrankens</Name>
+        <Laenge>17.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes und schweres Gelände</Charakter>
+        <Lon>10.602635</Lon>
+        <Lat>49.042297</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>FUW2_60</Tag>
+        <Name>Zur wehrhaften Kirchenburg nach Illschwang</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter>leichtes Gelände</Charakter>
+        <Lon>11.653136</Lon>
+        <Lat>49.425220</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
     </walks>
 </wandern>

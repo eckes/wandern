@@ -1,7 +1,5 @@
 <?php 
-    global $g_homelat, $g_homelon;
-    $g_homelat = 49.414630;
-    $g_homelon = 11.031539;
+    include("constants.php");
     define("DBTYPE", "XML");
 
         /* TODO: 
@@ -24,7 +22,7 @@ END;
 
     function writeScriptLine($a_val1, $a_val2)
     {
-        echo "addMark($a_val1[Lat], $a_val1[Lon], '$a_val1[Name]', '$a_val1[Tag]', ";
+        echo "addMark($a_val1[Lon], $a_val1[Lat], '$a_val1[Name]', '$a_val1[Tag]', ";
         if($a_val1[Datum] != "0000-00-00")
         {
             echo "g_WALKED_ICON, ";
@@ -306,7 +304,7 @@ END;
             g_DIRECTIONS    = new google.maps.Directions();
             GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
 
-            g_HOME       = new google.maps.LatLng(<?=$g_homelat?>, <?=$g_homelon?>);
+            g_HOME       = new google.maps.LatLng(<?=HOMELAT?>, <?=HOMELON?>);
         }
 
         function hideAll()
@@ -400,6 +398,12 @@ END;
             </thead>
 
 <?php
+    if(DBTYPE=="MYSQL")
+    {
+        echo <<<END
+        <div style="background:red;"><H1>WARNING! MYSQL VERSION ACTIVE! DEPRECATED!</H1></div>
+END;
+    }
     /* XXX This block gets the elements to show! XXX */
     $res = db_init();
     $elements = db_getElements($res);

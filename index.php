@@ -36,13 +36,23 @@
                 <input type="checkbox" name="kein_steiles" value="yes"> kein steiles Gelände<br>
             </fieldset>
             <fieldset>
+                <legend>Region</legend>
+                <table>
+                    <tr><td>NW</td><td><input type="checkbox" name="Region1" value="yes" checked></td><td></td><td><input type="checkbox" name="Region2" value="yes" checked></td><td>NO</td></tr>
+                    <tr><td></td><td></td><td><img src="images/home.png"></td><td></td><td></td></tr>
+                    <tr><td>SW</td><td><input type="checkbox" name="Region3" value="yes" checked></td><td></td><td><input type="checkbox" name="Region4" value="yes" checked></td><td>SO</td></tr>
+                </table>
+            </fieldset>
+            <fieldset>
                 <legend>Sonstiges</legend>
                 <input type="checkbox" name="showwalked" value="yes"> Zeige gelaufene<br>
+                <input type="checkbox" name="showoneway" value="yes"> Zeige Streckenwanderungen<br>
                 <select name="buch" size="1">
                     <option>Alle Bücher</option>
                     <option>MLUW1</option>
                     <option>MLUW2</option>
                     <option>FUW1</option>
+                    <option>FUW2</option>
                     <option>FUW3</option>
                 </select>
             </fieldset>

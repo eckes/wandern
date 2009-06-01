@@ -1,4 +1,7 @@
 <?php 
+
+include("constants.php");
+
 /** XML Tag constants */
 define("XMLTAG_TAG",        "Tag");
 define("XMLTAG_NAME",       "Name");
@@ -8,7 +11,9 @@ define("XMLTAG_CHAR",       "Charakter");
 define("XMLTAG_LAT",        "Lat");
 define("XMLTAG_LON",        "Lon");
 define("XMLTAG_DATE",       "Datum");
+define("XMLTAG_ONEWAY",     "Streckenwanderung");
 define("XMLTAG_WALK",       "walks");
+
 
 function getVal($a_walk, $a_name)
 {
@@ -25,6 +30,11 @@ function match($a_walk)
     if(!$_REQUEST[showwalked])
     {
         if($date != "0000-00-00") return false;
+    }
+
+    if(!$_REQUEST[showoneway])
+    {
+        if(0 != getVal($a_walk, XMLTAG_ONEWAY)) return false;
     }
 
     if($_REQUEST[dst_min] != "egal")
@@ -60,6 +70,36 @@ function match($a_walk)
     if($_REQUEST[buch] != "Alle Bücher")
     {
         if(!stristr($tag, $_REQUEST[buch])) return false;
+    }
+
+    if(!$_REQUEST[Region1] || !$_REQUEST[Region2] || !$_REQUEST[Region3] || !$_REQUEST[Region4])
+    {
+        $lat = getVal($a_walk, XMLTAG_LAT);
+        $lon = getVal($a_walk, XMLTAG_LON);
+
+        /* NOT Region 1 */
+        if(!$_REQUEST[Region1])
+        {
+            if(($lat >= HOMELAT) && ($lon <= HOMELON)) return false;
+        }
+
+        /* NOT Region 2 */
+        if(!$_REQUEST[Region2])
+        {
+            if(($lat >= HOMELAT) && ($lon >= HOMELON)) return false;
+        }
+
+        /* NOT Region 3 */
+        if(!$_REQUEST[Region3])
+        {
+            if(($lat <= HOMELAT) && ($lon <= HOMELON)) return false;
+        }
+
+        /* NOT Region 4 */
+        if(!$_REQUEST[Region4])
+        {
+            if(($lat <= HOMELAT) && ($lon >= HOMELON)) return false;
+        }
     }
     return true;
 }
