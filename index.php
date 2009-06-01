@@ -54,6 +54,7 @@
                     <option>FUW1</option>
                     <option>FUW2</option>
                     <option>FUW3</option>
+                    <option>NW2</option>
                 </select>
             </fieldset>
             <button type="submit">submit</button>

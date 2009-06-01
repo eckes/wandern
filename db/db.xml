@@ -6,7 +6,7 @@
 - http://www.phpmyadmin.net
 -
 - Host: localhost
-- Erstellungszeit: 01. Juni 2009 um 12:50
+- Erstellungszeit: 01. Juni 2009 um 18:15
 - Server Version: 5.1.30
 - PHP-Version: 5.2.8
 -->
@@ -3313,6 +3313,534 @@
         <Charakter>leichtes Gelände</Charakter>
         <Lon>11.653136</Lon>
         <Lat>49.425220</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_43</Tag>
+        <Name>Über die Randberge südlich von Hersbruck</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_42</Tag>
+        <Name>Auf dem &quot;Peter-Schöner-Gedächtnisweg&quot; durch den &quot;Schwarzen Brand&quot;</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_41</Tag>
+        <Name>Über Neutras durch den &quot;Schwarzen Brand&quot;</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_40</Tag>
+        <Name>Auf dem &quot;Exkursionspfad&quot; zum Forsthaus Sackdilling</Name>
+        <Laenge>26.0</Laenge>
+        <Dauer>6.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.551344</Lon>
+        <Lat>49.626888</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_39</Tag>
+        <Name>Von Vorra nach Hartenstein und durch das Obere Pegnitztal</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.495351</Lon>
+        <Lat>49.564190</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_38</Tag>
+        <Name>Von Hartenfels zur Maximiliansgrotte</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.480483</Lon>
+        <Lat>49.597439</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_37</Tag>
+        <Name>Auf Höhenwegen rings ums Hirschbachtal</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>2009-05-23</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_07</Tag>
+        <Name>Der Unteren Schwarzach entlang bis Wendelstein</Name>
+        <Laenge>14.0</Laenge>
+        <Dauer>3.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.030155</Lon>
+        <Lat>49.326729</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_06</Tag>
+        <Name>Auf dem &quot;Westlichen Albrandweg&quot; zum Hetzles und zur Kasberger Gerichtslinde</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.234530</Lon>
+        <Lat>49.620121</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_05</Tag>
+        <Name>Von Neuenkirchen am Brand auf den Hetzleser Berg</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.130808</Lon>
+        <Lat>49.613041</Lat>
+        <Datum>2009-06-24</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_04</Tag>
+        <Name>Zu alten Herrensitzen im unteren Pegnitztal und im Sebalder Reichswald</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.137158</Lon>
+        <Lat>49.475243</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_03</Tag>
+        <Name>Durch die weiten Waldungen des Sebalder Reichswaldes</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.128592</Lon>
+        <Lat>49.488338</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_01</Tag>
+        <Name>Am Langwasser- und Haidbrunngraben entlang nach Heroldsberg</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.198498</Lon>
+        <Lat>49.481575</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_02</Tag>
+        <Name>Ein Streifzug durch den Sebalder Reichswald</Name>
+        <Laenge>19.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.198498</Lon>
+        <Lat>49.481575</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_36</Tag>
+        <Name>Vom Hirschbachtal über den &quot;Schwarzen Brand&quot; zum Rupprechtstein</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_35</Tag>
+        <Name>Von Neuhaus über Velden zum Hohenstein</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.551344</Lon>
+        <Lat>49.626888</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_34</Tag>
+        <Name>Von Simmelsdorf über Götzlesberg zum Hohenstein</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.340945</Lon>
+        <Lat>49.598377</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_33</Tag>
+        <Name>Von Hersbruck über Stöppach zum Hohenstein</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_32</Tag>
+        <Name>Von Rupprechtstegen zum Hohenstein</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.480483</Lon>
+        <Lat>49.597439</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_31</Tag>
+        <Name>Vom Markt Schnaittach zum Hohenstein</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.341814</Lon>
+        <Lat>49.557102</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_30</Tag>
+        <Name>Frühlingswanderung um den Kleinen und Großen Hansgörgl</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_29</Tag>
+        <Name>Herbstwanderung zwischen Viehberg, Altem Schloß und Eschenbach</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_28</Tag>
+        <Name>Auf alten Hochwegen um den Siegersdorfer Talkessel und zur Festungsruine am Rothenberg</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.374030</Lon>
+        <Lat>49.514858</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_27</Tag>
+        <Name>Auf den Höhen um Simmelsdorf</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.340945</Lon>
+        <Lat>49.598377</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_26</Tag>
+        <Name>Herbstwanderung um den Osternoher Talkessel</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.341814</Lon>
+        <Lat>49.557102</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_25</Tag>
+        <Name>Stille Waldpfade um den &quot;Alten Rothenberg&quot;</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.341814</Lon>
+        <Lat>49.557102</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_24</Tag>
+        <Name>Vom Bahnhof Neuenkirchen am Sand zum Großen Hansgörgl und zum Glatzenstein</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.321191</Lon>
+        <Lat>49.522598</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_23</Tag>
+        <Name>Stille Talgründe zwischen Aurach und Aisch</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>10.710207</Lon>
+        <Lat>49.555096</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_22</Tag>
+        <Name>Stille Wege links und rechts der Zenn</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>10.801858</Lon>
+        <Lat>49.496998</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_21</Tag>
+        <Name>Vom &quot;Teufelsgraben&quot; zum Erlach- und Fembachgrund</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>10.801858</Lon>
+        <Lat>49.496998</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_20</Tag>
+        <Name>Über den &quot;Burgfarrnbacher Felsenkeller&quot; in das &quot;Lager Wallensteins&quot;</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>10.924379</Lon>
+        <Lat>49.485031</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_19</Tag>
+        <Name>Herbst im &quot;Fürther Stadtwald&quot;</Name>
+        <Laenge>12.0</Laenge>
+        <Dauer>3.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>10.924379</Lon>
+        <Lat>49.485031</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_18</Tag>
+        <Name>Vom Zenn- zum Farrnbachgrund</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>10.801858</Lon>
+        <Lat>49.496998</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_17</Tag>
+        <Name>Zur alten Hammerschmiede und zum Dillenberg</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>10.864029</Lon>
+        <Lat>49.460751</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_16</Tag>
+        <Name>Vom Tal der Bibert und der Mettlach zum Deutschherrenschloß Virnsberg</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>10.589662</Lon>
+        <Lat>49.421947</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_15</Tag>
+        <Name>Zu schönen Fachwerken im Bibertgrund</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>10.851796</Lon>
+        <Lat>49.420593</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_14</Tag>
+        <Name>Auf den Heidenberg bei Schwabach</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.030155</Lon>
+        <Lat>49.326729</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_13</Tag>
+        <Name>Grüne Wiesentälchen locken</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.021632</Lon>
+        <Lat>49.377827</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_12</Tag>
+        <Name>Über den Nonnenberg zum Moritzberg</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.336678</Lon>
+        <Lat>49.508209</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_11</Tag>
+        <Name>Auf dem &quot;Jakob-Krieger-Weg&quot; zum Moritzberg</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.234930</Lon>
+        <Lat>49.491730</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_10</Tag>
+        <Name>Über Schloß Gugelhammer ins Mittlere Schwarzachtal</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.207621</Lon>
+        <Lat>49.380295</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_09</Tag>
+        <Name>Einsame Waldwege um den Hut- und Büchleinsberg</Name>
+        <Laenge>20.0</Laenge>
+        <Dauer>5.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.078445</Lon>
+        <Lat>49.494568</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>0</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_08</Tag>
+        <Name>Durch den Frühlingswald nach Brunn</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.147179</Lon>
+        <Lat>49.445869</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_44</Tag>
+        <Name>Von Pommelsbrunn ins Förrenbach- und Molsberger Tal</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.495136</Lon>
+        <Lat>49.503193</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_45</Tag>
+        <Name>Auf stillen Wegen zum Poppberg bei Alfeld</Name>
+        <Laenge>22.0</Laenge>
+        <Dauer>5.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.561839</Lon>
+        <Lat>49.453522</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_46</Tag>
+        <Name>Über den Dreibrüderweg nach Schloß Grünsberg und ins Obere Schwarzachtal</Name>
+        <Laenge>24.0</Laenge>
+        <Dauer>6.0</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.253330</Lon>
+        <Lat>49.363029</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_47</Tag>
+        <Name>Aussichtsreiche Wege und stille Pfade am westlichen Albrand</Name>
+        <Laenge>26.0</Laenge>
+        <Dauer>6.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.353560</Lon>
+        <Lat>49.389969</Lat>
+        <Datum>0000-00-00</Datum>
+        <Streckenwanderung>1</Streckenwanderung>
+    </walks>
+    <walks>
+        <Tag>NW2_48</Tag>
+        <Name>Von Postbauer zum aussichtsreichen Dillberg</Name>
+        <Laenge>18.0</Laenge>
+        <Dauer>4.5</Dauer>
+        <Charakter></Charakter>
+        <Lon>11.359008</Lon>
+        <Lat>49.309078</Lat>
         <Datum>0000-00-00</Datum>
         <Streckenwanderung>0</Streckenwanderung>
     </walks>
