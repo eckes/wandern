@@ -1,10 +1,7 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <?php 
     include("constants.php");
     define("DBTYPE", "XML");
-
-        /* TODO: 
-         * - extend the google markermanager class so that the markers can be resolved by providing an id
-         * */
 
     function writeTableLine($a_val1, $a_val2)
     {
@@ -51,6 +48,7 @@ END;
 ?>
 <html>
     <head>
+        <META http-equiv="content-type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAARoTP-aPC3X-J7A6v_c-RrRSliXv-vXMxLfXbWpmDAJtGYmmjPhRn1xN7Ce6w66WX49UMmCdujbpuzA"></script>
         <script type="text/javascript" src="../js/gs_sortable.js"></script>
         <script type="text/javascript">
@@ -88,7 +86,6 @@ END;
             this.m_tag      = a_tag;
             this.m_marker   = a_marker;
             this.m_desc     = a_description;
-            this.m_tmpImage = null;
             this.length     = 0;
         }
         /* ------------------------------------------------------------------------------------------------ */
@@ -164,31 +161,69 @@ END;
             return null;
         }
 
+        /** Shows the marker with the given name */
+        MarkerList.prototype.show = function(a_name)
+        {
+            var me      = this.search(a_name);
+            if(me)
+            {
+                me.m_marker.show();
+            }
+            var e = document.getElementById(a_name + "_cb");
+            if(e)
+            {
+                e.checked = true;
+            }
+        }
+
+        /** Hides the marker with the given name */
+        MarkerList.prototype.hide = function(a_name)
+        {
+            var me      = this.search(a_name);
+            if(me)
+            {
+                me.m_marker.hide();
+            }
+
+            if(g_HIGHLIGHT)
+            {
+                g_HIGHLIGHT.closeInfoWindow();
+                g_HIGHLIGHT.hide();
+            }
+            var e = document.getElementById(a_name + "_cb");
+            if(e)
+            {
+                e.checked = false;
+            }
+        }
+
+        /** Displays all the markers of the list */
         MarkerList.prototype.showAll = function()
         {
             var i = 0;
             for (i = 0; i < this.length; i++)
             {
                 me = this.get(i);
-                if(null == me)
+                if( (null == me) || (me.m_tag == "highlight") )
                 {
-                    continue; /* skip the gap */
+                    continue; /* skip the gap and the highlight marker */
                 }
-                doShow(me.m_tag);
+                this.show(me.m_tag);
             }
         }
 
+        /** Hides all the markers of the list */
         MarkerList.prototype.hideAll = function()
         {
             var i = 0;
             for (i = 0; i < this.length; i++)
             {
                 me = this.get(i);
-                if(null == me)
+                if( (null == me) || (me.m_tag == "home") )
                 {
-                    continue; /* skip the gap */
+                    continue; /* skip the gap and the home marker */
                 }
-                doHide(me.m_tag);
+                this.hide(me.m_tag);
             }
         }
         /* ------------------------------------------------------------------------------------------------ */
@@ -198,8 +233,8 @@ END;
         /* ------------------------------------------------------------------------------------------------ */
         /* BEGIN Class MyIcon                                                                               */
         /* ------------------------------------------------------------------------------------------------ */
-        MyIcon.prototype = new Icon();          /* Default CTor of the parent class */
-        MyIcon.prototype.constructor = MyIcon;  /* assign our own CTor              */
+        MyIcon.prototype = new google.maps.Icon();  /* Default CTor of the parent class */
+        MyIcon.prototype.constructor = MyIcon;      /* assign our own CTor              */
         /* CTor of the MyIcon class */
         function MyIcon(a_foreground)
         {
@@ -238,7 +273,7 @@ END;
                 l_info = l_info + a_char + "<br>";
             }
             l_info = l_info + "<span id='" + a_tag +"_infodst'><a href=\"javascript:distCalc('" + a_pos +"' , '" + a_tag + "', '_infodst')\">dist</a></span> | ";
-            l_info = l_info + "<a href=\"javascript:doHide(\'" + a_tag +"\')\">hide</a>";
+            l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_tag +"\')\">hide</a>";
             return l_info;
         }
 
@@ -339,44 +374,19 @@ END;
             g_MARKERLIST.push(me);
         }
 
-        function doShow(a_name)
-        {
-            var e = document.getElementById(a_name + "_cb");
-            if(e)
-            {
-                e.checked = true;
-                return cbChanged(a_name);
-            }
-        }
-
-        function doHide(a_name)
-        {
-            var e = document.getElementById(a_name + "_cb");
-            if(e)
-            {
-                e.checked = false;
-                return cbChanged(a_name);
-            }
-        }
-
         function cbChanged(a_name)
         {
-            var bChecked = document.getElementById(a_name + "_cb").checked;
-            var me      = null;
-            var i       = 0;
-            me = g_MARKERLIST.search(a_name);
-            if(null == me)
+            var e = document.getElementById(a_name + "_cb");
+            if(e)
             {
-                alert("not found");
-            }
-            if(false == bChecked)
-            {
-                me.m_marker.hide();
-                me.m_marker.closeInfoWindow();
-            }
-            else
-            {
-                me.m_marker.show();
+                if(false == e.checked)
+                {
+                    g_MARKERLIST.hide(a_name);
+                }
+                else
+                {
+                    g_MARKERLIST.show(a_name);
+                }
             }
         }
         /* ------------------------------------------------------------------------------------------------ */
