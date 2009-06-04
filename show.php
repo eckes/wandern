@@ -304,18 +304,17 @@ END;
          *  @return  The created HTML statement
          */
         /*--- createInfoString() ------------------------------------------------------ createInfoString() ---*/
-        function createInfoString(a_text, a_len, a_dur, a_char, a_id, a_pos)
+        function createInfoString(a_text, a_len, a_dur, a_char, a_id)
         {
             var l_info = "<b>" + a_text + "</b><br>" + a_len + "km | " + a_dur + "h<br>";
             if(a_char)
             {
                 l_info = l_info + a_char + "<br>";
             }
-            l_info = l_info + "<span id='" + a_id +"_infodst'><a href=\"javascript:distCalc('" + a_pos +"' , '" + a_id + "', '_infodst')\">dist</a></span> | ";
+            l_info = l_info + "<span id='" + a_id +"_infodst'><a href=\"javascript:distCalc('" + a_id + "', '_infodst')\">dist</a></span> | ";
             l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_id +"\')\">hide</a>";
             return l_info;
         }
-
 
         function infoWindowClosedCB()
         {
@@ -370,7 +369,7 @@ END;
             var pos     = new google.maps.LatLng(a_lat, a_long);
             var options = {title: a_text, bouncy: true, icon:a_icon};
             var l_mark  = new google.maps.Marker(pos, options);
-            var l_info = createInfoString(a_text, a_len, a_dur, a_char, a_id, pos);
+            var l_info  = createInfoString(a_text, a_len, a_dur, a_char, a_id);
 
             /* add the mark to our markerlist */
             var me = new MarkEntry(a_id, l_mark, l_info);
@@ -380,7 +379,7 @@ END;
             GEvent.addListener(l_mark, "click", function(){showInfo(a_id)});
 
             var dst = a_id + "_dst";
-            document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + pos + "','" + a_id +"', '_dst')\">calculate</a>";
+            document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">calculate</a>";
         }
 
         /*--- showHome() ---------------------------------------------------------------------- showHome() ---*/
@@ -427,9 +426,9 @@ END;
         /*--- createHighlight() -------------------------------------------------------- createHighlight() ---*/
         function createHighlight()
         {
-            var hiIcon = new MyIcon("images/wanderparkplatz_selected.png");
+            var hiIcon  = new MyIcon("images/wanderparkplatz_selected.png");
             var options = {icon:hiIcon, zIndexProcess:getZIndex};
-            g_HIGHLIGHT    = new google.maps.Marker(g_HOME, options);
+            g_HIGHLIGHT = new google.maps.Marker(g_HOME, options);
             g_HIGHLIGHT.hide();
             var me = new MarkEntry("highlight", g_HIGHLIGHT, "HL");
             g_MARKERLIST.push(me);
@@ -467,9 +466,11 @@ END;
         /**
          * Calculates the distance from home to the given position identified by the given id
          * */
-        function distCalc(a_pos, a_id, a_suffix)
+        function distCalc(a_id, a_suffix)
         {
-            var l_query = "from: " + g_HOME + " to: " + a_pos;
+            var me = g_MARKERLIST.search(a_id);
+            if(!me)alert("Entry not found for ID " + a_id);
+            var l_query = "from: " + g_HOME + " to: " + me.m_marker.getLatLng();
             g_CURRENTJOB = new PlannerJob(a_id, l_query, a_id + a_suffix);
             document.getElementById(g_CURRENTJOB.m_descId).innerHTML = "working...";
             g_DIRECTIONS.load(l_query);
@@ -537,7 +538,6 @@ END;
             <thead>
                 <tr><th>Tag</th><th>Name</th><th>Laenge</th><th>Dauer</th><th>Charakterisik</th><th>Entfernung</th></tr>
             </thead>
-
 <?php
     if(DBTYPE=="MYSQL")
     {
