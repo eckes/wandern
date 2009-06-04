@@ -57,15 +57,15 @@ END;
         /* ------------------------------------------------------------------------------------------------ */
         /* Globals                                                                                          */
         /* ------------------------------------------------------------------------------------------------ */
-        var g_INITIALIZED       = 0;
-        var g_MARKERLIST        = null;
-        var g_CURRENTJOB        = null;
-        var g_DIRECTIONS        = null;
-        var g_HOME              = null;
-        var g_MAP               = null;
-        var g_ICON              = null;
-        var g_WALKED_ICON       = null;
-        var g_HIGHLIGHT         = null;
+        var g_INITIALIZED       = 0;    /**< Prevents from double-inits                                     */
+        var g_MARKERLIST        = null; /**< List taking all our marks                                      */
+        var g_CURRENTJOB        = null; /**< The distance-calculation currently active                      */
+        var g_DIRECTIONS        = null; /**< Also for distance calculation                                  */
+        var g_HOME              = null; /**< Coordinates of home sweet home                                 */
+        var g_MAP               = null; /**< Map to take everything                                         */
+        var g_ICON              = null; /**< The normal marker for standard walks                           */
+        var g_WALKED_ICON       = null; /**< The marker for already walked walks                            */
+        var g_HIGHLIGHT         = null; /**< The highlight marker that gets moved dynamically               */
 
         /* ------------------------------------------------------------------------------------------------ */
         /* BEGIN configuration of the table-sorting-and-striping script                                     */
@@ -81,9 +81,9 @@ END;
         /* ------------------------------------------------------------------------------------------------ */
         /* BEGIN Class MarkEntry                                                                            */
         /* ------------------------------------------------------------------------------------------------ */
-        function MarkEntry(a_tag, a_marker, a_description)
+        function MarkEntry(a_id, a_marker, a_description)
         {
-            this.m_tag      = a_tag;
+            this.m_id       = a_id;
             this.m_marker   = a_marker;
             this.m_desc     = a_description;
             this.length     = 0;
@@ -95,9 +95,9 @@ END;
         /* ------------------------------------------------------------------------------------------------ */
         /* BEGIN Class PlannerJob                                                                           */
         /* ------------------------------------------------------------------------------------------------ */
-        function PlannerJob(a_tag, a_query, a_descId)
+        function PlannerJob(a_id, a_query, a_descId)
         {
-            this.m_tag      = a_tag;
+            this.m_id       = a_id;
             this.m_query    = a_query;
             this.m_descId   = a_descId;
         }
@@ -108,7 +108,11 @@ END;
         /* ------------------------------------------------------------------------------------------------ */
         /* BEGIN Class MarkerList                                                                           */
         /* ------------------------------------------------------------------------------------------------ */
-        /** CTor for a new MarkerList */
+        /** 
+         * CTor for a new MarkerList 
+         *
+         * @param  a_map   Map to take the markers
+         */
         function MarkerList(a_map)
         {
             this.entries    = new Array();
@@ -116,7 +120,11 @@ END;
             this.bounds     = new google.maps.LatLngBounds();
         }
 
-        /** Adds the given entry as new element to the MarkerList */
+        /** 
+         * Adds the given entry as new element to the MarkerList
+         *
+         * @param a_entry    MarkerEntry object to be added to the list
+         */
         MarkerList.prototype.push = function(a_entry)
         {
             this.entries.push(a_entry);
@@ -125,23 +133,46 @@ END;
             this.length = this.entries.length;
         }
 
+        /** 
+         * Returns the center point of the bounds of all the markers
+         *
+         * @return  The center of the map as google.maps.LatLng object
+         */
         MarkerList.prototype.getCenter = function()
         {
             return this.bounds.getCenter();
         }
 
+        /**
+         * Accessor for the bounds object of the MarkerList
+         *
+         * @return  The bounds of the map as google.maps.LatLngBounds object
+         */
         MarkerList.prototype.getBounds = function()
         {
             return this.bounds;
         }
 
-        /** Returns the entry on the given index */
+        /** 
+         * Returns the entry on the given index
+         *
+         * @param a_index   Index of the MarkerEntry to return
+         *
+         * @return the MarkerEntry stored at the given index
+         */
         MarkerList.prototype.get = function(a_index)
         {
             return this.entries[a_index];
         }
 
-        /** Searches for an entry with the given ID and returns it. */
+        /**
+         * Searches for an entry with the given ID and returns it. 
+         *
+         * @param   a_id    ID of the entry to search for
+         *
+         * @return the MarkEntry identified by the given ID
+         */
+
         MarkerList.prototype.search = function(a_id)
         {
             var i = 0;
@@ -153,7 +184,7 @@ END;
                 {
                     continue; /* skip the gap */
                 }
-                if(a_id == me.m_tag)
+                if(a_id == me.m_id)
                 {
                     return me;
                 }
@@ -161,25 +192,33 @@ END;
             return null;
         }
 
-        /** Shows the marker with the given name */
-        MarkerList.prototype.show = function(a_name)
+        /** 
+         * Shows the marker with the given name 
+         *
+         * @param a_id     ID of the marker to show
+         */
+        MarkerList.prototype.show = function(a_id)
         {
-            var me      = this.search(a_name);
+            var me      = this.search(a_id);
             if(me)
             {
                 me.m_marker.show();
             }
-            var e = document.getElementById(a_name + "_cb");
+            var e = document.getElementById(a_id + "_cb");
             if(e)
             {
                 e.checked = true;
             }
         }
 
-        /** Hides the marker with the given name */
-        MarkerList.prototype.hide = function(a_name)
+        /**
+         * Hides the marker with the given name 
+         *
+         * @param a_id   ID of the marker to hide
+         */
+        MarkerList.prototype.hide = function(a_id)
         {
-            var me      = this.search(a_name);
+            var me      = this.search(a_id);
             if(me)
             {
                 me.m_marker.hide();
@@ -190,7 +229,7 @@ END;
                 g_HIGHLIGHT.closeInfoWindow();
                 g_HIGHLIGHT.hide();
             }
-            var e = document.getElementById(a_name + "_cb");
+            var e = document.getElementById(a_id + "_cb");
             if(e)
             {
                 e.checked = false;
@@ -204,11 +243,11 @@ END;
             for (i = 0; i < this.length; i++)
             {
                 me = this.get(i);
-                if( (null == me) || (me.m_tag == "highlight") )
+                if( (null == me) || (me.m_id == "highlight") )
                 {
                     continue; /* skip the gap and the highlight marker */
                 }
-                this.show(me.m_tag);
+                this.show(me.m_id);
             }
         }
 
@@ -219,11 +258,11 @@ END;
             for (i = 0; i < this.length; i++)
             {
                 me = this.get(i);
-                if( (null == me) || (me.m_tag == "home") )
+                if( (null == me) || (me.m_id == "home") )
                 {
                     continue; /* skip the gap and the home marker */
                 }
-                this.hide(me.m_tag);
+                this.hide(me.m_id);
             }
         }
         /* ------------------------------------------------------------------------------------------------ */
@@ -260,20 +299,20 @@ END;
          *  @param   a_len      Length of the walk in km
          *  @param   a_dur      Duration of the walk in h
          *  @param   a_char     Character of the walk
-         *  @param   a_tag      Tag of the walk
+         *  @param   a_id       Tag of the walk
          *
          *  @return  The created HTML statement
          */
         /*--- createInfoString() ------------------------------------------------------ createInfoString() ---*/
-        function createInfoString(a_text, a_len, a_dur, a_char, a_tag, a_pos)
+        function createInfoString(a_text, a_len, a_dur, a_char, a_id, a_pos)
         {
             var l_info = "<b>" + a_text + "</b><br>" + a_len + "km | " + a_dur + "h<br>";
             if(a_char)
             {
                 l_info = l_info + a_char + "<br>";
             }
-            l_info = l_info + "<span id='" + a_tag +"_infodst'><a href=\"javascript:distCalc('" + a_pos +"' , '" + a_tag + "', '_infodst')\">dist</a></span> | ";
-            l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_tag +"\')\">hide</a>";
+            l_info = l_info + "<span id='" + a_id +"_infodst'><a href=\"javascript:distCalc('" + a_pos +"' , '" + a_id + "', '_infodst')\">dist</a></span> | ";
+            l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_id +"\')\">hide</a>";
             return l_info;
         }
 
@@ -287,17 +326,17 @@ END;
         /**
          *  @brief   Shows the information at the mark identified by the given tag
          *
-         *  @param   a_tag  Tag identifying the mark to show the information for
+         *  @param   a_id  Tag identifying the mark to show the information for
          *
          *  @return  nothing
          */
         /*--- showInfo() ---------------------------------------------------------------------- showInfo() ---*/
-        function showInfo(a_tag)
+        function showInfo(a_id)
         {
-            var me = g_MARKERLIST.search(a_tag);
+            var me = g_MARKERLIST.search(a_id);
             if(null == me)
             {
-                alert("no entry for tag " + a_tag);
+                alert("no entry for tag " + a_id);
             }
             if(null == g_HIGHLIGHT)
             {
@@ -317,7 +356,7 @@ END;
          *  @param    a_long  Longitude of the mark position
          *  @param    a_lat   Latitude of the mark position
          *  @param    a_text  Text to be displayed for the mark (the name of the tour)
-         *  @param    a_tag   Tag uniquely identifying the walk
+         *  @param    a_id    Tag uniquely identifying the walk
          *  @param    a_icon  Icon to use for the mark
          *  @param    a_len   Length in km of the walk
          *  @param    a_dur   Duration of the walk in hours
@@ -326,24 +365,31 @@ END;
          *  @return  nothing
          */
         /*--- addMark() ------------------------------------------------------------------------ addMark() ---*/
-        function addMark(a_long, a_lat, a_text, a_tag, a_icon, a_len, a_dur, a_char)
+        function addMark(a_long, a_lat, a_text, a_id, a_icon, a_len, a_dur, a_char)
         {
             var pos     = new google.maps.LatLng(a_lat, a_long);
             var options = {title: a_text, bouncy: true, icon:a_icon};
             var l_mark  = new google.maps.Marker(pos, options);
-            var l_info = createInfoString(a_text, a_len, a_dur, a_char, a_tag, pos);
+            var l_info = createInfoString(a_text, a_len, a_dur, a_char, a_id, pos);
 
             /* add the mark to our markerlist */
-            var me = new MarkEntry(a_tag, l_mark, l_info);
+            var me = new MarkEntry(a_id, l_mark, l_info);
             g_MARKERLIST.push(me);
             me = null;
 
-            GEvent.addListener(l_mark, "click", function(){showInfo(a_tag)});
+            GEvent.addListener(l_mark, "click", function(){showInfo(a_id)});
 
-            var dst = a_tag + "_dst";
-            document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + pos + "','" + a_tag +"', '_dst')\">calculate</a>";
+            var dst = a_id + "_dst";
+            document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + pos + "','" + a_id +"', '_dst')\">calculate</a>";
         }
 
+        /*--- showHome() ---------------------------------------------------------------------- showHome() ---*/
+        /**
+         *  @brief   Creates the home mark identified by a cute little red heart :-)
+         *
+         *  @param   a_text     The title to show when hovering over the icon
+         */
+        /*--- showHome() ---------------------------------------------------------------------- showHome() ---*/
         function showHome(a_text)
         {
             var homeIcon = new google.maps.Icon();
@@ -359,11 +405,26 @@ END;
             g_MARKERLIST.push(me);
         }
 
+        /*--- getZIndex() -------------------------------------------------------------------- getZIndex() ---*/
+        /**
+         *  @brief   I've got no clue why we need this callback function, but I can say, when it's not present,
+         *               the highlighting mark doesn't go to foreground. So, it's better to leave it here.
+         *
+         *  @param   a_mark     the mark for which the zIndex shall be returned
+         *
+         *  @return  The new zIndex, as the google docs say
+         */
+        /*--- getZIndex() -------------------------------------------------------------------- getZIndex() ---*/
         function getZIndex(a_mark)
         {
             return 0;
         }
 
+        /*--- createHighlight() -------------------------------------------------------- createHighlight() ---*/
+        /**
+         *  @brief   Creates the highlighting mark that gets moved to the currently selected mark
+         */
+        /*--- createHighlight() -------------------------------------------------------- createHighlight() ---*/
         function createHighlight()
         {
             var hiIcon = new MyIcon("images/wanderparkplatz_selected.png");
@@ -374,18 +435,25 @@ END;
             g_MARKERLIST.push(me);
         }
 
-        function cbChanged(a_name)
+        /*--- cbChanged() -------------------------------------------------------------------- cbChanged() ---*/
+        /**
+         *  @brief   Gets called whenever a checkbox gets selected or de-selected
+         *
+         *  @param   a_id   ID of the element that has changed
+         */
+        /*--- cbChanged() -------------------------------------------------------------------- cbChanged() ---*/
+        function cbChanged(a_id)
         {
-            var e = document.getElementById(a_name + "_cb");
+            var e = document.getElementById(a_id + "_cb");
             if(e)
             {
                 if(false == e.checked)
                 {
-                    g_MARKERLIST.hide(a_name);
+                    g_MARKERLIST.hide(a_id);
                 }
                 else
                 {
-                    g_MARKERLIST.show(a_name);
+                    g_MARKERLIST.show(a_id);
                 }
             }
         }
@@ -397,16 +465,17 @@ END;
         /* BEGIN Methods to calculate distances                                                             */
         /* ------------------------------------------------------------------------------------------------ */
         /**
-         * Calculates the distance from home to the given position identified by the given tag
+         * Calculates the distance from home to the given position identified by the given id
          * */
-        function distCalc(a_pos, a_tag, a_suffix)
+        function distCalc(a_pos, a_id, a_suffix)
         {
             var l_query = "from: " + g_HOME + " to: " + a_pos;
-            g_CURRENTJOB = new PlannerJob(a_tag, l_query, a_tag + a_suffix);
+            g_CURRENTJOB = new PlannerJob(a_id, l_query, a_id + a_suffix);
             document.getElementById(g_CURRENTJOB.m_descId).innerHTML = "working...";
             g_DIRECTIONS.load(l_query);
         }
 
+        /** Callback getting called when a direction was loaded successfully */
         function dirLoadedCB()
         {
             /* finish the running job */
