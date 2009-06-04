@@ -10,7 +10,7 @@
     {
         echo <<<END
             <tr>
-                <td><input type="checkbox" checked name="tag" id="$a_val1[Tag]_cb" value="$a_val1[Tag]" onchange="cbChanged('$a_val1[Tag]'"> $a_val1[Tag]</td>
+                <td><input type="checkbox" checked name="tag" id="$a_val1[Tag]_cb" value="$a_val1[Tag]" onchange="cbChanged('$a_val1[Tag]')"> $a_val1[Tag]</td>
                 <td><a href="javascript:showInfo('$a_val1[Tag]');">$a_val1[Name]</a></td>
                 <td>$a_val1[Laenge]</td>
                 <td>$a_val1[Dauer]</td>
@@ -64,12 +64,21 @@ END;
         var g_CURRENTJOB        = null;
         var g_DIRECTIONS        = null;
         var g_HOME              = null;
-        var g_MAPBOUNDS         = null;
-        var g_MANAGER           = null;
         var g_MAP               = null;
         var g_ICON              = null;
         var g_WALKED_ICON       = null;
         var g_HIGHLIGHT         = null;
+
+        /* ------------------------------------------------------------------------------------------------ */
+        /* BEGIN configuration of the table-sorting-and-striping script                                     */
+        /* ------------------------------------------------------------------------------------------------ */
+        var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's', 's');
+        var TSort_Classes = new Array ('table_odd', 'table_even');
+        var TSort_Initial = 0;
+        tsRegister();
+        /* ------------------------------------------------------------------------------------------------ */
+        /* END configuration of the table-sorting-and-striping script                                       */
+        /* ------------------------------------------------------------------------------------------------ */
 
         /* ------------------------------------------------------------------------------------------------ */
         /* BEGIN Class MarkEntry                                                                            */
@@ -80,6 +89,7 @@ END;
             this.m_marker   = a_marker;
             this.m_desc     = a_description;
             this.m_tmpImage = null;
+            this.length     = 0;
         }
         /* ------------------------------------------------------------------------------------------------ */
         /* END Class MarkEntry                                                                              */
@@ -102,27 +112,36 @@ END;
         /* BEGIN Class MarkerList                                                                           */
         /* ------------------------------------------------------------------------------------------------ */
         /** CTor for a new MarkerList */
-        function MarkerList()
+        function MarkerList(a_map)
         {
-            this.entries = new Array();
+            this.entries    = new Array();
+            this.manager    = new google.maps.MarkerManager(a_map);
+            this.bounds     = new google.maps.LatLngBounds();
         }
 
         /** Adds the given entry as new element to the MarkerList */
         MarkerList.prototype.push = function(a_entry)
         {
             this.entries.push(a_entry);
+            this.bounds.extend(a_entry.m_marker.getLatLng());
+            this.manager.addMarker(a_entry.m_marker, 1);
+            this.length = this.entries.length;
+        }
+
+        MarkerList.prototype.getCenter = function()
+        {
+            return this.bounds.getCenter();
+        }
+
+        MarkerList.prototype.getBounds = function()
+        {
+            return this.bounds;
         }
 
         /** Returns the entry on the given index */
         MarkerList.prototype.get = function(a_index)
         {
             return this.entries[a_index];
-        }
-
-        /** Returns the number of elements */
-        MarkerList.prototype.length = function()
-        {
-            return this.entries.length;
         }
 
         /** Searches for an entry with the given ID and returns it. */
@@ -143,6 +162,34 @@ END;
                 }
             }
             return null;
+        }
+
+        MarkerList.prototype.showAll = function()
+        {
+            var i = 0;
+            for (i = 0; i < this.length; i++)
+            {
+                me = this.get(i);
+                if(null == me)
+                {
+                    continue; /* skip the gap */
+                }
+                doShow(me.m_tag);
+            }
+        }
+
+        MarkerList.prototype.hideAll = function()
+        {
+            var i = 0;
+            for (i = 0; i < this.length; i++)
+            {
+                me = this.get(i);
+                if(null == me)
+                {
+                    continue; /* skip the gap */
+                }
+                doHide(me.m_tag);
+            }
         }
         /* ------------------------------------------------------------------------------------------------ */
         /* END Class MarkerList                                                                             */
@@ -256,8 +303,6 @@ END;
             g_MARKERLIST.push(me);
             me = null;
 
-            g_MAPBOUNDS.extend(pos);
-            g_MANAGER.addMarker(l_mark, 1);
             GEvent.addListener(l_mark, "click", function(){showInfo(a_tag)});
 
             var dst = a_tag + "_dst";
@@ -275,9 +320,8 @@ END;
             var options = {title: a_text, icon:homeIcon};
             var mark    = new google.maps.Marker(g_HOME, options);
             mark.bindInfoWindowHtml("<h1><i>Daheim</i></h1><p>Home sweet Home</p>");
-            g_MAPBOUNDS.extend(g_HOME);
-            g_MANAGER.addMarker(mark, 1);
-            g_MANAGER.refresh();
+            var me = new MarkEntry("home", mark, "Daheim");
+            g_MARKERLIST.push(me);
         }
 
         function getZIndex(a_mark)
@@ -290,49 +334,29 @@ END;
             var hiIcon = new MyIcon("images/wanderparkplatz_selected.png");
             var options = {icon:hiIcon, zIndexProcess:getZIndex};
             g_HIGHLIGHT    = new google.maps.Marker(g_HOME, options);
-            g_MANAGER.addMarker(g_HIGHLIGHT, 1);
-            g_MANAGER.refresh();
             g_HIGHLIGHT.hide();
-        }
-
-        function hideAll()
-        {
-            var i = 0;
-            for (i = 0; i < g_MARKERLIST.length(); i++)
-            {
-                me = g_MARKERLIST.get(i);
-                if(null == me)
-                {
-                    continue; /* skip the gap */
-                }
-                doHide(me.m_tag);
-            }
-        }
-
-        function showAll()
-        {
-            var i = 0;
-            for (i = 0; i < g_MARKERLIST.length(); i++)
-            {
-                me = g_MARKERLIST.get(i);
-                if(null == me)
-                {
-                    continue; /* skip the gap */
-                }
-                doShow(me.m_tag);
-            }
+            var me = new MarkEntry("highlight", g_HIGHLIGHT, "HL");
+            g_MARKERLIST.push(me);
         }
 
         function doShow(a_name)
         {
-            document.getElementById(a_name + "_cb").checked = true;
-            return cbChanged(a_name);
+            var e = document.getElementById(a_name + "_cb");
+            if(e)
+            {
+                e.checked = true;
+                return cbChanged(a_name);
+            }
         }
 
         function doHide(a_name)
         {
-            document.getElementById(a_name + "_cb").checked = false;
-            return cbChanged(a_name);
+            var e = document.getElementById(a_name + "_cb");
+            if(e)
+            {
+                e.checked = false;
+                return cbChanged(a_name);
+            }
         }
 
         function cbChanged(a_name)
@@ -404,28 +428,16 @@ END;
             g_MAP.addControl(new google.maps.SmallZoomControl());
             g_MAP.addMapType(G_PHYSICAL_MAP);
 
-            g_MANAGER       = new google.maps.MarkerManager(g_MAP);
-            g_MAPBOUNDS     = new google.maps.LatLngBounds();
+            g_MARKERLIST    = new MarkerList(g_MAP);
+
             g_ICON          = new MyIcon("images/wanderparkplatz.png");
             g_WALKED_ICON   = new MyIcon("images/wanderparkplatz_hell.png");
             g_DIRECTIONS    = new google.maps.Directions();
-            g_MARKERLIST    = new MarkerList();
 
             GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
 
             g_HOME       = new google.maps.LatLng(<?=HOMELAT?>, <?=HOMELON?>);
         }
-
-        /* ------------------------------------------------------------------------------------------------ */
-        /* BEGIN configuration of the table-sorting-and-striping script                                     */
-        /* ------------------------------------------------------------------------------------------------ */
-        var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's', 's');
-        var TSort_Classes = new Array ('table_odd', 'table_even');
-        var TSort_Initial = 0;
-        tsRegister();
-        /* ------------------------------------------------------------------------------------------------ */
-        /* END configuration of the table-sorting-and-striping script                                       */
-        /* ------------------------------------------------------------------------------------------------ */
         </script>
         <style type="text/css">
           .table_odd{
@@ -439,8 +451,8 @@ END;
     <body onunload="GUnload()">
         <div>
             <div id="map" style="width: 800px; height: 600px"></div>
-            <a href="javascript:hideAll();">hide all</a> 
-            <a href="javascript:showAll();">show all</a> 
+            <a href="javascript:g_MARKERLIST.hideAll();">hide all</a> 
+            <a href="javascript:g_MARKERLIST.showAll();">show all</a> 
         </div>
         <table id="walks">
             <thead>
@@ -471,7 +483,7 @@ END;
     array_walk($elements, writeScriptLine);
 
 echo <<<END
-        g_MAP.setCenter(g_MAPBOUNDS.getCenter(), g_MAP.getBoundsZoomLevel(g_MAPBOUNDS));
+        g_MAP.setCenter(g_MARKERLIST.getCenter(), g_MAP.getBoundsZoomLevel(g_MARKERLIST.getBounds()));
     </script>
 END;
 ?>
