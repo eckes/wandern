@@ -56,9 +56,11 @@ END;
         <script type="text/javascript">
         google.load("maps", "2");
 
+        /* ------------------------------------------------------------------------------------------------ */
+        /* Globals                                                                                          */
+        /* ------------------------------------------------------------------------------------------------ */
         var g_INITIALIZED       = 0;
-        var g_MARKERLIST        = new MarkerList();
-        var g_PLANNERJOBS       = new Array();
+        var g_MARKERLIST        = null;
         var g_CURRENTJOB        = null;
         var g_DIRECTIONS        = null;
         var g_HOME              = null;
@@ -67,8 +69,11 @@ END;
         var g_MAP               = null;
         var g_ICON              = null;
         var g_WALKED_ICON       = null;
+        var g_HIGHLIGHT         = null;
 
-        /* Our MarkEntry class */
+        /* ------------------------------------------------------------------------------------------------ */
+        /* BEGIN Class MarkEntry                                                                            */
+        /* ------------------------------------------------------------------------------------------------ */
         function MarkEntry(a_tag, a_marker, a_description)
         {
             this.m_tag      = a_tag;
@@ -76,42 +81,51 @@ END;
             this.m_desc     = a_description;
             this.m_tmpImage = null;
         }
+        /* ------------------------------------------------------------------------------------------------ */
+        /* END Class MarkEntry                                                                              */
+        /* ------------------------------------------------------------------------------------------------ */
 
-        /**
-         * CTor for a new MarkerList
-         * */
+        /* ------------------------------------------------------------------------------------------------ */
+        /* BEGIN Class PlannerJob                                                                           */
+        /* ------------------------------------------------------------------------------------------------ */
+        function PlannerJob(a_tag, a_query, a_descId)
+        {
+            this.m_tag      = a_tag;
+            this.m_query    = a_query;
+            this.m_descId   = a_descId;
+        }
+        /* ------------------------------------------------------------------------------------------------ */
+        /* END Class PlannerJob                                                                             */
+        /* ------------------------------------------------------------------------------------------------ */
+
+        /* ------------------------------------------------------------------------------------------------ */
+        /* BEGIN Class MarkerList                                                                           */
+        /* ------------------------------------------------------------------------------------------------ */
+        /** CTor for a new MarkerList */
         function MarkerList()
         {
             this.entries = new Array();
         }
 
-        /**
-         * Adds the given entry as new element to the MarkerList
-         * */
+        /** Adds the given entry as new element to the MarkerList */
         MarkerList.prototype.push = function(a_entry)
         {
             this.entries.push(a_entry);
         }
 
-        /**
-         * Returns the entry on the given index 
-         * */
+        /** Returns the entry on the given index */
         MarkerList.prototype.get = function(a_index)
         {
             return this.entries[a_index];
         }
 
-        /**
-         * Returns the number of elements 
-         * */
+        /** Returns the number of elements */
         MarkerList.prototype.length = function()
         {
             return this.entries.length;
         }
 
-        /**
-         * Searches for an entry with the given ID and returns it.
-         * */
+        /** Searches for an entry with the given ID and returns it. */
         MarkerList.prototype.search = function(a_id)
         {
             var i = 0;
@@ -130,7 +144,32 @@ END;
             }
             return null;
         }
+        /* ------------------------------------------------------------------------------------------------ */
+        /* END Class MarkerList                                                                             */
+        /* ------------------------------------------------------------------------------------------------ */
 
+        /* ------------------------------------------------------------------------------------------------ */
+        /* BEGIN Class MyIcon                                                                               */
+        /* ------------------------------------------------------------------------------------------------ */
+        MyIcon.prototype = new Icon();          /* Default CTor of the parent class */
+        MyIcon.prototype.constructor = MyIcon;  /* assign our own CTor              */
+        /* CTor of the MyIcon class */
+        function MyIcon(a_foreground)
+        {
+            this.image                    = a_foreground; 
+            this.iconSize                 = new google.maps.Size(21,32);
+            this.iconAnchor               = new google.maps.Point(0,36);
+            this.infoWindowAnchor         = new google.maps.Point(10.5,2);
+            this.shadow                   = "images/wanderparkplatz_schatten.png";
+            this.shadowSize               = new google.maps.Size(79,32);
+        }
+        /* ------------------------------------------------------------------------------------------------ */
+        /* END Class MyIcon                                                                                 */
+        /* ------------------------------------------------------------------------------------------------ */
+
+        /* ------------------------------------------------------------------------------------------------ */
+        /* BEGIN Helper Methods                                                                             */
+        /* ------------------------------------------------------------------------------------------------ */
         /*--- createInfoString() ------------------------------------------------------ createInfoString() ---*/
         /**
          *  @brief   Creates the info string from the given parameters
@@ -156,10 +195,10 @@ END;
             return l_info;
         }
 
-        function infoWindowClosedCB(a_markEntry)
+
+        function infoWindowClosedCB()
         {
-            a_markEntry.m_marker.setImage(a_markEntry.m_tmpImage);
-            a_markEntry.m_tmpImage = null;
+            g_HIGHLIGHT.hide();
         }
 
         /*--- showInfo() ---------------------------------------------------------------------- showInfo() ---*/
@@ -178,10 +217,15 @@ END;
             {
                 alert("no entry for tag " + a_tag);
             }
-            me.m_marker.openInfoWindowHtml(me.m_desc);
-            GEvent.addListener(me.m_marker, "infowindowclose", function(){infoWindowClosedCB(me)});
-            me.m_tmpImage = me.m_marker.getIcon().image;
-            me.m_marker.setImage("images/wanderparkplatz_selected.png");
+            if(null == g_HIGHLIGHT)
+            {
+                createHighlight();
+            }
+
+            g_HIGHLIGHT.setLatLng(me.m_marker.getLatLng());
+            g_HIGHLIGHT.openInfoWindowHtml(me.m_desc);
+            g_HIGHLIGHT.show();
+            GEvent.addListener(g_HIGHLIGHT, "infowindowclose", function(){infoWindowClosedCB()});
         }
 
         /*--- addMark() ------------------------------------------------------------------------ addMark() ---*/
@@ -220,36 +264,6 @@ END;
             document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + pos + "','" + a_tag +"', '_dst')\">calculate</a>";
         }
 
-        function PlannerJob(a_tag, a_query, a_descId)
-        {
-            this.m_tag      = a_tag;
-            this.m_query    = a_query;
-            this.m_descId   = a_descId;
-        }
-
-        /**
-         * Calculates the distance from home to the given position identified by the given tag
-         * */
-        function distCalc(a_pos, a_tag, a_suffix)
-        {
-            var l_query = "from: " + g_HOME + " to: " + a_pos;
-            g_CURRENTJOB = new PlannerJob(a_tag, l_query, a_tag + a_suffix);
-            document.getElementById(g_CURRENTJOB.m_descId).innerHTML = "working...";
-            g_DIRECTIONS.load(l_query);
-        }
-
-        function dirLoadedCB()
-        {
-            /* finish the running job */
-            if(g_CURRENTJOB)
-            {
-                document.getElementById(g_CURRENTJOB.m_descId).innerHTML = g_DIRECTIONS.getDistance().html;
-                delete g_CURRENTJOB;
-                g_CURRENTJOB = null;
-            }
-        }
-        /* Functions to calculate distances above */
-
         function showHome(a_text)
         {
             var homeIcon = new google.maps.Icon();
@@ -260,51 +274,25 @@ END;
 
             var options = {title: a_text, icon:homeIcon};
             var mark    = new google.maps.Marker(g_HOME, options);
+            mark.bindInfoWindowHtml("<h1><i>Daheim</i></h1><p>Home sweet Home</p>");
             g_MAPBOUNDS.extend(g_HOME);
             g_MANAGER.addMarker(mark, 1);
             g_MANAGER.refresh();
-            GEvent.addListener(mark, "click", function(){mark.openInfoWindowHtml(a_text);});
         }
 
-        /*--- initialize() ------------------------------------------------------------------ initialize() ---*/
-        /**
-         *  @brief   Init function. Gets executed only once upon page load
-         *
-         *  @return  nothing
-         */
-        /*--- initialize() ------------------------------------------------------------------ initialize() ---*/
-        function initialize()
+        function getZIndex(a_mark)
         {
-            if(g_INITIALIZED) return;
-            g_INITIALIZED = 1;
+            return 0;
+        }
 
-            g_MAP = new google.maps.Map2(document.getElementById("map"));
-            g_MAP.addControl(new google.maps.MapTypeControl());
-            g_MAP.addControl(new google.maps.SmallZoomControl());
-            g_MAP.addMapType(G_PHYSICAL_MAP);
-            g_MANAGER       = new google.maps.MarkerManager(g_MAP);
-            g_MAPBOUNDS     = new google.maps.LatLngBounds();
-
-            g_ICON          = new google.maps.Icon();
-            g_ICON.image                    = "images/wanderparkplatz.png"; 
-            g_ICON.iconSize                 = new google.maps.Size(21,32);
-            g_ICON.iconAnchor               = new google.maps.Point(0,36);
-            g_ICON.infoWindowAnchor         = new google.maps.Point(10.5,2);
-            g_ICON.shadow                   = "images/wanderparkplatz_schatten.png";
-            g_ICON.shadowSize               = new google.maps.Size(79,32);
-
-            g_WALKED_ICON   = new google.maps.Icon();
-            g_WALKED_ICON.image             = "images/wanderparkplatz_hell.png"; 
-            g_WALKED_ICON.iconSize          = new google.maps.Size(21.5,32);
-            g_WALKED_ICON.iconAnchor        = new google.maps.Point(0,36);
-            g_WALKED_ICON.infoWindowAnchor  = new google.maps.Point(10.5,2);
-            g_WALKED_ICON.shadow            = "images/wanderparkplatz_schatten.png";
-            g_WALKED_ICON.shadowSize        = new google.maps.Size(79,32);
-
-            g_DIRECTIONS    = new google.maps.Directions();
-            GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
-
-            g_HOME       = new google.maps.LatLng(<?=HOMELAT?>, <?=HOMELON?>);
+        function createHighlight()
+        {
+            var hiIcon = new MyIcon("images/wanderparkplatz_selected.png");
+            var options = {icon:hiIcon, zIndexProcess:getZIndex};
+            g_HIGHLIGHT    = new google.maps.Marker(g_HOME, options);
+            g_MANAGER.addMarker(g_HIGHLIGHT, 1);
+            g_MANAGER.refresh();
+            g_HIGHLIGHT.hide();
         }
 
         function hideAll()
@@ -367,15 +355,77 @@ END;
                 me.m_marker.show();
             }
         }
+        /* ------------------------------------------------------------------------------------------------ */
+        /* END Helper Methods                                                                               */
+        /* ------------------------------------------------------------------------------------------------ */
 
-        //google.setOnLoadCallback(initialize);
+        /* ------------------------------------------------------------------------------------------------ */
+        /* BEGIN Methods to calculate distances                                                             */
+        /* ------------------------------------------------------------------------------------------------ */
+        /**
+         * Calculates the distance from home to the given position identified by the given tag
+         * */
+        function distCalc(a_pos, a_tag, a_suffix)
+        {
+            var l_query = "from: " + g_HOME + " to: " + a_pos;
+            g_CURRENTJOB = new PlannerJob(a_tag, l_query, a_tag + a_suffix);
+            document.getElementById(g_CURRENTJOB.m_descId).innerHTML = "working...";
+            g_DIRECTIONS.load(l_query);
+        }
 
+        function dirLoadedCB()
+        {
+            /* finish the running job */
+            if(g_CURRENTJOB)
+            {
+                document.getElementById(g_CURRENTJOB.m_descId).innerHTML = g_DIRECTIONS.getDistance().html;
+                delete g_CURRENTJOB;
+                g_CURRENTJOB = null;
+            }
+        }
+        /* ------------------------------------------------------------------------------------------------ */
+        /* END Methods to calculate distances                                                               */
+        /* ------------------------------------------------------------------------------------------------ */
 
+        /*--- initialize() ------------------------------------------------------------------ initialize() ---*/
+        /**
+         *  @brief   Init function. Gets executed only once upon page load
+         *
+         *  @return  nothing
+         */
+        /*--- initialize() ------------------------------------------------------------------ initialize() ---*/
+        function initialize()
+        {
+            if(g_INITIALIZED) return;
+            g_INITIALIZED = 1;
+
+            g_MAP = new google.maps.Map2(document.getElementById("map"));
+            g_MAP.addControl(new google.maps.MapTypeControl());
+            g_MAP.addControl(new google.maps.SmallZoomControl());
+            g_MAP.addMapType(G_PHYSICAL_MAP);
+
+            g_MANAGER       = new google.maps.MarkerManager(g_MAP);
+            g_MAPBOUNDS     = new google.maps.LatLngBounds();
+            g_ICON          = new MyIcon("images/wanderparkplatz.png");
+            g_WALKED_ICON   = new MyIcon("images/wanderparkplatz_hell.png");
+            g_DIRECTIONS    = new google.maps.Directions();
+            g_MARKERLIST    = new MarkerList();
+
+            GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
+
+            g_HOME       = new google.maps.LatLng(<?=HOMELAT?>, <?=HOMELON?>);
+        }
+
+        /* ------------------------------------------------------------------------------------------------ */
+        /* BEGIN configuration of the table-sorting-and-striping script                                     */
+        /* ------------------------------------------------------------------------------------------------ */
         var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's', 's');
         var TSort_Classes = new Array ('table_odd', 'table_even');
         var TSort_Initial = 0;
         tsRegister();
-
+        /* ------------------------------------------------------------------------------------------------ */
+        /* END configuration of the table-sorting-and-striping script                                       */
+        /* ------------------------------------------------------------------------------------------------ */
         </script>
         <style type="text/css">
           .table_odd{
@@ -411,7 +461,6 @@ END;
     /* XXX This block gets the elements to show! XXX */
 
     array_walk($elements, writeTableLine);
-
 echo <<<END
     </table>
     <script type="text/javascript">
