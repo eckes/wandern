@@ -6,7 +6,7 @@
     function writeTableLine($a_val1, $a_val2)
     {
         echo <<<END
-            <tr>
+            <tr id="$a_val1[Tag]">
                 <td><input type="checkbox" checked name="tag" id="$a_val1[Tag]_cb" value="$a_val1[Tag]" onchange="cbChanged('$a_val1[Tag]')"> $a_val1[Tag]</td>
                 <td><a href="javascript:showInfo('$a_val1[Tag]');">$a_val1[Name]</a></td>
                 <td>$a_val1[Laenge]</td>
@@ -318,6 +318,13 @@ END;
 
         function infoWindowClosedCB()
         {
+            var line = document.getElementById(g_HIGHLIGHT._id);
+            g_HIGHLIGHT._id = "";
+
+            if(line)
+            {
+                line.className=line.className.substr(0, line.className.length-3);
+            }
             g_HIGHLIGHT.hide();
         }
 
@@ -342,9 +349,17 @@ END;
                 createHighlight();
             }
 
+            if(g_HIGHLIGHT._id != "")
+            {
+                infoWindowClosedCB();
+            }
+            var line = document.getElementById(a_id);
+            line.className=line.className + "_hl";
+
             g_HIGHLIGHT.setLatLng(me.m_marker.getLatLng());
             g_HIGHLIGHT.openInfoWindowHtml(me.m_desc);
             g_HIGHLIGHT.show();
+            g_HIGHLIGHT._id = a_id;
             GEvent.addListener(g_HIGHLIGHT, "infowindowclose", function(){infoWindowClosedCB()});
         }
 
@@ -429,6 +444,7 @@ END;
             var hiIcon  = new MyIcon("images/wanderparkplatz_selected.png");
             var options = {icon:hiIcon, zIndexProcess:getZIndex};
             g_HIGHLIGHT = new google.maps.Marker(g_HOME, options);
+            g_HIGHLIGHT._id = "";
             g_HIGHLIGHT.hide();
             var me = new MarkEntry("highlight", g_HIGHLIGHT, "HL");
             g_MARKERLIST.push(me);
@@ -526,6 +542,14 @@ END;
           .table_even{
                     background:white;
                     color:#6cb0bd;}
+          .table_odd_hl{
+                    background:#B3C754;
+                    color:white;}
+          .table_odd_hl a:link{background:#B3C754;color:white;}
+          .table_even_hl{
+                    background:white;
+                    color:#B3C754;}
+          .table_even_hl a:link{background:white;color:#B3C754;}
         </style>
     </head>
     <body onunload="GUnload()">
