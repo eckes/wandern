@@ -48,6 +48,7 @@ END;
 ?>
 <html>
     <head>
+        <title>Search Results</title>
         <META http-equiv="content-type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAARoTP-aPC3X-J7A6v_c-RrRSliXv-vXMxLfXbWpmDAJtGYmmjPhRn1xN7Ce6w66WX49UMmCdujbpuzA"></script>
         <script type="text/javascript" src="../js/gs_sortable.js"></script>

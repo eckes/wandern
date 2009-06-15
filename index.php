@@ -1,3 +1,18 @@
+<?php
+require_once('../login/common.php');
+
+$error = '0';
+
+if (isset($_POST['submitBtn'])){
+	// Get user input
+	$username = isset($_POST['username']) ? $_POST['username'] : '';
+	$password = isset($_POST['password']) ? $_POST['password'] : '';
+        
+	// Try to login the user
+	$error = loginUser($username,$password);
+}
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -9,7 +24,24 @@
     </style>
   </head>
   <body>
-    <div style="width:250pt;">
+<p class="loginhead">
+<?php
+if($_SESSION['validUser'] == true) 
+{
+    echo("<b>Hello " . $_SESSION['userName'] . "</b>");
+?>
+    | <a href="usersettings.php">Settings</a> | <a href="../login/logout.php">Logout</a>
+<?php
+} 
+else
+{
+?>
+<a href="../login/login.php">Login</a> | <a href="../login/register.php">Register</a>
+<?php
+}
+?>
+    </p>
+    <div style="width:250pt;float:left;">
       <form action="show.php" method="post">
         <fieldset>
           <legend>Allgemein</legend>
@@ -66,6 +98,8 @@
         </fieldset>
         <button type="submit">submit</button>
       </form>
+    </div>
+      <img src="images/wanderparkplatz_gross.png" style="margin-left:20px;" height="450px"/>
     </div>
   </body>
 </html>
