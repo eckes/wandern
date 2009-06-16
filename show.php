@@ -307,7 +307,9 @@ END;
         /*--- createInfoString() ------------------------------------------------------ createInfoString() ---*/
         function createInfoString(a_text, a_len, a_dur, a_char, a_id)
         {
-            var l_info = "<b>" + a_text + "</b><br>" + a_len + "km | " + a_dur + "h<br>";
+            var l_image = "images/" + a_id.toLowerCase().substr(0, a_id.length-3) + "_small.png";
+            var l_info  = "<img src='" + l_image + "' alt='" + a_id + "' title='" + a_id + "' style='float:left;padding-right:4px;'>";
+            l_info = l_info + "<b>" + a_text + "</b><br>" + a_len + "km | " + a_dur + "h<br>";
             if(a_char)
             {
                 l_info = l_info + a_char + "<br>";

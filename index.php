@@ -88,12 +88,37 @@ else
           <input type="checkbox" name="showoneway" value="yes"> Zeige Streckenwanderungen<br>
           <select name="buch" size="1">
             <option>Alle Bücher</option>
-            <option>MLUW1</option>
-            <option>MLUW2</option>
-            <option>FUW1</option>
-            <option>FUW2</option>
-            <option>FUW3</option>
-            <option>NW2</option>
+<?php
+// Open the users settings file and read the books that the user owns
+    require_once('common.php');
+
+    function writeBookLine($a_title)
+    {
+        echo "<option>" . strtoupper($a_title) . "</option>";
+    }
+    /* if we have a logged in user, take his settings */
+    if(isset($_SESSION['userName']))
+    {
+        $settings = loadSettings($_SESSION['userName']);
+
+        /* step through the settings and check which books the user owns */
+        foreach($g_booklist AS $thebook)
+        {
+            if($settings[$thebook] == "yes")
+            {
+                writeBookLine($thebook);
+            }
+        }
+    }
+    /* no logged in user, take all the books */
+    else
+    {
+        foreach($g_booklist AS $thebook)
+        {
+            writeBookLine($thebook);
+        }
+    }
+?>
           </select>
         </fieldset>
         <button type="submit">submit</button>
@@ -103,3 +128,5 @@ else
     </div>
   </body>
 </html>
+<!-- vim:encoding=utf-8:
+-->
