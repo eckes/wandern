@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <?php 
+    require_once('../login/common.php');
+
     include("constants.php");
     define("DBTYPE", "XML");
 
@@ -13,14 +14,28 @@
                 <td>$a_val1[Dauer]</td>
                 <td>$a_val1[Charakter]</td>
                 <td id="$a_val1[Tag]_dst"></td>
-            </tr>
 END;
+                if($_SESSION['validUser'] == true) 
+                {
+                    if($a_val1[Datum]=="0000-00-00")
+                    {
+                        echo <<<END
+                            <td id="$a_val1[Tag]_btnWalked"><button name="walked" type="button" value="Gelaufen" onclick="markAsWalked('$a_val1[Tag]');">Gelaufen</button></td>
+END;
+                    }
+                    else
+                    {
+                        echo "<td>&nbsp;</td>";
+                    }
+                }
+            echo "</tr>\n";
     }
 
     function writeScriptLine($a_val1, $a_val2)
     {
         echo "addMark($a_val1[Lon], $a_val1[Lat], '$a_val1[Name]', '$a_val1[Tag]', ";
-        if($a_val1[Datum] != "0000-00-00")
+
+        if(isset($a_val1[Datum]) && ($a_val1[Datum] != "0000-00-00") )
         {
             echo "g_WALKED_ICON, ";
         }
@@ -30,6 +45,8 @@ END;
         }
         echo "$a_val1[Laenge], $a_val1[Dauer], '$a_val1[Charakter]'";
         echo ");\n";
+
+        echo "Datum: $a_val1[Datum]\n";
     }
 
     if(DBTYPE=="MYSQL")
@@ -46,10 +63,12 @@ END;
     }
 
 ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
         <title>Search Results</title>
         <META http-equiv="content-type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="../css/spring.css">
         <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAARoTP-aPC3X-J7A6v_c-RrRSliXv-vXMxLfXbWpmDAJtGYmmjPhRn1xN7Ce6w66WX49UMmCdujbpuzA"></script>
         <script type="text/javascript" src="../js/gs_sortable.js"></script>
         <script type="text/javascript">
@@ -71,7 +90,14 @@ END;
         /* ------------------------------------------------------------------------------------------------ */
         /* BEGIN configuration of the table-sorting-and-striping script                                     */
         /* ------------------------------------------------------------------------------------------------ */
-        var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's', 's');
+        var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's', 's'
+<?php
+if($_SESSION['validUser'] == true) 
+{
+    echo ", ''";
+}
+?>
+);
         var TSort_Classes = new Array ('table_odd', 'table_even');
         var TSort_Initial = 0;
         tsRegister();
@@ -475,6 +501,18 @@ END;
                 }
             }
         }
+
+        function markAsWalked(a_id)
+        {
+            if(false == confirm("Wanderung " + a_id + " als gelaufen markieren?"))
+            {
+                return 0; /* do nothing here */
+            }
+            /* open up the user walks file
+             * append the walk as walked with the date of today
+             * close the file again
+             * reload the page */
+        }
         /* ------------------------------------------------------------------------------------------------ */
         /* END Helper Methods                                                                               */
         /* ------------------------------------------------------------------------------------------------ */
@@ -556,6 +594,22 @@ END;
         </style>
     </head>
     <body onunload="GUnload()">
+<p class="loginhead">
+<?php
+if($_SESSION['validUser'] == true) 
+{
+    echo("<b>Logged in as " . $_SESSION['userName'] . "</b>");
+?>
+    | <a href="usersettings.php">Settings</a> | <a href="../login/logout.php">Logout</a>
+<?php
+} 
+else
+{
+?>
+<a href="../login/login.php">Login</a> | <a href="../login/register.php">Register</a>
+<?php
+}
+?>
         <div>
             <div id="map" style="width: 800px; height: 600px"></div>
             <a href="javascript:g_MARKERLIST.hideAll();">hide all</a> 
@@ -563,7 +617,14 @@ END;
         </div>
         <table id="walks">
             <thead>
-                <tr><th>Tag</th><th>Name</th><th>Laenge</th><th>Dauer</th><th>Charakterisik</th><th>Entfernung</th></tr>
+                <tr><th>Tag</th><th>Name</th><th>Laenge</th><th>Dauer</th><th>Charakterisik</th><th>Entfernung</th>
+<?php
+if($_SESSION['validUser'] == true) 
+{
+    echo "<th></th>";
+}
+?>
+                </tr>
             </thead>
 <?php
     if(DBTYPE=="MYSQL")

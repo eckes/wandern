@@ -44,4 +44,22 @@ function loadSettings($a_user)
     }
     return($settings);
 }
+
+/* loads the walks for the given user */
+function loadWalks($a_user)
+{
+    $walks = array();
+    $pfile = fopen("usersettings/" . $a_user . ".walks", "r");
+    rewind($pfile);
+    while (!feof($pfile))
+    {
+        $line = fgets($pfile);
+        if(0 != strlen($line))
+        {
+            $tmp = explode(' ', $line);
+            $walks[$tmp[0]] = substr($tmp[1], 0, strlen($tmp[1])-2); // -2 because of trailing CR_LF 
+        }
+    }
+    return $walks;
+}
 ?>

@@ -17,8 +17,8 @@ if (isset($_POST['submitBtn'])){
 <html>
   <head>
     <title>Select your walks</title>
-    <link rel="stylesheet" type="text/css" href="../css/spring.css">
     <META http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/spring.css">
     <style type="text/css">
       fieldset{border:1px solid #6cb0bd};
     </style>
@@ -28,7 +28,7 @@ if (isset($_POST['submitBtn'])){
 <?php
 if($_SESSION['validUser'] == true) 
 {
-    echo("<b>Hello " . $_SESSION['userName'] . "</b>");
+    echo("<b>Logged in as " . $_SESSION['userName'] . "</b>");
 ?>
     | <a href="usersettings.php">Settings</a> | <a href="../login/logout.php">Logout</a>
 <?php

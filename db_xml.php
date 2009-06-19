@@ -1,6 +1,7 @@
 <?php 
-
+require_once('../login/common.php');
 include("constants.php");
+include("common.php");
 
 /** XML Tag constants */
 define("XMLTAG_TAG",        "Tag");
@@ -10,7 +11,6 @@ define("XMLTAG_DUR",        "Dauer");
 define("XMLTAG_CHAR",       "Charakter");
 define("XMLTAG_LAT",        "Lat");
 define("XMLTAG_LON",        "Lon");
-define("XMLTAG_DATE",       "Datum");
 define("XMLTAG_ONEWAY",     "Streckenwanderung");
 define("XMLTAG_WALK",       "walks");
 
@@ -23,14 +23,9 @@ function getVal($a_walk, $a_name)
 function match($a_walk)
 {
     $len    = getVal($a_walk, XMLTAG_LENGTH);
-    $date   = getVal($a_walk, XMLTAG_DATE);
     $char   = getVal($a_walk, XMLTAG_CHAR);
     $tag    = getVal($a_walk, XMLTAG_TAG);
     /* evaluate the request here and decide if the element matches or not */
-    if(!$_REQUEST[showwalked])
-    {
-        if($date != "0000-00-00") return false;
-    }
 
     if(!$_REQUEST[showoneway])
     {
@@ -124,18 +119,43 @@ function db_getElements($a_dom)
     $retval = array();
     foreach($walks as $walk)
     {
+        $entry[Tag]         = getVal($walk, XMLTAG_TAG);
+        if($_SESSION['validUser'] == true) 
+        {
+            $walkedWalks = loadWalks($_SESSION['userName']);
+            /* filter walked walks only for registered users! */
+            if(!$_REQUEST[showwalked])
+            {
+                if(isset($walkedWalks))
+                {
+                    if(array_key_exists($entry[Tag],$walkedWalks))
+                    {
+                        continue;
+                    }
+                }
+            }
+        }
         if(false == match($walk))
         {
             continue;
         }
-        $entry[Tag]         = getVal($walk, XMLTAG_TAG);
         $entry[Name]        = getVal($walk, XMLTAG_NAME);
         $entry[Laenge]      = getVal($walk, XMLTAG_LENGTH);
         $entry[Dauer]       = getVal($walk, XMLTAG_DUR);
         $entry[Charakter]   = getVal($walk, XMLTAG_CHAR);
         $entry[Lat]         = getVal($walk, XMLTAG_LAT);
         $entry[Lon]         = getVal($walk, XMLTAG_LON);
-        $entry[Datum]       = getVal($walk, XMLTAG_DATE);
+        if(isset($walkedWalks))
+        {
+            if(isset($walkedWalks[$entry[Tag]]))
+            {
+                $entry[Datum]       = $walkedWalks[$entry[Tag]];
+            }
+            else
+            {
+                $entry[Datum]       = "0000-00-00";
+            }
+        }
         array_push($retval, $entry);
     }
     return $retval;

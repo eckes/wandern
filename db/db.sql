@@ -178,7 +178,7 @@ INSERT INTO `walks` (`Tag`, `Name`, `Laenge`, `Dauer`, `Charakter`, `Lon`, `Lat`
 ('MLUW2_57', 'Zum Felsendorf Krögelstein und durch den Felsengarten von Sanspareil', 15.0, 3.5, 'leichtes Gelände', 11.300447, 50.001064, '2008-12-25', 0),
 ('MLUW2_56', 'Von der Wiesent- und Aufseßquelle ins Paradies', 19.0, 5.0, 'leichtes Gelände', 11.158762, 49.977364, '2007-05-13', 0),
 ('MLUW2_55', 'Über den Ludwager Kulm zur Giechburg und zum Gügel', 21.0, 5.5, 'bis auf den Anstieg zur Giechburg leichtes Gelände', 11.123207, 49.936459, '0000-00-00', 0),
-('MLUW2_54', 'Über den Stammberg ins Ellernbachtal', 15.0, 4.0, 'bis auf den steilen Anstieg nach Herzogenreuth leichtes Gelände', 11.080313, 49.936321, '0000-00-00', 0),
+('MLUW2_54', 'Über den Stammberg ins Ellernbachtal', 15.0, 4.0, 'bis auf den steilen Anstieg nach Herzogenreuth leichtes Gelände', 11.080313, 49.936321, '2009-06-17', 0),
 ('MLUW2_53', 'Von der Friesener Warte zum Leinleitertal', 22.0, 6.0, 'überwiegend leichtes Gelände mit zwei steileren Anstiegen', 11.076622, 49.831741, '0000-00-00', 0),
 ('MLUW2_52', 'Von Waischenfeld auf die Neubürg', 20.0, 5.0, 'hügeliges Gelände', 11.345100, 49.846397, '0000-00-00', 0),
 ('MLUW2_01', 'Aussichtsreicher Streifzug durch den Süden des Walberla', 23.0, 6.0, 'leichtes bis mittelschweres Gelände', 11.187429, 49.668682, '0000-00-00', 0),
