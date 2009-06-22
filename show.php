@@ -502,16 +502,60 @@ if($_SESSION['validUser'] == true)
             }
         }
 
+        function get_sync(a_url)
+        {
+            var xmlHttp = null;
+            // Mozilla, Opera, Safari sowie Internet Explorer (ab v7)
+            if (typeof XMLHttpRequest != 'undefined')
+            {
+                xmlHttp = new XMLHttpRequest();
+            }
+            if (!xmlHttp)
+            {
+                // Internet Explorer 6 and older
+                try {
+                    xmlHttp  = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch(e)
+                {
+                    try
+                    {
+                        xmlHttp  = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    catch(e)
+                    {
+                        xmlHttp  = null;
+                    }
+                }
+            }
+            if (xmlHttp)
+            {
+                xmlHttp.open('GET', a_url, false);
+                xmlHttp.send(null);
+                return xmlHttp;
+            }
+        }
+
         function markAsWalked(a_id)
         {
+            var btnId   = a_id + "_btnWalked";
+            var btn     = document.getElementById(btnId).firstChild;
             if(false == confirm("Wanderung " + a_id + " als gelaufen markieren?"))
             {
                 return 0; /* do nothing here */
             }
-            /* open up the user walks file
-             * append the walk as walked with the date of today
-             * close the file again
-             * reload the page */
+            btn.setAttribute('disabled', true);
+            btn.innerHTML = "Bitte Warten";
+
+            var xmlHttp = get_sync('editwalk.php?id=' + a_id + '&walked="true"');
+            if(xmlHttp.status == 200)
+            {
+                btn.innerHTML = "OK";
+                location.reload();
+            }
+            else
+            {
+                btn.innerHTML = "Fehler: " + xmlHttp.status;
+            }
         }
         /* ------------------------------------------------------------------------------------------------ */
         /* END Helper Methods                                                                               */

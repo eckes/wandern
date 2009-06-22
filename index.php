@@ -1,5 +1,6 @@
 <?php
 require_once('../login/common.php');
+require_once('common.php');
 
 $error = '0';
 
@@ -29,6 +30,7 @@ if (isset($_POST['submitBtn'])){
 if($_SESSION['validUser'] == true) 
 {
     echo("<b>Logged in as " . $_SESSION['userName'] . "</b>");
+    $settings = loadSettings($_SESSION['userName']);
 ?>
     | <a href="usersettings.php">Settings</a> | <a href="../login/logout.php">Logout</a>
 <?php
@@ -86,33 +88,40 @@ else
           <legend>Sonstiges</legend>
           <input type="checkbox" name="showwalked" value="yes"> Zeige gelaufene<br>
           <input type="checkbox" name="showoneway" value="yes"> Zeige Streckenwanderungen<br>
-          <select name="buch" size="1">
-            <option>Alle Bücher</option>
 <?php
-// Open the users settings file and read the books that the user owns
-    require_once('common.php');
 
     function writeBookLine($a_title)
     {
         echo "<option>" . strtoupper($a_title) . "</option>";
     }
+
+// Open the users settings file and read the books that the user owns
     /* if we have a logged in user, take his settings */
     if(isset($_SESSION['userName']))
     {
-        $settings = loadSettings($_SESSION['userName']);
-
-        /* step through the settings and check which books the user owns */
-        foreach($g_booklist AS $thebook)
+        if(null != $settings)
         {
-            if($settings[$thebook] == "yes")
+            echo '<select name="buch" size="1">';
+            echo '<option>Alle Bücher</option>';
+            /* step through the settings and check which books the user owns */
+            foreach($g_booklist AS $thebook)
             {
-                writeBookLine($thebook);
+                if($settings[$thebook] == "yes")
+                {
+                    writeBookLine($thebook);
+                }
             }
+        }
+        else
+        {
+            echo '<b>No books specified. Select at least one in the <a href="usersettings.php">Settings</a></b>';
         }
     }
     /* no logged in user, take all the books */
     else
     {
+        echo '<select name="buch" size="1">';
+        echo '<option>Alle Bücher</option>';
         foreach($g_booklist AS $thebook)
         {
             writeBookLine($thebook);

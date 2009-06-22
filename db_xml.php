@@ -130,7 +130,7 @@ function db_getElements($a_dom)
                 {
                     if(array_key_exists($entry[Tag],$walkedWalks))
                     {
-                        continue;
+                        continue; /* walk already walked */
                     }
                 }
             }
@@ -155,6 +155,10 @@ function db_getElements($a_dom)
             {
                 $entry[Datum]       = "0000-00-00";
             }
+        }
+        else
+        {
+            $entry[Datum]       = "0000-00-00";
         }
         array_push($retval, $entry);
     }

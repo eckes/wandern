@@ -18,7 +18,18 @@ $g_booktitles=array('mluw1'=>'Mit Lenkrad und Wanderstab I',
 /** stores the given settings of the given user */
 function storeSettings($a_user, $a_settings)
 {
-    $pfile = fopen("usersettings/" . $a_user . ".settings", "w+");
+    $filepath = "usersettings/" . $a_user . ".settings";
+    /*
+    if(!is_writeable($filepath))
+    {
+        return -1;
+    }
+     */
+    $pfile = fopen($filepath, "w+");
+    if(FALSE == $pfile)
+    {
+        return -1;
+    }
     rewind($pfile);
     foreach($a_settings AS $thekey=>$thevalue)
     {
@@ -26,12 +37,22 @@ function storeSettings($a_user, $a_settings)
         fwrite($pfile, $theline);
     }
     fclose($pfile);
+    return 0;
 }
 
 /* loads the settings of the given user */
 function loadSettings($a_user)
 {
-    $pfile = fopen("usersettings/" . $a_user . ".settings", "r");
+    $filepath = "usersettings/" . $a_user . ".settings";
+    if(!is_readable($filepath))
+    {
+        return null;
+    }
+    $pfile = fopen($filepath, "r+");
+    if(FALSE == $pfile)
+    {
+        return null;
+    }
     rewind($pfile);
     while (!feof($pfile))
     {
@@ -48,9 +69,18 @@ function loadSettings($a_user)
 /* loads the walks for the given user */
 function loadWalks($a_user)
 {
-    $walks = array();
-    $pfile = fopen("usersettings/" . $a_user . ".walks", "r");
+    $filepath = "usersettings/" . $a_user . ".walks";
+    if(!is_readable($filepath))
+    {
+        return null;
+    }
+    $pfile = fopen($filepath, "r");
+    if(FALSE == $pfile)
+    {
+        return null;
+    }
     rewind($pfile);
+    $walks = array();
     while (!feof($pfile))
     {
         $line = fgets($pfile);
@@ -61,5 +91,27 @@ function loadWalks($a_user)
         }
     }
     return $walks;
+}
+
+function editWalk($a_user, $a_id, $a_action)
+{
+    switch($a_action)
+    {
+        case 'walked':
+            $filepath = "usersettings/" . $a_user . ".walks";
+            $pfile      = fopen($filepath, "a");
+            if(FALSE == $pfile)
+            {
+                return -1;
+            }
+            $today      = date('Y-m-d');
+            $theline    = strtoupper($a_id) . " " . $today . "\r\n";
+            fwrite($pfile, $theline);
+            fclose($pfile);
+            return 0;
+        default:
+            return -1;
+            break;
+    }
 }
 ?>

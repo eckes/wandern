@@ -10,7 +10,7 @@
             $settings[$thebook]  = isset($_POST[$thebook]) ? $_POST[$thebook] : 'no';
         }
         // SAVE SETTINGS TO FILE
-        storeSettings($_SESSION['userName'], $settings);
+        $retVal = storeSettings($_SESSION['userName'], $settings);
 	}	
 
     if(!isset($_SESSION['userName']))
@@ -38,6 +38,22 @@
         </style>
     </head>
     <body>
+
+<?php
+    if (isset($_POST['saveSettings']))
+    {
+        if(0 == $retVal)
+        {
+            $msg = "Saving settings successful";
+        }
+        else
+        {
+            $msg = "Saving settings failed";
+        
+        }
+        echo '<script type="text/javascript">alert("' . $msg . '");</script>';
+    }
+?>
 <p class="loginhead">
 <?php
 if($_SESSION['validUser'] == true) 
