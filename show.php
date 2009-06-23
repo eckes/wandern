@@ -213,6 +213,7 @@ if($_SESSION['validUser'] == true)
                 }
                 if(a_id == me.m_id)
                 {
+                    me.index = i;
                     return me;
                 }
             }
@@ -550,7 +551,24 @@ if($_SESSION['validUser'] == true)
             if(xmlHttp.status == 200)
             {
                 btn.innerHTML = "OK";
-                location.reload();
+                //location.reload();
+<?php
+if($_REQUEST[showwalked])
+{
+?>
+    /* if walked walks shall be shown, remove the button from the table and set the icon of the walk to walked */
+<?php
+}
+else
+{
+?>
+    /* if walked walks shall NOT be shown, hide the complete table line and remove the walk icon from the map  */
+    g_MARKERLIST.hide(a_id);
+    var line = document.getElementById(a_id.toUpperCase());
+    line.innerHTML = "";
+<?php
+}
+?>
             }
             else
             {
