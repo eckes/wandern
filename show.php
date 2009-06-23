@@ -1,8 +1,21 @@
 <?php 
     require_once('../login/common.php');
-
+    require_once('common.php');
     include("constants.php");
     define("DBTYPE", "XML");
+
+    /* check if someone clicked the "walked" button */
+    $keys = array_keys($_POST);
+    foreach($keys AS $thekey)
+    {
+        $needle = stristr($thekey, '_btnWalked');
+        if($needle)
+        {
+            $id = substr($thekey, 0, (strlen($thekey)-strlen($needle)));
+            editWalk($_SESSION['userName'], $id, 'walked');
+            $_REQUEST = $_SESSION['orig_request'];
+        }
+    }
 
     function writeTableLine($a_val1, $a_val2)
     {
@@ -20,7 +33,7 @@ END;
                     if($a_val1[Datum]=="0000-00-00")
                     {
                         echo <<<END
-                            <td id="$a_val1[Tag]_btnWalked"><button name="walked" type="button" value="Gelaufen" onclick="markAsWalked('$a_val1[Tag]');">Gelaufen</button></td>
+                            <td id="$a_val1[Tag]_btnWalked"><button name="$a_val1[Tag]_btnWalked" type="submit" value="Gelaufen">Gelaufen</button></td>
 END;
                     }
                     else
@@ -502,79 +515,6 @@ if($_SESSION['validUser'] == true)
                 }
             }
         }
-
-        function get_sync(a_url)
-        {
-            var xmlHttp = null;
-            // Mozilla, Opera, Safari sowie Internet Explorer (ab v7)
-            if (typeof XMLHttpRequest != 'undefined')
-            {
-                xmlHttp = new XMLHttpRequest();
-            }
-            if (!xmlHttp)
-            {
-                // Internet Explorer 6 and older
-                try {
-                    xmlHttp  = new ActiveXObject("Msxml2.XMLHTTP");
-                } catch(e)
-                {
-                    try
-                    {
-                        xmlHttp  = new ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                    catch(e)
-                    {
-                        xmlHttp  = null;
-                    }
-                }
-            }
-            if (xmlHttp)
-            {
-                xmlHttp.open('GET', a_url, false);
-                xmlHttp.send(null);
-                return xmlHttp;
-            }
-        }
-
-        function markAsWalked(a_id)
-        {
-            var btnId   = a_id + "_btnWalked";
-            var btn     = document.getElementById(btnId).firstChild;
-            if(false == confirm("Wanderung " + a_id + " als gelaufen markieren?"))
-            {
-                return 0; /* do nothing here */
-            }
-            btn.setAttribute('disabled', true);
-            btn.innerHTML = "Bitte Warten";
-
-            var xmlHttp = get_sync('editwalk.php?id=' + a_id + '&walked="true"');
-            if(xmlHttp.status == 200)
-            {
-                btn.innerHTML = "OK";
-                //location.reload();
-<?php
-if($_REQUEST[showwalked])
-{
-?>
-    /* if walked walks shall be shown, remove the button from the table and set the icon of the walk to walked */
-<?php
-}
-else
-{
-?>
-    /* if walked walks shall NOT be shown, hide the complete table line and remove the walk icon from the map  */
-    g_MARKERLIST.hide(a_id);
-    var line = document.getElementById(a_id.toUpperCase());
-    line.innerHTML = "";
-<?php
-}
-?>
-            }
-            else
-            {
-                btn.innerHTML = "Fehler: " + xmlHttp.status;
-            }
-        }
         /* ------------------------------------------------------------------------------------------------ */
         /* END Helper Methods                                                                               */
         /* ------------------------------------------------------------------------------------------------ */
@@ -661,6 +601,7 @@ else
 if($_SESSION['validUser'] == true) 
 {
     echo("<b>Logged in as " . $_SESSION['userName'] . "</b>");
+    $_SESSION['orig_request'] = $_REQUEST;
 ?>
     | <a href="usersettings.php">Settings</a> | <a href="../login/logout.php">Logout</a>
 <?php
@@ -677,9 +618,10 @@ else
             <a href="javascript:g_MARKERLIST.hideAll();">hide all</a> 
             <a href="javascript:g_MARKERLIST.showAll();">show all</a> 
         </div>
-        <table id="walks">
-            <thead>
-                <tr><th>Tag</th><th>Name</th><th>Laenge</th><th>Dauer</th><th>Charakterisik</th><th>Entfernung</th>
+        <form action="" method="post">
+            <table id="walks">
+                <thead>
+                    <tr><th>Tag</th><th>Name</th><th>Laenge</th><th>Dauer</th><th>Charakterisik</th><th>Entfernung</th>
 <?php
 if($_SESSION['validUser'] == true) 
 {
@@ -703,7 +645,8 @@ END;
 
     array_walk($elements, writeTableLine);
 echo <<<END
-    </table>
+        </table>
+    </form>
     <script type="text/javascript">
         initialize();
         showHome('Daheim');

@@ -19,12 +19,6 @@ $g_booktitles=array('mluw1'=>'Mit Lenkrad und Wanderstab I',
 function storeSettings($a_user, $a_settings)
 {
     $filepath = "usersettings/" . $a_user . ".settings";
-    /*
-    if(!is_writeable($filepath))
-    {
-        return -1;
-    }
-     */
     $pfile = fopen($filepath, "w+");
     if(FALSE == $pfile)
     {
