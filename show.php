@@ -1,6 +1,7 @@
 <?php 
     require_once('../login/common.php');
     require_once('common.php');
+
     include("constants.php");
     define("DBTYPE", "XML");
 
@@ -8,21 +9,29 @@
     $keys = array_keys($_POST);
     foreach($keys AS $thekey)
     {
-        $needle = stristr($thekey, '_btnWalked');
+        $needle = stristr($thekey, '_isWalked');
         if($needle)
         {
             $id = substr($thekey, 0, (strlen($thekey)-strlen($needle)));
-            editWalk($_SESSION['userName'], $id, 'walked');
-            $_REQUEST = $_SESSION['orig_request'];
+            $res = editWalk($_SESSION['userName'], $id, 'walked');
+            if(isset($_SESSION['orig_request']))
+            {
+                $_REQUEST = $_SESSION['orig_request'];
+                unset($_SESSION['orig_request']);
+            }
         }
     }
 
     function writeTableLine($a_val1, $a_val2)
     {
+        if( (!isset($a_val1[Charakter])) || ($a_val1[Charakter] =='') )
+        {
+            $a_val1[Charakter] = '&nbsp;';
+        }
         echo <<<END
             <tr id="$a_val1[Tag]">
                 <td><input type="checkbox" checked name="tag" id="$a_val1[Tag]_cb" value="$a_val1[Tag]" onchange="cbChanged('$a_val1[Tag]')"> $a_val1[Tag]</td>
-                <td><a href="javascript:showInfo('$a_val1[Tag]');">$a_val1[Name]</a></td>
+                <td><a href="javascript:showInfo('$a_val1[Tag]');"><span id="$a_val1[Tag]_name">$a_val1[Name]</span></a></td>
                 <td>$a_val1[Laenge]</td>
                 <td>$a_val1[Dauer]</td>
                 <td>$a_val1[Charakter]</td>
@@ -33,7 +42,7 @@ END;
                     if($a_val1[Datum]=="0000-00-00")
                     {
                         echo <<<END
-                            <td id="$a_val1[Tag]_btnWalked"><button name="$a_val1[Tag]_btnWalked" type="submit" value="Gelaufen">Gelaufen</button></td>
+                            <td id="$a_val1[Tag]_isWalked"><button name="$a_val1[Tag]_isWalked" type="button" value="Gelaufen" onclick="markAsWalked('$a_val1[Tag]');">Gelaufen</button></td>
 END;
                     }
                     else
@@ -355,7 +364,8 @@ if($_SESSION['validUser'] == true)
                 l_info = l_info + a_char + "<br>";
             }
             l_info = l_info + "<span id='" + a_id +"_infodst'><a href=\"javascript:distCalc('" + a_id + "', '_infodst')\">dist</a></span> | ";
-            l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_id +"\')\">hide</a>";
+            l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_id +"\')\">hide</a> | ";
+            l_info = l_info + "<a href=\"javascript:markAsWalked(\'" + a_id +"\')\">walked</a>";
             return l_info;
         }
 
@@ -515,6 +525,29 @@ if($_SESSION['validUser'] == true)
                 }
             }
         }
+
+        /*--- markAsWalked() -------------------------------------------------------------- markAsWalked() ---*/
+        /**
+         *  @brief   does some little preparation before marking the walk with the given ID as walked
+         *
+         *  @param   a_id  ID of the walk to be marked as walked
+         *
+         *  @return  A MWEB_RESULT
+         */
+        /*--- markAsWalked() -------------------------------------------------------------- markAsWalked() ---*/
+        function markAsWalked(a_id)
+        {
+            var theName = document.getElementById(a_id + "_name").innerHTML;
+            if(confirm('Wanderung\n\n"' + theName + '"\n\nals gelaufen markieren?'))
+            {
+                var theForm = document.walktable;
+                var btn     = a_id + "_isWalked";
+                var hidden = '<input type="hidden" name="' + btn + '" value="' + btn + '"></input>';
+                /* add the information about which button was clicked to the form as a hidden input */
+                theForm.innerHTML = theForm.innerHTML.concat(hidden);
+                theForm.submit();
+            }
+        }
         /* ------------------------------------------------------------------------------------------------ */
         /* END Helper Methods                                                                               */
         /* ------------------------------------------------------------------------------------------------ */
@@ -585,11 +618,15 @@ if($_SESSION['validUser'] == true)
           .table_even{
                     background:white;
                     color:#6cb0bd;}
-          .table_odd_hl{
+          .table_odd_hl td {
+                    border-top:2px solid #d93030;
+                    border-bottom:2px solid #d93030;
                     background:#B3C754;
                     color:white;}
           .table_odd_hl a:link{background:#B3C754;color:white;}
-          .table_even_hl{
+          .table_even_hl td {
+                    border-top:2px solid #d93030;
+                    border-bottom:2px solid #d93030;
                     background:white;
                     color:#B3C754;}
           .table_even_hl a:link{background:white;color:#B3C754;}
@@ -618,7 +655,7 @@ else
             <a href="javascript:g_MARKERLIST.hideAll();">hide all</a> 
             <a href="javascript:g_MARKERLIST.showAll();">show all</a> 
         </div>
-        <form action="" method="post">
+        <form name="walktable" action="" method="post">
             <table id="walks">
                 <thead>
                     <tr><th>Tag</th><th>Name</th><th>Laenge</th><th>Dauer</th><th>Charakterisik</th><th>Entfernung</th>

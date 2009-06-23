@@ -1,7 +1,7 @@
 <?php 
 require_once('../login/common.php');
-include("constants.php");
-include("common.php");
+require_once("constants.php");
+require_once("common.php");
 
 /** XML Tag constants */
 define("XMLTAG_TAG",        "Tag");

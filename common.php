@@ -108,4 +108,5 @@ function editWalk($a_user, $a_id, $a_action)
             break;
     }
 }
+
 ?>
