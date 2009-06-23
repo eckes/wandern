@@ -62,9 +62,11 @@ function match($a_walk)
         if($char&&($char != "leichtes Gelände")) return false;
     }
 
-    if($_REQUEST[buch] != "Alle Bücher")
+    $tmp = explode('_', $tag);
+    $key = "book_" . strtolower($tmp[0]);
+    if(!array_key_exists($key, $_REQUEST))
     {
-        if(!stristr($tag, $_REQUEST[buch])) return false;
+        return false;
     }
 
     if(!$_REQUEST[Region1] || !$_REQUEST[Region2] || !$_REQUEST[Region3] || !$_REQUEST[Region4])

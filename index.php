@@ -13,6 +13,11 @@ if (isset($_POST['submitBtn'])){
 	$error = loginUser($username,$password);
 }
 
+    function writeBookLine($a_title, $a_description)
+    {
+        echo '<input type="checkbox" name="book_' . $a_title . '" value="yes" checked="checked"> ' . $a_description . '<br>';
+    }
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -85,15 +90,8 @@ else
           </table>
         </fieldset>
         <fieldset>
-          <legend>Sonstiges</legend>
-          <input type="checkbox" name="showwalked" value="yes"> Zeige gelaufene<br>
-          <input type="checkbox" name="showoneway" value="yes"> Zeige Streckenwanderungen<br>
+          <legend>Bücher</legend>
 <?php
-
-    function writeBookLine($a_title)
-    {
-        echo "<option>" . strtoupper($a_title) . "</option>";
-    }
 
 // Open the users settings file and read the books that the user owns
     /* if we have a logged in user, take his settings */
@@ -101,14 +99,12 @@ else
     {
         if(null != $settings)
         {
-            echo '<select name="buch" size="1">';
-            echo '<option>Alle Bücher</option>';
             /* step through the settings and check which books the user owns */
             foreach($g_booklist AS $thebook)
             {
                 if($settings[$thebook] == "yes")
                 {
-                    writeBookLine($thebook);
+                    writeBookLine($thebook, $g_booktitles[$thebook]);
                 }
             }
         }
@@ -120,15 +116,17 @@ else
     /* no logged in user, take all the books */
     else
     {
-        echo '<select name="buch" size="1">';
-        echo '<option>Alle Bücher</option>';
         foreach($g_booklist AS $thebook)
         {
-            writeBookLine($thebook);
+            writeBookLine($thebook, $g_booktitles[$thebook]);
         }
     }
 ?>
-          </select>
+        </fieldset>
+        <fieldset>
+          <legend>Sonstiges</legend>
+          <input type="checkbox" name="showwalked" value="yes"> Zeige gelaufene<br>
+          <input type="checkbox" name="showoneway" value="yes"> Zeige Streckenwanderungen<br>
         </fieldset>
         <button type="submit">submit</button>
       </form>
