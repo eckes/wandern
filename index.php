@@ -1,6 +1,7 @@
 <?php
 require_once('../login/common.php');
 require_once('common.php');
+require('constants.php');
 
 $error = '0';
 
@@ -30,24 +31,7 @@ if (isset($_POST['submitBtn'])){
     </style>
   </head>
   <body>
-<p class="loginhead">
-<?php
-if($_SESSION['validUser'] == true) 
-{
-    echo("<b>Logged in as " . $_SESSION['userName'] . "</b>");
-    $settings = loadSettings($_SESSION['userName']);
-?>
-    | <a href="usersettings.php">Settings</a> | <a href="../login/logout.php">Logout</a>
-<?php
-} 
-else
-{
-?>
-<a href="../login/login.php">Login</a> | <a href="../login/register.php">Register</a>
-<?php
-}
-?>
-    </p>
+<?php require('loginhead.php'); ?>
     <div style="width:250pt;float:left;">
       <form action="show.php" method="post">
         <fieldset>
@@ -92,10 +76,9 @@ else
         <fieldset>
           <legend>Bücher</legend>
 <?php
-
 // Open the users settings file and read the books that the user owns
     /* if we have a logged in user, take his settings */
-    if(isset($_SESSION['userName']))
+    if( ($_SESSION['validUser'] == true) && (isset($_SESSION['userName'])))
     {
         if(null != $settings)
         {
@@ -125,7 +108,12 @@ else
         </fieldset>
         <fieldset>
           <legend>Sonstiges</legend>
-          <input type="checkbox" name="showwalked" value="yes"> Zeige gelaufene<br>
+<?php
+    if( ($_SESSION['validUser'] == true) && (isset($_SESSION['userName'])))
+    {
+          echo '<input type="checkbox" name="showwalked" value="yes"> Zeige gelaufene<br>';
+    }
+?>
           <input type="checkbox" name="showoneway" value="yes"> Zeige Streckenwanderungen<br>
         </fieldset>
         <button type="submit">submit</button>

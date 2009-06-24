@@ -38,8 +38,8 @@
         </style>
     </head>
     <body>
-
 <?php
+    require('loginhead.php');
     if (isset($_POST['saveSettings']))
     {
         if(0 == $retVal)
@@ -54,23 +54,6 @@
         echo '<script type="text/javascript">alert("' . $msg . '");</script>';
     }
 ?>
-<p class="loginhead">
-<?php
-if($_SESSION['validUser'] == true) 
-{
-    echo("<b>Hello " . $_SESSION['userName'] . "</b>");
-?>
-    | Go back to the <a href="index.php">walks selection</a> | <a href="../login/logout.php">Logout</a>
-<?php
-} 
-else
-{
-?>
-If you are a registerd user, you could login <a href="../login/login.php">here</a>. Otherwise you could register <a href="../login/register.php">here</a>.
-<?php
-}
-?>
-    </p>
         <div style="width:250pt;float:left;">
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="savesettings">
             <fieldset>

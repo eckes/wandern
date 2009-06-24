@@ -364,8 +364,14 @@ if($_SESSION['validUser'] == true)
                 l_info = l_info + a_char + "<br>";
             }
             l_info = l_info + "<span id='" + a_id +"_infodst'><a href=\"javascript:distCalc('" + a_id + "', '_infodst')\">dist</a></span> | ";
-            l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_id +"\')\">hide</a> | ";
-            l_info = l_info + "<a href=\"javascript:markAsWalked(\'" + a_id +"\')\">walked</a>";
+            l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_id +"\')\">hide</a>";
+
+<?php
+    if( ($_SESSION['validUser'] == true) && (isset($_SESSION['userName'])))
+    {
+            echo 'l_info = l_info + " | <a href=\"javascript:markAsWalked(\'" + a_id +"\')\">walked</a>";';
+    }
+?>
             return l_info;
         }
 
@@ -633,22 +639,12 @@ if($_SESSION['validUser'] == true)
         </style>
     </head>
     <body onunload="GUnload()">
-<p class="loginhead">
 <?php
-if($_SESSION['validUser'] == true) 
-{
-    echo("<b>Logged in as " . $_SESSION['userName'] . "</b>");
-    $_SESSION['orig_request'] = $_REQUEST;
-?>
-    | <a href="usersettings.php">Settings</a> | <a href="../login/logout.php">Logout</a>
-<?php
-} 
-else
-{
-?>
-<a href="../login/login.php">Login</a> | <a href="../login/register.php">Register</a>
-<?php
-}
+    require('loginhead.php');
+    if($_SESSION['validUser'] == true) 
+    {
+        $_SESSION['orig_request'] = $_REQUEST;
+    }
 ?>
         <div>
             <div id="map" style="width: 800px; height: 600px"></div>
