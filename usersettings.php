@@ -1,6 +1,7 @@
 <?php
     require_once('../login/common.php');
     require_once('common.php');
+    require_once('constants.php');
 
     if (isset($_POST['saveSettings']))
     {
