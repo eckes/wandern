@@ -1,5 +1,6 @@
 <?php 
     require_once('../login/common.php');
+    require_once('../css/colors.php');
     require_once('common.php');
 
     include("constants.php");
@@ -90,7 +91,7 @@ END;
     <head>
         <title>Search Results</title>
         <META http-equiv="content-type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="../css/spring.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.php">
         <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAARoTP-aPC3X-J7A6v_c-RrRSliXv-vXMxLfXbWpmDAJtGYmmjPhRn1xN7Ce6w66WX49UMmCdujbpuzA"></script>
         <script type="text/javascript" src="../js/gs_sortable.js"></script>
         <script type="text/javascript">
@@ -619,23 +620,23 @@ if($_SESSION['validUser'] == true)
         </script>
         <style type="text/css">
           .table_odd{
-                    background:#6cb0bd;
-                    color:white;}
+              background:<?=$col_accent?>;
+                    color:<?=$col_body?>;}
           .table_even{
-                    background:white;
-                    color:#6cb0bd;}
+                    background:<?=$col_body?>;
+                    color:<?=$col_accent?>;}
           .table_odd_hl td {
-                    border-top:2px solid #d93030;
-                    border-bottom:2px solid #d93030;
-                    background:#B3C754;
-                    color:white;}
-          .table_odd_hl a:link{background:#B3C754;color:white;}
+              border-top:2px solid <?=$col_hlight?>;
+                    border-bottom:2px solid <?=$col_hlight?>;
+                    background:<?=$col_hlight2?>;
+                    color:<?=$col_body?>;}
+          .table_odd_hl a:link{background:<?=$col_hlight2?>;color:<?=$col_body?>;}
           .table_even_hl td {
-                    border-top:2px solid #d93030;
-                    border-bottom:2px solid #d93030;
-                    background:white;
-                    color:#B3C754;}
-          .table_even_hl a:link{background:white;color:#B3C754;}
+                    border-top:2px solid <?=$col_hlight?>;
+                    border-bottom:2px solid <?=$col_hlight?>;
+                    background:<?=$col_body?>;
+                    color:<?=$col_hlight2?>;}
+          .table_even_hl a:link{background:<?=$col_body?>;color:<?=$col_hlight2?>;}
         </style>
     </head>
     <body onunload="GUnload()">

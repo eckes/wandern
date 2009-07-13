@@ -1,5 +1,6 @@
 <?php
 require_once('../login/common.php');
+require_once('../css/colors.php');
 require_once('common.php');
 require('constants.php');
 
@@ -25,9 +26,9 @@ if (isset($_POST['submitBtn'])){
   <head>
     <title>Select your walks</title>
     <META http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="../css/spring.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.php">
     <style type="text/css">
-      fieldset{border:1px solid #6cb0bd};
+    fieldset{border:1px solid <?=$col_accent?>};
     </style>
   </head>
   <body>

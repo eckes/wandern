@@ -18,7 +18,7 @@ elseif($_SESSION['validUser'] == false)
     <head>
         <title>Editing Walk</title>
         <META http-equiv="content-type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="../css/spring.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.php">
     </head>
     <body>
 <?php

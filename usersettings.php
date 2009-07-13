@@ -33,7 +33,7 @@
     <head>
     <title>Change user Settings for <?=$_SESSION['userName']?></title>
         <META http-equiv="content-type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="../css/spring.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.php">
         <style type="text/css">
           fieldset{border:1px solid #6cb0bd};
         </style>
