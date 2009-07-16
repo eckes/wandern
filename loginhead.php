@@ -1,4 +1,4 @@
-<p class="loginhead">
+<div id="headline">
     <?php
     require_once('../login/common.php');
     if($_SESSION['validUser'] == true) 
@@ -13,4 +13,4 @@
     }
     echo ' | <a href="index.php">Walks Selection</a>';
     ?>
-</p>
+</div>
