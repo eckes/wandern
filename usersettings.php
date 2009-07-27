@@ -10,6 +10,8 @@
         {
             $settings[$thebook]  = isset($_POST[$thebook]) ? $_POST[$thebook] : 'no';
         }
+        $settings['lat'] = isset($_POST['lat']) ? $_POST['lat'] : DEFAULTLAT;
+        $settings['lon'] = isset($_POST['lon']) ? $_POST['lon'] : DEFAULTLON;
         // SAVE SETTINGS TO FILE
         $retVal = storeSettings($_SESSION['userName'], $settings);
 	}	
@@ -57,6 +59,11 @@
 ?>
         <div style="width:250pt;float:left;">
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="savesettings">
+            <fieldset>
+              <legend>HOME</legend>
+              <input type='text' name='lat' value='49.450520'> Lat</input>
+              <input type='text' name='lon' value='11.080480'> Lon</input>
+            </fieldset>
             <fieldset>
               <legend>Bücher</legend>
 <?php

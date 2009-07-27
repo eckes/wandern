@@ -6,6 +6,15 @@
     include("constants.php");
     define("DBTYPE", "XML");
 
+    if($_SESSION['validUser'] == true) 
+    {
+        $settings = loadSettings($_SESSION['userName']);
+    } 
+    else
+    {
+        $settings = loadSettings('anonymous');
+    }
+
     /* check if someone clicked the "walked" button */
     $keys = array_keys($_POST);
     foreach($keys AS $thekey)
@@ -615,7 +624,7 @@ if($_SESSION['validUser'] == true)
 
             GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
 
-            g_HOME       = new google.maps.LatLng(<?=HOMELAT?>, <?=HOMELON?>);
+            g_HOME       = new google.maps.LatLng(<?=$settings['lat']?>, <?=$settings['lon']?>);
         }
         </script>
         <style type="text/css">

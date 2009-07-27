@@ -1,6 +1,6 @@
 <?php 
-    define("HOMELAT", 49.414630);
-    define("HOMELON", 11.031539);
+define ('DEFAULTLAT', 49.450520);
+define ('DEFAULTLON', 11.080480);
 
 /** Array of book IDs, used on several places */
 $g_booklist=array(  'mluw1',

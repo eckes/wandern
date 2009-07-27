@@ -10,6 +10,7 @@
     else
     {
         echo '<a href="../login/login.php">Login</a> | <a href="../login/register.php">Register</a>';
+        $settings = loadSettings('anonymous');
     }
     echo ' | <a href="index.php">Walks Selection</a>';
     ?>

@@ -3,6 +3,14 @@ require_once('../login/common.php');
 require_once("constants.php");
 require_once("common.php");
 
+    if($_SESSION['validUser'] == true) 
+    {
+        $settings = loadSettings($_SESSION['userName']);
+    } 
+    else
+    {
+        $settings = loadSettings('anonymous');
+    }
 /** XML Tag constants */
 define("XMLTAG_TAG",        "Tag");
 define("XMLTAG_NAME",       "Name");
@@ -77,25 +85,25 @@ function match($a_walk)
         /* NOT Region 1 */
         if(!$_REQUEST[Region1])
         {
-            if(($lat >= HOMELAT) && ($lon <= HOMELON)) return false;
+            if(($lat >= $settings['lat']) && ($lon <= $settings['lon'])) return false;
         }
 
         /* NOT Region 2 */
         if(!$_REQUEST[Region2])
         {
-            if(($lat >= HOMELAT) && ($lon >= HOMELON)) return false;
+            if(($lat >= $settings['lat']) && ($lon >= $settings['lon'])) return false;
         }
 
         /* NOT Region 3 */
         if(!$_REQUEST[Region3])
         {
-            if(($lat <= HOMELAT) && ($lon <= HOMELON)) return false;
+            if(($lat <= $settings['lat']) && ($lon <= $settings['lon'])) return false;
         }
 
         /* NOT Region 4 */
         if(!$_REQUEST[Region4])
         {
-            if(($lat <= HOMELAT) && ($lon >= HOMELON)) return false;
+            if(($lat <= $settings['lat']) && ($lon >= $settings['lon'])) return false;
         }
     }
     return true;
