@@ -4,17 +4,6 @@ require_once('../css/colors.php');
 require_once('common.php');
 require('constants.php');
 
-$error = '0';
-
-if (isset($_POST['submitBtn'])){
-	// Get user input
-	$username = isset($_POST['username']) ? $_POST['username'] : '';
-	$password = isset($_POST['password']) ? $_POST['password'] : '';
-        
-	// Try to login the user
-	$error = loginUser($username,$password);
-}
-
     function writeBookLine($a_title, $a_description)
     {
         echo '<input type="checkbox" name="book_' . $a_title . '" value="yes" checked="checked"> ' . $a_description . '<br>';
@@ -37,7 +26,7 @@ if (isset($_POST['submitBtn'])){
       <form action="show.php" method="post">
         <fieldset>
           <legend>Allgemein</legend>
-          Entfernung von
+          Länge von
           <select name="dst_min" size="1">
             <option>egal</option>
             <option>10</option>
@@ -81,12 +70,12 @@ if (isset($_POST['submitBtn'])){
     /* if we have a logged in user, take his settings */
     if( ($_SESSION['validUser'] == true) && (isset($_SESSION['userName'])))
     {
-        if(null != $settings)
+        if(null != $_SESSION['settings'])
         {
             /* step through the settings and check which books the user owns */
             foreach($g_booklist AS $thebook)
             {
-                if($settings[$thebook] == "yes")
+                if($_SESSION['settings'][$thebook] == "yes")
                 {
                     writeBookLine($thebook, $g_booktitles[$thebook]);
                 }

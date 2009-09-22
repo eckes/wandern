@@ -2,15 +2,7 @@
 require_once('../login/common.php');
 require_once("constants.php");
 require_once("common.php");
-
-    if($_SESSION['validUser'] == true) 
-    {
-        $settings = loadSettings($_SESSION['userName']);
-    } 
-    else
-    {
-        $settings = loadSettings('anonymous');
-    }
+$settings = $_SESSION['settings'];
 /** XML Tag constants */
 define("XMLTAG_TAG",        "Tag");
 define("XMLTAG_NAME",       "Name");

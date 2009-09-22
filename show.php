@@ -6,14 +6,7 @@
     include("constants.php");
     define("DBTYPE", "XML");
 
-    if($_SESSION['validUser'] == true) 
-    {
-        $settings = loadSettings($_SESSION['userName']);
-    } 
-    else
-    {
-        $settings = loadSettings('anonymous');
-    }
+    $settings = $_SESSION['settings'];
 
     /* check if someone clicked the "walked" button */
     $keys = array_keys($_POST);
@@ -373,13 +366,13 @@ if($_SESSION['validUser'] == true)
             {
                 l_info = l_info + a_char + "<br>";
             }
-            l_info = l_info + "<span id='" + a_id +"_infodst'><a href=\"javascript:distCalc('" + a_id + "', '_infodst')\">dist</a></span> | ";
-            l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_id +"\')\">hide</a>";
+            l_info = l_info + "<span id='" + a_id +"_infodst'><a href=\"javascript:distCalc('" + a_id + "', '_infodst')\">Entfernung</a></span> | ";
+            l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_id +"\')\">Verbergen</a>";
 
 <?php
     if( ($_SESSION['validUser'] == true) && (isset($_SESSION['userName'])))
     {
-            echo 'l_info = l_info + " | <a href=\"javascript:markAsWalked(\'" + a_id +"\')\">walked</a>";';
+            echo 'l_info = l_info + " | <a href=\"javascript:markAsWalked(\'" + a_id +"\')\">Gelaufen</a>";';
     }
 ?>
             return l_info;
@@ -463,7 +456,7 @@ if($_SESSION['validUser'] == true)
             GEvent.addListener(l_mark, "click", function(){showInfo(a_id)});
 
             var dst = a_id + "_dst";
-            document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">calculate</a>";
+            document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">Berechnen</a>";
         }
 
         /*--- showHome() ---------------------------------------------------------------------- showHome() ---*/
@@ -624,7 +617,7 @@ if($_SESSION['validUser'] == true)
 
             GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
 
-            g_HOME       = new google.maps.LatLng(<?=$settings['lat']?>, <?=$settings['lon']?>);
+            g_HOME       = new google.maps.LatLng(<?=$_SESSION['settings']['lat']?>, <?=$_SESSION['settings']['lon']?>);
         }
         </script>
         <style type="text/css">
@@ -650,7 +643,7 @@ if($_SESSION['validUser'] == true)
     </head>
     <body onunload="GUnload()">
 <?php
-    require('loginhead.php');
+    require_once('loginhead.php');
     if($_SESSION['validUser'] == true) 
     {
         $_SESSION['orig_request'] = $_REQUEST;
@@ -658,8 +651,8 @@ if($_SESSION['validUser'] == true)
 ?>
         <div>
             <div id="map" style="width: 800px; height: 600px"></div>
-            <a href="javascript:g_MARKERLIST.hideAll();">hide all</a> 
-            <a href="javascript:g_MARKERLIST.showAll();">show all</a> 
+            <a href="javascript:g_MARKERLIST.hideAll();">Alle verbergen</a> 
+            <a href="javascript:g_MARKERLIST.showAll();">Älle anzeigen</a> 
         </div>
         <form name="walktable" action="" method="post">
             <table id="walks">

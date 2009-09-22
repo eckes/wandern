@@ -14,6 +14,7 @@
         $settings['lon'] = isset($_POST['lon']) ? $_POST['lon'] : DEFAULTLON;
         // SAVE SETTINGS TO FILE
         $retVal = storeSettings($_SESSION['userName'], $settings);
+        $_SESSION['settings'] = loadSettings($_SESSION['userName']);
 	}	
 
     if(!isset($_SESSION['userName']))
@@ -23,10 +24,10 @@
     }
 
     // LOAD SETTINGS FROM FILE HERE 
-    if(!isset($settings))
+    if(!isset($_SESSION['settings']))
     {
         /* read settings from file */
-        $settings = loadSettings($_SESSION['userName']);
+        $_SESSION['settings'] = loadSettings($_SESSION['userName']);
     }
 
 ?>
@@ -61,8 +62,8 @@
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="savesettings">
             <fieldset>
               <legend>HOME</legend>
-              <input type='text' name='lat' value='49.450520'> Lat</input>
-              <input type='text' name='lon' value='11.080480'> Lon</input>
+              <input type='text' name='lat' value='<?=$_SESSION['settings']['lat']?>'> Lat</input>
+              <input type='text' name='lon' value='<?=$_SESSION['settings']['lon']?>'> Lon</input>
             </fieldset>
             <fieldset>
               <legend>Bücher</legend>
@@ -73,7 +74,7 @@
             echo<<<END
 <a href="images/$b.png" target="_blank"><img src="images/$bs.png"/></a> <input type="checkbox" name="$b" value="yes"
 END;
-            if($settings[$b]=="yes") 
+            if($_SESSION['settings'][$b]=="yes") 
             {
                 echo "checked";
             }
