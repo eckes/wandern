@@ -111,6 +111,9 @@ function match($a_walk)
 
 function db_init()
 {
+    /* TODO: instead of loading only one database, search the "db" directory 
+     * for ALL files named xml, build a DOM from each of these files and return
+     * an array of DOMs */
     $xml_db_path = "db/db.xml";
     $dom = new DomDocument;
     $dom->preserveWhiteSpace = FALSE;
