@@ -652,7 +652,7 @@ if($_SESSION['validUser'] == true)
         <div>
             <div id="map" style="width: 800px; height: 600px"></div>
             <a href="javascript:g_MARKERLIST.hideAll();">Alle verbergen</a> 
-            <a href="javascript:g_MARKERLIST.showAll();">Älle anzeigen</a> 
+            <a href="javascript:g_MARKERLIST.showAll();">Alle anzeigen</a> 
         </div>
         <form name="walktable" action="" method="post">
             <table id="walks">
@@ -673,13 +673,14 @@ if($_SESSION['validUser'] == true)
         <div style="background:red;"><H1>WARNING! MYSQL VERSION ACTIVE! DEPRECATED!</H1></div>
 END;
     }
+
     /* XXX This block gets the elements to show! XXX */
     $res = db_init();
     $elements = db_getElements($res);
     db_cleanup($res);
     /* XXX This block gets the elements to show! XXX */
-
     array_walk($elements, writeTableLine);
+
 echo <<<END
         </table>
     </form>

@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<book shortname="mluw1" longname="Mit Lenkrad und Wanderstab I" thumbnail="" image="">
+  <walk>
+    <Tag>MLUW1_01</Tag>
+    <Name>Geruhsame Waldwanderung durch die romantische Bitterbachschlucht</Name>
+    <Laenge>11.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.264956</Lon>
+    <Lat>49.509521</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_02</Tag>
+    <Name>Zum Aussichts- und Kletterfelsen Glatzenstein</Name>
+    <Laenge>12.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>überwiegend leichtes Gelände, Anstieg zum Glatzenstein</Charakter>
+    <Lon>11.378746</Lon>
+    <Lat>49.530472</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_03</Tag>
+    <Name>Abwechslungsreicher Weg von Hersbruck nach Eschenbach</Name>
+    <Laenge>11.5</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>hügeliges Gelände</Charakter>
+    <Lon>11.432036</Lon>
+    <Lat>49.515312</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_04</Tag>
+    <Name>Von Kleedorf über die Felsnadel Langenstein und das altfränkische Pfarrdorf Vorra</Name>
+    <Laenge>14.0</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+    <Lon>11.444610</Lon>
+    <Lat>49.536396</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_05</Tag>
+    <Name>Zum Aussichtsberg Zankelstein und ins Aichatal</Name>
+    <Laenge>12.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>leichtes, mitunter ansteigendes Gelände</Charakter>
+    <Lon>11.513565</Lon>
+    <Lat>49.505356</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_06</Tag>
+    <Name>Von Hubmersberg zu den Aussichtspunkten Eschenbacher Geißkirche und Lochfels</Name>
+    <Laenge>10.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
+    <Lon>11.507084</Lon>
+    <Lat>49.527103</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_07</Tag>
+    <Name>Auf unbekannten Pfaden von Oed über die Noris-Schanze und den Knappenberg nach Neukirchen, Ermhof und Ernhüll</Name>
+    <Laenge>13.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>hügeliges, teilweise anstrengendes Gelände</Charakter>
+    <Lon>11.570063</Lon>
+    <Lat>49.508018</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_08</Tag>
+    <Name>Felsgestein um Etzelwand und Kirchenreinbach, &quot;Windloch&quot; von Buchhof und Schloss Neidstein</Name>
+    <Laenge>12.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>hügeliges Gelände</Charakter>
+    <Lon>11.584477</Lon>
+    <Lat>49.526363</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_09</Tag>
+    <Name>Höhlenweg ab Neutras</Name>
+    <Laenge>20.0</Laenge>
+    <Dauer>5.5</Dauer>
+    <Charakter>hügeliges, zwischendurch anstrengendes Gelände</Charakter>
+    <Lon>11.545258</Lon>
+    <Lat>49.533676</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_10</Tag>
+    <Name>Von Hirschbach aus ins Klettergebiet &quot;Höhenglücksteig&quot;</Name>
+    <Laenge>9.0</Laenge>
+    <Dauer>3.0</Dauer>
+    <Charakter>hügeliges Gelände mit einem steilen Anstieg</Charakter>
+    <Lon>11.540816</Lon>
+    <Lat>49.556343</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_11</Tag>
+    <Name>Zur Petershöhle zwischen Hartenstein und Velden</Name>
+    <Laenge>14.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>hügeliges Gelände</Charakter>
+    <Lon>11.480863</Lon>
+    <Lat>49.597881</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_12</Tag>
+    <Name>Zum höchsten Punkt der Frankenalb, der Burgruine Hohenstein</Name>
+    <Laenge>14.5</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>überwiegend leichtes, zwischendurch anstrengendes Gelände</Charakter>
+    <Lon>11.480863</Lon>
+    <Lat>49.597881</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_13</Tag>
+    <Name>Höhen- und Tälerwanderung ab Velden</Name>
+    <Laenge>14.5</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>welliges, zwischendurch anstrengendes Gelände</Charakter>
+    <Lon>11.508608</Lon>
+    <Lat>49.611668</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_14</Tag>
+    <Name>Exkursion durch die geheimnisvolle Welt der Grotten</Name>
+    <Laenge>11.5</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>hügeliges Gelände mit zwei steileren Anstiegen</Charakter>
+    <Lon>11.589332</Lon>
+    <Lat>49.629463</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_15</Tag>
+    <Name>Bizarre Felsformationen nördlich der Maximiliansgrotte</Name>
+    <Laenge>16.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
+    <Lon>11.589332</Lon>
+    <Lat>49.629463</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_16</Tag>
+    <Name>Wanderung von Königstein im Oberpfälzer Jura zu den Kapellen in Breitenstein</Name>
+    <Laenge>13.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
+    <Lon>11.634007</Lon>
+    <Lat>49.604507</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_17</Tag>
+    <Name>Von Weidensees durch das romantische Klumpertal nach Bronn</Name>
+    <Laenge>13.5</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.440566</Lon>
+    <Lat>49.710426</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_18</Tag>
+    <Name>Durchs Püttlachtal zur Elbersberger Kapelle und zur Ruine Hollenberg</Name>
+    <Laenge>12.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>hügeliges Gelände</Charakter>
+    <Lon>11.498244</Lon>
+    <Lat>49.774559</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_19</Tag>
+    <Name>Auf stillen Pfaden zur Kirche von St. Helena</Name>
+    <Laenge>9.0</Laenge>
+    <Dauer>3.0</Dauer>
+    <Charakter>überwiegend leichtes Gelände mit steileren An- und Abstiegen</Charakter>
+    <Lon>11.379733</Lon>
+    <Lat>49.631771</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_20</Tag>
+    <Name>Zu den Burgruinen von Wildenfels und Stierberg</Name>
+    <Laenge>16.0</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>überwiegend leichtes, zwischendurch anstrengendes Gelände</Charakter>
+    <Lon>11.360893</Lon>
+    <Lat>49.656239</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_21</Tag>
+    <Name>Von Markt Igensdorf zum Kloster Weißenohe und zur Lillingquelle</Name>
+    <Laenge>15.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>hügeliges Gelände mit einigen Anstiegen</Charakter>
+    <Lon>11.232018</Lon>
+    <Lat>49.627335</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_22</Tag>
+    <Name>Durchs Felsengebiet &quot;Hohle Kirche&quot; ins Großenoher Tal</Name>
+    <Laenge>10.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>leichtes Gelände mit einem Anstieg</Charakter>
+    <Lon>11.283860</Lon>
+    <Lat>49.654266</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_23</Tag>
+    <Name>Von Hiltpoltstein in Trubachtal und zur Burgruine Leienfels</Name>
+    <Laenge>19.0</Laenge>
+    <Dauer>5.5</Dauer>
+    <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
+    <Lon>11.321754</Lon>
+    <Lat>49.660378</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_24</Tag>
+    <Name>Zur Burgruine Bärnfels und ins Pitztal</Name>
+    <Laenge>8.0</Laenge>
+    <Dauer>3.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.338234</Lon>
+    <Lat>49.715515</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_25</Tag>
+    <Name>Von Regenthal über die Kreuzkapelle oberhalb Pottensteins in den Landschaftsgarten Klumpertal</Name>
+    <Laenge>16.5</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
+    <Lon>11.398787</Lon>
+    <Lat>49.731277</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_26</Tag>
+    <Name>Über Höhenwege ins Naturschutzgebiet Ehrenbürg</Name>
+    <Laenge>12.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>hügeliges Gelände</Charakter>
+    <Lon>11.146381</Lon>
+    <Lat>49.730820</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_27</Tag>
+    <Name>Auf den Spuren des Leutenbacher Heimatdichters und Pfarrers Dr. Georg Kanzler</Name>
+    <Laenge>18.0</Laenge>
+    <Dauer>5.5</Dauer>
+    <Charakter>hügeliges, mitunter steiles Gelände</Charakter>
+    <Lon>11.172645</Lon>
+    <Lat>49.710358</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_28</Tag>
+    <Name>Über die Höhenburg Dietrichstein ins Trubachtal</Name>
+    <Laenge>19.0</Laenge>
+    <Dauer>5.5</Dauer>
+    <Charakter>hügeliges, mitunter anstrengendes Gelände</Charakter>
+    <Lon>11.173782</Lon>
+    <Lat>49.755096</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_29</Tag>
+    <Name>Aussichtsfelsen um Egloffstein</Name>
+    <Laenge>10.0</Laenge>
+    <Dauer>3.0</Dauer>
+    <Charakter>überwiegend leichtes, zwischendurch anstrengendes Gelände</Charakter>
+    <Lon>11.259270</Lon>
+    <Lat>49.703388</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_30</Tag>
+    <Name>Von Morschreuth zum Rötelfels</Name>
+    <Laenge>10.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>leichtes, mitunter steiles Gelände</Charakter>
+    <Lon>11.263947</Lon>
+    <Lat>49.754875</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_31</Tag>
+    <Name>Geruhsame Waldwanderung ab Ebermannstadt mit schönen Aussichten</Name>
+    <Laenge>12.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>11.182108</Lon>
+    <Lat>49.786667</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_32</Tag>
+    <Name>Burgruine Neideck und Traumaussicht vom Zuckerhut</Name>
+    <Laenge>12.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+    <Lon>11.221075</Lon>
+    <Lat>49.806889</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_33</Tag>
+    <Name>Durchs Werntal zum sagenumwobenen Totenstein</Name>
+    <Laenge>13.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>hügeliges, mitunter anstrengendes Gelände</Charakter>
+    <Lon>11.197815</Lon>
+    <Lat>49.840973</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_34</Tag>
+    <Name>Von Kalteneggolsfeld über den Altenberg nach Burggrub</Name>
+    <Laenge>11.5</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>hügeliges Gelände</Charakter>
+    <Lon>11.119108</Lon>
+    <Lat>49.846329</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_35</Tag>
+    <Name>Von Burggrub zur Leinleiter-Quelle und dem größten Mühlrad der Fränkischen Schweiz</Name>
+    <Laenge>11.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>leichtes Gelände mit zwei Anstiegen</Charakter>
+    <Lon>11.137133</Lon>
+    <Lat>49.875595</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_36</Tag>
+    <Name>Aussichtsreiche Höhen über dem Wiesenttal, die Oswaldhöhle und Blick vom Hohen Kreuz</Name>
+    <Laenge>14.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>hügeliges, mitunter anstrengendes Gelände</Charakter>
+    <Lon>11.217427</Lon>
+    <Lat>49.808315</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_37</Tag>
+    <Name>Über den Rücken des Hummerbergs und zur Ruine Streitburg</Name>
+    <Laenge>10.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>überwiegend leichtes Gelände, am Anfang Anstieg</Charakter>
+    <Lon>11.217427</Lon>
+    <Lat>49.808315</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_38</Tag>
+    <Name>Von Muggendorf zum Naturdenkmal Druidenhain bei Wohlmannsgesees</Name>
+    <Laenge>11.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>hügeliges, mitunter ansteigendes Gelände</Charakter>
+    <Lon>11.261523</Lon>
+    <Lat>49.802929</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_39</Tag>
+    <Name>Durchs Aufseßtal über Muggendorf zum geheimnisvollen Labyrinth der Riesenburg</Name>
+    <Laenge>13.5</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>hügeliges Gelände mit steilen An- und Abstiegen</Charakter>
+    <Lon>11.296241</Lon>
+    <Lat>49.811584</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_40</Tag>
+    <Name>Zu den Burgen Rabeneck und Rabenstein</Name>
+    <Laenge>15.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>hügeliges, mitunter anstrengendes Gelände</Charakter>
+    <Lon>11.296241</Lon>
+    <Lat>49.811584</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_41</Tag>
+    <Name>Malerische Felsgebiete zwischen Oberailsfeld und Kirchahorn</Name>
+    <Laenge>11.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>teils hügeliges, teils leichtes Gelände</Charakter>
+    <Lon>11.353812</Lon>
+    <Lat>49.812622</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_42</Tag>
+    <Name>Von Waischenfeld zum Zusammenfluss von Wiesent und Truppach</Name>
+    <Laenge>16.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>11.344950</Lon>
+    <Lat>49.854446</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_43</Tag>
+    <Name>Durchs Aufseßtal nach Siegritzberg</Name>
+    <Laenge>12.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>überwiegend leichtes Gelände mit zwei steileren Anstiegen</Charakter>
+    <Lon>11.251523</Lon>
+    <Lat>49.851265</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_44</Tag>
+    <Name>Auf stillen Wegen zum Naturdenkmal &quot;Russenlinde&quot; und ins Aufseßtal</Name>
+    <Laenge>14.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.238756</Lon>
+    <Lat>49.870853</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_45</Tag>
+    <Name>Von Plankenfels durchs Lochautal und über aussichtsreiche Höhen zurück</Name>
+    <Laenge>18.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>hügeliges, überwiegend leichtes Gelände</Charakter>
+    <Lon>11.334629</Lon>
+    <Lat>49.883507</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_46</Tag>
+    <Name>Ins Mühlenviertel der Fränkischen Schweiz</Name>
+    <Laenge>11.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>hügeliges aber überwiegend leichtes Gelände</Charakter>
+    <Lon>11.334329</Lon>
+    <Lat>49.780128</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_47</Tag>
+    <Name>Vom Wallfahrtsort Gößweinstein durchs Wiesenttal nach Burggaillenreuth</Name>
+    <Laenge>12.5</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>überwiegend leichtes Gelände mit je einem steilen Ab- und Anstieg</Charakter>
+    <Lon>11.340315</Lon>
+    <Lat>49.767448</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_48</Tag>
+    <Name>Durchs Püttlachtal und zur Elbersberg-Kapelle</Name>
+    <Laenge>11.5</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>überwiegend leichtes Gelände mit einem steileren Anstieg</Charakter>
+    <Lon>11.409152</Lon>
+    <Lat>49.768333</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_49</Tag>
+    <Name>Von Pottenstein ins Felsendorf Tüchersfeld und nach Gößweinstein</Name>
+    <Laenge>14.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>hügeliges, mitunter anstrengendes Gelände</Charakter>
+    <Lon>11.409152</Lon>
+    <Lat>49.768333</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>MLUW1_50</Tag>
+    <Name>Zum Aussichtsturm auf der Hohenmirsberger Platte</Name>
+    <Laenge>15.5</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>hügeliges, mitunter anseigendes Gelände</Charakter>
+    <Lon>11.409152</Lon>
+    <Lat>49.768333</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+</book>
+<!-- vim: set encoding=utf-8: -->

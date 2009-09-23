@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<book shortname="fuw2" longname="Fahren und Wandern 2" thumbnail="" image="">
+  <walk>
+    <Tag>FUW2_05</Tag>
+    <Name>Von Großhabersdorf zu den &quot;Sieben Richtern&quot; und zum &quot;Heidenhügel&quot;</Name>
+    <Laenge>16.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.787354</Lon>
+    <Lat>49.405830</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_04</Tag>
+    <Name>Von Burgfarrnbach auf den Dillenberg</Name>
+    <Laenge>28.0</Laenge>
+    <Dauer>7.0</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>10.924379</Lon>
+    <Lat>49.485031</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_03</Tag>
+    <Name>Von der Alten Veste nach Cadolzburg</Name>
+    <Laenge>25.0</Laenge>
+    <Dauer>6.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.966348</Lon>
+    <Lat>49.451721</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_02</Tag>
+    <Name>Vom Farrnbach zum &quot;Rangaublick&quot;</Name>
+    <Laenge>10.0</Laenge>
+    <Dauer>3.0</Dauer>
+    <Charakter>leichtes und mittelschweres Gelände</Charakter>
+    <Lon>10.920739</Lon>
+    <Lat>49.488167</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_01</Tag>
+    <Name>Vom Rhein-Main-Donau-Kanal zur Veitsbronner Wehrkirche</Name>
+    <Laenge>22.0</Laenge>
+    <Dauer>5.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.944390</Lon>
+    <Lat>49.489964</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_06</Tag>
+    <Name>Von Langenzenn zum Farrnbach- und Fembachgrund</Name>
+    <Laenge>18.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.801858</Lon>
+    <Lat>49.496998</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_07</Tag>
+    <Name>Vom Ulsenbachgrund zum Eschen- und Erlenbachtal</Name>
+    <Laenge>18.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.725438</Lon>
+    <Lat>49.483410</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_08</Tag>
+    <Name>Durch den Schußbachwald und zur Burg Hoheneck auf der Frankenhöhe</Name>
+    <Laenge>32.0</Laenge>
+    <Dauer>8.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.658596</Lon>
+    <Lat>49.492558</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_09</Tag>
+    <Name>In den Seebachgrund und zur Hannberger Wehrkirche</Name>
+    <Laenge>13.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>leichtes Gelände, bei großer Hitze nicht zu empfehlen</Charakter>
+    <Lon>10.938405</Lon>
+    <Lat>49.626270</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_10</Tag>
+    <Name>In die Weiherlandschaft um Dechsendorf</Name>
+    <Laenge>16.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.964517</Lon>
+    <Lat>49.618259</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_11</Tag>
+    <Name>Zu den Linder Gruben und auf den Eichelberg</Name>
+    <Laenge>12.0</Laenge>
+    <Dauer>3.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.898632</Lon>
+    <Lat>49.400696</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_12</Tag>
+    <Name>Von Großweißmannsdorf an stillen Bachtälern entlang nach Roßtal</Name>
+    <Laenge>22.0</Laenge>
+    <Dauer>5.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.936642</Lon>
+    <Lat>49.381077</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_13</Tag>
+    <Name>Vom Schwallbach- zum Schwabachtal</Name>
+    <Laenge>12.0</Laenge>
+    <Dauer>3.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.884402</Lon>
+    <Lat>49.365486</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_14</Tag>
+    <Name>Zur fränkischen Münsterstadt Heilsbronn</Name>
+    <Laenge>10.0</Laenge>
+    <Dauer>2.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.710522</Lon>
+    <Lat>49.310497</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_15</Tag>
+    <Name>Von der &quot;Festungsstadt&quot; Lichtenau zur &quot;Minnesängerstadt&quot; Wolframs-Eschenbach</Name>
+    <Laenge>22.0</Laenge>
+    <Dauer>5.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.685243</Lon>
+    <Lat>49.276829</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_16</Tag>
+    <Name>Ins südliche Umland von Windsbach</Name>
+    <Laenge>11.0</Laenge>
+    <Dauer>3.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.825733</Lon>
+    <Lat>49.249790</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_17</Tag>
+    <Name>Ins nördliche Umland von Spalt</Name>
+    <Laenge>18.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>10.921707</Lon>
+    <Lat>49.179871</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_18</Tag>
+    <Name>Von Spalt über das &quot;Schnittlinger Loch&quot; und &quot;Zigeunerloch&quot; zur Burg Wernfels</Name>
+    <Laenge>18.0</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>mittelschweres Gelände</Charakter>
+    <Lon>10.927753</Lon>
+    <Lat>49.173988</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_19</Tag>
+    <Name>Von Spalt zum Brombachspeicher</Name>
+    <Laenge>19.0</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>10.927753</Lon>
+    <Lat>49.173988</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_20</Tag>
+    <Name>Vom Hembach zum Finsterbach und in den Brunnauer Forst</Name>
+    <Laenge>23.0</Laenge>
+    <Dauer>6.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.121380</Lon>
+    <Lat>49.297344</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_21</Tag>
+    <Name>Von Lauf durch die Bitterbachschlucht und nach Simonshofen</Name>
+    <Laenge>17.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.277832</Lon>
+    <Lat>49.512550</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_22</Tag>
+    <Name>Durch die Waldungen des Eichelbergs im Westen Schnaittachs</Name>
+    <Laenge>15.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.341814</Lon>
+    <Lat>49.557102</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_23</Tag>
+    <Name>Von Kornburg auf den Glasersberg und ins untere Schwarzachtal</Name>
+    <Laenge>15.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.103057</Lon>
+    <Lat>49.355846</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_24</Tag>
+    <Name>Von Ochenbruck ins obere Hembachtal und durch die Schwarzachklamm</Name>
+    <Laenge>26.0</Laenge>
+    <Dauer>6.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.253330</Lon>
+    <Lat>49.363029</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_25</Tag>
+    <Name>Vom Moritzberg nach Weißenbrunn und Klingenhof</Name>
+    <Laenge>16.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>mittelschweres Gelände</Charakter>
+    <Lon>11.349050</Lon>
+    <Lat>49.459366</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_26</Tag>
+    <Name>Durch das nördliche Altdorfer Land</Name>
+    <Laenge>25.0</Laenge>
+    <Dauer>6.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.353560</Lon>
+    <Lat>49.389969</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_27</Tag>
+    <Name>Ausgedehnter Streifzug durch die Staats- und Castellwaldungen südlich von Nürnberg</Name>
+    <Laenge>28.0</Laenge>
+    <Dauer>7.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.216770</Lon>
+    <Lat>49.293606</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_28</Tag>
+    <Name>Zur einzigartigen Aussicht auf den Möninger Berg</Name>
+    <Laenge>22.0</Laenge>
+    <Dauer>6.0</Dauer>
+    <Charakter>leichtes Gelände, an sehr heißen Sommertagen nicht zu empfehlen</Charakter>
+    <Lon>11.214444</Lon>
+    <Lat>49.253613</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_29</Tag>
+    <Name>Der Anton-Leidinger-Gedächtnis-Weg</Name>
+    <Laenge>71.0</Laenge>
+    <Dauer>17.0</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>11.147179</Lon>
+    <Lat>49.445869</Lat>
+    <Streckenwanderung>1</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_30</Tag>
+    <Name>Von Weißenbrunn nach Ottensoos</Name>
+    <Laenge>16.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>11.358709</Lon>
+    <Lat>49.428738</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_31</Tag>
+    <Name>Von Hersbruck zum Keilberg und zum Deckersberg</Name>
+    <Laenge>25.0</Laenge>
+    <Dauer>6.5</Dauer>
+    <Charakter>mittelschweres Gelände, für sehr heiße Tage weniger geeignet</Charakter>
+    <Lon>11.495136</Lon>
+    <Lat>49.503193</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_32</Tag>
+    <Name>Von Henfenfeld auf den Buchenberg und den Nonnenberg</Name>
+    <Laenge>18.0</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>mittelschweres Gelände</Charakter>
+    <Lon>11.386550</Lon>
+    <Lat>49.501411</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_33</Tag>
+    <Name>Von Reichenschwand zum Glatzenstein und Großen Hansgörgl</Name>
+    <Laenge>13.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>mittelschweres Gelände</Charakter>
+    <Lon>11.374030</Lon>
+    <Lat>49.514858</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_34</Tag>
+    <Name>Über die Festungsruine Rothenberg in den Osternoher Talkessel</Name>
+    <Laenge>12.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>mittelschweres Gelände</Charakter>
+    <Lon>11.341814</Lon>
+    <Lat>49.557102</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_35</Tag>
+    <Name>Vom Pegnitztal zum Langenstein</Name>
+    <Laenge>11.0</Laenge>
+    <Dauer>3.0</Dauer>
+    <Charakter>mittelschweres Gelände</Charakter>
+    <Lon>11.495351</Lon>
+    <Lat>49.564190</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_36</Tag>
+    <Name>Vom Rothenberg zur einstigen Stauferburg Hohenstein</Name>
+    <Laenge>14.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+    <Lon>11.361235</Lon>
+    <Lat>49.558739</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_37</Tag>
+    <Name>Der &quot;Simmelsdorfer Rundweg&quot;</Name>
+    <Laenge>20.0</Laenge>
+    <Dauer>5.5</Dauer>
+    <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+    <Lon>11.340945</Lon>
+    <Lat>49.598377</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_38</Tag>
+    <Name>Ins Bergland westlich von Simmelsdorf und Hüttenbach</Name>
+    <Laenge>13.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.340945</Lon>
+    <Lat>49.598377</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_39</Tag>
+    <Name>Vom Bühler Kirchlein nach St. Helena und Bernhof</Name>
+    <Laenge>14.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+    <Lon>11.340945</Lon>
+    <Lat>49.598377</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_40</Tag>
+    <Name>Zur romantischen Burgruine Wildenfels</Name>
+    <Laenge>11.0</Laenge>
+    <Dauer>3.0</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>11.355766</Lon>
+    <Lat>49.630371</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_41</Tag>
+    <Name>Von Spies zum Reuthof</Name>
+    <Laenge>10.0</Laenge>
+    <Dauer>3.0</Dauer>
+    <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+    <Lon>11.402562</Lon>
+    <Lat>49.635445</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_42</Tag>
+    <Name>Vom Lehental durch die westliche Oberpfalz</Name>
+    <Laenge>14.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+    <Lon>11.563063</Lon>
+    <Lat>49.518475</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_43</Tag>
+    <Name>Nach Hunas und Ernhüll -- ins Gebiet unserer Frühgeschichte</Name>
+    <Laenge>16.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.495136</Lon>
+    <Lat>49.503193</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_44</Tag>
+    <Name>Zum Brennberg und zur Noris-Sprungschanze</Name>
+    <Laenge>9.0</Laenge>
+    <Dauer>2.5</Dauer>
+    <Charakter>mittelschweres Gelände</Charakter>
+    <Lon>11.586410</Lon>
+    <Lat>49.525578</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_45</Tag>
+    <Name>Von Hartmannshof über Lichtenegg nach Etzelwang</Name>
+    <Laenge>20.0</Laenge>
+    <Dauer>5.5</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>11.495136</Lon>
+    <Lat>49.503193</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_46</Tag>
+    <Name>Von Hartmannshof über Lichtenegg nach Fürnried</Name>
+    <Laenge>15.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>11.495136</Lon>
+    <Lat>49.503193</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_47</Tag>
+    <Name>Von der Claramühle zum Bären- und Türkenfels sowie zur Ruine Lichtenegg</Name>
+    <Laenge>20.0</Laenge>
+    <Dauer>5.5</Dauer>
+    <Charakter>leichtes bis mittelschweres Gelände</Charakter>
+    <Lon>11.558624</Lon>
+    <Lat>49.454468</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_48</Tag>
+    <Name>Von der Claramühle zum Poppberg</Name>
+    <Laenge>15.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.558624</Lon>
+    <Lat>49.454468</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_49</Tag>
+    <Name>Von Alfeld zum Poppberg</Name>
+    <Laenge>13.0</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.544261</Lon>
+    <Lat>49.429237</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_50</Tag>
+    <Name>Zu den höchsten Bergen des Königsteiner Landes</Name>
+    <Laenge>21.0</Laenge>
+    <Dauer>5.5</Dauer>
+    <Charakter>leichtes, mitunter auch schweres Gelände</Charakter>
+    <Lon>11.614826</Lon>
+    <Lat>49.579910</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_51</Tag>
+    <Name>Von der Maximiliansgrotte zur Hohen Tanne und zum Forsthaus Sackdilling</Name>
+    <Laenge>18.0</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>11.588400</Lon>
+    <Lat>49.628502</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_52</Tag>
+    <Name>Von Velburg zur Ruine Adelburg</Name>
+    <Laenge>15.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>überwiegend leichtes Gelände</Charakter>
+    <Lon>11.671017</Lon>
+    <Lat>49.230495</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_53</Tag>
+    <Name>Von Parsberg durchs Laabertal nach Hollerstetten</Name>
+    <Laenge>19.0</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>überwiegend leichtes Gelände, für heiße Tage weniger geeignet</Charakter>
+    <Lon>11.723579</Lon>
+    <Lat>49.164188</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_54</Tag>
+    <Name>Thalmässinger Impressionen</Name>
+    <Laenge>19.0</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.186789</Lon>
+    <Lat>49.107243</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_55</Tag>
+    <Name>Auf den Spuren der Römer</Name>
+    <Laenge>16.0</Laenge>
+    <Dauer>4.0</Dauer>
+    <Charakter>leichtes Gelände, bei großer Hitze und hoher Schneelage weniger geeignet</Charakter>
+    <Lon>11.048452</Lon>
+    <Lat>49.030693</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_56</Tag>
+    <Name>Vom Arbachtal über den Rohrberg zur &quot;Deutschordensstadt&quot; Ellingen</Name>
+    <Laenge>23.0</Laenge>
+    <Dauer>6.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.977676</Lon>
+    <Lat>49.106438</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_57</Tag>
+    <Name>Von Weißenburg ins Schambachtal und zur Wülzburg</Name>
+    <Laenge>24.0</Laenge>
+    <Dauer>6.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.968272</Lon>
+    <Lat>49.028790</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_58</Tag>
+    <Name>Sichtreiche Rundwanderung im Hahnenkamm</Name>
+    <Laenge>17.0</Laenge>
+    <Dauer>4.5</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>10.718084</Lon>
+    <Lat>49.044430</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_59</Tag>
+    <Name>Zum Hesselberg, der höchsten Erhebung Mittelfrankens</Name>
+    <Laenge>17.0</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>leichtes und schweres Gelände</Charakter>
+    <Lon>10.602635</Lon>
+    <Lat>49.042297</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>FUW2_60</Tag>
+    <Name>Zur wehrhaften Kirchenburg nach Illschwang</Name>
+    <Laenge>18.0</Laenge>
+    <Dauer>5.0</Dauer>
+    <Charakter>leichtes Gelände</Charakter>
+    <Lon>11.653136</Lon>
+    <Lat>49.425220</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+</book>
+<!-- vim: set encoding=utf-8: -->
