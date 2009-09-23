@@ -6,7 +6,7 @@ require('constants.php');
 
     function writeBookLine($a_title, $a_description)
     {
-        echo '<input type="checkbox" name="book_' . $a_title . '" value="yes" checked="checked"> ' . $a_description . '<br>';
+        echo '<input type="checkbox" name="book_' . $a_title . '" id="book_' . $a_title . '"value="yes" checked="checked"> <label for="book_' . $a_title . '">' . $a_description . '</label><br>';
     }
 
 ?>
@@ -48,19 +48,21 @@ require('constants.php');
         </fieldset>
         <fieldset>
           <legend>Charakter</legend>
-          <input type="checkbox" name="nur_leichtes" value="yes"> nur leichtes Gelände<br>
-          <input type="checkbox" name="nur_huegeliges" value="yes"> nur hügeliges Gelände<br>
-          <input type="checkbox" name="kein_leichtes" value="yes"> kein leichtes Gelände<br>
-          <input type="checkbox" name="kein_huegeliges" value="yes"> kein hügeliges Gelände<br>
-          <input type="checkbox" name="kein_anstrengendes" value="yes"> kein anstrengendes Gelände<br>
-          <input type="checkbox" name="kein_steiles" value="yes"> kein steiles Gelände<br>
+          <input type="checkbox" id="nur_leichtes" name="nur_leichtes" value="yes"><label for="nur_leichtes"> nur leichtes Gelände</label><br>
+          <input type="checkbox" id="nur_huegeliges" name="nur_huegeliges" value="yes"><label for="nur_huegeliges"> nur hügeliges Gelände</label><br>
+          <input type="checkbox" id="kein_leichtes" name="kein_leichtes" value="yes"><label for="kein_leichtes"> kein leichtes Gelände</label><br>
+          <input type="checkbox" id="kein_huegeliges" name="kein_huegeliges" value="yes"><label for="kein_huegeliges"> kein hügeliges Gelände</label><br>
+          <input type="checkbox" id="kein_anstrengendes" name="kein_anstrengendes" value="yes"><label for="kein_anstrengendes"> kein anstrengendes Gelände</label><br>
+          <input type="checkbox" id="kein_steiles" name="kein_steiles" value="yes"><label for="kein_steiles"> kein steiles Gelände</label><br>
         </fieldset>
         <fieldset>
           <legend>Region</legend>
           <table>
-            <tr><td>NW</td><td><input type="checkbox" name="Region1" value="yes" checked></td><td></td><td><input type="checkbox" name="Region2" value="yes" checked></td><td>NO</td></tr>
+            <tr>
+              <td><label for="Region1">NW</label></td><td><input type="checkbox" id="Region1" name="Region1" value="yes" checked></td><td></td>
+              <td><input type="checkbox" id="Region2" name="Region2" value="yes" checked></td><td><label for="Region2">NO</label></td></tr>
             <tr><td></td><td></td><td><img src="images/home.png"></td><td></td><td></td></tr>
-            <tr><td>SW</td><td><input type="checkbox" name="Region3" value="yes" checked></td><td></td><td><input type="checkbox" name="Region4" value="yes" checked></td><td>SO</td></tr>
+            <tr><td><label for="Region3">SW</label></td><td><input type="checkbox" id="Region3" name="Region3" value="yes" checked></td><td></td><td><input type="checkbox" id="Region4" name="Region4" value="yes" checked></td><td><label for="Region4">SO</label></td></tr>
           </table>
         </fieldset>
         <fieldset>
@@ -101,10 +103,10 @@ require('constants.php');
 <?php
     if( ($_SESSION['validUser'] == true) && (isset($_SESSION['userName'])))
     {
-          echo '<input type="checkbox" name="showwalked" value="yes"> Zeige gelaufene<br>';
+          echo '<input type="checkbox" name="showwalked" id="showwalked" value="yes"> <label for="showwalked">Zeige gelaufene</label><br>';
     }
 ?>
-          <input type="checkbox" name="showoneway" value="yes"> Zeige Streckenwanderungen<br>
+          <input type="checkbox" name="showoneway" id="showoneway" value="yes"> <label for="showoneway">Zeige Streckenwanderungen</label><br>
         </fieldset>
         <button type="submit">submit</button>
       </form>
