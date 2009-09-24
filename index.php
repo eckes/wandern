@@ -6,7 +6,7 @@ require('constants.php');
 
     function writeBookLine($a_title, $a_description)
     {
-        echo '<input type="checkbox" name="book_' . $a_title . '" id="book_' . $a_title . '"value="yes" checked="checked"> <label for="book_' . $a_title . '">' . $a_description . '</label><br>';
+        echo '<input type="checkbox" name="book_' . $a_title . '" id="book_' . $a_title . '" value="yes" checked="checked"> <label for="book_' . $a_title . '">' . $a_description . '</label><br>';
     }
 
 ?>
