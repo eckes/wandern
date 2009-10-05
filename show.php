@@ -4,9 +4,8 @@
     require_once('common.php');
 
     include("constants.php");
-    define("DBTYPE", "XML");
 
-    if($_SESSION['validUser'] == true) 
+    if(checkSession())
     {
         $_SESSION['settings'] = loadSettings($_SESSION['userName']); 
     } 
@@ -14,8 +13,6 @@
     {
         $_SESSION['settings'] = loadSettings('anonymous'); 
     }
-
-    $settings = $_SESSION['settings'];
 
     /* check if someone clicked the "walked" button */
     $keys = array_keys($_POST);
@@ -83,18 +80,7 @@ END;
         echo "Datum: $a_val1[Datum]\n";
     }
 
-    if(DBTYPE=="MYSQL")
-    {
-        include("db_mysql.php");
-    }
-    else if(DBTYPE=="XML")
-    {
-        include("db_xml.php");
-    }
-    else
-    {
-        die("unknown db type defined");
-    }
+    include("db_xml.php");
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -379,7 +365,7 @@ if($_SESSION['validUser'] == true)
             l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_id +"\')\">Verbergen</a>";
 
 <?php
-    if( ($_SESSION['validUser'] == true) && (isset($_SESSION['userName'])))
+    if(checkSession())
     {
             echo 'l_info = l_info + " | <a href=\"javascript:markAsWalked(\'" + a_id +"\')\">Gelaufen</a>";';
     }
@@ -676,12 +662,6 @@ if($_SESSION['validUser'] == true)
                 </tr>
             </thead>
 <?php
-    if(DBTYPE=="MYSQL")
-    {
-        echo <<<END
-        <div style="background:red;"><H1>WARNING! MYSQL VERSION ACTIVE! DEPRECATED!</H1></div>
-END;
-    }
 
     /* XXX This block gets the elements to show! XXX */
     $res = db_init();
