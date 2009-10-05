@@ -4,10 +4,10 @@ require_once('../css/colors.php');
 require_once('common.php');
 require('constants.php');
 
-    function writeBookLine($a_title, $a_description)
-    {
-        echo '<input type="checkbox" name="book_' . $a_title . '" id="book_' . $a_title . '" value="yes" checked="checked"> <label for="book_' . $a_title . '">' . $a_description . '</label><br>';
-    }
+function writeBookLine($a_title, $a_description)
+{
+  echo '<input type="checkbox" name="book_' . $a_title . '" id="book_' . $a_title . '" value="yes" checked="checked"> <label for="book_' . $a_title . '">' . $a_description . '</label><br>';
+}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -69,42 +69,42 @@ require('constants.php');
           <legend>Bücher</legend>
 <?php
 // Open the users settings file and read the books that the user owns
-    /* if we have a logged in user, take his settings */
-    if( ($_SESSION['validUser'] == true) && (isset($_SESSION['userName'])))
+/* if we have a logged in user, take his settings */
+if(checkSession())
+{
+  if(null != $_SESSION['settings'])
+  {
+    /* step through the settings and check which books the user owns */
+    foreach($g_booklist AS $thebook)
     {
-        if(null != $_SESSION['settings'])
-        {
-            /* step through the settings and check which books the user owns */
-            foreach($g_booklist AS $thebook)
-            {
-                if($_SESSION['settings'][$thebook] == "yes")
-                {
-                    writeBookLine($thebook, $g_booktitles[$thebook]);
-                }
-            }
-        }
-        else
-        {
-            echo '<b>No books specified. Select at least one in the <a href="usersettings.php">Settings</a></b>';
-        }
+      if($_SESSION['settings'][$thebook] == "yes")
+      {
+        writeBookLine($thebook, $g_booktitles[$thebook]);
+      }
     }
-    /* no logged in user, take all the books */
-    else
-    {
-        foreach($g_booklist AS $thebook)
-        {
-            writeBookLine($thebook, $g_booktitles[$thebook]);
-        }
-    }
+  }
+  else
+  {
+    echo '<b>No books specified. Select at least one in the <a href="usersettings.php">Settings</a></b>';
+  }
+}
+else
+{
+  /* no logged in user, take all the books */
+  foreach($g_booklist AS $thebook)
+  {
+    writeBookLine($thebook, $g_booktitles[$thebook]);
+  }
+}
 ?>
         </fieldset>
         <fieldset>
           <legend>Sonstiges</legend>
 <?php
-    if( ($_SESSION['validUser'] == true) && (isset($_SESSION['userName'])))
-    {
-          echo '<input type="checkbox" name="showwalked" id="showwalked" value="yes"> <label for="showwalked">Zeige gelaufene</label><br>';
-    }
+if(checkSession())
+{
+  echo '<input type="checkbox" name="showwalked" id="showwalked" value="yes"> <label for="showwalked">Zeige gelaufene</label><br>';
+}
 ?>
           <input type="checkbox" name="showoneway" id="showoneway" value="yes"> <label for="showoneway">Zeige Streckenwanderungen</label><br>
         </fieldset>
