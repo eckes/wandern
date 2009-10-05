@@ -2,7 +2,6 @@
 require_once('../login/common.php');
 require_once("constants.php");
 require_once("common.php");
-$settings = $_SESSION['settings'];
 /** XML Tag constants */
 define("XMLTAG_TAG",        "Tag");
 define("XMLTAG_NAME",       "Name");
@@ -79,6 +78,15 @@ function match($a_walk)
   {
     $lat = getVal($a_walk, XMLTAG_LAT);
     $lon = getVal($a_walk, XMLTAG_LON);
+    if($_SESSION['validUser'] == true) 
+    {
+        $_SESSION['settings'] = loadSettings($_SESSION['userName']); 
+    } 
+    else
+    {
+        $_SESSION['settings'] = loadSettings('anonymous'); 
+    }
+    $settings = $_SESSION['settings'];
 
     /* NOT Region 1 */
     if(!$_REQUEST[Region1])
