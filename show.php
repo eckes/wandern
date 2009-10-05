@@ -6,6 +6,15 @@
     include("constants.php");
     define("DBTYPE", "XML");
 
+    if($_SESSION['validUser'] == true) 
+    {
+        $_SESSION['settings'] = loadSettings($_SESSION['userName']); 
+    } 
+    else
+    {
+        $_SESSION['settings'] = loadSettings('anonymous'); 
+    }
+
     $settings = $_SESSION['settings'];
 
     /* check if someone clicked the "walked" button */
@@ -684,6 +693,7 @@ END;
 echo <<<END
         </table>
     </form>
+
     <script type="text/javascript">
         initialize();
         showHome('Daheim');
