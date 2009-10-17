@@ -75,11 +75,11 @@ if(checkSession())
   if(null != $_SESSION['settings'])
   {
     /* step through the settings and check which books the user owns */
-    foreach($g_booklist AS $thebook)
+    foreach($g_books AS $thebook)
     {
-      if($_SESSION['settings'][$thebook] == "yes")
+      if($_SESSION['settings'][$thebook->m_id] == "yes")
       {
-        writeBookLine($thebook, $g_booktitles[$thebook]);
+        writeBookLine($thebook->m_id, $thebook->m_name);
       }
     }
   }
@@ -91,10 +91,11 @@ if(checkSession())
 else
 {
   /* no logged in user, take all the books */
-  foreach($g_booklist AS $thebook)
+  foreach($g_books AS $thebook)
   {
-    writeBookLine($thebook, $g_booktitles[$thebook]);
+    writeBookLine($thebook->m_id, $thebook->m_name);
   }
+
 }
 ?>
         </fieldset>

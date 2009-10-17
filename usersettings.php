@@ -6,9 +6,9 @@
     if (isset($_POST['saveSettings']))
     {
 		// Get user input
-        foreach($g_booklist AS $thebook)
+        foreach($g_books AS $thebook)
         {
-            $settings[$thebook]  = isset($_POST[$thebook]) ? $_POST[$thebook] : 'no';
+            $settings[$thebook->m_id]  = isset($_POST[$thebook->m_id]) ? $_POST[$thebook->m_id] : 'no';
         }
         $settings['lat'] = isset($_POST['lat']) ? $_POST['lat'] : DEFAULTLAT;
         $settings['lon'] = isset($_POST['lon']) ? $_POST['lon'] : DEFAULTLON;
@@ -68,17 +68,17 @@
             <fieldset>
               <legend>Bücher</legend>
 <?php
-        foreach($g_booklist AS $b)
+        foreach($g_books AS $b)
         {
-            $bs = $b . "_small";
+            $bs = $b->m_id . "_small";
             echo<<<END
-<a href="images/$b.png" target="_blank"><img src="images/$bs.png"/></a> <input type="checkbox" name="$b" value="yes"
+<a href="images/$b->m_id.png" target="_blank"><img src="images/$bs.png"/></a> <input type="checkbox" name="$b->m_id" value="yes"
 END;
-            if($_SESSION['settings'][$b]=="yes") 
+            if($_SESSION['settings'][$b->m_id]=="yes") 
             {
                 echo "checked";
             }
-            echo ">" . $g_booktitles[$b] . "<br>";
+            echo ">" . $b->m_name . "<br>";
         }
 ?>
             </fieldset>
