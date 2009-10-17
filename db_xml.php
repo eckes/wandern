@@ -117,45 +117,32 @@ function match($a_walk)
 
 function db_init()
 {
-  /* TODO: instead of loading only one database, search the "db" directory 
+  /* instead of loading only one database, search the "db" directory 
    * for ALL files named xml, build a DOM from each of these files and return
    * an array of DOMs */
-
-  if(0)
+  /* new one */
+  if ($handle = opendir('db/xml'))
   {
-  /* Old version */
-    $xml_db_path = "db/db.xml";
-    $dom = new DomDocument;
-    $dom->preserveWhiteSpace = FALSE;
-    $dom->load(realpath($xml_db_path));
-    return $dom;
-  }
-  else
-  {
-    /* new one */
-    if ($handle = opendir('db/xml'))
+    $files = array();
+    while (false !== ($file = readdir($handle)))
     {
-      $files = array();
-      while (false !== ($file = readdir($handle)))
+      //if ($file != "." && $file != ".." && $file != "")
+      if(fnmatch("*.xml", $file))
       {
-        //if ($file != "." && $file != ".." && $file != "")
-        if(fnmatch("*.xml", $file))
-        {
-          array_push($files, $file);
-        }
+        array_push($files, $file);
       }
-      closedir($handle);
     }
-    $dom = array();
-    foreach($files as $thefile)
-    {
-      $tmpdom = new DomDocument;
-      $tmpdom->preserveWhiteSpace = FALSE;
-      $tmpdom->load(realpath("db/xml/" . $thefile));
-      array_push($dom, $tmpdom);
-    }
-    return $dom;
+    closedir($handle);
   }
+  $dom = array();
+  foreach($files as $thefile)
+  {
+    $tmpdom = new DomDocument;
+    $tmpdom->preserveWhiteSpace = FALSE;
+    $tmpdom->load(realpath("db/xml/" . $thefile));
+    array_push($dom, $tmpdom);
+  }
+  return $dom;
 }
 
 function db_cleanup($a_dom)
