@@ -133,6 +133,7 @@ if($_SESSION['validUser'] == true)
             this.m_id       = a_id;
             this.m_marker   = a_marker;
             this.m_desc     = a_description;
+            this.m_hidden   = false;
             this.length     = 0;
         }
         /* ------------------------------------------------------------------------------------------------ */
@@ -251,6 +252,7 @@ if($_SESSION['validUser'] == true)
             if(me)
             {
                 me.m_marker.show();
+                me.m_hidden = false;
             }
             var e = document.getElementById(a_id + "_cb");
             if(e)
@@ -269,6 +271,7 @@ if($_SESSION['validUser'] == true)
             var me      = this.search(a_id);
             if(me)
             {
+                me.m_hidden = true;
                 me.m_marker.hide();
             }
 
