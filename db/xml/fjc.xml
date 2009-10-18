@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<book shortname="fjc" longname="Frankenjura.com" thumbnail="" image="">
+  <walk>
+    <Tag>fjc_01</Tag>
+    <Name>Spektakuläre Blicke ins Nürnberger Becken</Name>
+    <Laenge>14.7</Laenge>
+    <Dauer>3.5</Dauer>
+    <Charakter></Charakter>
+    <Lon>11.27369</Lon>
+    <Lat>49.61293833</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+  <walk>
+    <Tag>fjc_02</Tag>
+    <Name>Von Morschreuth auf den Röthelfels</Name>
+    <Laenge>5.1</Laenge>
+    <Dauer>1.5</Dauer>
+    <Charakter></Charakter>
+    <Lon>11.260275</Lon>
+    <Lat>49.75426833</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
+</book>
+<!-- vim: set encoding=utf-8: -->

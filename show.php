@@ -3,7 +3,7 @@
     require_once('../css/colors.php');
     require_once('common.php');
 
-    include("constants.php");
+    require_once("constants.php");
 
     if(checkSession())
     {

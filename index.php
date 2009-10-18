@@ -2,11 +2,11 @@
 require_once('../login/common.php');
 require_once('../css/colors.php');
 require_once('common.php');
-require('constants.php');
+require_once('constants.php');
 
-function writeBookLine($a_title, $a_description)
+function writeBookLine($a_book)
 {
-  echo '<input type="checkbox" name="book_' . $a_title . '" id="book_' . $a_title . '" value="yes" checked="checked"> <label for="book_' . $a_title . '">' . $a_description . '</label><br>';
+  echo '<input type="checkbox" name="book_' . $a_book->m_id . '" id="book_' . $a_book->m_id . '" value="yes" checked="checked"> <label for="book_' . $a_book->m_id . '">' . $a_book->m_name . '</label><br>';
 }
 
 ?>
@@ -79,7 +79,7 @@ if(checkSession())
     {
       if($_SESSION['settings'][$thebook->m_id] == "yes")
       {
-        writeBookLine($thebook->m_id, $thebook->m_name);
+        writeBookLine($thebook);
       }
     }
   }
@@ -93,7 +93,7 @@ else
   /* no logged in user, take all the books */
   foreach($g_books AS $thebook)
   {
-    writeBookLine($thebook->m_id, $thebook->m_name);
+    writeBookLine($thebook);
   }
 
 }

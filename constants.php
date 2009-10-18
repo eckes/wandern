@@ -22,14 +22,14 @@ define ('DEFAULTLON', 11.080480);
 /* This array holds all our books... */
 $g_books = array();
 
-/* __START_BOOK_CREATION__ */
-$g_books[]  = new Book("mluw1", "Mit Mit Lenkrad und Wanderstab I");
-$g_books[]  = new Book("mluw2", "Mit Mit Lenkrad und Wanderstab II");
-$g_books[]   = new Book("fuw1", "Fahren und Wandern 1");
-$g_books[]   = new Book("fuw2", "Fahren und Wandern 2");
-$g_books[]   = new Book("fuw3", "Fahren und Wandern 3");
-$g_books[]    = new Book("nw2",  "Nürnberger Wanderziele II");
-/* __END_BOOK_CREATION__ */
+if (false == $content = file("db/xml/filelist.txt", FILE_IGNORE_NEW_LINES|FILE_TEXT))
+    die("opening filelist failed\n");
+
+foreach($content as $line)
+{
+    list($id, $name, $thumb, $image) = explode(',', $line);
+    $g_books[]  = new Book($id, $name, $thumb, $image);
+}
 
 global $g_books;
 

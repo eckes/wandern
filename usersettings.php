@@ -70,9 +70,16 @@
 <?php
         foreach($g_books AS $b)
         {
-            $bs = $b->m_id . "_small";
+            if(!$b->m_thumbnail)
+            {
+              $b->m_thumbnail = "images/" . $b->m_id . "_small.png";
+            }
+            if(!$b->m_image)
+            {
+              $b->m_image = "images/" . $b->m_id . ".png";
+            }
             echo<<<END
-<a href="images/$b->m_id.png" target="_blank"><img src="images/$bs.png"/></a> <input type="checkbox" name="$b->m_id" value="yes"
+<a href="$b->m_image" target="_blank"><img src="$b->m_thumbnail"/></a> <input type="checkbox" name="$b->m_id" value="yes"
 END;
             if($_SESSION['settings'][$b->m_id]=="yes") 
             {
