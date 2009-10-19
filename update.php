@@ -22,13 +22,6 @@ if(    !isset($_SESSION['validUser'])
   </head>
 
 <?php
-
-/* TODO:
- * - create some text lines from the xml files
- * - open the constants.php
- * - search for the tag marking the creation block
- * - enter the lines there (replace existing ones)
- * */
 $domarray = db_init();
 if(false == $out = fopen("fragment.php", "wb"))
     die("Opening filelist file failed\n");
@@ -52,4 +45,3 @@ fclose($out);
 ?>
 <body></body>
 </html>
-
