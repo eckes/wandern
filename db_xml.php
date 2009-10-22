@@ -37,12 +37,12 @@ function match($a_walk)
     if(0 != getVal($a_walk, XMLTAG_ONEWAY)) return false;
   }
 
-  if($_REQUEST[dst_min] != "egal")
+  if(isset($_REQUEST[dst_min]) && ($_REQUEST[dst_min] != "egal"))
   {
     if($len < $_REQUEST[dst_min]) return false;
   }
 
-  if($_REQUEST[dst_max] != "egal")
+  if(isset($_REQUEST[dst_max]) && ($_REQUEST[dst_max] != "egal"))
   {
     if($len > $_REQUEST[dst_max]) return false;
   }
@@ -74,7 +74,9 @@ function match($a_walk)
     return false;
   }
 
-  if(!$_REQUEST[Region1] || !$_REQUEST[Region2] || !$_REQUEST[Region3] || !$_REQUEST[Region4])
+  if(    ( $_REQUEST[Region1] ||  $_REQUEST[Region2] ||  $_REQUEST[Region3] ||  $_REQUEST[Region4])
+      && (!$_REQUEST[Region1] || !$_REQUEST[Region2] || !$_REQUEST[Region3] || !$_REQUEST[Region4])
+    )
   {
     $lat = getVal($a_walk, XMLTAG_LAT);
     $lon = getVal($a_walk, XMLTAG_LON);
