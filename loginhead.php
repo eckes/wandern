@@ -4,7 +4,6 @@
     if($_SESSION['validUser'] == true) 
     {
         echo("<b>Logged in as " . $_SESSION['userName'] . "</b>");
-        /* TODO: instead of loading the settings into an own variable, attach them to the _SESSION */
         $_SESSION['settings'] = loadSettings($_SESSION['userName']); 
         echo ' | <a href="usersettings.php">Settings</a> | <a href="../login/logout.php">Logout</a>';
     } 

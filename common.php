@@ -70,7 +70,7 @@ function loadWalks($a_user)
     if(0 != strlen($line))
     {
       $tmp = explode(' ', $line);
-      $walks[$tmp[0]] = substr($tmp[1], 0, strlen($tmp[1])-2); // -2 because of trailing CR_LF 
+      $walks[strtoupper($tmp[0])] = substr($tmp[1], 0, strlen($tmp[1])-2); // -2 because of trailing CR_LF 
     }
   }
   return $walks;

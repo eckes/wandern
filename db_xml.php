@@ -179,13 +179,13 @@ function db_getElements($a_dom)
     $entry[Tag]         = getVal($walk, XMLTAG_TAG);
     if($_SESSION['validUser'] == true) 
     {
-      $walkedWalks = loadWalks($_SESSION['userName']);
       /* filter walked walks only for registered users! */
+      $walkedWalks = loadWalks($_SESSION['userName']);
       if(!$_REQUEST[showwalked])
       {
         if(isset($walkedWalks))
         {
-          if(array_key_exists($entry[Tag],$walkedWalks))
+          if(array_key_exists(strtoupper($entry[Tag]),$walkedWalks))
           {
             continue; /* walk already walked */
           }
