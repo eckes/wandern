@@ -76,8 +76,6 @@ function writeScriptLine($a_val1, $a_val2)
   }
   echo "$a_val1[Laenge], $a_val1[Dauer], '$a_val1[Charakter]'";
   echo ");\n";
-
-  echo "Datum: $a_val1[Datum]\n";
 }
 
 include("db_xml.php");
@@ -386,6 +384,8 @@ function infoWindowClosedCB()
     line.className=line.className.substr(0, line.className.length-3);
   }
   g_HIGHLIGHT.hide();
+
+  link_update("", null);
 }
 
 /*--- showInfo() ---------------------------------------------------------------------- showInfo() ---*/
@@ -421,6 +421,8 @@ function showInfo(a_id)
   g_HIGHLIGHT.show();
   g_HIGHLIGHT._id = a_id;
   GEvent.addListener(g_HIGHLIGHT, "infowindowclose", function(){infoWindowClosedCB()});
+
+  link_update(a_id, null);
 }
 
 /*--- addMark() ------------------------------------------------------------------------ addMark() ---*/
@@ -590,6 +592,46 @@ function dirLoadedCB()
 /* END Methods to calculate distances                                                               */
 /* ------------------------------------------------------------------------------------------------ */
 
+function link_update(a_highlight, a_zoomLevel)
+{
+    var l = document.getElementById("viewlink");
+    var base = l.baseURI + "?";
+    var query = l.search.substr(1).split("&");
+    var idx;
+    var arr = new Array();
+    for(var i = 0; i < query.length; i++)
+    {
+      idx = query[i].split("=");
+      arr[idx[0]] = idx[1];
+    }
+
+    if(null != a_highlight)
+    {
+      arr['highlight'] = a_highlight;
+    }
+    if(null != a_zoomLevel)
+    {
+      arr['zoomLevel'] = a_zoomLevel;
+    }
+
+    if(g_MAP.getCenter())
+    {
+      arr['mapcenter'] = g_MAP.getCenter().toUrlValue();
+    }
+
+    for(var key in arr)
+    {
+      if(   ("length" == key)
+         || (""       == key) )
+      {
+        continue;
+      }
+      base = base + key + "=" + arr[key] + "&";
+    }
+
+    document.getElementById("viewlink").href = base;
+}
+
 /*--- initialize() ------------------------------------------------------------------ initialize() ---*/
 /**
  *  @brief   Init function. Gets executed only once upon page load
@@ -606,6 +648,9 @@ function initialize()
   g_MAP.addControl(new google.maps.MapTypeControl());
   g_MAP.addControl(new google.maps.SmallZoomControl());
   g_MAP.addMapType(G_PHYSICAL_MAP);
+
+  GEvent.addListener(g_MAP, "moveend", function(){link_update(null, null);});
+  GEvent.addListener(g_MAP, "zoomend", function(a_old,a_new){link_update(null,a_new);});
 
   g_MARKERLIST    = new MarkerList(g_MAP);
 
@@ -646,11 +691,23 @@ if($_SESSION['validUser'] == true)
 {
   $_SESSION['orig_request'] = $_REQUEST;
 }
+
+$baseLink = "http://" . $_SERVER[HTTP_HOST] . $_SERVER[PHP_SELF] . "?";
+foreach(array_keys($_REQUEST) as $thekey)
+{
+  if($thekey == "PHPSESSID")
+  {
+    continue;
+  }
+  $baseLink .= $thekey . "=" . $_REQUEST[$thekey] . "&";
+}
+
 ?>
         <div>
             <div id="map" style="width: 800px; height: 600px"></div>
             <a href="javascript:g_MARKERLIST.hideAll();">Alle verbergen</a> 
             <a href="javascript:g_MARKERLIST.showAll();">Alle anzeigen</a> 
+            <a id="viewlink" href="<?=$baseLink?>">Link</a>
         </div>
         <form name="walktable" action="" method="post">
             <table id="walks">
@@ -684,10 +741,35 @@ END;
 
 array_walk($elements, writeScriptLine);
 
+/* evaluate the REQUEST. If we have a zoomLevel or can calc a center, use this one, otherwise, use the computable one! */
+  if(isset($_REQUEST[mapcenter]))
+  {
+    echo "var center = new google.maps.LatLng($_REQUEST[mapcenter]);";
+  }
+  else
+  {
+    echo "var center = g_MARKERLIST.getCenter();";
+  }
+
+  if(isset($_REQUEST[zoomLevel]))
+  {
+    echo "var zoomLevel = Number($_REQUEST[zoomLevel]);";
+  }
+  else
+  {
+    echo "var zoomLevel = g_MAP.getBoundsZoomLevel(g_MARKERLIST.getBounds());";
+  }
+
 echo <<<END
-        g_MAP.setCenter(g_MARKERLIST.getCenter(), g_MAP.getBoundsZoomLevel(g_MARKERLIST.getBounds()));
-    </script>
+      link_update(null, zoomLevel);
+      g_MAP.setCenter(center, zoomLevel);
 END;
+
+  if(isset($_REQUEST[highlight]))
+  {
+    echo "showInfo('$_REQUEST[highlight]');";
+  }
 ?>
-    </body>
+    </script>
+  </body>
 </html>
