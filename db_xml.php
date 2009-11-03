@@ -222,5 +222,3 @@ function db_getElements($a_dom)
   return $retval;
 }
 ?>
-<!-- vim: encoding=utf-8:
- -->

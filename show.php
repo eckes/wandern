@@ -184,20 +184,14 @@ MarkerList.prototype.push = function(a_entry)
  *
  * @return  The center of the map as google.maps.LatLng object
  */
-MarkerList.prototype.getCenter = function()
-{
-  return this.bounds.getCenter();
-}
+MarkerList.prototype.getCenter = function() {return this.bounds.getCenter();}
 
 /**
  * Accessor for the bounds object of the MarkerList
  *
  * @return  The bounds of the map as google.maps.LatLngBounds object
  */
-MarkerList.prototype.getBounds = function()
-{
-  return this.bounds;
-}
+MarkerList.prototype.getBounds = function(){return this.bounds;}
 
 /** 
  * Returns the entry on the given index
@@ -206,10 +200,7 @@ MarkerList.prototype.getBounds = function()
  *
  * @return the MarkerEntry stored at the given index
  */
-MarkerList.prototype.get = function(a_index)
-{
-  return this.entries[a_index];
-}
+MarkerList.prototype.get = function(a_index){return this.entries[a_index];}
 
 /**
  * Searches for an entry with the given ID and returns it. 
@@ -245,19 +236,19 @@ MarkerList.prototype.search = function(a_id)
  * @param a_id     ID of the marker to show
  */
 MarkerList.prototype.show = function(a_id)
-    {
-      var me      = this.search(a_id);
-      if(me)
-      {
-        me.m_marker.show();
-        me.m_hidden = false;
-      }
-      var e = document.getElementById(a_id + "_cb");
-      if(e)
-      {
-        e.checked = true;
-      }
-    }
+{
+  var me      = this.search(a_id);
+  if(me)
+  {
+    me.m_marker.show();
+    me.m_hidden = false;
+  }
+  var e = document.getElementById(a_id + "_cb");
+  if(e)
+  {
+    e.checked = true;
+  }
+}
 
 /**
  * Hides the marker with the given name 
@@ -265,55 +256,53 @@ MarkerList.prototype.show = function(a_id)
  * @param a_id   ID of the marker to hide
  */
 MarkerList.prototype.hide = function(a_id)
-      {
-        var me      = this.search(a_id);
-        if(me)
-        {
-          me.m_hidden = true;
-          me.m_marker.hide();
-        }
+{
+  var me      = this.search(a_id);
+  if(me)
+  {
+    me.m_hidden = true;
+    me.m_marker.hide();
+  }
 
-        if(g_HIGHLIGHT)
-        {
-          g_HIGHLIGHT.closeInfoWindow();
-          g_HIGHLIGHT.hide();
-        }
-        var e = document.getElementById(a_id + "_cb");
-        if(e)
-        {
-          e.checked = false;
-        }
-      }
+  if(g_HIGHLIGHT)
+  {
+    g_HIGHLIGHT.closeInfoWindow();
+    g_HIGHLIGHT.hide();
+  }
+  var e = document.getElementById(a_id + "_cb");
+  if(e)
+  {
+    e.checked = false;
+  }
+}
 
 /** Displays all the markers of the list */
 MarkerList.prototype.showAll = function()
-        {
-          var i = 0;
-          for (i = 0; i < this.length; i++)
-          {
-            me = this.get(i);
-            if( (null == me) || (me.m_id == "highlight") )
-            {
-              continue; /* skip the gap and the highlight marker */
-            }
-            this.show(me.m_id);
-          }
-        }
+{
+  for (var i = 0; i < this.length; i++)
+  {
+    me = this.get(i);
+    if( (null == me) || (me.m_id == "highlight") )
+    {
+      continue; /* skip the gap and the highlight marker */
+    }
+    this.show(me.m_id);
+  }
+}
 
 /** Hides all the markers of the list */
 MarkerList.prototype.hideAll = function()
-            {
-              var i = 0;
-              for (i = 0; i < this.length; i++)
-              {
-                me = this.get(i);
-                if( (null == me) || (me.m_id == "home") )
-                {
-                  continue; /* skip the gap and the home marker */
-                }
-                this.hide(me.m_id);
-              }
-            }
+{
+  for (var i = 0; i < this.length; i++)
+  {
+    me = this.get(i);
+    if( (null == me) || (me.m_id == "home") )
+    {
+      continue; /* skip the gap and the home marker */
+    }
+    this.hide(me.m_id);
+  }
+}
 /* ------------------------------------------------------------------------------------------------ */
 /* END Class MarkerList                                                                             */
 /* ------------------------------------------------------------------------------------------------ */
@@ -481,21 +470,6 @@ function showHome(a_text)
   g_MARKERLIST.push(me);
 }
 
-/*--- getZIndex() -------------------------------------------------------------------- getZIndex() ---*/
-/**
- *  @brief   I've got no clue why we need this callback function, but I can say, when it's not present,
- *               the highlighting mark doesn't go to foreground. So, it's better to leave it here.
- *
- *  @param   a_mark     the mark for which the zIndex shall be returned
- *
- *  @return  The new zIndex, as the google docs say
- */
-/*--- getZIndex() -------------------------------------------------------------------- getZIndex() ---*/
-function getZIndex(a_mark)
-{
-  return 0;
-}
-
 /*--- createHighlight() -------------------------------------------------------- createHighlight() ---*/
 /**
  *  @brief   Creates the highlighting mark that gets moved to the currently selected mark
@@ -504,7 +478,7 @@ function getZIndex(a_mark)
 function createHighlight()
 {
   var hiIcon  = new MyIcon("images/wanderparkplatz_selected.png");
-  var options = {icon:hiIcon, zIndexProcess:getZIndex};
+  var options = {icon:hiIcon, zIndexProcess:function(a){return 0;}};
   g_HIGHLIGHT = new google.maps.Marker(g_HOME, options);
   g_HIGHLIGHT._id = "";
   g_HIGHLIGHT.hide();
