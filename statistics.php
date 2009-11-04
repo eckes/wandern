@@ -15,13 +15,16 @@
 
     <link rel="stylesheet" href="/scripts/dojo-release-1.3.2/dijit/themes/tundra/tundra.css">
     <link rel="stylesheet" type="text/css" href="../css/style.php">
-    <script type="text/javascript" src="/scripts/dojo-release-1.3.2/dojo/dojo.js" djConfig="parseOnLoad: true, isDebug: false"/>
+    <script type="text/javascript">
+        var djConfig = {parseOnLoad:true, isDebug:true};
+    </script>
+
+    <script type="text/javascript" src="/scripts/dojo-release-1.3.2/dojo/dojo.js"/>
       <script type="text/javascript">
 
       dojo.require("dojox.data.XmlStore");
       dojo.require("dojox.charting.Chart2D");
       dojo.require("dojox.charting.themes.PlotKit.green");
-
       dojo.require("dojox.charting.action2d.Highlight");
       dojo.require("dojox.charting.action2d.Tooltip");
 
@@ -65,7 +68,7 @@
 
           var chart1 = new dojox.charting.Chart2D(cid);
           chart1.setTheme(dojox.charting.themes.PlotKit.green);
-          chart1.addAxis("x", {vertical: false, labels:mlabels, minorLabels:true, min:1,max:14}); 
+          chart1.addAxis("x", {title:"Monat", vertical: false, labels:mlabels, minorLabels:true, min:1,max:14}); 
           chart1.addAxis("y", {vertical: true, includeZero: true, max:year.max*1.1});
           chart1.addPlot("default", {type:"Columns", gap:5}); 
           chart1.addSeries("Series 1", year.months, {plot:'default'}); 
