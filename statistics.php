@@ -77,10 +77,9 @@
           var anim1a = new dojox.charting.action2d.Highlight(chart1, "default");
 
           chart1.render();
+          document.getElementById("summary" + year.theyear).innerHTML = "<b>Total:</b> " + year.overall + " km, <b>Walks this year:</b> " + year.nowalks + ", <b>Average per month:</b> " + kmpm.toFixed(0) + " km";
           console.log("rendered chart " + cid);
-
         }
-      
       }
 
       var gotXml = function(a_items, a_req)
@@ -136,9 +135,9 @@
   </head>
   <body>
 <table>
-  <tr><td id="label2006" style=""><h2>2006</h2></td><td id="label2007"><h2>2007</h2></td></tr>
+  <tr><td id="label2006" style=""><h2>2006</h2> <span id="summary2006"></span></td><td id="label2007"><h2>2007</h2> <span id="summary2007"></span></td></tr>
   <tr><td class="chartcontainer" id="chart2006" ></td><td class="chartcontainer" id="chart2007"></td></tr>
-  <tr><td id="label2008" style=""><h2>2008</h2></td><td id="label2009"><h2>2009</h2></td></tr>
+  <tr><td id="label2008" style=""><h2>2008</h2> <span id="summary2008"></span></td><td id="label2009"><h2>2009</h2> <span id="summary2009"></span></td></tr>
   <tr><td class="chartcontainer" id="chart2008" ></td><td class="chartcontainer" id="chart2009"></td></tr>
 </table>
   </body>
