@@ -16,10 +16,10 @@
     <link rel="stylesheet" href="/scripts/dojo-release-1.3.2/dijit/themes/tundra/tundra.css">
     <link rel="stylesheet" type="text/css" href="../css/style.php">
     <script type="text/javascript">
-        var djConfig = {parseOnLoad:true, isDebug:true};
+        var djConfig = {parseOnLoad:true, isDebug:false};
     </script>
 
-    <script type="text/javascript" src="/scripts/dojo-release-1.3.2/dojo/dojo.js"/>
+    <script type="text/javascript" src="/scripts/dojo-release-1.3.2/dojo/dojo.js"></script>
       <script type="text/javascript">
 
       dojo.require("dojox.data.XmlStore");
