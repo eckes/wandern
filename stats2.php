@@ -7,8 +7,12 @@ require_once('common.php');
 require_once('constants.php');
 require_once('db_xml.php');
 //require('loginhead.php');
-
-
+//
+$username = null;
+if($_SESSION['validUser'] == true) 
+{
+    $username = $_SESSION['userName'];
+}
 /* TODO
  * - Depending on the year:
  *      o which book
@@ -92,49 +96,51 @@ function get_walk_length($a_name, $a_domlist)
   return -1;
 }
 
-$username = 'eckes';
 $lines = array();
 $data = array();
 
-$_tmp = file("usersettings/" . $username . ".walks");
-foreach($_tmp as $line)
+if(null != $username)
 {
-  $line = trim($line);
-  $_a = explode(" ", $line);
-  $_b = explode("-", $_a[1]);
-  $_d = explode("_", $_a[0]);
-  $_c[book]   = strtolower($_d[0]);
-  $_c[walk]   = $_a[0];
-  $_c[year]   = $_b[0];
-  $_c[month]  = $_b[1];
-  $_c[day]    = $_b[2];
-  array_push($lines, $_c);
-}
-
-$domlist = db_init();
-foreach($lines as &$line)
-{
-  $theyear = null;
-  $line[length] = get_walk_length($line[walk], $domlist);
-
-  foreach($data as &$_tmpyear)
+  $_tmp = file("usersettings/" . $username . ".walks");
+  foreach($_tmp as $line)
   {
-    if($_tmpyear->m_year == $line[year])
+    $line = trim($line);
+    $_a = explode(" ", $line);
+    $_b = explode("-", $_a[1]);
+    $_d = explode("_", $_a[0]);
+    $_c[book]   = strtolower($_d[0]);
+    $_c[walk]   = $_a[0];
+    $_c[year]   = $_b[0];
+    $_c[month]  = $_b[1];
+    $_c[day]    = $_b[2];
+    array_push($lines, $_c);
+  }
+
+  $domlist = db_init();
+  foreach($lines as &$line)
+  {
+    $theyear = null;
+    $line[length] = get_walk_length($line[walk], $domlist);
+
+    foreach($data as &$_tmpyear)
     {
-      $theyear = $_tmpyear;
-      break;
+      if($_tmpyear->m_year == $line[year])
+      {
+        $theyear = $_tmpyear;
+        break;
+      }
     }
-  }
-  if(null == $theyear)
-  {
-    $theyear = new YearData($line[year]);
-    array_push($data, $theyear);
+    if(null == $theyear)
+    {
+      $theyear = new YearData($line[year]);
+      array_push($data, $theyear);
+    }
+
+    $theyear->add_walk($line[book], $line[month], $line[length]);
   }
 
-  $theyear->add_walk($line[book], $line[month], $line[length]);
+  db_cleanup($domlist);
 }
-
-db_cleanup($domlist);
 
 $doc = new DomDocument('1.0');
 $root = $doc->createElement('statistics');
