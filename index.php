@@ -22,6 +22,7 @@ function writeBookLine($a_book)
   </head>
   <body>
 <?php require('loginhead.php'); ?>
+    <div id="selectform">
     <div style="width:250pt;float:left;">
       <form action="show.php" method="post">
         <fieldset>
@@ -109,12 +110,51 @@ if(checkSession())
 ?>
           <input type="checkbox" name="showoneway" id="showoneway" value="yes"> <label for="showoneway">Zeige Streckenwanderungen</label><br>
         </fieldset>
-        <button type="submit">submit</button>
+        <button type="button" onclick="get_xml();">get_xml</button>
+        <!--<button type="submit">submit</button>-->
       </form>
     </div>
       <img src="images/wanderparkplatz_gross.png" style="margin-left:20px;" height="450px"/>
     </div>
   </body>
+    <script type="text/javascript">
+      function build_query(a_baseurl)
+      {
+        var query = "?";
+        var i = 0;
+        var f = document.forms[0];
+        var e = null;
+        var n = null;
+        var val = null;
+
+        for (i = 0; i < f.elements.length; i++)
+        {
+          e = f.elements[i];
+          n = e.name;
+          if(!n)
+          {
+            continue;
+          }
+          switch(n)
+          {
+            case "dst_min":
+            case "dst_max":
+              val = e.options[e.selectedIndex].text;
+              break;
+            default:
+              val = e.checked;
+          }
+          query += n + "=" + val + "&";
+        }
+        return(a_baseurl + query);
+      }
+
+      function get_xml()
+      {
+        var req = build_query("/wandern/get_xml.php");
+        alert(req);
+      }
+    </script>
 </html>
 <!-- vim:encoding=utf-8:
 -->
