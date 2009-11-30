@@ -20,5 +20,15 @@
     <Lat>49.75426833</Lat>
     <Streckenwanderung>0</Streckenwanderung>
   </walk>
+  <walk>
+    <Tag>fjc_03</Tag>
+    <Name>Scheunenweg</Name>
+    <Laenge>5</Laenge>
+    <Dauer>1.5</Dauer>
+    <Charakter></Charakter>
+    <Lon>11.5143935</Lon>
+    <Lat>49.6110607</Lat>
+    <Streckenwanderung>0</Streckenwanderung>
+  </walk>
 </book>
 <!-- vim: set encoding=utf-8: -->
