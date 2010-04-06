@@ -110,8 +110,8 @@ if(checkSession())
 ?>
           <input type="checkbox" name="showoneway" id="showoneway" value="yes"> <label for="showoneway">Zeige Streckenwanderungen</label><br>
         </fieldset>
-        <button type="button" onclick="get_xml();">get_xml</button>
-        <!--<button type="submit">submit</button>-->
+        <!-- <button type="button" onclick="get_xml();">get_xml</button>-->
+        <button type="submit">submit</button>
       </form>
     </div>
       <img src="images/wanderparkplatz_gross.png" style="margin-left:20px;" height="450px"/>

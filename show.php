@@ -3,6 +3,8 @@ require_once('../login/common.php');
 require_once('../css/colors.php');
 require_once('common.php');
 
+require_once('track.php');
+
 require_once("constants.php");
 
 if(checkSession())
@@ -37,6 +39,8 @@ function writeTableLine($a_val1, $a_val2)
   {
     $a_val1[Charakter] = '&nbsp;';
   }
+  $retval = get_track($a_val1[Tag]);
+  
   echo <<<END
             <tr id="$a_val1[Tag]">
                 <td><input type="checkbox" checked name="tag" id="$a_val1[Tag]_cb" value="$a_val1[Tag]" onchange="cbChanged('$a_val1[Tag]')"> $a_val1[Tag]</td>
