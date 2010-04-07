@@ -1,13 +1,7 @@
 <?php 
 
-define("SEARCH_PATH", "/kml/Document/Placemark/LineString/coordinates");
-
-/* TODO
- *
- * - Prepare to handle an AJAX request for getting the track data
- * - Return the trackdata as string (like below), so that the show.php can do an eval() in order
- *   to create the PolyLine.
- */
+// descendant:: indicates an optional element in the xpath search string
+define("SEARCH_PATH", "/kml/Document/descendant::*[name() = 'Folder']/Placemark/LineString/coordinates");
 
 $keys = array_keys($_REQUEST);
 foreach($keys AS $thekey)
@@ -21,10 +15,14 @@ foreach($keys AS $thekey)
 
 function parse_track($a_id)
 {
-  $basepath = "kml/" . $a_id;
-  $kmlpath   = $basepath . ".kml";
-  $trackpath = $basepath . ".polyline";
-  $result = null;
+  $basepath   = "kml/" . $a_id;
+  $kmlpath    = $basepath . ".kml";
+  $trackpath  = $basepath . ".polyline";
+  $result     = null;
+
+  $weight     = 4;
+  $opacity    = 1;
+
   if(!file_exists($kmlpath))
   {
     return null;
@@ -36,9 +34,7 @@ function parse_track($a_id)
   if(count($result) == 1)
   {
     $result = $result[0];
-    $retarr = array();
     $tmparr = preg_split('/[\s]+/', $result, 0, PREG_SPLIT_NO_EMPTY);
-    $latlng = array();
     $retstr = 'new google.maps.Polyline([';
     for($i = 0; $i < count($tmparr); $i+=3)
     {
@@ -47,12 +43,9 @@ function parse_track($a_id)
         $retstr = $retstr . ', ';
       }
       $coord = preg_split('/,/', $tmparr[$i], 0, PREG_SPLIT_NO_EMPTY);
-      $latlng[lng] = $coord[0];
-      $latlng[lat] = $coord[1];
-      array_push($retarr, $latlng);
       $retstr = $retstr . 'new google.maps.LatLng(' . $coord[1] . ', ' . $coord[0] . ")";
     }
-    $retstr = $retstr . "]);";
+    $retstr = $retstr . "], '#" . dechex(mt_rand(0, (int)0xFFFFFF)) . "', $weight, $opacity);";
   }
   // write the track out to the compiled file
   $fh = fopen($trackpath, 'w') or die("can't open output file $trackpath");
@@ -69,13 +62,16 @@ function get_track($a_id)
   $basepath = "kml/" . $a_id;
   $kmlpath   = $basepath . ".kml";
   $trackpath = $basepath . ".polyline";
-  if(file_exists($trackpath))
-  {
-    return file_get_contents($trackpath);
-  }
-  else if(file_exists($kmlpath))
+  if(   !file_exists($trackpath)
+      ||(filemtime(__FILE__) > filemtime($trackpath))
+      ||(filemtime($kmlpath) > filemtime($trackpath))
+    )
   {
     return parse_track($a_id);
+  }
+  else
+  {
+    return file_get_contents($trackpath);
   }
 }
 
