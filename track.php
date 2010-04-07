@@ -12,7 +12,11 @@ define("SEARCH_PATH", "/kml/Document/Placemark/LineString/coordinates");
 $keys = array_keys($_REQUEST);
 foreach($keys AS $thekey)
 {
-  print_r("Key: " . $thekey . " Value: " .$_REQUEST[$thekey] . "\n");
+  if($thekey == "gettrack")
+  {
+    print(get_track($_REQUEST[$thekey]));
+    return;
+  }
 }
 
 function parse_track($a_id)
@@ -35,7 +39,7 @@ function parse_track($a_id)
     $retarr = array();
     $tmparr = preg_split('/[\s]+/', $result, 0, PREG_SPLIT_NO_EMPTY);
     $latlng = array();
-    $retstr = '"new google.maps.Polyline([';
+    $retstr = 'new google.maps.Polyline([';
     for($i = 0; $i < count($tmparr); $i+=3)
     {
       if($i)
@@ -48,7 +52,7 @@ function parse_track($a_id)
       array_push($retarr, $latlng);
       $retstr = $retstr . 'new google.maps.LatLng(' . $coord[1] . ', ' . $coord[0] . ")";
     }
-    $retstr = $retstr . "]);\"\n";
+    $retstr = $retstr . "]);";
   }
   // write the track out to the compiled file
   $fh = fopen($trackpath, 'w') or die("can't open output file $trackpath");
@@ -67,12 +71,10 @@ function get_track($a_id)
   $trackpath = $basepath . ".polyline";
   if(file_exists($trackpath))
   {
-    print("using preparsed trackpath\n");
     return file_get_contents($trackpath);
   }
   else if(file_exists($kmlpath))
   {
-    print("parsing trackpath\n");
     return parse_track($a_id);
   }
 }
