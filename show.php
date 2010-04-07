@@ -39,8 +39,10 @@ function writeTableLine($a_val1, $a_val2)
   {
     $a_val1[Charakter] = '&nbsp;';
   }
+  /*
   $retval = get_track($a_val1[Tag]);
-  //print_r($retval);
+  print_r($retval);
+   */
   
   echo <<<END
             <tr id="$a_val1[Tag]">
@@ -104,6 +106,7 @@ include("db_xml.php");
         <script type="text/javascript" src="../js/gs_sortable.js"></script>
 <script type="text/javascript">
 google.load("maps", "2");
+google.load("jquery", "1.4.2");
 
 /* ------------------------------------------------------------------------------------------------ */
 /* Globals                                                                                          */
