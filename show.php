@@ -181,6 +181,7 @@ function MarkerList(a_map)
   this.entries    = new Array();
   this.manager    = new google.maps.MarkerManager(a_map);
   this.bounds     = new google.maps.LatLngBounds();
+  this.length     = 0;
 }
 
 /** 
@@ -190,10 +191,11 @@ function MarkerList(a_map)
  */
 MarkerList.prototype.push = function(a_entry)
 {
-  this.entries.push(a_entry);
+  //this.entries.push(a_entry);
+  this.entries[a_entry.m_id] = a_entry;
   this.bounds.extend(a_entry.m_marker.getLatLng());
   this.manager.addMarker(a_entry.m_marker, 1);
-  this.length = this.entries.length;
+  this.length++;
 }
 
 /** 
@@ -231,20 +233,7 @@ MarkerList.prototype.search = function(a_id)
 {
   var i = 0;
   var me = null;
-  for(i = 0; i < this.entries.length; i++)
-  {
-    me = this.get(i);
-    if(null == me)
-    {
-      continue; /* skip the gap */
-    }
-    if(a_id == me.m_id)
-    {
-      me.index = i;
-      return me;
-    }
-  }
-  return null;
+  return this.entries[a_id];
 }
 
 /** 
@@ -296,9 +285,9 @@ MarkerList.prototype.hide = function(a_id)
 /** Displays all the markers of the list */
 MarkerList.prototype.showAll = function()
 {
-  for (var i = 0; i < this.length; i++)
+  for (id in this.entries)
   {
-    me = this.get(i);
+    me = this.entries[id];
     if( (null == me) || (me.m_id == "highlight") )
     {
       continue; /* skip the gap and the highlight marker */
@@ -310,9 +299,9 @@ MarkerList.prototype.showAll = function()
 /** Hides all the markers of the list */
 MarkerList.prototype.hideAll = function()
 {
-  for (var i = 0; i < this.length; i++)
+  for (id in this.entries)
   {
-    me = this.get(i);
+    me = this.entries[id];
     if( (null == me) || (me.m_id == "home") )
     {
       continue; /* skip the gap and the home marker */
@@ -327,17 +316,16 @@ MarkerList.prototype.hideAll = function()
 /* ------------------------------------------------------------------------------------------------ */
 /* BEGIN Class MyIcon                                                                               */
 /* ------------------------------------------------------------------------------------------------ */
-MyIcon.prototype = new google.maps.Icon();  /* Default CTor of the parent class */
-MyIcon.prototype.constructor = MyIcon;      /* assign our own CTor              */
-/* CTor of the MyIcon class */
 function MyIcon(a_foreground)
 {
-  this.image                    = a_foreground; 
-  this.iconSize                 = new google.maps.Size(21,32);
-  this.iconAnchor               = new google.maps.Point(0,36);
-  this.infoWindowAnchor         = new google.maps.Point(10.5,2);
-  this.shadow                   = "images/wanderparkplatz_schatten.png";
-  this.shadowSize               = new google.maps.Size(79,32);
+  var that = new google.maps.Icon();
+  that.image                    = a_foreground; 
+  that.iconSize                 = new google.maps.Size(21,32);
+  that.iconAnchor               = new google.maps.Point(0,36);
+  that.infoWindowAnchor         = new google.maps.Point(10.5,2);
+  that.shadow                   = "images/wanderparkplatz_schatten.png";
+  that.shadowSize               = new google.maps.Size(79,32);
+  return that;
 }
 /* ------------------------------------------------------------------------------------------------ */
 /* END Class MyIcon                                                                                 */
