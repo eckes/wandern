@@ -97,7 +97,6 @@ function writeScriptLine($a_val1)
   echo "length:$a_val1[Laenge],";
   echo "dur:$a_val1[Dauer],";
   echo "ch:'$a_val1[Charakter]',";
-  //echo "addMark($a_val1[Lon], $a_val1[Lat], '$a_val1[Name]', '$a_val1[Tag]', $a_val1[Laenge], $a_val1[Dauer], '$a_val1[Charakter]', ";
 
   if(isset($a_val1[Datum]) && ($a_val1[Datum] != "0000-00-00") )
   {
@@ -107,14 +106,8 @@ function writeScriptLine($a_val1)
   {
     echo "icon:g_ICON, ";
   }
-  if(has_track($a_val1[Tag]))
-  {
-    echo 'hasTrack:true';
-  }
-  else
-  {
-    echo 'hasTrack:false';
-  }
+  echo "hasTrack:";
+  echo (has_track($a_val1[Tag]))?'true':'false';
   echo "};\n";
 }
 
