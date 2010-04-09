@@ -33,16 +33,12 @@ foreach($keys AS $thekey)
   }
 }
 
-function writeTableLine($a_val1, $a_val2)
+function writeTableLine($a_val1)
 {
   if( (!isset($a_val1[Charakter])) || ($a_val1[Charakter] =='') )
   {
     $a_val1[Charakter] = '&nbsp;';
   }
-  /*
-  $retval = get_track($a_val1[Tag]);
-  print_r($retval);
-   */
   
   echo <<<END
             <tr id="$a_val1[Tag]">
@@ -69,7 +65,7 @@ END;
   echo "</tr>\n";
 }
 
-function writeScriptLine($a_val1, $a_val2)
+function writeScriptLine_orig($a_val1)
 {
   echo "addMark($a_val1[Lon], $a_val1[Lat], '$a_val1[Name]', '$a_val1[Tag]', $a_val1[Laenge], $a_val1[Dauer], '$a_val1[Charakter]', ";
 
@@ -90,6 +86,36 @@ function writeScriptLine($a_val1, $a_val2)
     echo 'false';
   }
   echo ");\n";
+}
+
+function writeScriptLine($a_val1)
+{
+  echo "g_WALKLIST['$a_val1[Tag]'] = {";
+  echo "lat:$a_val1[Lat],";
+  echo "lon:$a_val1[Lon],";
+  echo "name:'$a_val1[Name]',";
+  echo "length:$a_val1[Laenge],";
+  echo "dur:$a_val1[Dauer],";
+  echo "ch:'$a_val1[Charakter]',";
+  //echo "addMark($a_val1[Lon], $a_val1[Lat], '$a_val1[Name]', '$a_val1[Tag]', $a_val1[Laenge], $a_val1[Dauer], '$a_val1[Charakter]', ";
+
+  if(isset($a_val1[Datum]) && ($a_val1[Datum] != "0000-00-00") )
+  {
+    echo "icon:g_WALKED_ICON,";
+  }
+  else
+  {
+    echo "icon:g_ICON, ";
+  }
+  if(has_track($a_val1[Tag]))
+  {
+    echo 'hasTrack:true';
+  }
+  else
+  {
+    echo 'hasTrack:false';
+  }
+  echo "};\n";
 }
 
 include("db_xml.php");
@@ -119,6 +145,7 @@ var g_MAP               = null; /**< Map to take everything                     
 var g_ICON              = null; /**< The normal marker for standard walks                           */
 var g_WALKED_ICON       = null; /**< The marker for already walked walks                            */
 var g_HIGHLIGHT         = null; /**< The highlight marker that gets moved dynamically               */
+var g_WALKLIST          = new Array();
 
 /* ------------------------------------------------------------------------------------------------ */
 /* BEGIN configuration of the table-sorting-and-striping script                                     */
@@ -501,6 +528,26 @@ function addMark(a_long, a_lat, a_text, a_id, a_len, a_dur, a_char, a_icon, a_ha
   document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">Berechnen</a>";
 }
 
+function addMark2(a_id, a_walk)
+{
+
+  var pos     = new google.maps.LatLng(a_walk.lat, a_walk.lon);
+  var options = {title: a_walk.name, bouncy: true, icon:a_walk.icon};
+  var l_mark  = new google.maps.Marker(pos, options);
+  var l_info  = createInfoString(a_walk.name, a_walk.length, a_walk.dur, a_walk.ch, a_id, a_walk.hasTrack);
+
+  /* add the mark to our markerlist */
+  var me = new MarkEntry(a_id, l_mark, l_info);
+  g_MARKERLIST.push(me);
+  me = null;
+
+  GEvent.addListener(l_mark, "click", function(){showInfo(a_id)});
+
+  var dst = a_id + "_dst";
+  document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">Berechnen</a>";
+
+}
+
 /*--- showHome() ---------------------------------------------------------------------- showHome() ---*/
 /**
  *  @brief   Creates the home mark identified by a cute little red heart :-)
@@ -573,6 +620,7 @@ function cbChanged(a_id)
 /*--- markAsWalked() -------------------------------------------------------------- markAsWalked() ---*/
 function markAsWalked(a_id)
 {
+  // TODO: This must be done using AJAX instead of submitting the form and reloading the page!
   var theName = document.getElementById(a_id + "_name").innerHTML;
   // TODO:
   // instad of submitting the form, just do an AJAX call to the editwalk.php page, telling it
@@ -783,6 +831,14 @@ echo <<<END
 END;
 
 array_walk($elements, writeScriptLine);
+
+echo <<<END
+      for (id in g_WALKLIST)
+      {
+        addMark2(id, g_WALKLIST[id]);
+      }
+
+END;
 
 /* evaluate the REQUEST. If we have a zoomLevel or can calc a center, use this one, otherwise, use the computable one! */
   if(isset($_REQUEST[mapcenter]))

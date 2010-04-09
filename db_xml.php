@@ -176,7 +176,7 @@ function db_getElements($a_dom)
   $retval = array();
   foreach($walks as $walk)
   {
-    $entry[Tag]         = getVal($walk, XMLTAG_TAG);
+    $entry[Tag]         = strtoupper(getVal($walk, XMLTAG_TAG));
     if($_SESSION['validUser'] == true) 
     {
       /* filter walked walks only for registered users! */
