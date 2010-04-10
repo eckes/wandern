@@ -16,21 +16,9 @@ else
   $_SESSION['settings'] = loadSettings('anonymous'); 
 }
 
-/* check if someone clicked the "walked" button */
-$keys = array_keys($_POST);
-foreach($keys AS $thekey)
+function writeOptionLine($a_val, $a_key)
 {
-  $needle = stristr($thekey, '_isWalked');
-  if($needle)
-  {
-    $id = substr($thekey, 0, (strlen($thekey)-strlen($needle)));
-    $res = editWalk($_SESSION['userName'], $id, 'walked');
-    if(isset($_SESSION['orig_request']))
-    {
-      $_REQUEST = $_SESSION['orig_request'];
-      unset($_SESSION['orig_request']);
-    }
-  }
+  echo "g_OPTIONS['" . $a_key . "'] = " . boolToString($a_val) . ";\n";
 }
 
 function writeTableLine($a_val1)
@@ -63,29 +51,6 @@ END;
     }
   }
   echo "</tr>\n";
-}
-
-function writeScriptLine_orig($a_val1)
-{
-  echo "addMark($a_val1[Lon], $a_val1[Lat], '$a_val1[Name]', '$a_val1[Tag]', $a_val1[Laenge], $a_val1[Dauer], '$a_val1[Charakter]', ";
-
-  if(isset($a_val1[Datum]) && ($a_val1[Datum] != "0000-00-00") )
-  {
-    echo "g_WALKED_ICON, ";
-  }
-  else
-  {
-    echo "g_ICON, ";
-  }
-  if(has_track($a_val1[Tag]))
-  {
-    echo 'true';
-  }
-  else
-  {
-    echo 'false';
-  }
-  echo ");\n";
 }
 
 function writeScriptLine($a_val1)
@@ -138,7 +103,8 @@ var g_MAP               = null; /**< Map to take everything                     
 var g_ICON              = null; /**< The normal marker for standard walks                           */
 var g_WALKED_ICON       = null; /**< The marker for already walked walks                            */
 var g_HIGHLIGHT         = null; /**< The highlight marker that gets moved dynamically               */
-var g_WALKLIST          = new Array();
+var g_OPTIONS           = new Array(); /**< Options passed from the selection page                  */
+var g_WALKLIST          = new Array(); /**< All the walks as an Array                               */
 
 /* ------------------------------------------------------------------------------------------------ */
 /* BEGIN configuration of the table-sorting-and-striping script                                     */
@@ -215,6 +181,38 @@ MarkerList.prototype.push = function(a_entry)
   this.bounds.extend(a_entry.m_marker.getLatLng());
   this.manager.addMarker(a_entry.m_marker, 1);
   this.length++;
+}
+
+/**
+ *  @brief   Adds a new mark to the map using the given information
+ *
+ *  @param    a_id        Tag uniquely identifying the walk
+ *  @param    a_walk      The rest of the walk information
+ *
+ *  @return  nothing
+ */
+MarkerList.prototype.addWalk = function (a_id, a_walk)
+{
+  var pos     = new google.maps.LatLng(a_walk.lat, a_walk.lon);
+  var options = {title: a_walk.name, bouncy: true, icon:a_walk.icon};
+  var l_mark  = new google.maps.Marker(pos, options);
+  var l_info  = createInfoString(a_walk.name, a_walk.length, a_walk.dur, a_walk.ch, a_id, a_walk.hasTrack);
+
+  /* add the mark to our markerlist */
+  this.push(new MarkEntry(a_id, l_mark, l_info));
+
+  GEvent.addListener(l_mark, "click", function(){showInfo(a_id)});
+
+  var dst = a_id + "_dst";
+  document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">Berechnen</a>";
+}
+
+MarkerList.prototype.removeWalk = function (a_id)
+{
+  var me = this.search(a_id);
+  this.hide(a_id);
+  delete me;
+  delete this.entries[a_id];
 }
 
 /** 
@@ -486,61 +484,6 @@ function showInfo(a_id)
   link_update(a_id, null);
 }
 
-/*--- addMark() ------------------------------------------------------------------------ addMark() ---*/
-/**
- *  @brief   Adds a new mark to the map using the given information
- *
- *  @param    a_long      Longitude of the mark position
- *  @param    a_lat       Latitude of the mark position
- *  @param    a_text      Text to be displayed for the mark (the name of the tour)
- *  @param    a_id        Tag uniquely identifying the walk
- *  @param    a_len       Length in km of the walk
- *  @param    a_dur       Duration of the walk in hours
- *  @param    a_char      Character of the walk (easy, steep, whatever)
- *  @param    a_icon      Icon to use for the mark
- *  @param    a_hasTrack  Indicates that this mark has a track information
- *
- *  @return  nothing
- */
-/*--- addMark() ------------------------------------------------------------------------ addMark() ---*/
-function addMark(a_long, a_lat, a_text, a_id, a_len, a_dur, a_char, a_icon, a_hasTrack)
-{
-  var pos     = new google.maps.LatLng(a_lat, a_long);
-  var options = {title: a_text, bouncy: true, icon:a_icon};
-  var l_mark  = new google.maps.Marker(pos, options);
-  var l_info  = createInfoString(a_text, a_len, a_dur, a_char, a_id, a_hasTrack);
-
-  /* add the mark to our markerlist */
-  var me = new MarkEntry(a_id, l_mark, l_info);
-  g_MARKERLIST.push(me);
-  me = null;
-
-  GEvent.addListener(l_mark, "click", function(){showInfo(a_id)});
-
-  var dst = a_id + "_dst";
-  document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">Berechnen</a>";
-}
-
-function addMark2(a_id, a_walk)
-{
-
-  var pos     = new google.maps.LatLng(a_walk.lat, a_walk.lon);
-  var options = {title: a_walk.name, bouncy: true, icon:a_walk.icon};
-  var l_mark  = new google.maps.Marker(pos, options);
-  var l_info  = createInfoString(a_walk.name, a_walk.length, a_walk.dur, a_walk.ch, a_id, a_walk.hasTrack);
-
-  /* add the mark to our markerlist */
-  var me = new MarkEntry(a_id, l_mark, l_info);
-  g_MARKERLIST.push(me);
-  me = null;
-
-  GEvent.addListener(l_mark, "click", function(){showInfo(a_id)});
-
-  var dst = a_id + "_dst";
-  document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">Berechnen</a>";
-
-}
-
 /*--- showHome() ---------------------------------------------------------------------- showHome() ---*/
 /**
  *  @brief   Creates the home mark identified by a cute little red heart :-)
@@ -602,6 +545,31 @@ function cbChanged(a_id)
   }
 }
 
+/* callback being called when marking a walk as walked has completed on the server */
+function markAsWalkedCB(a_data, a_text, a_req)
+{
+  var id = this;
+  if(a_req.status!=200)
+  {
+    alert("Request reports an error:" + a_req.status + " (" + a_req.statusText + ")");
+  }
+  // first of all, the node must disappear from the map AND the table 
+  g_MARKERLIST.removeWalk(id);
+  if( (typeof(g_OPTIONS.showwalked) != 'undefined') && (g_OPTIONS.showwalked))
+  {
+    g_WALKLIST[id].icon = g_WALKED_ICON;
+    g_MARKERLIST.addWalk(id, g_WALKLIST[id]);
+    $('#' + id + '_isWalked').fadeOut();
+    //$('#' + id + '_isWalked').innerHTML = "gelaufen";
+  }
+  else
+  {
+    // the table row can only be removed when the marker disappears.
+    // otherwise, we'll need the row for further use...
+    $('#' + id).remove();
+  }
+}
+
 /*--- markAsWalked() -------------------------------------------------------------- markAsWalked() ---*/
 /**
  *  @brief   does some little preparation before marking the walk with the given ID as walked
@@ -631,14 +599,18 @@ function markAsWalked(a_id)
   // whole stuff...
   // TODO XXX XXX XXX
   //
+    
   if(confirm('Wanderung\n\n"' + theName + '"\n\nals gelaufen markieren?'))
   {
-    var theForm = document.walktable;
-    var btn     = a_id + "_isWalked";
-    var hidden = '<input type="hidden" name="' + btn + '" value="' + btn + '"></input>';
-    /* add the information about which button was clicked to the form as a hidden input */
-    theForm.innerHTML = theForm.innerHTML.concat(hidden);
-    theForm.submit();
+    var options = { url: "editwalk.php", 
+                    data:{id: a_id, walked:'true'},
+                    context: a_id,
+                    dataType: "text",
+                    cache: false,
+                    type: 'GET',
+                    error: function(a_req, a_txt, a_err){alert("Failed with error " + a_err +" ("+a_txt+")");},
+                    success: markAsWalkedCB };
+    $.ajax(options);
   }
 }
 /* ------------------------------------------------------------------------------------------------ */
@@ -771,10 +743,6 @@ function initialize()
     <body onunload="GUnload()">
 <?php
 require_once('loginhead.php');
-if($_SESSION['validUser'] == true) 
-{
-  $_SESSION['orig_request'] = $_REQUEST;
-}
 
 $baseLink = "http://" . $_SERVER[HTTP_HOST] . $_SERVER[PHP_SELF] . "?";
 foreach(array_keys($_REQUEST) as $thekey)
@@ -821,14 +789,18 @@ echo <<<END
     <script type="text/javascript">
         initialize();
         showHome('Daheim');
+
 END;
 
+array_walk($_REQUEST, writeOptionLine);
+
+// put the request context into a javascript object to be able to access the information lateron
 array_walk($elements, writeScriptLine);
 
 echo <<<END
       for (id in g_WALKLIST)
       {
-        addMark2(id, g_WALKLIST[id]);
+        g_MARKERLIST.addWalk(id, g_WALKLIST[id]);
       }
 
 END;

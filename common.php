@@ -1,4 +1,15 @@
 <?php
+
+function boolToString($a_val)
+{
+  if($a_val == "true" || $a_val == "1" || $a_val == "yes") return "true";
+  if($a_val == "false" || $a_val == "0" || $a_val == "no") return "false";
+  // no bool value, numbers can be returned directly
+  if(is_numeric($a_val)) return $a_val;
+  // no bool value, at least quote the string then.
+  return "'" . $a_val . "'";
+}
+
 /** stores the given settings of the given user */
 function storeSettings($a_user, $a_settings)
 {
@@ -88,7 +99,7 @@ function editWalk($a_user, $a_id, $a_action)
       return -1;
     }
     $today      = date('Y-m-d');
-    $theline    = strtoupper($a_id) . " " . $today . "\r\n";
+    $theline    = 'fake_' . strtoupper($a_id) . " " . $today . "\r\n";
     fwrite($pfile, $theline);
     fclose($pfile);
     return 0;
