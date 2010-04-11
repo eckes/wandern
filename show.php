@@ -88,8 +88,13 @@ include("db_xml.php");
         <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAARoTP-aPC3X-J7A6v_c-RrRSliXv-vXMxLfXbWpmDAJtGYmmjPhRn1xN7Ce6w66WX49UMmCdujbpuzA"></script>
         <script type="text/javascript" src="../js/gs_sortable.js"></script>
 <script type="text/javascript">
-google.load("maps", "2");
+google.load("maps", "2.S");
 google.load("jquery", "1.4.2");
+</script>
+
+        <script type="text/javascript" src="/scripts/markermanager.js"></script>
+
+<script type="text/javascript">
 
 /* ------------------------------------------------------------------------------------------------ */
 /* Globals                                                                                          */
@@ -164,8 +169,10 @@ function PlannerJob(a_id, a_query, a_descId)
 function MarkerList(a_map)
 {
   this.entries    = new Array();
-  this.manager    = new google.maps.MarkerManager(a_map);
+  this.manager    = new MarkerManager(a_map);
   this.bounds     = new google.maps.LatLngBounds();
+  this.home       = null;
+  this.highlight  = null;
   this.length     = 0;
 }
 
@@ -211,6 +218,7 @@ MarkerList.prototype.removeWalk = function (a_id)
 {
   var me = this.search(a_id);
   this.hide(a_id);
+  this.manager.removeMarker(me.m_marker);
   delete me;
   delete this.entries[a_id];
 }
@@ -261,9 +269,10 @@ MarkerList.prototype.search = function(a_id)
 MarkerList.prototype.show = function(a_id)
 {
   var me      = this.search(a_id);
-  if(me)
+  if(me && me.m_hidden)
   {
-    me.m_marker.show();
+    this.manager.addMarker(me.m_marker, 1);
+    //me.m_marker.show();
     me.m_hidden = false;
   }
   var e = document.getElementById(a_id + "_cb");
@@ -283,8 +292,8 @@ MarkerList.prototype.hide = function(a_id)
   var me      = this.search(a_id);
   if(me)
   {
+    this.manager.removeMarker(me.m_marker);
     me.m_hidden = true;
-    me.m_marker.hide();
   }
 
   if(g_HIGHLIGHT)
@@ -302,14 +311,18 @@ MarkerList.prototype.hide = function(a_id)
 /** Displays all the markers of the list */
 MarkerList.prototype.showAll = function()
 {
+  var id = null;
+  var me = null;
   for (id in this.entries)
   {
     me = this.entries[id];
-    if( (null == me) || (me.m_id == "highlight") )
+    if( (null == me) || (me.m_id == "highlight") || (me.m_hidden == false) )
     {
       continue; /* skip the gap and the highlight marker */
     }
-    this.show(me.m_id);
+    //this.show(me.m_id);
+    this.manager.addMarker(me.m_marker, 1);
+    me.m_hidden = false;
   }
 }
 
@@ -319,11 +332,12 @@ MarkerList.prototype.hideAll = function()
   for (id in this.entries)
   {
     me = this.entries[id];
-    if( (null == me) || (me.m_id == "home") )
+    if( (null == me) || (me.m_id == "home") || (me.m_hidden != false) )
     {
       continue; /* skip the gap and the home marker */
     }
-    this.hide(me.m_id);
+    this.manager.removeMarker(me.m_marker);
+    me.m_hidden = true;
   }
 }
 /* ------------------------------------------------------------------------------------------------ */
@@ -463,6 +477,8 @@ function showInfo(a_id)
   {
     alert("no entry for tag " + a_id);
   }
+  me.m_marker.setImage("images/wanderparkplatz_selected.png");
+  /*
   if(null == g_HIGHLIGHT)
   {
     createHighlight();
@@ -472,14 +488,20 @@ function showInfo(a_id)
   {
     infoWindowClosedCB();
   }
+   */
   var line = document.getElementById(a_id);
   line.className=line.className + "_hl";
 
+  me.m_marker.openInfoWindowHtml(me.m_desc);
+  GEvent.addListener(me.m_marker, "infowindowclose", function(){me.m_marker.setImage(g_WALKLIST[a_id].icon.image);});
+  /*
   g_HIGHLIGHT.setLatLng(me.m_marker.getLatLng());
-  g_HIGHLIGHT.openInfoWindowHtml(me.m_desc);
+  me.m_marker.openInfoWindowHtml(me.m_desc);
   g_HIGHLIGHT.show();
   g_HIGHLIGHT._id = a_id;
+
   GEvent.addListener(g_HIGHLIGHT, "infowindowclose", function(){infoWindowClosedCB()});
+   */
 
   link_update(a_id, null);
 }
@@ -504,6 +526,7 @@ function showHome(a_text)
   mark.bindInfoWindowHtml("<h1><i>Daheim</i></h1><p>Home sweet Home</p>");
   var me = new MarkEntry("home", mark, "Daheim");
   g_MARKERLIST.push(me);
+  g_MARKERLIST.home = me;
 }
 
 /*--- createHighlight() -------------------------------------------------------- createHighlight() ---*/
@@ -520,6 +543,7 @@ function createHighlight()
   g_HIGHLIGHT.hide();
   var me = new MarkEntry("highlight", g_HIGHLIGHT, "HL");
   g_MARKERLIST.push(me);
+  g_MARKERLIST.highlight = me;
 }
 
 /*--- cbChanged() -------------------------------------------------------------------- cbChanged() ---*/
@@ -581,25 +605,7 @@ function markAsWalkedCB(a_data, a_text, a_req)
 /*--- markAsWalked() -------------------------------------------------------------- markAsWalked() ---*/
 function markAsWalked(a_id)
 {
-  // TODO: This must be done using AJAX instead of submitting the form and reloading the page!
   var theName = document.getElementById(a_id + "_name").innerHTML;
-  // TODO:
-  // instad of submitting the form, just do an AJAX call to the editwalk.php page, telling it
-  // to mark the walk a_id as walked. editwalk.php will modify the user data file.
-  //
-  // next, we have to change the icon of the walk. To do this, we have to
-  //    - remove the old mark from the map
-  //    - add a new mark that uses the walked-icon
-  //    - update the table (i.e. remove the entry if walked walks shall not be shown)
-  //
-  // Maybe, we have to modify the php method writeScriptLine, in order to get access to the
-  // raw data of the marks (i.e. that it creates an array of walk data instead of letting the 
-  // script call teh addMark function multiple times.. Or even fetch the walk data from the
-  // server depending on the current settings. No POST request required anymore. AJAXIFY the
-  // whole stuff...
-  // TODO XXX XXX XXX
-  //
-    
   if(confirm('Wanderung\n\n"' + theName + '"\n\nals gelaufen markieren?'))
   {
     var options = { url: "editwalk.php", 
@@ -704,9 +710,15 @@ function initialize()
   g_MAP.addControl(new google.maps.MapTypeControl());
   g_MAP.addControl(new google.maps.SmallZoomControl());
   g_MAP.addMapType(G_PHYSICAL_MAP);
+  g_MAP.setMapType(G_NORMAL_MAP);
+  g_MAP.setCenter(new GLatLng(50, -98), 3);
 
   GEvent.addListener(g_MAP, "moveend", function(){link_update(null, null);});
-  GEvent.addListener(g_MAP, "zoomend", function(a_old,a_new){link_update(null,a_new);});
+  GEvent.addListener(g_MAP, "zoomend", function(a_old,a_new)
+  {
+      link_update(null,a_new);
+      if(g_HIGHLIGHT && ('undefined' != typeof(g_HIGHLIGHT)) && (g_HIGHLIGHT.state==g_HIGHLIGHT.HIDDEN)){g_HIGHLIGHT.hide();}
+  });
 
   g_MARKERLIST    = new MarkerList(g_MAP);
 
@@ -789,6 +801,7 @@ echo <<<END
     <script type="text/javascript">
         initialize();
         showHome('Daheim');
+        //createHighlight();
 
 END;
 
