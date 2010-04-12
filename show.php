@@ -42,7 +42,7 @@ END;
     if($a_val1[Datum]=="0000-00-00")
     {
       echo <<<END
-                            <td id="$a_val1[Tag]_isWalked"><button name="$a_val1[Tag]_isWalked" type="button" value="Gelaufen" onclick="markAsWalked('$a_val1[Tag]');">Gelaufen</button></td>
+                            <td id="$a_val1[Tag]_isWalked"><button name="$a_val1[Tag]_isWalked" type="button" value="Gelaufen" onclick="g_MARKERLIST.markAsWalked('$a_val1[Tag]');">Gelaufen</button></td>
 END;
     }
     else
@@ -131,16 +131,22 @@ tsRegister();
 /* ------------------------------------------------------------------------------------------------ */
 /* BEGIN Class MarkEntry                                                                            */
 /* ------------------------------------------------------------------------------------------------ */
-function MarkEntry(a_id, a_marker, a_description)
+function MarkEntry(a_id, a_marker, a_description, a_title)
 {
   this.m_id       = a_id;
   this.m_marker   = a_marker;
   this.m_desc     = a_description;
+  this.m_title    = a_title;
   this.m_hidden   = false;
   this.m_listener = null;
   this.m_track    = null;
+  this.m_lc       = null;
+  this.m_line     = null;
   this.length     = 0;
 }
+
+MarkEntry.STATE_NORMAL     = 0;
+MarkEntry.STATE_HIGHLIGHT  = 1;
 
 /** sets the image of the associated marker */
 MarkEntry.prototype.setImage = function(a_image) { this.m_marker.setImage(a_image); }
@@ -153,9 +159,21 @@ MarkEntry.prototype.show = function() { this.m_hidden = false; }
 /** returns the coordinates of the marker */
 MarkEntry.prototype.getLatLng = function(){return this.m_marker.getLatLng();}
 /** highlights the marker */
-MarkEntry.prototype.highlight = function() { this.setImage("images/wanderparkplatz_selected.png"); }
+MarkEntry.prototype.highlight = function() { 
+  if(!this.m_lc)
+  {
+    this.m_line = $('#'+this.m_id)[0];
+    this.m_lc = [this.m_line.className, this.m_line.className + '_hl'];
+  }
+  this.m_line.className = this.m_lc[MarkEntry.STATE_HIGHLIGHT];
+  this.setImage("images/wanderparkplatz_selected.png"); 
+}
+
 /** restores the normal icon of the marker */
-MarkEntry.prototype.normal = function() { if(!this.m_hidden) this.setImage(g_WALKLIST[this.m_id].icon.image); }
+MarkEntry.prototype.normal = function() { 
+  this.m_line.className = this.m_lc[MarkEntry.STATE_NORMAL];
+  if(!this.m_hidden) this.setImage(g_WALKLIST[this.m_id].icon.image); 
+}
 /** shows the info of the marker */
 MarkEntry.prototype.showInfo = function()
 {
@@ -186,12 +204,28 @@ MarkEntry.prototype.showTrack = function()
                       g_MAP.addOverlay(this.m_track);
                       this.m_track.show();
                     }
-    };
+                  };
     $.ajax(options);
   }
 }
 
 MarkEntry.prototype.hideTrack = function() { if(this.m_track){this.m_track.hide();} }
+
+MarkEntry.prototype.markAsWalked = function ()
+{
+  if(confirm('Wanderung\n\n"' + this.m_title + '"\n\nals gelaufen markieren?'))
+  {
+    var options = { url: "editwalk.php", 
+                    data:{id: this.m_id, walked:'true'},
+                    context: this.m_id,
+                    dataType: "text",
+                    cache: false,
+                    type: 'GET',
+                    error: function(a_req, a_txt, a_err){alert("Failed with error " + a_err +" ("+a_txt+")");},
+                    success: markAsWalkedCB };
+    $.ajax(options);
+  }
+}
 
 /* ------------------------------------------------------------------------------------------------ */
 /* END Class MarkEntry                                                                              */
@@ -256,18 +290,18 @@ MarkerList.prototype.addWalk = function (a_id, a_walk)
   var l_info  = createInfoString(a_walk.name, a_walk.length, a_walk.dur, a_walk.ch, a_id, a_walk.hasTrack);
 
   /* add the mark to our markerlist */
-  var me = new MarkEntry(a_id, l_mark, l_info);
+  var me = new MarkEntry(a_id, l_mark, l_info, a_walk.name);
   this.push(me);
 
   GEvent.addListener(l_mark, "click", function(){me.showInfo()});
 
-  var dst = a_id + "_dst";
-  document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">Berechnen</a>";
+  $("#"+a_id+"_dst").html("<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">Berechnen</a>");
 }
 
 MarkerList.prototype.removeWalk = function (a_id)
 {
   var me = this.search(a_id);
+  me.hide();
   this.manager.removeMarker(me.m_marker);
   delete this.entries[a_id];
 }
@@ -321,11 +355,7 @@ MarkerList.prototype.show = function(a_id)
     this.manager.addMarker(me.m_marker, 1);
     me.show();
   }
-  var e = document.getElementById(a_id + "_cb");
-  if(e)
-  {
-    e.checked = true;
-  }
+  $('#'+a_id+'_cb').attr('checked', true);
 }
 
 /**
@@ -341,12 +371,7 @@ MarkerList.prototype.hide = function(a_id)
     me.hide();
     this.manager.removeMarker(me.m_marker);
   }
-
-  var e = document.getElementById(a_id + "_cb");
-  if(e)
-  {
-    e.checked = false;
-  }
+  $('#'+a_id+'_cb').attr('checked', false);
 }
 
 /** Displays all the markers of the list */
@@ -427,11 +452,20 @@ MarkerList.prototype.showInfo = function(a_id)
     alert("no entry for tag " + a_id);
   }
   this.highlight(a_id);
-  var line = document.getElementById(a_id);
-  line.className=line.className + "_hl";
+  //var line = document.getElementById(a_id);
+  //line.className=line.className + "_hl";
 
   me.showInfo();
   link_update(a_id, null);
+}
+
+MarkerList.prototype.markAsWalked = function (a_id)
+{
+  var me = this.search(a_id);
+  if(me)
+  {
+    me.markAsWalked();
+  }
 }
 /* ------------------------------------------------------------------------------------------------ */
 /* END Class MarkerList                                                                             */
@@ -490,7 +524,7 @@ function createInfoString(a_text, a_len, a_dur, a_char, a_id, a_hasTrack)
 <?php
 if(checkSession())
 {
-  echo 'l_info = l_info + " | <a href=\"javascript:markAsWalked(\'" + a_id +"\')\">Gelaufen</a>";';
+  echo 'l_info = l_info + " | <a href=\"javascript:g_MARKERLIST.markAsWalked(\'" + a_id +"\')\">Gelaufen</a>";';
 }
 ?>
 return l_info;
@@ -501,11 +535,6 @@ function infoWindowClosedCB(a_id)
   var line = document.getElementById(a_id);
   g_MARKERLIST.hideTrack(a_id);
   g_MARKERLIST.normal(a_id);
-
-  if(line)
-  {
-    line.className=line.className.substr(0, line.className.length-3);
-  }
   link_update("", null);
 }
 
@@ -574,7 +603,7 @@ function markAsWalkedCB(a_data, a_text, a_req)
   {
     // the table row can only be removed when the marker disappears.
     // otherwise, we'll need the row for further use...
-    $('#' + id).remove();
+    $('#' + id).fadeOut();
   }
 }
 
@@ -589,8 +618,7 @@ function markAsWalkedCB(a_data, a_text, a_req)
 /*--- markAsWalked() -------------------------------------------------------------- markAsWalked() ---*/
 function markAsWalked(a_id)
 {
-  var theName = document.getElementById(a_id + "_name").innerHTML;
-  if(confirm('Wanderung\n\n"' + theName + '"\n\nals gelaufen markieren?'))
+  if(confirm('Wanderung\n\n"' + g_MARKERLIST.search(a_id).m_title + '"\n\nals gelaufen markieren?'))
   {
     var options = { url: "editwalk.php", 
                     data:{id: a_id, walked:'true'},
