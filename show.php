@@ -137,6 +137,7 @@ function MarkEntry(a_id, a_marker, a_description)
   this.m_marker   = a_marker;
   this.m_desc     = a_description;
   this.m_hidden   = false;
+  this.m_listener = null;
   this.m_track    = null;
   this.length     = 0;
 }
@@ -395,12 +396,11 @@ function infoWindowClosedCB(a_id)
 {
   var line = document.getElementById(a_id);
   var me = g_MARKERLIST.search(a_id);
-
+  hideTrack(a_id);
   if(!me.m_hidden)
   {
     me.m_marker.setImage(g_WALKLIST[a_id].icon.image);
   }
-  hideTrack(a_id);
 
   if(line)
   {
@@ -473,7 +473,10 @@ function showInfo(a_id)
   line.className=line.className + "_hl";
 
   me.m_marker.openInfoWindowHtml(me.m_desc);
-  GEvent.addListener(me.m_marker, "infowindowclose", function(){infoWindowClosedCB(a_id);});
+  if(!me.m_listener)
+  {
+    me.m_listener = GEvent.addListener(me.m_marker, "infowindowclose", function(){infoWindowClosedCB(a_id);});
+  }
 
   link_update(a_id, null);
 }
