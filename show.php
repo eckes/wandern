@@ -31,7 +31,7 @@ function writeTableLine($a_val1)
   echo <<<END
             <tr id="$a_val1[Tag]">
                 <td><input type="checkbox" checked name="tag" id="$a_val1[Tag]_cb" value="$a_val1[Tag]" onchange="cbChanged('$a_val1[Tag]')"> $a_val1[Tag]</td>
-                <td><a href="javascript:showInfo('$a_val1[Tag]');"><span id="$a_val1[Tag]_name">$a_val1[Name]</span></a></td>
+                <td><a href="javascript:g_MARKERLIST.showInfo('$a_val1[Tag]');"><span id="$a_val1[Tag]_name">$a_val1[Name]</span></a></td>
                 <td>$a_val1[Laenge]</td>
                 <td>$a_val1[Dauer]</td>
                 <td>$a_val1[Charakter]</td>
