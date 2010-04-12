@@ -107,7 +107,6 @@ var g_HOME              = null; /**< Coordinates of home sweet home             
 var g_MAP               = null; /**< Map to take everything                                         */
 var g_ICON              = null; /**< The normal marker for standard walks                           */
 var g_WALKED_ICON       = null; /**< The marker for already walked walks                            */
-var g_HIGHLIGHT         = null; /**< The highlight marker that gets moved dynamically               */
 var g_OPTIONS           = new Array(); /**< Options passed from the selection page                  */
 var g_WALKLIST          = new Array(); /**< All the walks as an Array                               */
 
@@ -186,7 +185,7 @@ MarkerList.prototype.push = function(a_entry)
   //this.entries.push(a_entry);
   this.entries[a_entry.m_id] = a_entry;
   this.bounds.extend(a_entry.m_marker.getLatLng());
-  this.manager.addMarker(a_entry.m_marker, 1);
+  this.manager.addMarker(a_entry.m_marker, 0, 19);
   this.length++;
 }
 
@@ -217,9 +216,7 @@ MarkerList.prototype.addWalk = function (a_id, a_walk)
 MarkerList.prototype.removeWalk = function (a_id)
 {
   var me = this.search(a_id);
-  this.hide(a_id);
   this.manager.removeMarker(me.m_marker);
-  delete me;
   delete this.entries[a_id];
 }
 
@@ -272,7 +269,6 @@ MarkerList.prototype.show = function(a_id)
   if(me && me.m_hidden)
   {
     this.manager.addMarker(me.m_marker, 1);
-    //me.m_marker.show();
     me.m_hidden = false;
   }
   var e = document.getElementById(a_id + "_cb");
@@ -292,15 +288,10 @@ MarkerList.prototype.hide = function(a_id)
   var me      = this.search(a_id);
   if(me)
   {
-    this.manager.removeMarker(me.m_marker);
     me.m_hidden = true;
+    this.manager.removeMarker(me.m_marker);
   }
 
-  if(g_HIGHLIGHT)
-  {
-    g_HIGHLIGHT.closeInfoWindow();
-    g_HIGHLIGHT.hide();
-  }
   var e = document.getElementById(a_id + "_cb");
   if(e)
   {
@@ -320,9 +311,7 @@ MarkerList.prototype.showAll = function()
     {
       continue; /* skip the gap and the highlight marker */
     }
-    //this.show(me.m_id);
-    this.manager.addMarker(me.m_marker, 1);
-    me.m_hidden = false;
+    this.show(id);
   }
 }
 
@@ -336,8 +325,7 @@ MarkerList.prototype.hideAll = function()
     {
       continue; /* skip the gap and the home marker */
     }
-    this.manager.removeMarker(me.m_marker);
-    me.m_hidden = true;
+    this.hide(id);
   }
 }
 /* ------------------------------------------------------------------------------------------------ */
@@ -403,18 +391,21 @@ if(checkSession())
 return l_info;
 }
 
-function infoWindowClosedCB()
+function infoWindowClosedCB(a_id)
 {
-  var line = document.getElementById(g_HIGHLIGHT._id);
-  hideTrack(g_HIGHLIGHT._id);
-  g_HIGHLIGHT._id = "";
+  var line = document.getElementById(a_id);
+  var me = g_MARKERLIST.search(a_id);
+
+  if(!me.m_hidden)
+  {
+    me.m_marker.setImage(g_WALKLIST[a_id].icon.image);
+  }
+  hideTrack(a_id);
 
   if(line)
   {
     line.className=line.className.substr(0, line.className.length-3);
   }
-  g_HIGHLIGHT.hide();
-
   link_update("", null);
 }
 
@@ -478,30 +469,11 @@ function showInfo(a_id)
     alert("no entry for tag " + a_id);
   }
   me.m_marker.setImage("images/wanderparkplatz_selected.png");
-  /*
-  if(null == g_HIGHLIGHT)
-  {
-    createHighlight();
-  }
-
-  if(g_HIGHLIGHT._id != "")
-  {
-    infoWindowClosedCB();
-  }
-   */
   var line = document.getElementById(a_id);
   line.className=line.className + "_hl";
 
   me.m_marker.openInfoWindowHtml(me.m_desc);
-  GEvent.addListener(me.m_marker, "infowindowclose", function(){me.m_marker.setImage(g_WALKLIST[a_id].icon.image);});
-  /*
-  g_HIGHLIGHT.setLatLng(me.m_marker.getLatLng());
-  me.m_marker.openInfoWindowHtml(me.m_desc);
-  g_HIGHLIGHT.show();
-  g_HIGHLIGHT._id = a_id;
-
-  GEvent.addListener(g_HIGHLIGHT, "infowindowclose", function(){infoWindowClosedCB()});
-   */
+  GEvent.addListener(me.m_marker, "infowindowclose", function(){infoWindowClosedCB(a_id);});
 
   link_update(a_id, null);
 }
@@ -527,23 +499,6 @@ function showHome(a_text)
   var me = new MarkEntry("home", mark, "Daheim");
   g_MARKERLIST.push(me);
   g_MARKERLIST.home = me;
-}
-
-/*--- createHighlight() -------------------------------------------------------- createHighlight() ---*/
-/**
- *  @brief   Creates the highlighting mark that gets moved to the currently selected mark
- */
-/*--- createHighlight() -------------------------------------------------------- createHighlight() ---*/
-function createHighlight()
-{
-  var hiIcon  = new MyIcon("images/wanderparkplatz_selected.png");
-  var options = {icon:hiIcon, zIndexProcess:function(a){return 0;}};
-  g_HIGHLIGHT = new google.maps.Marker(g_HOME, options);
-  g_HIGHLIGHT._id = "";
-  g_HIGHLIGHT.hide();
-  var me = new MarkEntry("highlight", g_HIGHLIGHT, "HL");
-  g_MARKERLIST.push(me);
-  g_MARKERLIST.highlight = me;
 }
 
 /*--- cbChanged() -------------------------------------------------------------------- cbChanged() ---*/
@@ -717,7 +672,8 @@ function initialize()
   GEvent.addListener(g_MAP, "zoomend", function(a_old,a_new)
   {
       link_update(null,a_new);
-      if(g_HIGHLIGHT && ('undefined' != typeof(g_HIGHLIGHT)) && (g_HIGHLIGHT.state==g_HIGHLIGHT.HIDDEN)){g_HIGHLIGHT.hide();}
+      $('#zoomdiv').html(a_new);
+
   });
 
   g_MARKERLIST    = new MarkerList(g_MAP);
@@ -753,6 +709,7 @@ function initialize()
         </style>
     </head>
     <body onunload="GUnload()">
+    <div id="zoomdiv" style="background:red;">0</div>
 <?php
 require_once('loginhead.php');
 
@@ -801,7 +758,6 @@ echo <<<END
     <script type="text/javascript">
         initialize();
         showHome('Daheim');
-        //createHighlight();
 
 END;
 
