@@ -141,6 +141,58 @@ function MarkEntry(a_id, a_marker, a_description)
   this.m_track    = null;
   this.length     = 0;
 }
+
+/** sets the image of the associated marker */
+MarkEntry.prototype.setImage = function(a_image) { this.m_marker.setImage(a_image); }
+/** returns the hidden state */
+MarkEntry.prototype.isHidden = function() { return this.m_hidden; }
+/** sets the hidden state to true */
+MarkEntry.prototype.hide = function() { this.m_hidden = true; }
+/** sets the hidden state to false */
+MarkEntry.prototype.show = function() { this.m_hidden = false; }
+/** returns the coordinates of the marker */
+MarkEntry.prototype.getLatLng = function(){return this.m_marker.getLatLng();}
+/** highlights the marker */
+MarkEntry.prototype.highlight = function() { this.setImage("images/wanderparkplatz_selected.png"); }
+/** restores the normal icon of the marker */
+MarkEntry.prototype.normal = function() { if(!this.m_hidden) this.setImage(g_WALKLIST[this.m_id].icon.image); }
+/** shows the info of the marker */
+MarkEntry.prototype.showInfo = function()
+{
+  this.m_marker.openInfoWindowHtml(this.m_desc);
+  var id = this.m_id;
+  this.highlight();
+  if(!this.m_listener)
+  {
+    this.m_listener = GEvent.addListener(this.m_marker, "infowindowclose", function(){infoWindowClosedCB(id);});
+  }
+}
+
+MarkEntry.prototype.showTrack = function()
+{
+  if(this.m_track)
+  {
+    this.m_track.show();
+  }
+  else
+  {
+    var options = { url: "track.php", 
+                    data:{gettrack: this.m_id},
+                    context: this,
+                    dataType: "text",
+                    cache: false,
+                    success: function(msg){
+                      this.m_track = eval(msg);
+                      g_MAP.addOverlay(this.m_track);
+                      this.m_track.show();
+                    }
+    };
+    $.ajax(options);
+  }
+}
+
+MarkEntry.prototype.hideTrack = function() { if(this.m_track){this.m_track.hide();} }
+
 /* ------------------------------------------------------------------------------------------------ */
 /* END Class MarkEntry                                                                              */
 /* ------------------------------------------------------------------------------------------------ */
@@ -171,8 +223,6 @@ function MarkerList(a_map)
   this.entries    = new Array();
   this.manager    = new MarkerManager(a_map);
   this.bounds     = new google.maps.LatLngBounds();
-  this.home       = null;
-  this.highlight  = null;
   this.length     = 0;
 }
 
@@ -206,9 +256,10 @@ MarkerList.prototype.addWalk = function (a_id, a_walk)
   var l_info  = createInfoString(a_walk.name, a_walk.length, a_walk.dur, a_walk.ch, a_id, a_walk.hasTrack);
 
   /* add the mark to our markerlist */
-  this.push(new MarkEntry(a_id, l_mark, l_info));
+  var me = new MarkEntry(a_id, l_mark, l_info);
+  this.push(me);
 
-  GEvent.addListener(l_mark, "click", function(){showInfo(a_id)});
+  GEvent.addListener(l_mark, "click", function(){me.showInfo()});
 
   var dst = a_id + "_dst";
   document.getElementById(dst).innerHTML = "<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">Berechnen</a>";
@@ -254,8 +305,6 @@ MarkerList.prototype.get = function(a_index){return this.entries[a_index];}
 
 MarkerList.prototype.search = function(a_id)
 {
-  var i = 0;
-  var me = null;
   return this.entries[a_id];
 }
 
@@ -267,10 +316,10 @@ MarkerList.prototype.search = function(a_id)
 MarkerList.prototype.show = function(a_id)
 {
   var me      = this.search(a_id);
-  if(me && me.m_hidden)
+  if(me && me.isHidden())
   {
     this.manager.addMarker(me.m_marker, 1);
-    me.m_hidden = false;
+    me.show();
   }
   var e = document.getElementById(a_id + "_cb");
   if(e)
@@ -289,7 +338,7 @@ MarkerList.prototype.hide = function(a_id)
   var me      = this.search(a_id);
   if(me)
   {
-    me.m_hidden = true;
+    me.hide();
     this.manager.removeMarker(me.m_marker);
   }
 
@@ -308,7 +357,7 @@ MarkerList.prototype.showAll = function()
   for (id in this.entries)
   {
     me = this.entries[id];
-    if( (null == me) || (me.m_id == "highlight") || (me.m_hidden == false) )
+    if( (null == me) || (me.m_id == "highlight") || (me.isHidden() == false) )
     {
       continue; /* skip the gap and the highlight marker */
     }
@@ -322,12 +371,67 @@ MarkerList.prototype.hideAll = function()
   for (id in this.entries)
   {
     me = this.entries[id];
-    if( (null == me) || (me.m_id == "home") || (me.m_hidden != false) )
+    if( (null == me) || (me.m_id == "home") || (me.isHidden() != false) )
     {
       continue; /* skip the gap and the home marker */
     }
     this.hide(id);
   }
+}
+
+/** Highlights the given marker */
+MarkerList.prototype.highlight = function(a_id)
+{
+  var me = this.search(a_id);
+  if(me)
+  {
+    me.highlight();
+  }
+}
+
+/** Reverts the icon of the given marker */
+MarkerList.prototype.normal = function(a_id)
+{
+  var me = this.search(a_id);
+  if(me)
+  {
+    me.normal();
+  }
+}
+
+MarkerList.prototype.showTrack = function(a_id)
+{
+  var me = this.search(a_id);
+  if(null == me)
+  {
+    alert("showTrack: no entry for tag " + a_id);
+  }
+  me.showTrack();
+}
+
+MarkerList.prototype.hideTrack = function(a_id)
+{
+  var me = this.search(a_id);
+  if(null == me)
+  {
+    alert("hideTrack no entry for tag " + a_id);
+  }
+  me.hideTrack();
+}
+
+MarkerList.prototype.showInfo = function(a_id)
+{
+  var me = this.search(a_id);
+  if(null == me)
+  {
+    alert("no entry for tag " + a_id);
+  }
+  this.highlight(a_id);
+  var line = document.getElementById(a_id);
+  line.className=line.className + "_hl";
+
+  me.showInfo();
+  link_update(a_id, null);
 }
 /* ------------------------------------------------------------------------------------------------ */
 /* END Class MarkerList                                                                             */
@@ -380,7 +484,7 @@ function createInfoString(a_text, a_len, a_dur, a_char, a_id, a_hasTrack)
   l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_id +"\')\">Verbergen</a>";
   if(a_hasTrack)
   {
-    l_info = l_info + " | <a href=\"javascript:showTrack('" + a_id + "')\">Zeige Track</a>";
+    l_info = l_info + " | <a href=\"javascript:g_MARKERLIST.showTrack('" + a_id + "')\">Zeige Track</a>";
   }
 
 <?php
@@ -395,90 +499,14 @@ return l_info;
 function infoWindowClosedCB(a_id)
 {
   var line = document.getElementById(a_id);
-  var me = g_MARKERLIST.search(a_id);
-  hideTrack(a_id);
-  if(!me.m_hidden)
-  {
-    me.m_marker.setImage(g_WALKLIST[a_id].icon.image);
-  }
+  g_MARKERLIST.hideTrack(a_id);
+  g_MARKERLIST.normal(a_id);
 
   if(line)
   {
     line.className=line.className.substr(0, line.className.length-3);
   }
   link_update("", null);
-}
-
-function showTrack(a_id)
-{
-  var me = g_MARKERLIST.search(a_id);
-  if(null == me)
-  {
-    alert("showTrack: no entry for tag " + a_id);
-  }
-  if(me.m_track)
-  {
-    me.m_track.show();
-  }
-  else
-  {
-    var options = { url: "track.php", 
-                    data:{gettrack: a_id},
-                    context: me,
-                    dataType: "text",
-                    cache: false,
-                    success: function(msg){
-                      this.m_track = eval(msg);
-                      g_MAP.addOverlay(this.m_track);
-                      this.m_track.show();
-                    }
-    };
-    $.ajax(options);
-  }
-}
-
-function hideTrack(a_id)
-{
-  if(!a_id) return;
-  var me = g_MARKERLIST.search(a_id);
-  if(null == me)
-  {
-    alert("hideTrack: no entry for tag " + a_id);
-    return;
-  }
-  if(me.m_track)
-  {
-    me.m_track.hide();
-  }
-}
-
-/*--- showInfo() ---------------------------------------------------------------------- showInfo() ---*/
-/**
- *  @brief   Shows the information at the mark identified by the given tag
- *
- *  @param   a_id  Tag identifying the mark to show the information for
- *
- *  @return  nothing
- */
-/*--- showInfo() ---------------------------------------------------------------------- showInfo() ---*/
-function showInfo(a_id)
-{
-  var me = g_MARKERLIST.search(a_id);
-  if(null == me)
-  {
-    alert("no entry for tag " + a_id);
-  }
-  me.m_marker.setImage("images/wanderparkplatz_selected.png");
-  var line = document.getElementById(a_id);
-  line.className=line.className + "_hl";
-
-  me.m_marker.openInfoWindowHtml(me.m_desc);
-  if(!me.m_listener)
-  {
-    me.m_listener = GEvent.addListener(me.m_marker, "infowindowclose", function(){infoWindowClosedCB(a_id);});
-  }
-
-  link_update(a_id, null);
 }
 
 /*--- showHome() ---------------------------------------------------------------------- showHome() ---*/
@@ -501,7 +529,6 @@ function showHome(a_text)
   mark.bindInfoWindowHtml("<h1><i>Daheim</i></h1><p>Home sweet Home</p>");
   var me = new MarkEntry("home", mark, "Daheim");
   g_MARKERLIST.push(me);
-  g_MARKERLIST.home = me;
 }
 
 /*--- cbChanged() -------------------------------------------------------------------- cbChanged() ---*/
@@ -542,7 +569,6 @@ function markAsWalkedCB(a_data, a_text, a_req)
     g_WALKLIST[id].icon = g_WALKED_ICON;
     g_MARKERLIST.addWalk(id, g_WALKLIST[id]);
     $('#' + id + '_isWalked').fadeOut();
-    //$('#' + id + '_isWalked').innerHTML = "gelaufen";
   }
   else
   {
@@ -591,7 +617,7 @@ function distCalc(a_id, a_suffix)
 {
   var me = g_MARKERLIST.search(a_id);
   if(!me)alert("Entry not found for ID " + a_id);
-  var l_query = "from: " + g_HOME + " to: " + me.m_marker.getLatLng();
+  var l_query = "from: " + g_HOME + " to: " + me.getLatLng();
   g_CURRENTJOB = new PlannerJob(a_id, l_query, a_id + a_suffix);
   document.getElementById(g_CURRENTJOB.m_descId).innerHTML = "working...";
   g_DIRECTIONS.load(l_query);
@@ -675,7 +701,6 @@ function initialize()
   GEvent.addListener(g_MAP, "zoomend", function(a_old,a_new)
   {
       link_update(null,a_new);
-      $('#zoomdiv').html(a_new);
 
   });
 
@@ -712,7 +737,6 @@ function initialize()
         </style>
     </head>
     <body onunload="GUnload()">
-    <div id="zoomdiv" style="background:red;">0</div>
 <?php
 require_once('loginhead.php');
 
@@ -803,7 +827,7 @@ END;
 
   if(isset($_REQUEST[highlight]))
   {
-    echo "showInfo('$_REQUEST[highlight]');";
+    echo "g_MARKERLIST.showInfo('$_REQUEST[highlight]');";
   }
 ?>
     </script>

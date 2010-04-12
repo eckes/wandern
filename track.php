@@ -1,7 +1,8 @@
 <?php 
 
 // descendant:: indicates an optional element in the xpath search string
-define("SEARCH_PATH", "/kml/Document/descendant::*[name() = 'Folder']/Placemark/LineString/coordinates");
+define("SEARCH_PATH1", "/kml/Document/Folder/Placemark/LineString/coordinates");
+define("SEARCH_PATH2", "/kml/Document/Placemark/LineString/coordinates");
 
 $keys = array_keys($_REQUEST);
 foreach($keys AS $thekey)
@@ -30,7 +31,12 @@ function parse_track($a_id)
   $xmlstr = file_get_contents($kmlpath);
   $xmlstr = str_replace('xmlns=', 'ns=', $xmlstr);
   $xml = simplexml_load_string($xmlstr);
-  $result = $xml->xpath(SEARCH_PATH);
+  $result = $xml->xpath(SEARCH_PATH2);
+  if(count($result) == 0)
+  {
+    // try the long one
+    $result = $xml->xpath(SEARCH_PATH1);
+  }
   if(count($result) == 1)
   {
     $result = $result[0];
