@@ -113,13 +113,7 @@ var g_WALKLIST          = new Array(); /**< All the walks as an Array           
 /* ------------------------------------------------------------------------------------------------ */
 /* BEGIN configuration of the table-sorting-and-striping script                                     */
 /* ------------------------------------------------------------------------------------------------ */
-var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's', 's'
-<?php
-if($_SESSION['validUser'] == true) 
-{
-  echo ", ''";
-}
-?>
+var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's', 's' <?php if($_SESSION['validUser'] == true) { echo ", ''"; } ?>
 );
 var TSort_Classes = new Array ('table_odd', 'table_even');
 var TSort_Initial = 0;
@@ -140,18 +134,21 @@ function MarkEntry(a_id, a_marker, a_description, a_title)
   this.m_hidden   = false;
   this.m_listener = null;
   this.m_track    = null;
-  this.m_lc       = null;
-  this.m_line     = null;
-  this.length     = 0;
+  if(this.m_id != "home")
+  {
+    this.m_line     = $('#'+this.m_id)[0];
+    this.m_lc       = [this.m_line.className, this.m_line.className + '_hl'];
+    this.m_icons    = [this.m_marker.getIcon().image, "images/wanderparkplatz_selected.png"];
+  }
 }
 
 MarkEntry.STATE_NORMAL     = 0;
 MarkEntry.STATE_HIGHLIGHT  = 1;
 
 /** sets the image of the associated marker */
-MarkEntry.prototype.setImage = function(a_image) { this.m_marker.setImage(a_image); }
+MarkEntry.prototype.setImage = function(a_image) { !this.m_hidden && this.m_marker.setImage(a_image); }
 /** returns the hidden state */
-MarkEntry.prototype.isHidden = function() { return this.m_hidden; }
+MarkEntry.prototype.isHidden = function() { return this.m_hidden }
 /** sets the hidden state to true */
 MarkEntry.prototype.hide = function() { this.m_hidden = true; }
 /** sets the hidden state to false */
@@ -159,22 +156,15 @@ MarkEntry.prototype.show = function() { this.m_hidden = false; }
 /** returns the coordinates of the marker */
 MarkEntry.prototype.getLatLng = function(){return this.m_marker.getLatLng();}
 /** highlights the marker */
-MarkEntry.prototype.highlight = function() { 
-  if(!this.m_lc)
-  {
-    this.m_line = $('#'+this.m_id)[0];
-    this.m_lc = [this.m_line.className, this.m_line.className + '_hl'];
-  }
-  this.m_line.className = this.m_lc[MarkEntry.STATE_HIGHLIGHT];
-  this.setImage("images/wanderparkplatz_selected.png"); 
-}
-
+MarkEntry.prototype.highlight = function() {this.setState(MarkEntry.STATE_HIGHLIGHT);}
 /** restores the normal icon of the marker */
-MarkEntry.prototype.normal = function() { 
-  this.m_line.className = this.m_lc[MarkEntry.STATE_NORMAL];
-  if(!this.m_hidden) this.setImage(g_WALKLIST[this.m_id].icon.image); 
-}
+MarkEntry.prototype.normal = function() {this.setState(MarkEntry.STATE_NORMAL);}
 /** shows the info of the marker */
+
+MarkEntry.prototype.setState = function(a_state) {
+    this.m_line.className = this.m_lc[a_state];
+    this.setImage(this.m_icons[a_state]);
+  }
 MarkEntry.prototype.showInfo = function()
 {
   this.m_marker.openInfoWindowHtml(this.m_desc);
@@ -375,30 +365,56 @@ MarkerList.prototype.hide = function(a_id)
 /** Displays all the markers of the list */
 MarkerList.prototype.showAll = function()
 {
-  var id = null;
-  var me = null;
-  for (id in this.entries)
+  if(1)
   {
-    me = this.entries[id];
-    if( (null == me) || (me.m_id == "highlight") || (me.isHidden() == false) )
+    var id = null;
+    var me = null;
+    for (id in this.entries)
     {
-      continue; /* skip the gap and the highlight marker */
+      me = this.entries[id];
+      if( (null == me) || (me.m_id == "highlight") || (me.isHidden() == false) )
+      {
+        continue; /* skip the gap and the highlight marker */
+      }
+      this.show(id);
     }
-    this.show(id);
+  }
+  else
+  {
+    $.each(this.entries, function(key, value){
+      if((null==value) || (value.m_id == 'highlight') || (!value.isHidden()))
+      {
+        return true;
+      }
+      this.show(key);
+    });
   }
 }
 
 /** Hides all the markers of the list */
 MarkerList.prototype.hideAll = function()
 {
-  for (id in this.entries)
+  if(1)
   {
-    me = this.entries[id];
-    if( (null == me) || (me.m_id == "home") || (me.isHidden() != false) )
+    for (id in this.entries)
     {
-      continue; /* skip the gap and the home marker */
+      me = this.entries[id];
+      if( (null == me) || (me.m_id == "home") || (me.isHidden() != false) )
+      {
+        continue; /* skip the gap and the home marker */
+      }
+      this.hide(id);
     }
-    this.hide(id);
+  }
+  else
+  {
+    $.each(this.entries, function(key, value){
+      if((null==value) || (value.m_id == 'home') || (value.isHidden()))
+      {
+        return true;
+      }
+      this.hide(key)
+    });
   }
 }
 
@@ -409,6 +425,15 @@ MarkerList.prototype.highlight = function(a_id)
   if(me)
   {
     me.highlight();
+  }
+}
+
+MarkerList.prototype.normal = function(a_id)
+{
+  var me = this.search(a_id);
+  if(me)
+  {
+    me.normal();
   }
 }
 
@@ -518,6 +543,7 @@ return l_info;
 
 function infoWindowClosedCB(a_id)
 {
+  g_MARKERLIST.normal(a_id);
   g_MARKERLIST.hideTrack(a_id);
   link_update("", null);
 }
@@ -679,8 +705,7 @@ function link_update(a_highlight, a_zoomLevel)
 
     for(var key in arr)
     {
-      if(   ("length" == key)
-         || (""       == key) )
+      if(   ("length" == key) || ("" == key) )
       {
         continue;
       }
