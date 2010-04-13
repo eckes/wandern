@@ -1,4 +1,5 @@
 <?php 
+/* vim: set sw=2 ts=2: */
 require_once('../login/common.php');
 require_once('../css/colors.php');
 require_once('common.php');
@@ -127,55 +128,71 @@ tsRegister();
 /* ------------------------------------------------------------------------------------------------ */
 function MarkEntry(a_id, a_marker, a_description, a_title)
 {
+  var _marker     = a_marker;
+  var _hidden     = false;
   this.m_id       = a_id;
-  this.m_marker   = a_marker;
   this.m_desc     = a_description;
   this.m_title    = a_title;
-  this.m_hidden   = false;
-  this.m_listener = null;
+  this.m_listener = GEvent.addListener(_marker, "infowindowclose", function(){infoWindowClosedCB(a_id);});
   this.m_track    = null;
   if(this.m_id != "home")
   {
-    this.m_line     = $('#'+this.m_id)[0];
-    this.m_lc       = [this.m_line.className, this.m_line.className + '_hl'];
-    this.m_icons    = [this.m_marker.getIcon().image, "images/wanderparkplatz_selected.png"];
+    var m_line     = $('#'+this.m_id)[0];
+    var m_lc       = [m_line.className, m_line.className + '_hl'];
+    var m_icons    = [_marker.getIcon().image, "images/wanderparkplatz_selected.png"];
   }
+
+  /** PRIVILEGED: sets the state of the marker, has access to private functions */
+  this.setState = function(a_state)
+  {
+    m_line.className = m_lc[a_state];
+    _setImage(m_icons[a_state]);
+  }
+
+  /** PRIVILEGED: access to the _hidden variable */
+  this.isHidden = function(){return _hidden;}
+  this.show     = function(){_hidden = false;}
+  this.hide     = function(){_hidden = true;}
+
+  /** PRIVILEGED: access to the _marker variable */
+  this.getLatLng = function(){return _marker.getLatLng();}
+  this.getMarker = function(){return _marker;}
+
+  /** shows the info of the marker */
+  this.showInfo = function()
+  {
+    _marker.openInfoWindowHtml(this.m_desc);
+    this.highlight();
+  }
+
+  /** PRIVATE: sets the image for this marker */
+  var _setImage = function(a_image) { !_hidden && _marker.setImage(a_image); }
 }
 
 MarkEntry.STATE_NORMAL     = 0;
 MarkEntry.STATE_HIGHLIGHT  = 1;
 
-/** sets the image of the associated marker */
-MarkEntry.prototype.setImage = function(a_image) { !this.m_hidden && this.m_marker.setImage(a_image); }
-/** returns the hidden state */
-MarkEntry.prototype.isHidden = function() { return this.m_hidden }
-/** sets the hidden state to true */
-MarkEntry.prototype.hide = function() { this.m_hidden = true; }
-/** sets the hidden state to false */
-MarkEntry.prototype.show = function() { this.m_hidden = false; }
-/** returns the coordinates of the marker */
-MarkEntry.prototype.getLatLng = function(){return this.m_marker.getLatLng();}
-/** highlights the marker */
+// set the marker state highlighted/normal
 MarkEntry.prototype.highlight = function() {this.setState(MarkEntry.STATE_HIGHLIGHT);}
-/** restores the normal icon of the marker */
 MarkEntry.prototype.normal = function() {this.setState(MarkEntry.STATE_NORMAL);}
-/** shows the info of the marker */
-
-MarkEntry.prototype.setState = function(a_state) {
-    this.m_line.className = this.m_lc[a_state];
-    this.setImage(this.m_icons[a_state]);
-  }
-MarkEntry.prototype.showInfo = function()
+// Mark the walk as walked
+MarkEntry.prototype.markAsWalked = function ()
 {
-  this.m_marker.openInfoWindowHtml(this.m_desc);
-  var id = this.m_id;
-  this.highlight();
-  if(!this.m_listener)
+  if(confirm('Wanderung\n\n"' + this.m_title + '"\n\nals gelaufen markieren?'))
   {
-    this.m_listener = GEvent.addListener(this.m_marker, "infowindowclose", function(){infoWindowClosedCB(id);});
+    var options = { url: "editwalk.php", 
+                    data:{id: this.m_id, walked:'true'},
+                    context: this.m_id,
+                    dataType: "text",
+                    cache: false,
+                    type: 'GET',
+                    error: function(a_req, a_txt, a_err){alert("Failed with error " + a_err +" ("+a_txt+")");},
+                    success: markAsWalkedCB };
+    $.ajax(options);
   }
 }
 
+// Display the track for the walk
 MarkEntry.prototype.showTrack = function()
 {
   if(this.m_track)
@@ -199,25 +216,10 @@ MarkEntry.prototype.showTrack = function()
   }
 }
 
+// Hide the track
 MarkEntry.prototype.hideTrack = function() {
   this.m_track && this.m_track.hide();
   this.normal();
-}
-
-MarkEntry.prototype.markAsWalked = function ()
-{
-  if(confirm('Wanderung\n\n"' + this.m_title + '"\n\nals gelaufen markieren?'))
-  {
-    var options = { url: "editwalk.php", 
-                    data:{id: this.m_id, walked:'true'},
-                    context: this.m_id,
-                    dataType: "text",
-                    cache: false,
-                    type: 'GET',
-                    error: function(a_req, a_txt, a_err){alert("Failed with error " + a_err +" ("+a_txt+")");},
-                    success: markAsWalkedCB };
-    $.ajax(options);
-  }
 }
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -261,8 +263,8 @@ function MarkerList(a_map)
 MarkerList.prototype.push = function(a_entry)
 {
   this.entries[a_entry.m_id] = a_entry;
-  this.bounds.extend(a_entry.m_marker.getLatLng());
-  this.manager.addMarker(a_entry.m_marker, 0, 19);
+  this.bounds.extend(a_entry.getLatLng());
+  this.manager.addMarker(a_entry.getMarker(), 0, 19);
   this.length++;
 }
 
@@ -294,7 +296,7 @@ MarkerList.prototype.removeWalk = function (a_id)
 {
   var me = this.search(a_id);
   me.hide();
-  this.manager.removeMarker(me.m_marker);
+  this.manager.removeMarker(me.getMarker());
   delete this.entries[a_id];
 }
 
@@ -311,15 +313,6 @@ MarkerList.prototype.getCenter = function() {return this.bounds.getCenter();}
  * @return  The bounds of the map as google.maps.LatLngBounds object
  */
 MarkerList.prototype.getBounds = function(){return this.bounds;}
-
-/** 
- * Returns the entry on the given index
- *
- * @param a_index   Index of the MarkerEntry to return
- *
- * @return the MarkerEntry stored at the given index
- */
-MarkerList.prototype.get = function(a_index){return this.entries[a_index];}
 
 /**
  * Searches for an entry with the given ID and returns it. 
@@ -340,7 +333,7 @@ MarkerList.prototype.show = function(a_id)
   var me      = this.search(a_id);
   if(me && me.isHidden())
   {
-    this.manager.addMarker(me.m_marker, 1);
+    this.manager.addMarker(me.getMarker(), 1);
     me.show();
   }
   $('#'+a_id+'_cb').attr('checked', true);
@@ -357,7 +350,7 @@ MarkerList.prototype.hide = function(a_id)
   if(me)
   {
     me.hide();
-    this.manager.removeMarker(me.m_marker);
+    this.manager.removeMarker(me.getMarker());
   }
   $('#'+a_id+'_cb').attr('checked', false);
 }
