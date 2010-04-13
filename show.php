@@ -209,7 +209,10 @@ MarkEntry.prototype.showTrack = function()
   }
 }
 
-MarkEntry.prototype.hideTrack = function() { if(this.m_track){this.m_track.hide();} }
+MarkEntry.prototype.hideTrack = function() {
+  this.m_track && this.m_track.hide();
+  this.normal();
+}
 
 MarkEntry.prototype.markAsWalked = function ()
 {
@@ -267,7 +270,6 @@ function MarkerList(a_map)
  */
 MarkerList.prototype.push = function(a_entry)
 {
-  //this.entries.push(a_entry);
   this.entries[a_entry.m_id] = a_entry;
   this.bounds.extend(a_entry.m_marker.getLatLng());
   this.manager.addMarker(a_entry.m_marker, 0, 19);
@@ -336,11 +338,7 @@ MarkerList.prototype.get = function(a_index){return this.entries[a_index];}
  *
  * @return the MarkEntry identified by the given ID
  */
-
-MarkerList.prototype.search = function(a_id)
-{
-  return this.entries[a_id];
-}
+MarkerList.prototype.search = function(a_id) { return this.entries[a_id]; }
 
 /** 
  * Shows the marker with the given name 
@@ -414,16 +412,6 @@ MarkerList.prototype.highlight = function(a_id)
   }
 }
 
-/** Reverts the icon of the given marker */
-MarkerList.prototype.normal = function(a_id)
-{
-  var me = this.search(a_id);
-  if(me)
-  {
-    me.normal();
-  }
-}
-
 MarkerList.prototype.showTrack = function(a_id)
 {
   var me = this.search(a_id);
@@ -451,10 +439,8 @@ MarkerList.prototype.showInfo = function(a_id)
   {
     alert("no entry for tag " + a_id);
   }
-  this.highlight(a_id);
-  //var line = document.getElementById(a_id);
-  //line.className=line.className + "_hl";
 
+  me.highlight();
   me.showInfo();
   link_update(a_id, null);
 }
@@ -532,9 +518,7 @@ return l_info;
 
 function infoWindowClosedCB(a_id)
 {
-  var line = document.getElementById(a_id);
   g_MARKERLIST.hideTrack(a_id);
-  g_MARKERLIST.normal(a_id);
   link_update("", null);
 }
 
@@ -717,20 +701,15 @@ function initialize()
 {
   if(g_INITIALIZED) return;
   g_INITIALIZED = 1;
+  g_HOME       = new google.maps.LatLng(<?=$_SESSION['settings']['lat']?>, <?=$_SESSION['settings']['lon']?>);
 
   g_MAP = new google.maps.Map2(document.getElementById("map"));
+  g_MAP.setCenter(g_HOME, 0, G_NORMAL_MAP);
   g_MAP.addControl(new google.maps.MapTypeControl());
   g_MAP.addControl(new google.maps.SmallZoomControl());
   g_MAP.addMapType(G_PHYSICAL_MAP);
-  g_MAP.setMapType(G_NORMAL_MAP);
-  g_MAP.setCenter(new GLatLng(50, -98), 3);
-
   GEvent.addListener(g_MAP, "moveend", function(){link_update(null, null);});
-  GEvent.addListener(g_MAP, "zoomend", function(a_old,a_new)
-  {
-      link_update(null,a_new);
-
-  });
+  GEvent.addListener(g_MAP, "zoomend", function(a_old,a_new) { link_update(null,a_new);});
 
   g_MARKERLIST    = new MarkerList(g_MAP);
 
@@ -739,8 +718,6 @@ function initialize()
   g_DIRECTIONS    = new google.maps.Directions();
 
   GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
-
-  g_HOME       = new google.maps.LatLng(<?=$_SESSION['settings']['lat']?>, <?=$_SESSION['settings']['lon']?>);
 }
 </script>
         <style type="text/css">
