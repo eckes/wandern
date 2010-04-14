@@ -54,27 +54,28 @@ END;
   echo "</tr>\n";
 }
 
+// writes the given value as JSON object
 function writeScriptLine($a_val1)
 {
-  echo "g_WALKLIST['$a_val1[Tag]'] = {";
-  echo "lat:$a_val1[Lat],";
-  echo "lon:$a_val1[Lon],";
-  echo "name:'$a_val1[Name]',";
-  echo "length:$a_val1[Laenge],";
-  echo "dur:$a_val1[Dauer],";
-  echo "ch:'$a_val1[Charakter]',";
+  echo "'$a_val1[Tag]': {";
+  echo "'lat':$a_val1[Lat],";
+  echo "'lon':$a_val1[Lon],";
+  echo "'name':'$a_val1[Name]',";
+  echo "'length':$a_val1[Laenge],";
+  echo "'dur':$a_val1[Dauer],";
+  echo "'ch':'$a_val1[Charakter]',";
 
   if(isset($a_val1[Datum]) && ($a_val1[Datum] != "0000-00-00") )
   {
-    echo "icon:g_WALKED_ICON,";
+    echo "'icon':g_WALKED_ICON,";
   }
   else
   {
-    echo "icon:g_ICON, ";
+    echo "'icon':g_ICON, ";
   }
-  echo "hasTrack:";
+  echo "'hasTrack':";
   echo (has_track($a_val1[Tag]))?'true':'false';
-  echo "};\n";
+  echo "},\n";
 }
 
 include("db_xml.php");
@@ -164,6 +165,9 @@ function MarkEntry(a_id, a_marker, a_description, a_title)
     _marker.openInfoWindowHtml(this.m_desc);
     this.highlight();
   }
+
+  /** update the icon for a certain state */
+  this.setIcon  = function(a_state, a_image) { _icons[a_state] = a_image; }
 
   /** PRIVATE: sets the image for this marker */
   var _setImage = function(a_image) { !_hidden && _marker.setImage(a_image); }
@@ -439,10 +443,21 @@ MarkerList.prototype.showInfo = function(a_id)
 
 MarkerList.prototype.markAsWalked = function (a_id)
 {
+  // TODO: do everything neccessary here instead of the MarkEntry class.
+  // The markAsWalked function of the MarkEntry shall only update the info string...
   var me = this.search(a_id);
   if(me)
   {
     me.markAsWalked();
+  }
+}
+
+MarkerList.prototype.setIcon = function (a_id, a_state, a_icon)
+{
+  var me = this.search(a_id);
+  if(me)
+  {
+    me.setIcon(a_state, a_icon);
   }
 }
 /* ------------------------------------------------------------------------------------------------ */
@@ -502,7 +517,7 @@ function createInfoString(a_text, a_len, a_dur, a_char, a_id, a_hasTrack)
 <?php
 if(checkSession())
 {
-  echo 'l_info = l_info + " | <a href=\"javascript:g_MARKERLIST.markAsWalked(\'" + a_id +"\')\">Gelaufen</a>";';
+  echo 'l_info = l_info + "<p style=\'display:inline;\' id=\'walkedlink_" + a_id   + "\'> | <a href=\"javascript:g_MARKERLIST.markAsWalked(\'" + a_id +"\')\">Gelaufen</a></p>";';
 }
 ?>
 return l_info;
@@ -568,46 +583,20 @@ function markAsWalkedCB(a_data, a_text, a_req)
   {
     alert("Request reports an error:" + a_req.status + " (" + a_req.statusText + ")");
   }
-  // first of all, the node must disappear from the map AND the table 
-  g_MARKERLIST.removeWalk(id);
   if( (typeof(g_OPTIONS.showwalked) != 'undefined') && (g_OPTIONS.showwalked))
   {
-    g_WALKLIST[id].icon = g_WALKED_ICON;
-    g_MARKERLIST.addWalk(id, g_WALKLIST[id]);
+    g_MARKERLIST.setIcon(id, MarkEntry.STATE_NORMAL, g_WALKED_ICON.image);
     $('#' + id + '_isWalked').fadeOut();
+    $('#walkedlink_' + id ).fadeOut();
+    alert($('#walkedlink_' + id ).remove());
   }
   else
   {
-    // the table row can only be removed when the marker disappears.
-    // otherwise, we'll need the row for further use...
+    g_MARKERLIST.removeWalk(id);
     $('#' + id).fadeOut();
   }
 }
 
-/*--- markAsWalked() -------------------------------------------------------------- markAsWalked() ---*/
-/**
- *  @brief   does some little preparation before marking the walk with the given ID as walked
- *
- *  @param   a_id  ID of the walk to be marked as walked
- *
- *  @return  A MWEB_RESULT
- */
-/*--- markAsWalked() -------------------------------------------------------------- markAsWalked() ---*/
-function markAsWalked(a_id)
-{
-  if(confirm('Wanderung\n\n"' + g_MARKERLIST.search(a_id).m_title + '"\n\nals gelaufen markieren?'))
-  {
-    var options = { url: "editwalk.php", 
-                    data:{id: a_id, walked:'true'},
-                    context: a_id,
-                    dataType: "text",
-                    cache: false,
-                    type: 'GET',
-                    error: function(a_req, a_txt, a_err){alert("Failed with error " + a_err +" ("+a_txt+")");},
-                    success: markAsWalkedCB };
-    $.ajax(options);
-  }
-}
 /* ------------------------------------------------------------------------------------------------ */
 /* END Helper Methods                                                                               */
 /* ------------------------------------------------------------------------------------------------ */
@@ -788,12 +777,18 @@ END;
 array_walk($_REQUEST, writeOptionLine);
 
 // put the request context into a javascript object to be able to access the information lateron
+echo "g_WALKLIST = {\n";
 array_walk($elements, writeScriptLine);
+echo "};\n";
 
 echo <<<END
+$.each(g_WALKLIST, function(key, value){g_MARKERLIST.addWalk(key, value);});
+if(0)
+{
       for (id in g_WALKLIST)
       {
         g_MARKERLIST.addWalk(id, g_WALKLIST[id]);
+      }
       }
 
 END;

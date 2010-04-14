@@ -99,7 +99,7 @@ function editWalk($a_user, $a_id, $a_action)
       return -1;
     }
     $today      = date('Y-m-d');
-    $theline    = strtoupper($a_id) . " " . $today . "\r\n";
+    $theline    = "fake_" .strtoupper($a_id) . " " . $today . "\r\n";
     fwrite($pfile, $theline);
     fclose($pfile);
     return 0;
