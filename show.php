@@ -137,16 +137,16 @@ function MarkEntry(a_id, a_marker, a_description, a_title)
   this.m_track    = null;
   if(this.m_id != "home")
   {
-    var m_line     = $('#'+this.m_id)[0];
-    var m_lc       = [m_line.className, m_line.className + '_hl'];
-    var m_icons    = [_marker.getIcon().image, "images/wanderparkplatz_selected.png"];
+    var _line     = $('#'+this.m_id)[0];
+    var _lc       = [_line.className, _line.className + '_hl'];
+    var _icons    = [_marker.getIcon().image, "images/wanderparkplatz_selected.png"];
   }
 
   /** PRIVILEGED: sets the state of the marker, has access to private functions */
   this.setState = function(a_state)
   {
-    m_line.className = m_lc[a_state];
-    _setImage(m_icons[a_state]);
+    _line.className = _lc[a_state];
+    _setImage(_icons[a_state]);
   }
 
   /** PRIVILEGED: access to the _hidden variable */
@@ -358,56 +358,30 @@ MarkerList.prototype.hide = function(a_id)
 /** Displays all the markers of the list */
 MarkerList.prototype.showAll = function()
 {
-  if(1)
+  var id = null;
+  var me = null;
+  for (id in this.entries)
   {
-    var id = null;
-    var me = null;
-    for (id in this.entries)
+    me = this.entries[id];
+    if( (null == me) || (me.m_id == "highlight") || (me.isHidden() == false) )
     {
-      me = this.entries[id];
-      if( (null == me) || (me.m_id == "highlight") || (me.isHidden() == false) )
-      {
-        continue; /* skip the gap and the highlight marker */
-      }
-      this.show(id);
+      continue; /* skip the gap and the highlight marker */
     }
-  }
-  else
-  {
-    $.each(this.entries, function(key, value){
-      if((null==value) || (value.m_id == 'highlight') || (!value.isHidden()))
-      {
-        return true;
-      }
-      this.show(key);
-    });
+    this.show(id);
   }
 }
 
 /** Hides all the markers of the list */
 MarkerList.prototype.hideAll = function()
 {
-  if(1)
+  for (id in this.entries)
   {
-    for (id in this.entries)
+    me = this.entries[id];
+    if( (null == me) || (me.m_id == "home") || (me.isHidden() != false) )
     {
-      me = this.entries[id];
-      if( (null == me) || (me.m_id == "home") || (me.isHidden() != false) )
-      {
-        continue; /* skip the gap and the home marker */
-      }
-      this.hide(id);
+      continue; /* skip the gap and the home marker */
     }
-  }
-  else
-  {
-    $.each(this.entries, function(key, value){
-      if((null==value) || (value.m_id == 'home') || (value.isHidden()))
-      {
-        return true;
-      }
-      this.hide(key)
-    });
+    this.hide(id);
   }
 }
 
