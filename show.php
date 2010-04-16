@@ -59,7 +59,7 @@ function writeScriptLine($a_val1)
 {
   echo "'$a_val1[Tag]': {";
   echo "'lat':$a_val1[Lat],";
-  echo "'lon':$a_val1[Lon],";
+  echo "'lng':$a_val1[Lon],";
   echo "'name':'$a_val1[Name]',";
   echo "'length':$a_val1[Laenge],";
   echo "'dur':$a_val1[Dauer],";
@@ -121,20 +121,21 @@ tsRegister();
 /* ------------------------------------------------------------------------------------------------ */
 /* BEGIN Class MarkEntry                                                                            */
 /* ------------------------------------------------------------------------------------------------ */
-function MarkEntry(a_id, a_marker, a_description, a_title)
+function MarkEntry(a_marker, a_walk)
 {
   var _marker     = a_marker;
   var _hidden     = false;
-  this.m_id       = a_id;
-  this.m_desc     = a_description;
-  this.m_title    = a_title;
-  this.m_listener = GEvent.addListener(_marker, "infowindowclose", function(){infoWindowClosedCB(a_id);});
+  var _walk       = a_walk;
+  this.m_id       = _walk.id;
+  this.m_title    = _walk.name;
+  this.m_listener = GEvent.addListener(_marker, "infowindowclose", function(){infoWindowClosedCB(_walk.id);});
   this.m_track    = null;
   if(this.m_id != "home")
   {
     var _line     = $('#'+this.m_id)[0];
     var _lc       = [_line.className, _line.className + '_hl'];
     var _icons    = [_marker.getIcon().image, "images/wanderparkplatz_selected.png"];
+    var _desc     = null
   }
 
   /** PRIVILEGED: sets the state of the marker, has access to private functions */
@@ -156,7 +157,8 @@ function MarkEntry(a_id, a_marker, a_description, a_title)
   /** shows the info of the marker */
   this.showInfo = function()
   {
-    _marker.openInfoWindowHtml(this.m_desc);
+    if(!_desc){_desc = this.makeInfo(_walk);}
+    _marker.openInfoWindowHtml(_desc);
     this.highlight();
   }
 
@@ -167,8 +169,33 @@ function MarkEntry(a_id, a_marker, a_description, a_title)
   var _setImage = function(a_image) { !_hidden && _marker.setImage(a_image); }
 }
 
+// STATIC VARIABLES
 MarkEntry.STATE_NORMAL     = 0;
 MarkEntry.STATE_HIGHLIGHT  = 1;
+
+MarkEntry.prototype.makeInfo = function(a_walk) {
+    var l_image = "images/" + a_walk.id.toLowerCase().substr(0, a_walk.id.length-3) + "_small.png";
+    var l_info  = "<img src='" + l_image + "' alt='" + a_walk.id + "' title='" + a_walk.id + "' style='float:left;padding-right:4px;'>";
+    l_info = l_info + "<b>" + a_walk.name + "</b><br>" + a_walk.length + "km | " + a_walk.dur + "h<br>";
+    if(a_walk.ch)
+    {
+      l_info = l_info + a_walk.ch + "<br>";
+    }
+    l_info = l_info + "<span id='" + a_walk.id +"_infodst'><a href=\"javascript:distCalc('" + a_walk.id + "', '_infodst')\">Entfernung</a></span> | ";
+    l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_walk.id +"\')\">Verbergen</a>";
+    if(a_walk.hasTrack)
+    {
+      l_info = l_info + " | <a href=\"javascript:g_MARKERLIST.showTrack('" + a_walk.id + "')\">Zeige Track</a>";
+    }
+<?php
+if(checkSession())
+{
+  echo 'l_info = l_info + "<p style=\'display:inline;\' id=\'walkedlink_" + a_walk.id   + "\'> | <a href=\"javascript:g_MARKERLIST.markAsWalked(\'" + a_walk.id +"\')\">Gelaufen</a></p>";';
+}
+?>
+return l_info;
+}
+
 
 // set the marker state highlighted/normal
 MarkEntry.prototype.highlight = function() {this.setState(MarkEntry.STATE_HIGHLIGHT);}
@@ -259,26 +286,24 @@ MarkerList.prototype.push = function(a_entry)
 /**
  *  @brief   Adds a new mark to the map using the given information
  *
- *  @param    a_id        Tag uniquely identifying the walk
- *  @param    a_walk      The rest of the walk information
+ *  @param    a_walk      The walk including its id
  *
  *  @return  nothing
  */
-MarkerList.prototype.addWalk = function (a_id, a_walk)
+MarkerList.prototype.addWalk = function (a_walk)
 {
-  var pos     = new google.maps.LatLng(a_walk.lat, a_walk.lon);
+  var pos     = new google.maps.LatLng(a_walk.lat, a_walk.lng);
   var icon = (a_walk.isWalked)?this.walkedIcon:this.normalIcon;
   var options = {title: a_walk.name, bouncy: true, icon:icon};
   var l_mark  = new google.maps.Marker(pos, options);
-  var l_info  = createInfoString(a_walk.name, a_walk.length, a_walk.dur, a_walk.ch, a_id, a_walk.hasTrack);
 
   /* add the mark to our markerlist */
-  var me = new MarkEntry(a_id, l_mark, l_info, a_walk.name);
+  var me = new MarkEntry(l_mark, a_walk);
   this.push(me);
 
   GEvent.addListener(l_mark, "click", function(){me.showInfo()});
 
-  $("#"+a_id+"_dst").html("<a href=\"javascript:distCalc('" + a_id +"', '_dst')\">Berechnen</a>");
+  $("#"+a_walk.id+"_dst").html("<a href=\"javascript:distCalc('" + a_walk.id +"', '_dst')\">Berechnen</a>");
 }
 
 MarkerList.prototype.removeWalk = function (a_id)
@@ -479,44 +504,6 @@ function MyIcon(a_foreground)
 /* ------------------------------------------------------------------------------------------------ */
 /* BEGIN Helper Methods                                                                             */
 /* ------------------------------------------------------------------------------------------------ */
-/*--- createInfoString() ------------------------------------------------------ createInfoString() ---*/
-/**
- *  @brief   Creates the info string from the given parameters
- *
- *  @param   a_text     Text to be shown on the info string (title)
- *  @param   a_len      Length of the walk in km
- *  @param   a_dur      Duration of the walk in h
- *  @param   a_char     Character of the walk
- *  @param   a_id       Tag of the walk
- *
- *  @return  The created HTML statement
- */
-/*--- createInfoString() ------------------------------------------------------ createInfoString() ---*/
-function createInfoString(a_text, a_len, a_dur, a_char, a_id, a_hasTrack)
-{
-  var l_image = "images/" + a_id.toLowerCase().substr(0, a_id.length-3) + "_small.png";
-  var l_info  = "<img src='" + l_image + "' alt='" + a_id + "' title='" + a_id + "' style='float:left;padding-right:4px;'>";
-  l_info = l_info + "<b>" + a_text + "</b><br>" + a_len + "km | " + a_dur + "h<br>";
-  if(a_char)
-  {
-    l_info = l_info + a_char + "<br>";
-  }
-  l_info = l_info + "<span id='" + a_id +"_infodst'><a href=\"javascript:distCalc('" + a_id + "', '_infodst')\">Entfernung</a></span> | ";
-  l_info = l_info + "<a href=\"javascript:g_MARKERLIST.hide(\'" + a_id +"\')\">Verbergen</a>";
-  if(a_hasTrack)
-  {
-    l_info = l_info + " | <a href=\"javascript:g_MARKERLIST.showTrack('" + a_id + "')\">Zeige Track</a>";
-  }
-
-<?php
-if(checkSession())
-{
-  echo 'l_info = l_info + "<p style=\'display:inline;\' id=\'walkedlink_" + a_id   + "\'> | <a href=\"javascript:g_MARKERLIST.markAsWalked(\'" + a_id +"\')\">Gelaufen</a></p>";';
-}
-?>
-return l_info;
-}
-
 function infoWindowClosedCB(a_id)
 {
   g_MARKERLIST.normal(a_id);
@@ -542,7 +529,7 @@ function showHome(a_text)
   var options = {title: a_text, icon:homeIcon};
   var mark    = new google.maps.Marker(g_HOME, options);
   mark.bindInfoWindowHtml("<h1><i>Daheim</i></h1><p>Home sweet Home</p>");
-  var me = new MarkEntry("home", mark, "Daheim");
+  var me = new MarkEntry(mark, {id:"home", name:"Daheim"});
   g_MARKERLIST.push(me);
 }
 
