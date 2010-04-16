@@ -89,13 +89,11 @@ include("db_xml.php");
         <link rel="stylesheet" type="text/css" href="../css/style.php">
         <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAARoTP-aPC3X-J7A6v_c-RrRSliXv-vXMxLfXbWpmDAJtGYmmjPhRn1xN7Ce6w66WX49UMmCdujbpuzA"></script>
         <script type="text/javascript" src="../js/gs_sortable.js"></script>
-<script type="text/javascript">
-google.load("maps", "2.S");
-google.load("jquery", "1.4.2");
-</script>
-
+        <script type="text/javascript">
+          google.load("maps", "2.S");
+          google.load("jquery", "1.4.2");
+        </script>
         <script type="text/javascript" src="/scripts/markermanager.js"></script>
-
 <script type="text/javascript">
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -112,8 +110,7 @@ var g_OPTIONS           = new Array(); /**< Options passed from the selection pa
 /* ------------------------------------------------------------------------------------------------ */
 /* BEGIN configuration of the table-sorting-and-striping script                                     */
 /* ------------------------------------------------------------------------------------------------ */
-var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's', 's' <?php if($_SESSION['validUser'] == true) { echo ", ''"; } ?>
-);
+var TSort_Data = new Array ('walks', 's', 's', 'f', 'f', 's', 's' <?php if($_SESSION['validUser'] == true) { echo ", ''"; } ?>);
 var TSort_Classes = new Array ('table_odd', 'table_even');
 var TSort_Initial = 0;
 tsRegister();
