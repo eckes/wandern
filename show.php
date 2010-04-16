@@ -67,11 +67,11 @@ function writeScriptLine($a_val1)
 
   if(isset($a_val1[Datum]) && ($a_val1[Datum] != "0000-00-00") )
   {
-    echo "'icon':g_WALKED_ICON,";
+    echo "'isWalked':true,";
   }
   else
   {
-    echo "'icon':g_ICON, ";
+    echo "'isWalked':false,";
   }
   echo "'hasTrack':";
   echo (has_track($a_val1[Tag]))?'true':'false';
@@ -107,10 +107,7 @@ var g_CURRENTJOB        = null; /**< The distance-calculation currently active  
 var g_DIRECTIONS        = null; /**< Also for distance calculation                                  */
 var g_HOME              = null; /**< Coordinates of home sweet home                                 */
 var g_MAP               = null; /**< Map to take everything                                         */
-var g_ICON              = null; /**< The normal marker for standard walks                           */
-var g_WALKED_ICON       = null; /**< The marker for already walked walks                            */
 var g_OPTIONS           = new Array(); /**< Options passed from the selection page                  */
-var g_WALKLIST          = new Array(); /**< All the walks as an Array                               */
 
 /* ------------------------------------------------------------------------------------------------ */
 /* BEGIN configuration of the table-sorting-and-striping script                                     */
@@ -179,22 +176,6 @@ MarkEntry.STATE_HIGHLIGHT  = 1;
 // set the marker state highlighted/normal
 MarkEntry.prototype.highlight = function() {this.setState(MarkEntry.STATE_HIGHLIGHT);}
 MarkEntry.prototype.normal = function() {this.setState(MarkEntry.STATE_NORMAL);}
-// Mark the walk as walked
-MarkEntry.prototype.markAsWalked = function ()
-{
-  if(confirm('Wanderung\n\n"' + this.m_title + '"\n\nals gelaufen markieren?'))
-  {
-    var options = { url: "editwalk.php", 
-                    data:{id: this.m_id, walked:'true'},
-                    context: this.m_id,
-                    dataType: "text",
-                    cache: false,
-                    type: 'GET',
-                    error: function(a_req, a_txt, a_err){alert("Failed with error " + a_err +" ("+a_txt+")");},
-                    success: markAsWalkedCB };
-    $.ajax(options);
-  }
-}
 
 // Display the track for the walk
 MarkEntry.prototype.showTrack = function()
@@ -249,14 +230,21 @@ function PlannerJob(a_id, a_query, a_descId)
 /** 
  * CTor for a new MarkerList 
  *
- * @param  a_map   Map to take the markers
+ * @param  a_options Options to be set for the MarkerList. The list needs:
+ *                   - map (g_MAP)
+ *                   - normalImage
+ *                   - walkedImage
+ *                   - highlightImage
  */
-function MarkerList(a_map)
+function MarkerList(a_options)
 {
   this.entries    = new Array();
-  this.manager    = new MarkerManager(a_map);
+  this.manager    = new MarkerManager(a_options.map);
   this.bounds     = new google.maps.LatLngBounds();
-  this.length     = 0;
+
+  var _opts = a_options;
+  this.normalIcon = new MyIcon(_opts.normalImage);
+  this.walkedIcon = new MyIcon(_opts.walkedImage);
 }
 
 /** 
@@ -269,7 +257,6 @@ MarkerList.prototype.push = function(a_entry)
   this.entries[a_entry.m_id] = a_entry;
   this.bounds.extend(a_entry.getLatLng());
   this.manager.addMarker(a_entry.getMarker(), 0, 19);
-  this.length++;
 }
 
 /**
@@ -283,7 +270,8 @@ MarkerList.prototype.push = function(a_entry)
 MarkerList.prototype.addWalk = function (a_id, a_walk)
 {
   var pos     = new google.maps.LatLng(a_walk.lat, a_walk.lon);
-  var options = {title: a_walk.name, bouncy: true, icon:a_walk.icon};
+  var icon = (a_walk.isWalked)?this.walkedIcon:this.normalIcon;
+  var options = {title: a_walk.name, bouncy: true, icon:icon};
   var l_mark  = new google.maps.Marker(pos, options);
   var l_info  = createInfoString(a_walk.name, a_walk.length, a_walk.dur, a_walk.ch, a_id, a_walk.hasTrack);
 
@@ -443,12 +431,21 @@ MarkerList.prototype.showInfo = function(a_id)
 
 MarkerList.prototype.markAsWalked = function (a_id)
 {
-  // TODO: do everything neccessary here instead of the MarkEntry class.
-  // The markAsWalked function of the MarkEntry shall only update the info string...
   var me = this.search(a_id);
   if(me)
   {
-    me.markAsWalked();
+    if(confirm('Wanderung\n\n"' + me.m_title + '"\n\nals gelaufen markieren?'))
+    {
+      var options = { url: "editwalk.php", 
+                      data:{id: a_id, walked:'true'},
+                      context: a_id,
+                      dataType: "text",
+                      cache: false,
+                      type: 'GET',
+                      error: function(a_req, a_txt, a_err){alert("Failed with error " + a_err +" ("+a_txt+")");},
+                      success: markAsWalkedCB };
+      $.ajax(options);
+    }
   }
 }
 
@@ -585,10 +582,9 @@ function markAsWalkedCB(a_data, a_text, a_req)
   }
   if( (typeof(g_OPTIONS.showwalked) != 'undefined') && (g_OPTIONS.showwalked))
   {
-    g_MARKERLIST.setIcon(id, MarkEntry.STATE_NORMAL, g_WALKED_ICON.image);
+    g_MARKERLIST.setIcon(id, MarkEntry.STATE_NORMAL, g_MARKERLIST.walkedIcon.image);
     $('#' + id + '_isWalked').fadeOut();
     $('#walkedlink_' + id ).fadeOut();
-    alert($('#walkedlink_' + id ).remove());
   }
   else
   {
@@ -692,10 +688,13 @@ function initialize()
   GEvent.addListener(g_MAP, "moveend", function(){link_update(null, null);});
   GEvent.addListener(g_MAP, "zoomend", function(a_old,a_new) { link_update(null,a_new);});
 
-  g_MARKERLIST    = new MarkerList(g_MAP);
+  var options = {map: g_MAP, 
+                 normalImage:"images/wanderparkplatz.png",
+                 walkedImage:"images/wanderparkplatz_hell.png",
+                 shadowImage:"images/wanderparkplatz_schatten.png",
+                 highlightImage:"images/wanderparkplatz_selected.png"};
+  g_MARKERLIST    = new MarkerList(options);
 
-  g_ICON          = new MyIcon("images/wanderparkplatz.png");
-  g_WALKED_ICON   = new MyIcon("images/wanderparkplatz_hell.png");
   g_DIRECTIONS    = new google.maps.Directions();
 
   GEvent.addListener(g_DIRECTIONS, "load", dirLoadedCB);
@@ -777,19 +776,13 @@ END;
 array_walk($_REQUEST, writeOptionLine);
 
 // put the request context into a javascript object to be able to access the information lateron
-echo "g_WALKLIST = {\n";
+echo "var walklist = {\n";
 array_walk($elements, writeScriptLine);
 echo "};\n";
 
 echo <<<END
-$.each(g_WALKLIST, function(key, value){g_MARKERLIST.addWalk(key, value);});
-if(0)
-{
-      for (id in g_WALKLIST)
-      {
-        g_MARKERLIST.addWalk(id, g_WALKLIST[id]);
-      }
-      }
+$.each(walklist, function(key, value){g_MARKERLIST.addWalk(key, value);});
+delete walklist;
 
 END;
 
