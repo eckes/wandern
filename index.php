@@ -1,6 +1,6 @@
 <?php
-require_once('../login/common.php');
-require_once('../css/colors.php');
+require_once('login/common.php');
+require_once('css/colors.php');
 require_once('common.php');
 require_once('constants.php');
 
@@ -15,7 +15,7 @@ function writeBookLine($a_book)
   <head>
     <title>Select your walks</title>
     <META http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="../css/style.php">
+    <link rel="stylesheet" type="text/css" href="css/style.php">
     <style type="text/css">
     fieldset{border:1px solid <?=$col_accent?>};
     </style>

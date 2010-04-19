@@ -1,8 +1,8 @@
 <?php
 header('Content-Type: text/xml; charset=utf-8');
 
-require_once('../login/common.php');
-require_once('../css/colors.php');
+require_once('login/common.php');
+require_once('css/colors.php');
 require_once('common.php');
 require_once('constants.php');
 require_once('db_xml.php');

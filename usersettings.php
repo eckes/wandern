@@ -1,5 +1,5 @@
 <?php
-    require_once('../login/common.php');
+    require_once('login/common.php');
     require_once('common.php');
     require_once('constants.php');
 
@@ -19,7 +19,7 @@
 
     if(!isset($_SESSION['userName']))
     {
-        header('Location: ../login/login.php');
+        header('Location: login/login.php');
         return;
     }
 
@@ -36,7 +36,7 @@
     <head>
     <title>Change user Settings for <?=$_SESSION['userName']?></title>
         <META http-equiv="content-type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="../css/style.php">
+        <link rel="stylesheet" type="text/css" href="css/style.php">
         <style type="text/css">
           fieldset{border:1px solid #6cb0bd};
         </style>

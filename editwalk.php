@@ -1,5 +1,5 @@
 <?php
-require_once('../login/common.php');
+require_once('login/common.php');
 require_once('common.php');
 
 if(     (!isset($_REQUEST['id']))

@@ -1,5 +1,5 @@
 <?php 
-require_once('../login/common.php');
+require_once('login/common.php');
 require_once("constants.php");
 require_once("common.php");
 /** XML Tag constants */
@@ -128,7 +128,6 @@ function db_init()
     $files = array();
     while (false !== ($file = readdir($handle)))
     {
-      //if ($file != "." && $file != ".." && $file != "")
       if(fnmatch("*.xml", $file))
       {
         array_push($files, $file);

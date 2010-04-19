@@ -17,7 +17,7 @@
 
     <!-- required for Tooltip: a default dijit theme: -->
     <link rel="stylesheet" type="text/css" href="/scripts/dojo-release-1.3.2/dijit/themes/tundra/tundra.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.php">
+    <link rel="stylesheet" type="text/css" href="css/style.php">
 
     <script type="text/javascript">
         var djConfig = {parseOnLoad:true, isDebug:false};

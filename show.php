@@ -1,7 +1,7 @@
 <?php 
 /* vim: set sw=2 ts=2: */
-require_once('../login/common.php');
-require_once('../css/colors.php');
+require_once('login/common.php');
+require_once('css/colors.php');
 require_once('common.php');
 
 require_once('track.php');
@@ -86,9 +86,9 @@ include("db_xml.php");
     <head>
         <title>Search Results</title>
         <META http-equiv="content-type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="../css/style.php">
+        <link rel="stylesheet" type="text/css" href="css/style.php">
         <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAARoTP-aPC3X-J7A6v_c-RrRSliXv-vXMxLfXbWpmDAJtGYmmjPhRn1xN7Ce6w66WX49UMmCdujbpuzA"></script>
-        <script type="text/javascript" src="../js/gs_sortable.js"></script>
+        <script type="text/javascript" src="js/gs_sortable.js"></script>
         <script type="text/javascript">
           google.load("maps", "2.S");
           google.load("jquery", "1.4.2");
