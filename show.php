@@ -271,6 +271,17 @@ function MarkerList(a_options)
   this.walkedIcon = new MyIcon(_opts.walkedImage);
 }
 
+// Searches for an entry with the given ID and returns it. 
+MarkerList.prototype.search = function(a_id) { return this.entries[a_id]; }
+// Returns the center point of the bounds of all the markers
+MarkerList.prototype.getCenter = function() {return this.bounds.getCenter();}
+// Accessor for the bounds object of the MarkerList
+MarkerList.prototype.getBounds = function(){return this.bounds;}
+// Checks if the given marker is hideable
+MarkerList.prototype.hideable = function(a_me) { return ((null != a_me) && ('home' != a_me.m_id) && (!a_me.isHidden())); }
+// Checks if the given marker is showable
+MarkerList.prototype.showable = function(a_me) { return ((null != a_me) && ('highlight' != a_me.m_id) && (a_me.isHidden())); }
+
 /** 
  * Adds the given entry as new element to the MarkerList
  *
@@ -315,29 +326,6 @@ MarkerList.prototype.removeWalk = function (a_id)
 }
 
 /** 
- * Returns the center point of the bounds of all the markers
- *
- * @return  The center of the map as google.maps.LatLng object
- */
-MarkerList.prototype.getCenter = function() {return this.bounds.getCenter();}
-
-/**
- * Accessor for the bounds object of the MarkerList
- *
- * @return  The bounds of the map as google.maps.LatLngBounds object
- */
-MarkerList.prototype.getBounds = function(){return this.bounds;}
-
-/**
- * Searches for an entry with the given ID and returns it. 
- *
- * @param   a_id    ID of the entry to search for
- *
- * @return the MarkEntry identified by the given ID
- */
-MarkerList.prototype.search = function(a_id) { return this.entries[a_id]; }
-
-/** 
  * Shows the marker with the given name 
  *
  * @param a_id     ID of the marker to show
@@ -345,7 +333,7 @@ MarkerList.prototype.search = function(a_id) { return this.entries[a_id]; }
 MarkerList.prototype.show = function(a_id)
 {
   var me      = this.search(a_id);
-  if(me && me.isHidden())
+  if(this.showable(me))
   {
     this.manager.addMarker(me.getMarker(), 1);
     me.show();
@@ -353,15 +341,11 @@ MarkerList.prototype.show = function(a_id)
   $('#'+a_id+'_cb').attr('checked', true);
 }
 
-/**
- * Hides the marker with the given name 
- *
- * @param a_id   ID of the marker to hide
- */
+// Hides the marker with the given name 
 MarkerList.prototype.hide = function(a_id)
 {
   var me      = this.search(a_id);
-  if(me)
+  if(this.hideable(me))
   {
     me.hide();
     this.manager.removeMarker(me.getMarker());
@@ -369,53 +353,37 @@ MarkerList.prototype.hide = function(a_id)
   $('#'+a_id+'_cb').attr('checked', false);
 }
 
-/** Displays all the markers of the list */
-MarkerList.prototype.showAll = function()
-{
+// Displays all the markers of the list 
+MarkerList.prototype.showAll = function() {
   var id = null;
-  var me = null;
-  for (id in this.entries)
-  {
-    me = this.entries[id];
-    if( (null == me) || (me.m_id == "highlight") || (me.isHidden() == false) )
-    {
-      continue; /* skip the gap and the highlight marker */
-    }
+  for (id in this.entries) {
     this.show(id);
   }
 }
 
-/** Hides all the markers of the list */
-MarkerList.prototype.hideAll = function()
-{
-  for (id in this.entries)
-  {
-    me = this.entries[id];
-    if( (null == me) || (me.m_id == "home") || (me.isHidden() != false) )
-    {
-      continue; /* skip the gap and the home marker */
-    }
+// Hides all the markers of the list 
+MarkerList.prototype.hideAll = function() {
+  var id = null;
+  for (id in this.entries) {
     this.hide(id);
   }
 }
 
 /** Highlights the given marker */
-MarkerList.prototype.highlight = function(a_id)
-{
+MarkerList.prototype.highlight = function(a_id) {
   var me = this.search(a_id);
-  if(me)
-  {
-    me.highlight();
-  }
+  me && me.highlight();
 }
 
-MarkerList.prototype.normal = function(a_id)
+MarkerList.prototype.normal = function(a_id) {
+  var me = this.search(a_id);
+  me && me.normal();
+}
+
+MarkerList.prototype.setIcon = function (a_id, a_state, a_icon)
 {
   var me = this.search(a_id);
-  if(me)
-  {
-    me.normal();
-  }
+  me && me.setIcon(a_state, a_icon);
 }
 
 MarkerList.prototype.showTrack = function(a_id)
@@ -471,14 +439,6 @@ MarkerList.prototype.markAsWalked = function (a_id)
   }
 }
 
-MarkerList.prototype.setIcon = function (a_id, a_state, a_icon)
-{
-  var me = this.search(a_id);
-  if(me)
-  {
-    me.setIcon(a_state, a_icon);
-  }
-}
 /* ------------------------------------------------------------------------------------------------ */
 /* END Class MarkerList                                                                             */
 /* ------------------------------------------------------------------------------------------------ */
@@ -545,14 +505,8 @@ function cbChanged(a_id)
   var e = document.getElementById(a_id + "_cb");
   if(e)
   {
-    if(false == e.checked)
-    {
-      g_MARKERLIST.hide(a_id);
-    }
-    else
-    {
-      g_MARKERLIST.show(a_id);
-    }
+    if(false == e.checked) { g_MARKERLIST.hide(a_id); }
+    else { g_MARKERLIST.show(a_id); }
   }
 }
 
