@@ -11,7 +11,7 @@ require_once("constants.php");
 $_mapkeys = array(
   'wandern.local'                       => 'ABQIAAAAmBVEol_t03fhiKgj23pnxRRPE6zGAdcAee_379GZpk22qefl8BR-CR6pD4WJqreTN3CM9IC4f5euew',
   'localhost'                           => 'ABQIAAAARoTP-aPC3X-J7A6v_c-RrRSliXv-vXMxLfXbWpmDAJtGYmmjPhRn1xN7Ce6w66WX49UMmCdujbpuzA',
-  'wandern.erlmann.org'                 => 'ABQIAAAAmBVEol_t03fhiKgj23pnxRTkkbJCeO6ii5m69kVMcdeUjJKMhhQkkHpli0m8UI8YsURTyhmKudFiXwS',
+  'wandern.erlmann.org'                 => 'ABQIAAAAmBVEol_t03fhiKgj23pnxRTkkbJCeO6ii5m69kVMcdeUjJKMhhQkkHpli0m8UI8YsURTyhmKudFiXw',
   'wandern.web52.server111.dns-was.de'  => 'ABQIAAAAmBVEol_t03fhiKgj23pnxRQPqy_wHDqwkqj89uJgmv7DjbBGzRROelaVuziZuhdzigtLODSd-26xyw'
 );
 
@@ -101,12 +101,12 @@ include("db_xml.php");
   echo $_mapkeys[$_SERVER[HTTP_HOST]];
   echo '"></script>';
 ?>
-        <script type="text/javascript" src="js/gs_sortable.js"></script>
+        <script type="text/javascript" src="/js/gs_sortable.js"></script>
         <script type="text/javascript">
           google.load("maps", "2.S");
           google.load("jquery", "1.4.2");
         </script>
-        <script type="text/javascript" src="/scripts/markermanager.js"></script>
+        <script type="text/javascript" src="/js/markermanager.js"></script>
 <script type="text/javascript">
 
 /* ------------------------------------------------------------------------------------------------ */
