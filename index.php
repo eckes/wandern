@@ -16,6 +16,7 @@ function writeBookLine($a_book)
     <title>Select your walks</title>
     <META http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="css/style.php">
+    <link rel="icon" type="image/png" href="/images/icon.png">
     <style type="text/css">
     fieldset{border:1px solid <?=$col_accent?>};
     </style>
